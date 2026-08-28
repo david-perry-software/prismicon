@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>prismicon demo</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem;
+         background: #fafaf8; color: #222; }
+  @media (prefers-color-scheme: dark) { body { background: #16161a; color: #eee; } }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; margin: 0.75rem 0 1.5rem; }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px;
+          font-family: ui-monospace, monospace; opacity: 0.75; }
+  .buttons { display: flex; gap: 8px; flex-wrap: wrap; margin: 0.5rem 0 1rem; }
+  button { padding: 6px 14px; border-radius: 8px; border: 1px solid #bbb; background: transparent;
+           color: inherit; cursor: pointer; }
+  h1 { font-size: 20px; } h2 { font-size: 15px; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<h1>prismicon</h1>
+<p>Deterministic 3D identicons with lifecycle states. Open the console and try
+<code>handle.setState('done')</code>.</p>
+
+<h2>An agent, controllable</h2>
+<div class="buttons" id="buttons"></div>
+<div id="hero"></div>
+
+<h2>Agents in mixed states</h2>
+<div class="row" id="agents"></div>
+
+<h2>People (static)</h2>
+<div class="row" id="people"></div>
+
+<script type="module">
+import { mountGlyph, STATES, describeParams, deriveV1 } from '../src/index.js';
+
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+
+const hero = document.getElementById('hero');
+const handle = mountGlyph(hero, 'demo-agent', { kind: 'agent', size: 140, state: 'working', dark });
+window.handle = handle;
+console.log('anatomy:', describeParams(deriveV1('demo-agent')));
+
+const buttons = document.getElementById('buttons');
+STATES.forEach((s) => {
+  const b = document.createElement('button');
+  b.textContent = s;
+  b.onclick = () => handle.setState(s);
+  buttons.appendChild(b);
+});
+
+const agentStates = ['working', 'done', 'working', 'error', 'waiting', 'idle'];
+['build-bot', 'crawler-2', 'deploy', 'etl-nightly', 'indexer', 'mailer'].forEach((seed, i) => {
+  const cell = document.createElement('div');
+  cell.className = 'cell';
+  const box = document.createElement('div');
+  mountGlyph(box, seed, { kind: 'agent', size: 52, state: agentStates[i], dark });
+  cell.appendChild(box);
+  cell.appendChild(document.createTextNode(seed));
+  document.getElementById('agents').appendChild(cell);
+});
+
+['maya', 'arjun', 'sofia.reyes', 'tom_w', 'lin', 'kwame'].forEach((seed) => {
+  const cell = document.createElement('div');
+  cell.className = 'cell';
+  const box = document.createElement('div');
+  mountGlyph(box, seed, { kind: 'user', size: 52, dark });
+  cell.appendChild(box);
+  cell.appendChild(document.createTextNode(seed));
+  document.getElementById('people').appendChild(cell);
+});
+</script>
+</body>
+</html>

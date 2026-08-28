@@ -1,0 +1,44 @@
+{
+  "name": "prismicon",
+  "version": "1.0.0",
+  "description": "Deterministic 3D identicons — spinning polyhedra with lifecycle states for agents and static identity marks for people. Zero dependencies, no build step.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./react": {
+      "types": "./index.d.ts",
+      "default": "./src/react.js"
+    }
+  },
+  "files": [
+    "src",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "identicon",
+    "avatar",
+    "3d",
+    "svg",
+    "react",
+    "nextjs",
+    "agent",
+    "status"
+  ],
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "license": "MIT"
+}
