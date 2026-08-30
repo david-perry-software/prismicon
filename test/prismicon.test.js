@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import { afterEach, test } from 'node:test';
 import { JSDOM } from 'jsdom';
-import { createElement } from 'react';
+import { act, createElement } from 'react';
+import { createRoot } from 'react-dom/client';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import { Prismicon } from '../src/react.js';
@@ -21,6 +22,7 @@ afterEach(() => {
 function installDom({ reducedMotion = false } = {}) {
   const dom = new JSDOM('<!doctype html><html><head></head><body><div id="glyph"></div></body></html>');
   let animationFrames = 0;
+  const frameCallbacks = [];
   dom.window.matchMedia = (query) => ({
     matches: reducedMotion && query === '(prefers-reduced-motion: reduce)',
     media: query
@@ -28,12 +30,18 @@ function installDom({ reducedMotion = false } = {}) {
   globalThis.window = dom.window;
   globalThis.document = dom.window.document;
   globalThis.IntersectionObserver = undefined;
-  globalThis.requestAnimationFrame = () => {
+  globalThis.requestAnimationFrame = (callback) => {
     animationFrames += 1;
+    frameCallbacks.push(callback);
     return animationFrames;
   };
   return {
     container: dom.window.document.getElementById('glyph'),
+    advanceAnimationFrame(now) {
+      const callback = frameCallbacks.shift();
+      assert.ok(callback, 'expected a queued animation frame');
+      callback(now);
+    },
     get animationFrames() {
       return animationFrames;
     }
@@ -95,6 +103,29 @@ test('updates lifecycle semantics and status ring patterns, then cleans up', asy
   handle.destroy();
   assert.equal(dom.container.childElementCount, 0);
   assert.equal(dom.container.classList.contains('prismicon'), false);
+});
+
+test('React state updates keep the mounted SVG live so working geometry rotates', async () => {
+  const dom = installDom();
+  globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+  const root = createRoot(dom.container);
+  await act(() => root.render(createElement(Prismicon, { seed: 'Ada Lovelace', state: 'idle' })));
+  const mountedSvg = dom.container.querySelector('svg');
+
+  await act(() => root.render(createElement(Prismicon, { seed: 'Ada Lovelace', state: 'working' })));
+  assert.equal(dom.container.querySelector('svg'), mountedSvg, 'state updates must not replace the mounted SVG');
+
+  const geometry = () => dom.container.querySelector('svg > g').innerHTML;
+  const initial = geometry();
+  dom.advanceAnimationFrame(1000);
+  const firstFrame = geometry();
+  dom.advanceAnimationFrame(1040);
+  const secondFrame = geometry();
+
+  assert.notEqual(firstFrame, initial);
+  assert.notEqual(secondFrame, firstFrame);
+  await act(() => root.unmount());
+  delete globalThis.IS_REACT_ACT_ENVIRONMENT;
 });
 
 test('reduced motion stays static while preserving lifecycle semantics', async () => {
