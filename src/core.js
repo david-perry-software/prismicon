@@ -368,7 +368,7 @@ export function mountGlyph(el, seed, opts = {}) {
   let p = deriveV1(seed);
   if (size < 28 && p.finish === 2) p = { ...p, finish: 0 };
   const geo = buildSolid(p.solidType, p.n, p.prop);
-  const initial = kind === 'user' || eng.reduced ? 'idle' : (opts.state || 'idle');
+  const initial = kind === 'user' ? 'idle' : (opts.state || 'idle');
   el.classList.add('prismicon');
   el.innerHTML = '<svg viewBox="0 0 100 100" width="' + size + '" height="' + size +
     '" role="img"><g></g><g></g></svg>';
@@ -376,8 +376,8 @@ export function mountGlyph(el, seed, opts = {}) {
   const gs = el.querySelectorAll('g');
   const inst = {
     svg, g: gs[0], sg: gs[1], p, geo, kind, dark, seedRaw: String(seed),
-    state: initial === 'working' || initial === 'waiting' ? initial : 'idle',
-    ori: initial === 'working'
+    state: !eng.reduced && (initial === 'working' || initial === 'waiting') ? initial : 'idle',
+    ori: !eng.reduced && initial === 'working'
       ? (p.axisMode === 0 ? { ax: 0.18, ay: p.phase, az: p.precess ? p.phase2 : 0 }
         : p.axisMode === 1 ? { ax: p.phase, ay: 0.18, az: p.precess ? p.phase2 : 0 }
         : { ax: 0.42, ay: 0, az: p.phase })
