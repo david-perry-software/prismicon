@@ -10,8 +10,18 @@
  * Client: hydrates into a live glyph driven by the shared animation engine.
  */
 
-import { createElement as h, useEffect, useRef } from 'react';
+import { createElement as h, memo, useEffect, useRef } from 'react';
 import { renderStaticSVG, mountGlyph } from './core.js';
+
+const GlyphHost = memo(function GlyphHost({ hostRef, className, title, style, markup }) {
+  return h('span', {
+    ref: hostRef,
+    className,
+    title,
+    style: { display: 'inline-block', lineHeight: 0, ...style },
+    dangerouslySetInnerHTML: { __html: markup }
+  });
+});
 
 export function Prismicon(props) {
   const {
@@ -27,6 +37,10 @@ export function Prismicon(props) {
 
   const ref = useRef(null);
   const handle = useRef(null);
+  const initialMarkup = useRef(null);
+  if (initialMarkup.current === null) {
+    initialMarkup.current = renderStaticSVG(seed, { size, kind, state, dark });
+  }
 
   useEffect(() => {
     if (!ref.current) return undefined;
@@ -42,15 +56,13 @@ export function Prismicon(props) {
     if (handle.current) handle.current.setState(state);
   }, [state]);
 
-  return h('span', {
-    ref,
+  return h(GlyphHost, {
+    hostRef: ref,
     className,
     title,
-    style: { display: 'inline-block', lineHeight: 0, ...style },
+    style,
     // Static portrait for SSR and first paint; mountGlyph replaces it on hydrate.
-    dangerouslySetInnerHTML: {
-      __html: renderStaticSVG(seed, { size, kind, state, dark })
-    }
+    markup: initialMarkup.current
   });
 }
 

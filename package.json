@@ -1,6 +1,6 @@
 {
   "name": "prismicon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Deterministic 3D identicons — spinning polyhedra with lifecycle states for agents and static identity marks for people. Zero dependencies, no build step.",
   "type": "module",
   "main": "./src/index.js",
@@ -39,6 +39,14 @@
     "react": {
       "optional": true
     }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "license": "MIT"
 }

@@ -6,19 +6,9 @@ Zero dependencies. No build step. SSR-safe. ~9 KB of plain ES modules.
 
 ## Install
 
-This is a private repo, so npm needs an authenticated URL. If you have SSH keys set up with GitHub (recommended):
-
 ```bash
-npm install git+ssh://git@github.com/YOUR_USERNAME/prismicon.git
+npm install prismicon
 ```
-
-In CI, or without SSH, use a fine-grained personal access token with read access to this repo:
-
-```bash
-npm install git+https://TOKEN@github.com/YOUR_USERNAME/prismicon.git
-```
-
-(Keep the token out of committed lockfile URLs by putting it in an environment variable or `.npmrc` rather than the dependency string — e.g. reference the SSH form in `package.json` and let CI use a deploy key.)
 
 For local development across sibling folders, a file dependency also works:
 
