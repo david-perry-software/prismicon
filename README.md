@@ -59,8 +59,12 @@ export function StaticAvatar({ id }) {
 | `waiting` | gentle sway | dotted amber |
 | `done` | settles with a green flash | solid green |
 | `error` | settles with a red flash and shake | dashed red |
+| `thinking` | slow precessing wobble with a periodic nod | long-dash blue (pulsing) |
+| `sending` | brief spin-up that settles back to portrait | one-shot expanding ripple |
+| `receiving` | brief reverse spin-up with a lightening flash, then settles | one-shot contracting ripple |
+| `sleeping` | very slow bob, dimmed | none |
 
-The ring patterns (solid / dashed / dotted) carry the status without color, so the states remain distinguishable for colorblind users and in grayscale. `aria-label` on each glyph announces identity and state and updates live.
+The ring patterns (solid / dashed / dotted / long-dash / ripple) carry the status without color, so the states remain distinguishable for colorblind users and in grayscale. `aria-label` on each glyph announces identity and state and updates live.
 
 `waiting` means blocked on something external (approval, input, an upstream dependency) — it keeps a ring because it needs a human's attention. `working` means busy internally. Keeping that distinction honest keeps your dashboard honest.
 
