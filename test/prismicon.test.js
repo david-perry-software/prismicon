@@ -172,3 +172,39 @@ test('thinking and sleeping animate geometry while reporting their state', async
 
   handle.destroy();
 });
+
+function advanceFrames(dom, startMs, count, stepMs) {
+  for (let i = 0; i < count; i += 1) {
+    dom.advanceAnimationFrame(startMs + (i + 1) * stepMs);
+  }
+}
+
+test('sending and receiving settle back to idle while keeping their public state', async () => {
+  const dom = installDom();
+  const { mountGlyph } = await import('../src/core.js?send-recv-test');
+  const handle = mountGlyph(dom.container, 'Ada Lovelace', { state: 'idle' });
+  const svg = dom.container.querySelector('svg');
+  const geometry = () => svg.querySelector('g').innerHTML;
+
+  handle.setState('sending');
+  assert.equal(handle.state, 'sending');
+  assert.match(svg.getAttribute('aria-label'), /, sending$/);
+  advanceFrames(dom, 1000, 70, 33);
+  assert.equal(handle.state, 'sending', 'public state stays sticky after settling');
+  const sentA = geometry();
+  dom.advanceAnimationFrame(1000 + 71 * 33);
+  const sentB = geometry();
+  assert.equal(sentB, sentA, 'sending must settle to a static portrait');
+
+  handle.setState('receiving');
+  assert.equal(handle.state, 'receiving');
+  assert.match(svg.getAttribute('aria-label'), /, receiving$/);
+  advanceFrames(dom, 4000, 70, 33);
+  assert.equal(handle.state, 'receiving', 'public state stays sticky after settling');
+  const recvA = geometry();
+  dom.advanceAnimationFrame(4000 + 71 * 33);
+  const recvB = geometry();
+  assert.equal(recvB, recvA, 'receiving must settle to a static portrait');
+
+  handle.destroy();
+});

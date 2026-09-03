@@ -181,6 +181,7 @@ function renderInner(p, geo, o, opts) {
   const shade = shadeFor(!!opts.dark);
   const off = opts.dx || 0;
   const hueMix = opts.hueMix;
+  const lighten = opts.lighten || 0;
   const sleeping = !!opts.sleeping;
   const range = sleeping ? shade.range * 0.55 : shade.range;
   const pts3 = geo.V.map((v) => rot3(v, o.ax, o.ay, o.az));
@@ -188,7 +189,7 @@ function renderInner(p, geo, o, opts) {
     const s = F / (F - v[2]);
     return [(50 + off + v[0] * s).toFixed(1), (50 + v[1] * s).toFixed(1)];
   });
-  const ink = (h, L) => 'hsl(' + Math.round(h) + ' 52% ' + Math.round(L) + '%)';
+  const ink = (h, L) => 'hsl(' + Math.round(h) + ' 52% ' + Math.round(Math.min(92, L + lighten)) + '%)';
   if (p.finish === 2) {
     let d = '';
     geo.faces.forEach((f) => {
@@ -300,7 +301,7 @@ function getEngine() {
   function step(inst, dt, tSec) {
     if (!inst.visible) return;
     const p = inst.p, o = inst.ori;
-    let dirty = false, hueMix = null, dx = 0;
+    let dirty = false, hueMix = null, dx = 0, lighten = 0;
     if (inst.state === 'working') {
       const k = Math.min(1, dt * 3);
       if (p.axisMode === 0) {
@@ -350,6 +351,15 @@ function getEngine() {
       o.ay += angDiff(port.ay, o.ay) * k;
       o.az += angDiff(port.az, o.az) * k;
       dirty = true;
+    } else if (inst.state === 'sending' || inst.state === 'receiving') {
+      const dir = inst.state === 'sending' ? 1 : -1;
+      inst.transientT += dt;
+      const t = inst.transientT;
+      const spin = p.speed * 3.2 * Math.exp(-t * 7);
+      o.ay = wrapAngle(o.ay + dir * spin * dt);
+      o.ax += angDiff(PORTRAITS[p.solidType].ax, o.ax) * Math.min(1, dt * 4);
+      if (t > 0.4) inst.state = 'settling';
+      dirty = true;
     }
     if (inst.flash != null) {
       inst.flashT += dt;
@@ -357,12 +367,13 @@ function getEngine() {
       if (t < 1.4) {
         const s = t < 0.12 ? t / 0.12 : Math.exp(-(t - 0.12) * 3);
         hueMix = lerpHue(p.hue, inst.flash, 0.75 * s);
+        if (inst.lightenFlash) lighten = 26 * s;
         if (inst.shake) dx = Math.sin(t * 36) * 3.2 * Math.exp(-t * 6);
         dirty = true;
-      } else { inst.flash = null; dirty = true; }
+      } else { inst.flash = null; inst.lightenFlash = false; dirty = true; }
     }
     if (dirty) {
-      inst.g.innerHTML = renderInner(p, inst.geo, o, { dark: inst.dark, hueMix, dx, sleeping: inst.state === 'sleeping' });
+      inst.g.innerHTML = renderInner(p, inst.geo, o, { dark: inst.dark, hueMix, dx, lighten, sleeping: inst.state === 'sleeping' });
       if (inst.state === 'sleeping') inst.g.setAttribute('opacity', '0.7');
       else inst.g.removeAttribute('opacity');
     }
@@ -406,7 +417,7 @@ export function mountGlyph(el, seed, opts = {}) {
         : p.axisMode === 1 ? { ax: p.phase, ay: 0.18, az: p.precess ? p.phase2 : 0 }
         : { ax: 0.42, ay: 0, az: p.phase })
       : { ...PORTRAITS[p.solidType] },
-    flash: null, flashT: 0, shake: false, visible: true,
+    flash: null, flashT: 0, shake: false, transientT: 0, lightenFlash: false, visible: true,
     publicState: initial
   };
   inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark, sleeping: initial === 'sleeping' });
@@ -437,12 +448,17 @@ export function mountGlyph(el, seed, opts = {}) {
         return;
       }
       if (name === 'working' || name === 'waiting' || name === 'thinking' || name === 'sleeping') {
-        inst.state = name; inst.flash = null;
+        inst.state = name; inst.flash = null; inst.lightenFlash = false;
+      } else if (name === 'sending' || name === 'receiving') {
+        inst.state = name; inst.transientT = 0; inst.flashT = 0; inst.shake = false;
+        if (name === 'receiving') { inst.flash = p.hue; inst.lightenFlash = true; }
+        else { inst.flash = null; inst.lightenFlash = false; }
       } else {
         inst.state = 'settling'; inst.flashT = 0;
         if (name === 'done') { inst.flash = 145; inst.shake = false; }
         else if (name === 'error') { inst.flash = 4; inst.shake = true; }
         else { inst.flash = null; }
+        inst.lightenFlash = false;
       }
       applyStatus(inst, name, true);
       eng.ensureRunning();
