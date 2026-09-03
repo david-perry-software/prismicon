@@ -19,7 +19,7 @@ export const SIDE_NAMES = { 3: 'triangle', 4: 'square', 5: 'pentagon', 6: 'hexag
 export const SOLID_NAMES = ['prism', 'pyramid', 'bipyramid', 'antiprism'];
 export const FINISH_NAMES = ['shaded', 'two-tone', 'wireframe'];
 export const PALETTE = [8, 25, 45, 95, 145, 170, 200, 220, 250, 275, 300, 330];
-export const STATES = ['idle', 'working', 'waiting', 'done', 'error'];
+export const STATES = ['idle', 'working', 'waiting', 'done', 'error', 'thinking', 'sending', 'receiving', 'sleeping'];
 
 const PORTRAITS = [
   { ax: 0.30, ay: 0.42, az: 0 }, // prism
@@ -29,12 +29,18 @@ const PORTRAITS = [
 ];
 
 const STATUS_RING = {
-  done:    { color: 'hsl(145 50% 42%)', dash: null,    cap: null },
-  error:   { color: 'hsl(4 70% 50%)',   dash: '7 5',   cap: null },
-  waiting: { color: 'hsl(42 80% 44%)',  dash: '0.1 9', cap: 'round' }
+  done:      { color: 'hsl(145 50% 42%)', dash: null,    cap: null },
+  error:     { color: 'hsl(4 70% 50%)',   dash: '7 5',   cap: null },
+  waiting:   { color: 'hsl(42 80% 44%)',  dash: '0.1 9', cap: 'round' },
+  thinking:  { color: 'hsl(217 70% 55%)', dash: '12 7',  cap: null,   animation: 'prismicon-pulse 2.4s ease-in-out infinite', persistent: true },
+  sending:   { color: 'hsl(210 70% 58%)', dash: null,    cap: null,   animation: 'prismicon-ripple-out 0.9s ease-out both' },
+  receiving: { color: 'hsl(187 65% 50%)', dash: null,    cap: null,   animation: 'prismicon-ripple-in 0.9s ease-out both' }
 };
 
-const RING_FOR_STATE = { done: 'done', error: 'error', waiting: 'waiting' };
+const RING_FOR_STATE = {
+  done: 'done', error: 'error', waiting: 'waiting',
+  thinking: 'thinking', sending: 'sending', receiving: 'receiving'
+};
 
 // ---------------------------------------------------------------- hashing
 
@@ -181,12 +187,15 @@ function renderInner(p, geo, o, opts) {
   const shade = shadeFor(!!opts.dark);
   const off = opts.dx || 0;
   const hueMix = opts.hueMix;
+  const lighten = opts.lighten || 0;
+  const sleeping = !!opts.sleeping;
+  const range = sleeping ? shade.range * 0.55 : shade.range;
   const pts3 = geo.V.map((v) => rot3(v, o.ax, o.ay, o.az));
   const proj = pts3.map((v) => {
     const s = F / (F - v[2]);
     return [(50 + off + v[0] * s).toFixed(1), (50 + v[1] * s).toFixed(1)];
   });
-  const ink = (h, L) => 'hsl(' + Math.round(h) + ' 52% ' + Math.round(L) + '%)';
+  const ink = (h, L) => 'hsl(' + Math.round(h) + ' 52% ' + Math.round(Math.min(92, L + lighten)) + '%)';
   if (p.finish === 2) {
     let d = '';
     geo.faces.forEach((f) => {
@@ -216,7 +225,7 @@ function renderInner(p, geo, o, opts) {
   return faces.map((f) => {
     let h = p.finish === 1 && f.cap ? p.hue2 : p.hue;
     if (hueMix != null) h = hueMix;
-    const L = shade.base + shade.range * Math.max(0.12, f.nz);
+    const L = shade.base + range * Math.max(0.12, f.nz);
     const d = 'M' + f.idx.map((i) => proj[i][0] + ' ' + proj[i][1]).join(' L') + ' Z';
     return '<path d="' + d + '" fill="' + ink(h, L) + '" stroke="' + ink(h, shade.edge) +
       '" stroke-width="1" stroke-linejoin="round"/>';
@@ -226,10 +235,13 @@ function renderInner(p, geo, o, opts) {
 function ringMarkup(status, animate) {
   if (!status) return '';
   const st = STATUS_RING[status];
+  const animation = st.persistent
+    ? st.animation
+    : (animate ? (st.animation || 'prismicon-sfade 0.5s ease 0.3s both') : null);
   return '<circle cx="50" cy="50" r="42" fill="none" stroke="' + st.color + '" stroke-width="4.5"' +
     (st.dash ? ' stroke-dasharray="' + st.dash + '"' : '') +
     (st.cap ? ' stroke-linecap="' + st.cap + '"' : '') +
-    (animate ? ' style="animation:prismicon-sfade 0.5s ease 0.3s both"' : '') + '/>';
+    (animation ? ' style="animation:' + animation + '"' : '') + '/>';
 }
 
 function describeInstance(seedRaw, p, kind, state) {
@@ -276,6 +288,9 @@ function getEngine() {
     const style = document.createElement('style');
     style.id = 'prismicon-style';
     style.textContent = '@keyframes prismicon-sfade{from{opacity:0}}' +
+      '@keyframes prismicon-pulse{0%,100%{opacity:1}50%{opacity:0.35}}' +
+      '@keyframes prismicon-ripple-out{from{r:14px;opacity:0.85}to{r:46px;opacity:0}}' +
+      '@keyframes prismicon-ripple-in{from{r:46px;opacity:0.85}to{r:14px;opacity:0}}' +
       '@media (prefers-reduced-motion:reduce){.prismicon svg *{animation:none!important}}';
     document.head.appendChild(style);
   }
@@ -298,7 +313,7 @@ function getEngine() {
   function step(inst, dt, tSec) {
     if (!inst.visible) return;
     const p = inst.p, o = inst.ori;
-    let dirty = false, hueMix = null, dx = 0;
+    let dirty = false, hueMix = null, dx = 0, lighten = 0;
     if (inst.state === 'working') {
       const k = Math.min(1, dt * 3);
       if (p.axisMode === 0) {
@@ -330,6 +345,33 @@ function getEngine() {
         inst.state = 'idle';
       }
       dirty = true;
+    } else if (inst.state === 'thinking') {
+      const port = PORTRAITS[p.solidType];
+      const wobbleA = Math.sin(tSec * 0.6 + p.phase) * 0.10;
+      const wobbleB = Math.sin(tSec * 0.45 + p.phase2) * 0.08;
+      const nod = Math.max(0, Math.sin(tSec * 0.35 + p.phase)) * 0.12;
+      const k = Math.min(1, dt * 2.2);
+      o.ax += angDiff(port.ax + wobbleA, o.ax) * k;
+      o.ay += angDiff(port.ay + wobbleB + nod, o.ay) * k;
+      o.az += angDiff(port.az, o.az) * k;
+      dirty = true;
+    } else if (inst.state === 'sleeping') {
+      const port = PORTRAITS[p.solidType];
+      const bob = Math.sin(tSec * 0.25 + p.phase) * 0.03;
+      const k = Math.min(1, dt * 1.2);
+      o.ax += angDiff(port.ax + bob, o.ax) * k;
+      o.ay += angDiff(port.ay, o.ay) * k;
+      o.az += angDiff(port.az, o.az) * k;
+      dirty = true;
+    } else if (inst.state === 'sending' || inst.state === 'receiving') {
+      const dir = inst.state === 'sending' ? 1 : -1;
+      inst.transientT += dt;
+      const t = inst.transientT;
+      const spin = p.speed * 3.2 * Math.exp(-t * 7);
+      o.ay = wrapAngle(o.ay + dir * spin * dt);
+      o.ax += angDiff(PORTRAITS[p.solidType].ax, o.ax) * Math.min(1, dt * 4);
+      if (t > 0.4) inst.state = 'settling';
+      dirty = true;
     }
     if (inst.flash != null) {
       inst.flashT += dt;
@@ -337,11 +379,16 @@ function getEngine() {
       if (t < 1.4) {
         const s = t < 0.12 ? t / 0.12 : Math.exp(-(t - 0.12) * 3);
         hueMix = lerpHue(p.hue, inst.flash, 0.75 * s);
+        if (inst.lightenFlash) lighten = 26 * s;
         if (inst.shake) dx = Math.sin(t * 36) * 3.2 * Math.exp(-t * 6);
         dirty = true;
-      } else { inst.flash = null; dirty = true; }
+      } else { inst.flash = null; inst.lightenFlash = false; dirty = true; }
     }
-    if (dirty) inst.g.innerHTML = renderInner(p, inst.geo, o, { dark: inst.dark, hueMix, dx });
+    if (dirty) {
+      inst.g.innerHTML = renderInner(p, inst.geo, o, { dark: inst.dark, hueMix, dx, lighten, sleeping: inst.state === 'sleeping' });
+      if (inst.state === 'sleeping') inst.g.setAttribute('opacity', '0.7');
+      else inst.g.removeAttribute('opacity');
+    }
   }
   engine = { reduced, instances, io, ensureRunning };
   return engine;
@@ -376,16 +423,17 @@ export function mountGlyph(el, seed, opts = {}) {
   const gs = el.querySelectorAll('g');
   const inst = {
     svg, g: gs[0], sg: gs[1], p, geo, kind, dark, seedRaw: String(seed),
-    state: !eng.reduced && (initial === 'working' || initial === 'waiting') ? initial : 'idle',
+    state: !eng.reduced && (initial === 'working' || initial === 'waiting' || initial === 'thinking' || initial === 'sleeping') ? initial : 'idle',
     ori: !eng.reduced && initial === 'working'
       ? (p.axisMode === 0 ? { ax: 0.18, ay: p.phase, az: p.precess ? p.phase2 : 0 }
         : p.axisMode === 1 ? { ax: p.phase, ay: 0.18, az: p.precess ? p.phase2 : 0 }
         : { ax: 0.42, ay: 0, az: p.phase })
       : { ...PORTRAITS[p.solidType] },
-    flash: null, flashT: 0, shake: false, visible: true,
+    flash: null, flashT: 0, shake: false, transientT: 0, lightenFlash: false, visible: true,
     publicState: initial
   };
-  inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark });
+  inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark, sleeping: initial === 'sleeping' });
+  if (initial === 'sleeping') inst.g.setAttribute('opacity', '0.7');
   applyStatus(inst, initial, false);
   if (kind === 'agent' && !eng.reduced) {
     eng.instances.push(inst);
@@ -405,17 +453,24 @@ export function mountGlyph(el, seed, opts = {}) {
       inst.publicState = name;
       if (eng.reduced) {
         inst.ori = { ...PORTRAITS[p.solidType] };
-        inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark });
+        inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark, sleeping: name === 'sleeping' });
+        if (name === 'sleeping') inst.g.setAttribute('opacity', '0.7');
+        else inst.g.removeAttribute('opacity');
         applyStatus(inst, name, false);
         return;
       }
-      if (name === 'working' || name === 'waiting') {
-        inst.state = name; inst.flash = null;
+      if (name === 'working' || name === 'waiting' || name === 'thinking' || name === 'sleeping') {
+        inst.state = name; inst.flash = null; inst.lightenFlash = false;
+      } else if (name === 'sending' || name === 'receiving') {
+        inst.state = name; inst.transientT = 0; inst.flashT = 0; inst.shake = false;
+        if (name === 'receiving') { inst.flash = p.hue; inst.lightenFlash = true; }
+        else { inst.flash = null; inst.lightenFlash = false; }
       } else {
         inst.state = 'settling'; inst.flashT = 0;
         if (name === 'done') { inst.flash = 145; inst.shake = false; }
         else if (name === 'error') { inst.flash = 4; inst.shake = true; }
         else { inst.flash = null; }
+        inst.lightenFlash = false;
       }
       applyStatus(inst, name, true);
       eng.ensureRunning();

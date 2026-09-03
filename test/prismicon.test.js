@@ -143,3 +143,145 @@ test('reduced motion stays static while preserving lifecycle semantics', async (
 
   handle.destroy();
 });
+
+test('thinking and sleeping animate geometry while reporting their state', async () => {
+  const dom = installDom();
+  const { mountGlyph } = await import('../src/core.js?think-sleep-test');
+  const handle = mountGlyph(dom.container, 'Ada Lovelace', { state: 'idle' });
+  const svg = dom.container.querySelector('svg');
+  const geometry = () => svg.querySelector('g').innerHTML;
+
+  handle.setState('thinking');
+  assert.equal(handle.state, 'thinking');
+  assert.match(svg.getAttribute('aria-label'), /, thinking$/);
+  dom.advanceAnimationFrame(1000);
+  const thinkA = geometry();
+  dom.advanceAnimationFrame(1033);
+  const thinkB = geometry();
+  assert.notEqual(thinkB, thinkA, 'thinking geometry must change between frames');
+
+  handle.setState('sleeping');
+  assert.equal(handle.state, 'sleeping');
+  assert.match(svg.getAttribute('aria-label'), /, sleeping$/);
+  dom.advanceAnimationFrame(1100);
+  const sleepA = geometry();
+  dom.advanceAnimationFrame(1133);
+  const sleepB = geometry();
+  assert.notEqual(sleepB, sleepA, 'sleeping geometry must change between frames');
+  assert.equal(svg.querySelector('g').getAttribute('opacity'), '0.7', 'sleeping dims the glyph group');
+
+  handle.destroy();
+});
+
+function advanceFrames(dom, startMs, count, stepMs) {
+  for (let i = 0; i < count; i += 1) {
+    dom.advanceAnimationFrame(startMs + (i + 1) * stepMs);
+  }
+}
+
+test('sending and receiving settle back to idle while keeping their public state', async () => {
+  const dom = installDom();
+  const { mountGlyph } = await import('../src/core.js?send-recv-test');
+  const handle = mountGlyph(dom.container, 'Ada Lovelace', { state: 'idle' });
+  const svg = dom.container.querySelector('svg');
+  const geometry = () => svg.querySelector('g').innerHTML;
+
+  handle.setState('sending');
+  assert.equal(handle.state, 'sending');
+  assert.match(svg.getAttribute('aria-label'), /, sending$/);
+  advanceFrames(dom, 1000, 70, 33);
+  assert.equal(handle.state, 'sending', 'public state stays sticky after settling');
+  const sentA = geometry();
+  dom.advanceAnimationFrame(1000 + 71 * 33);
+  const sentB = geometry();
+  assert.equal(sentB, sentA, 'sending must settle to a static portrait');
+
+  handle.setState('receiving');
+  assert.equal(handle.state, 'receiving');
+  assert.match(svg.getAttribute('aria-label'), /, receiving$/);
+  advanceFrames(dom, 4000, 70, 33);
+  assert.equal(handle.state, 'receiving', 'public state stays sticky after settling');
+  const recvA = geometry();
+  dom.advanceAnimationFrame(4000 + 71 * 33);
+  const recvB = geometry();
+  assert.equal(recvB, recvA, 'receiving must settle to a static portrait');
+
+  handle.destroy();
+});
+
+test('new states render their ring or ripple treatment and aria-label', async () => {
+  const dom = installDom();
+  const { mountGlyph } = await import('../src/core.js?ring-ripple-test');
+  const handle = mountGlyph(dom.container, 'Ada Lovelace', { state: 'idle' });
+  const svg = dom.container.querySelector('svg');
+  const statusGroup = () => svg.querySelectorAll('g')[1];
+
+  handle.setState('thinking');
+  assert.match(svg.getAttribute('aria-label'), /, thinking$/);
+  assert.equal(statusGroup().querySelector('circle').getAttribute('stroke-dasharray'), '12 7');
+
+  handle.setState('sending');
+  assert.match(svg.getAttribute('aria-label'), /, sending$/);
+  assert.match(statusGroup().querySelector('circle').getAttribute('style'), /animation:prismicon-ripple-out/);
+
+  handle.setState('receiving');
+  assert.match(svg.getAttribute('aria-label'), /, receiving$/);
+  assert.match(statusGroup().querySelector('circle').getAttribute('style'), /animation:prismicon-ripple-in/);
+
+  handle.setState('sleeping');
+  assert.match(svg.getAttribute('aria-label'), /, sleeping$/);
+  assert.equal(statusGroup().querySelector('circle'), null, 'sleeping has no ring');
+
+  handle.destroy();
+});
+
+test('reduced motion keeps the four new states static with zero animation frames', async () => {
+  const dom = installDom({ reducedMotion: true });
+  const { mountGlyph } = await import('../src/core.js?reduced-new-test');
+  const handle = mountGlyph(dom.container, 'Grace Hopper', { state: 'idle' });
+  const svg = dom.container.querySelector('svg');
+  const statusGroup = () => svg.querySelectorAll('g')[1];
+
+  handle.setState('thinking');
+  assert.equal(dom.animationFrames, 0);
+  assert.equal(statusGroup().querySelector('circle').getAttribute('stroke-dasharray'), '12 7', 'thinking keeps its persistent ring');
+
+  handle.setState('sending');
+  assert.equal(dom.animationFrames, 0);
+
+  handle.setState('receiving');
+  assert.equal(dom.animationFrames, 0);
+
+  handle.setState('sleeping');
+  assert.equal(dom.animationFrames, 0);
+  assert.equal(statusGroup().querySelector('circle'), null, 'sleeping shows no ring');
+
+  handle.destroy();
+});
+
+test('server-renders the thinking ring in static React markup', () => {
+  const markup = renderToStaticMarkup(createElement(Prismicon, {
+    seed: 'Ada Lovelace',
+    size: 34,
+    state: 'thinking',
+    dark: true
+  }));
+
+  assert.match(markup, /stroke-dasharray="12 7"/);
+  assert.match(markup, /aria-label="Ada Lovelace: [^"]+, thinking"/);
+});
+
+test('React forwards thinking -> sending without remounting the SVG', async () => {
+  const dom = installDom();
+  globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+  const root = createRoot(dom.container);
+  await act(() => root.render(createElement(Prismicon, { seed: 'Ada Lovelace', state: 'thinking' })));
+  const mountedSvg = dom.container.querySelector('svg');
+
+  await act(() => root.render(createElement(Prismicon, { seed: 'Ada Lovelace', state: 'sending' })));
+  assert.equal(dom.container.querySelector('svg'), mountedSvg, 'state updates must not replace the mounted SVG');
+  assert.match(mountedSvg.getAttribute('aria-label'), /, sending$/);
+
+  await act(() => root.unmount());
+  delete globalThis.IS_REACT_ACT_ENVIRONMENT;
+});

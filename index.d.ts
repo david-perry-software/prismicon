@@ -6,7 +6,7 @@ declare module 'prismicon' {
   export const SOLID_NAMES: string[];
   export const FINISH_NAMES: string[];
 
-  export type GlyphState = 'idle' | 'working' | 'waiting' | 'done' | 'error';
+  export type GlyphState = 'idle' | 'working' | 'waiting' | 'done' | 'error' | 'thinking' | 'sending' | 'receiving' | 'sleeping';
   export type GlyphKind = 'agent' | 'user';
 
   export interface GlyphParams {
