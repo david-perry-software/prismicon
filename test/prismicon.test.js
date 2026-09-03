@@ -208,3 +208,29 @@ test('sending and receiving settle back to idle while keeping their public state
 
   handle.destroy();
 });
+
+test('new states render their ring or ripple treatment and aria-label', async () => {
+  const dom = installDom();
+  const { mountGlyph } = await import('../src/core.js?ring-ripple-test');
+  const handle = mountGlyph(dom.container, 'Ada Lovelace', { state: 'idle' });
+  const svg = dom.container.querySelector('svg');
+  const statusGroup = () => svg.querySelectorAll('g')[1];
+
+  handle.setState('thinking');
+  assert.match(svg.getAttribute('aria-label'), /, thinking$/);
+  assert.equal(statusGroup().querySelector('circle').getAttribute('stroke-dasharray'), '12 7');
+
+  handle.setState('sending');
+  assert.match(svg.getAttribute('aria-label'), /, sending$/);
+  assert.match(statusGroup().querySelector('circle').getAttribute('style'), /animation:prismicon-ripple-out/);
+
+  handle.setState('receiving');
+  assert.match(svg.getAttribute('aria-label'), /, receiving$/);
+  assert.match(statusGroup().querySelector('circle').getAttribute('style'), /animation:prismicon-ripple-in/);
+
+  handle.setState('sleeping');
+  assert.match(svg.getAttribute('aria-label'), /, sleeping$/);
+  assert.equal(statusGroup().querySelector('circle'), null, 'sleeping has no ring');
+
+  handle.destroy();
+});

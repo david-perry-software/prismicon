@@ -29,12 +29,18 @@ const PORTRAITS = [
 ];
 
 const STATUS_RING = {
-  done:    { color: 'hsl(145 50% 42%)', dash: null,    cap: null },
-  error:   { color: 'hsl(4 70% 50%)',   dash: '7 5',   cap: null },
-  waiting: { color: 'hsl(42 80% 44%)',  dash: '0.1 9', cap: 'round' }
+  done:      { color: 'hsl(145 50% 42%)', dash: null,    cap: null },
+  error:     { color: 'hsl(4 70% 50%)',   dash: '7 5',   cap: null },
+  waiting:   { color: 'hsl(42 80% 44%)',  dash: '0.1 9', cap: 'round' },
+  thinking:  { color: 'hsl(217 70% 55%)', dash: '12 7',  cap: null,   animation: 'prismicon-pulse 2.4s ease-in-out infinite', persistent: true },
+  sending:   { color: 'hsl(210 70% 58%)', dash: null,    cap: null,   animation: 'prismicon-ripple-out 0.9s ease-out both' },
+  receiving: { color: 'hsl(187 65% 50%)', dash: null,    cap: null,   animation: 'prismicon-ripple-in 0.9s ease-out both' }
 };
 
-const RING_FOR_STATE = { done: 'done', error: 'error', waiting: 'waiting' };
+const RING_FOR_STATE = {
+  done: 'done', error: 'error', waiting: 'waiting',
+  thinking: 'thinking', sending: 'sending', receiving: 'receiving'
+};
 
 // ---------------------------------------------------------------- hashing
 
@@ -229,10 +235,13 @@ function renderInner(p, geo, o, opts) {
 function ringMarkup(status, animate) {
   if (!status) return '';
   const st = STATUS_RING[status];
+  const animation = st.persistent
+    ? st.animation
+    : (animate ? (st.animation || 'prismicon-sfade 0.5s ease 0.3s both') : null);
   return '<circle cx="50" cy="50" r="42" fill="none" stroke="' + st.color + '" stroke-width="4.5"' +
     (st.dash ? ' stroke-dasharray="' + st.dash + '"' : '') +
     (st.cap ? ' stroke-linecap="' + st.cap + '"' : '') +
-    (animate ? ' style="animation:prismicon-sfade 0.5s ease 0.3s both"' : '') + '/>';
+    (animation ? ' style="animation:' + animation + '"' : '') + '/>';
 }
 
 function describeInstance(seedRaw, p, kind, state) {
@@ -279,6 +288,9 @@ function getEngine() {
     const style = document.createElement('style');
     style.id = 'prismicon-style';
     style.textContent = '@keyframes prismicon-sfade{from{opacity:0}}' +
+      '@keyframes prismicon-pulse{0%,100%{opacity:1}50%{opacity:0.35}}' +
+      '@keyframes prismicon-ripple-out{from{r:14px;opacity:0.85}to{r:46px;opacity:0}}' +
+      '@keyframes prismicon-ripple-in{from{r:46px;opacity:0.85}to{r:14px;opacity:0}}' +
       '@media (prefers-reduced-motion:reduce){.prismicon svg *{animation:none!important}}';
     document.head.appendChild(style);
   }
