@@ -258,3 +258,30 @@ test('reduced motion keeps the four new states static with zero animation frames
 
   handle.destroy();
 });
+
+test('server-renders the thinking ring in static React markup', () => {
+  const markup = renderToStaticMarkup(createElement(Prismicon, {
+    seed: 'Ada Lovelace',
+    size: 34,
+    state: 'thinking',
+    dark: true
+  }));
+
+  assert.match(markup, /stroke-dasharray="12 7"/);
+  assert.match(markup, /aria-label="Ada Lovelace: [^"]+, thinking"/);
+});
+
+test('React forwards thinking -> sending without remounting the SVG', async () => {
+  const dom = installDom();
+  globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+  const root = createRoot(dom.container);
+  await act(() => root.render(createElement(Prismicon, { seed: 'Ada Lovelace', state: 'thinking' })));
+  const mountedSvg = dom.container.querySelector('svg');
+
+  await act(() => root.render(createElement(Prismicon, { seed: 'Ada Lovelace', state: 'sending' })));
+  assert.equal(dom.container.querySelector('svg'), mountedSvg, 'state updates must not replace the mounted SVG');
+  assert.match(mountedSvg.getAttribute('aria-label'), /, sending$/);
+
+  await act(() => root.unmount());
+  delete globalThis.IS_REACT_ACT_ENVIRONMENT;
+});
