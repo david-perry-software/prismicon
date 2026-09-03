@@ -234,3 +234,27 @@ test('new states render their ring or ripple treatment and aria-label', async ()
 
   handle.destroy();
 });
+
+test('reduced motion keeps the four new states static with zero animation frames', async () => {
+  const dom = installDom({ reducedMotion: true });
+  const { mountGlyph } = await import('../src/core.js?reduced-new-test');
+  const handle = mountGlyph(dom.container, 'Grace Hopper', { state: 'idle' });
+  const svg = dom.container.querySelector('svg');
+  const statusGroup = () => svg.querySelectorAll('g')[1];
+
+  handle.setState('thinking');
+  assert.equal(dom.animationFrames, 0);
+  assert.equal(statusGroup().querySelector('circle').getAttribute('stroke-dasharray'), '12 7', 'thinking keeps its persistent ring');
+
+  handle.setState('sending');
+  assert.equal(dom.animationFrames, 0);
+
+  handle.setState('receiving');
+  assert.equal(dom.animationFrames, 0);
+
+  handle.setState('sleeping');
+  assert.equal(dom.animationFrames, 0);
+  assert.equal(statusGroup().querySelector('circle'), null, 'sleeping shows no ring');
+
+  handle.destroy();
+});
