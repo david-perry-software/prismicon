@@ -181,6 +181,8 @@ function renderInner(p, geo, o, opts) {
   const shade = shadeFor(!!opts.dark);
   const off = opts.dx || 0;
   const hueMix = opts.hueMix;
+  const sleeping = !!opts.sleeping;
+  const range = sleeping ? shade.range * 0.55 : shade.range;
   const pts3 = geo.V.map((v) => rot3(v, o.ax, o.ay, o.az));
   const proj = pts3.map((v) => {
     const s = F / (F - v[2]);
@@ -216,7 +218,7 @@ function renderInner(p, geo, o, opts) {
   return faces.map((f) => {
     let h = p.finish === 1 && f.cap ? p.hue2 : p.hue;
     if (hueMix != null) h = hueMix;
-    const L = shade.base + shade.range * Math.max(0.12, f.nz);
+    const L = shade.base + range * Math.max(0.12, f.nz);
     const d = 'M' + f.idx.map((i) => proj[i][0] + ' ' + proj[i][1]).join(' L') + ' Z';
     return '<path d="' + d + '" fill="' + ink(h, L) + '" stroke="' + ink(h, shade.edge) +
       '" stroke-width="1" stroke-linejoin="round"/>';
@@ -330,6 +332,24 @@ function getEngine() {
         inst.state = 'idle';
       }
       dirty = true;
+    } else if (inst.state === 'thinking') {
+      const port = PORTRAITS[p.solidType];
+      const wobbleA = Math.sin(tSec * 0.6 + p.phase) * 0.10;
+      const wobbleB = Math.sin(tSec * 0.45 + p.phase2) * 0.08;
+      const nod = Math.max(0, Math.sin(tSec * 0.35 + p.phase)) * 0.12;
+      const k = Math.min(1, dt * 2.2);
+      o.ax += angDiff(port.ax + wobbleA, o.ax) * k;
+      o.ay += angDiff(port.ay + wobbleB + nod, o.ay) * k;
+      o.az += angDiff(port.az, o.az) * k;
+      dirty = true;
+    } else if (inst.state === 'sleeping') {
+      const port = PORTRAITS[p.solidType];
+      const bob = Math.sin(tSec * 0.25 + p.phase) * 0.03;
+      const k = Math.min(1, dt * 1.2);
+      o.ax += angDiff(port.ax + bob, o.ax) * k;
+      o.ay += angDiff(port.ay, o.ay) * k;
+      o.az += angDiff(port.az, o.az) * k;
+      dirty = true;
     }
     if (inst.flash != null) {
       inst.flashT += dt;
@@ -341,7 +361,11 @@ function getEngine() {
         dirty = true;
       } else { inst.flash = null; dirty = true; }
     }
-    if (dirty) inst.g.innerHTML = renderInner(p, inst.geo, o, { dark: inst.dark, hueMix, dx });
+    if (dirty) {
+      inst.g.innerHTML = renderInner(p, inst.geo, o, { dark: inst.dark, hueMix, dx, sleeping: inst.state === 'sleeping' });
+      if (inst.state === 'sleeping') inst.g.setAttribute('opacity', '0.7');
+      else inst.g.removeAttribute('opacity');
+    }
   }
   engine = { reduced, instances, io, ensureRunning };
   return engine;
@@ -376,7 +400,7 @@ export function mountGlyph(el, seed, opts = {}) {
   const gs = el.querySelectorAll('g');
   const inst = {
     svg, g: gs[0], sg: gs[1], p, geo, kind, dark, seedRaw: String(seed),
-    state: !eng.reduced && (initial === 'working' || initial === 'waiting') ? initial : 'idle',
+    state: !eng.reduced && (initial === 'working' || initial === 'waiting' || initial === 'thinking' || initial === 'sleeping') ? initial : 'idle',
     ori: !eng.reduced && initial === 'working'
       ? (p.axisMode === 0 ? { ax: 0.18, ay: p.phase, az: p.precess ? p.phase2 : 0 }
         : p.axisMode === 1 ? { ax: p.phase, ay: 0.18, az: p.precess ? p.phase2 : 0 }
@@ -385,7 +409,8 @@ export function mountGlyph(el, seed, opts = {}) {
     flash: null, flashT: 0, shake: false, visible: true,
     publicState: initial
   };
-  inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark });
+  inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark, sleeping: initial === 'sleeping' });
+  if (initial === 'sleeping') inst.g.setAttribute('opacity', '0.7');
   applyStatus(inst, initial, false);
   if (kind === 'agent' && !eng.reduced) {
     eng.instances.push(inst);
@@ -405,11 +430,13 @@ export function mountGlyph(el, seed, opts = {}) {
       inst.publicState = name;
       if (eng.reduced) {
         inst.ori = { ...PORTRAITS[p.solidType] };
-        inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark });
+        inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark, sleeping: name === 'sleeping' });
+        if (name === 'sleeping') inst.g.setAttribute('opacity', '0.7');
+        else inst.g.removeAttribute('opacity');
         applyStatus(inst, name, false);
         return;
       }
-      if (name === 'working' || name === 'waiting') {
+      if (name === 'working' || name === 'waiting' || name === 'thinking' || name === 'sleeping') {
         inst.state = name; inst.flash = null;
       } else {
         inst.state = 'settling'; inst.flashT = 0;

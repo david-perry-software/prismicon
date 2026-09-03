@@ -143,3 +143,32 @@ test('reduced motion stays static while preserving lifecycle semantics', async (
 
   handle.destroy();
 });
+
+test('thinking and sleeping animate geometry while reporting their state', async () => {
+  const dom = installDom();
+  const { mountGlyph } = await import('../src/core.js?think-sleep-test');
+  const handle = mountGlyph(dom.container, 'Ada Lovelace', { state: 'idle' });
+  const svg = dom.container.querySelector('svg');
+  const geometry = () => svg.querySelector('g').innerHTML;
+
+  handle.setState('thinking');
+  assert.equal(handle.state, 'thinking');
+  assert.match(svg.getAttribute('aria-label'), /, thinking$/);
+  dom.advanceAnimationFrame(1000);
+  const thinkA = geometry();
+  dom.advanceAnimationFrame(1033);
+  const thinkB = geometry();
+  assert.notEqual(thinkB, thinkA, 'thinking geometry must change between frames');
+
+  handle.setState('sleeping');
+  assert.equal(handle.state, 'sleeping');
+  assert.match(svg.getAttribute('aria-label'), /, sleeping$/);
+  dom.advanceAnimationFrame(1100);
+  const sleepA = geometry();
+  dom.advanceAnimationFrame(1133);
+  const sleepB = geometry();
+  assert.notEqual(sleepB, sleepA, 'sleeping geometry must change between frames');
+  assert.equal(svg.querySelector('g').getAttribute('opacity'), '0.7', 'sleeping dims the glyph group');
+
+  handle.destroy();
+});
