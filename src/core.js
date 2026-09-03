@@ -19,7 +19,7 @@ export const SIDE_NAMES = { 3: 'triangle', 4: 'square', 5: 'pentagon', 6: 'hexag
 export const SOLID_NAMES = ['prism', 'pyramid', 'bipyramid', 'antiprism'];
 export const FINISH_NAMES = ['shaded', 'two-tone', 'wireframe'];
 export const PALETTE = [8, 25, 45, 95, 145, 170, 200, 220, 250, 275, 300, 330];
-export const STATES = ['idle', 'working', 'waiting', 'done', 'error'];
+export const STATES = ['idle', 'working', 'waiting', 'done', 'error', 'thinking', 'sending', 'receiving', 'sleeping'];
 
 const PORTRAITS = [
   { ax: 0.30, ay: 0.42, az: 0 }, // prism
