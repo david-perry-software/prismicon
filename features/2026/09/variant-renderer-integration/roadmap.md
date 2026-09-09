@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/variant-renderer-integration
 last-updated: 2026-09-09
-next-step: "4.1 Public surface, DEFAULT_VARIANT_ID and listVariants exports"
+next-step: "5.1 Demo variant selector"
 initiative: "scalable-icon-variants"
 ```
 
@@ -24,9 +24,9 @@ initiative: "scalable-icon-variants"
 
 ## Phase 4: Public surface, types, docs
 
-- [ ] 4.1 Export `DEFAULT_VARIANT_ID` and `listVariants` from `src/index.js`; update the public-surface guard in `test/variants.test.js` to exactly the 13 names and assert `listVariants()` deep-equals `[{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]` and is frozen — verify: `npm test` prints `# fail 0`
-- [ ] 4.2 Update `index.d.ts`: `GlyphOptions.variant?: string`, `GlyphHandle.variant: string`, `export interface VariantInfo { id: string; label: string; spec: string }`, `export const DEFAULT_VARIANT_ID: string`, `export function listVariants(): ReadonlyArray<VariantInfo>` with JSDoc noting unknown ids throw `RangeError` — verify: `npx -y -p typescript tsc --noEmit --strict --target es2020 --lib es2020,dom --types "" index.d.ts 2>&1 | grep -v "Cannot find module 'react'" | wc -l` prints `0` and `grep -c "variant" index.d.ts` ≥ 4
-- [ ] 4.3 Add `## Variants` to `README.md` between `## Vanilla API` and `## Derivation spec v1 (frozen)` (per-icon `variant` option on both `renderStaticSVG` and `mountGlyph`, `listVariants()`, `DEFAULT_VARIANT_ID`, `handle.variant`, unknown id throws `RangeError`, omitted → default polyhedron unchanged; note React support arrives in a later release) and mention `variant` in the Vanilla API options — verify: `grep -n "^## Variants" README.md` prints one line located after `## Vanilla API` and before `## Derivation spec v1`
+- [x] 4.1 Export `DEFAULT_VARIANT_ID` and `listVariants` from `src/index.js`; update the public-surface guard in `test/variants.test.js` to exactly the 13 names and assert `listVariants()` deep-equals `[{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]` and is frozen — verify: `npm test` prints `# fail 0`
+- [x] 4.2 Update `index.d.ts`: `GlyphOptions.variant?: string`, `GlyphHandle.variant: string`, `export interface VariantInfo { id: string; label: string; spec: string }`, `export const DEFAULT_VARIANT_ID: string`, `export function listVariants(): ReadonlyArray<VariantInfo>` with JSDoc noting unknown ids throw `RangeError` — verify: `npx -y -p typescript tsc --noEmit --strict --target es2020 --lib es2020,dom --types "" index.d.ts 2>&1 | grep -v "Cannot find module 'react'" | wc -l` prints `0` and `grep -c "variant" index.d.ts` ≥ 4
+- [x] 4.3 Add `## Variants` to `README.md` between `## Vanilla API` and `## Derivation spec v1 (frozen)` (per-icon `variant` option on both `renderStaticSVG` and `mountGlyph`, `listVariants()`, `DEFAULT_VARIANT_ID`, `handle.variant`, unknown id throws `RangeError`, omitted → default polyhedron unchanged; note React support arrives in a later release) and mention `variant` in the Vanilla API options — verify: `grep -n "^## Variants" README.md` prints one line located after `## Vanilla API` and before `## Derivation spec v1`
 
 ## Phase 5: Demo
 

@@ -230,10 +230,11 @@ describe('polyhedron built-in variant', () => {
 });
 
 describe('public surface', () => {
-  test('src/index.js exports exactly the eleven v1 names and nothing variant-related', async () => {
+  test('src/index.js exports exactly the thirteen names including variant helpers', async () => {
     const publicApi = await import('../src/index.js');
     const keys = Object.keys(publicApi).sort();
     assert.deepEqual(keys, [
+      'DEFAULT_VARIANT_ID',
       'FINISH_NAMES',
       'PALETTE',
       'SIDE_NAMES',
@@ -242,10 +243,13 @@ describe('public surface', () => {
       'STATES',
       'deriveV1',
       'describeParams',
+      'listVariants',
       'mountGlyph',
       'normalizeSeed',
       'renderStaticSVG'
     ]);
-    assert.deepEqual(keys.filter((key) => /variant/i.test(key)), []);
+    assert.deepEqual(publicApi.DEFAULT_VARIANT_ID, 'polyhedron');
+    assert.deepEqual(publicApi.listVariants(), [{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]);
+    assert.ok(Object.isFrozen(publicApi.listVariants()));
   });
 });

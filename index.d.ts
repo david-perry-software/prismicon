@@ -32,14 +32,28 @@ declare module 'prismicon' {
     kind?: GlyphKind;
     state?: GlyphState;
     dark?: boolean;
+    /**
+     * Variant id. Omit to use the default variant. Unknown ids throw RangeError.
+     */
+    variant?: string;
   }
 
   export interface GlyphHandle {
     readonly params: GlyphParams;
+    readonly variant: string;
     readonly state: GlyphState;
     setState(state: GlyphState): void;
     destroy(): void;
   }
+
+  export interface VariantInfo {
+    id: string;
+    label: string;
+    spec: string;
+  }
+
+  export const DEFAULT_VARIANT_ID: string;
+  export function listVariants(): ReadonlyArray<VariantInfo>;
 
   export function normalizeSeed(seed: string): string;
   export function deriveV1(seed: string): GlyphParams;
@@ -58,6 +72,8 @@ declare module 'prismicon/react' {
     kind?: GlyphKind;
     state?: GlyphState;
     dark?: boolean;
+    /** Variant id. Omit to use the default variant. React variant support is coming in a later release. */
+    variant?: string;
     className?: string;
     style?: CSSProperties;
     title?: string;

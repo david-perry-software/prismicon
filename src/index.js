@@ -11,3 +11,5 @@ export {
   renderStaticSVG,
   mountGlyph
 } from './core.js';
+
+export { DEFAULT_VARIANT_ID, listVariants } from './variants/index.js';

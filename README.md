@@ -94,13 +94,36 @@ const handle = mountGlyph(document.getElementById('badge'), 'crawler-2', {
   kind: 'agent', size: 48, state: 'working'
 });
 handle.setState('done');
+console.log(handle.variant); // → 'polyhedron'
 handle.destroy();
 
 renderStaticSVG('maya', { size: 32, kind: 'user' }); // → '<svg …>'
+renderStaticSVG('maya', { variant: 'polyhedron' }); // explicit variant id
 
 const p = deriveV1('maya');
 describeParams(p); // → 'pentagon bipyramid, two-tone, tall'
 ```
+
+## Variants
+
+Variants are separate visual styles registered with the renderer. The built-in `polyhedron` variant is the default and remains unchanged, so existing code keeps working.
+
+```js
+import { renderStaticSVG, mountGlyph, DEFAULT_VARIANT_ID, listVariants } from 'prismicon';
+
+listVariants();
+// → [{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]
+
+renderStaticSVG('maya', { variant: 'polyhedron' });
+const handle = mountGlyph(el, 'maya', { variant: 'polyhedron', state: 'working' });
+```
+
+- Pass `variant` to either `renderStaticSVG` or `mountGlyph` to pick a style.
+- Omit `variant` to get `DEFAULT_VARIANT_ID` (`'polyhedron'`).
+- An unknown id throws `RangeError`; there is no silent fallback.
+- `handle.variant` reports the resolved variant id.
+
+React support for the `variant` prop is planned for a later release.
 
 ## Derivation spec v1 (frozen)
 
