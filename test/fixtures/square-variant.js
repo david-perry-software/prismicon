@@ -52,6 +52,11 @@ export function paint(params, geometry, pose) {
   return `<rect x="${50 - half}" y="${50 - half}" width="${geometry.side}" height="${geometry.side}" fill="hsl(${params.hue} 70% 50%)" stroke="black" stroke-width="${params.stroke}" transform="rotate(${pose.angle.toFixed(1)} 50 50)"/>`;
 }
 
+export function flash(params, state) {
+  if (state === 'receiving') return { hue: params.hue, lighten: 20 };
+  return null;
+}
+
 export const square = {
   id: 'square',
   label: 'Square',
@@ -62,5 +67,6 @@ export const square = {
   geometry,
   pose,
   animate,
-  paint
+  paint,
+  flash
 };

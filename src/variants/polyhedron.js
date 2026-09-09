@@ -245,7 +245,7 @@ export function poseForState(params, state) {
 
 export function animatePose(pose, ctx) {
   const { params: p, state, dt, t, transientT, rest } = ctx;
-  if (state === 'idle') return pose;
+  if (state === 'idle' || state === 'done' || state === 'error') return pose;
   if (state === 'working') {
     const k = Math.min(1, dt * 3);
     const next = { ...pose };
@@ -326,6 +326,13 @@ export function paintFrame(params, geometry, pose, effects) {
   });
 }
 
+export function flashForState(params, state) {
+  if (state === 'receiving') return { hue: params.hue, lighten: 26 };
+  if (state === 'done') return { hue: 145 };
+  if (state === 'error') return { hue: 4, shake: true };
+  return null;
+}
+
 export const polyhedron = defineVariant({
   id: 'polyhedron',
   label: 'Polyhedron',
@@ -336,6 +343,7 @@ export const polyhedron = defineVariant({
   geometry: buildGeometry,
   pose: poseForState,
   animate: animatePose,
-  paint: paintFrame
+  paint: paintFrame,
+  flash: flashForState
 });
 

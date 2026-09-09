@@ -6,7 +6,8 @@ import {
   buildGeometry,
   poseForState,
   animatePose,
-  paintFrame
+  paintFrame,
+  flashForState
 } from '../src/variants/polyhedron.js';
 
 const PARITY_OPTS = [{}, { size: 24 }, { kind: 'user' }, { state: 'thinking', dark: true }];
@@ -20,7 +21,7 @@ const FROZEN = JSON.parse(`{
   "Alice@X.com": {"spec":"v1","seed":"alice@x.com","hash":7287120426219225,"n":3,"solidType":2,"finish":0,"prop":0.75,"axisMode":0,"speed":-0.617978259245865,"phase":0.022091764370660297,"precess":true,"zSpeed":-0.16416204493725672,"phase2":3.4083078547770636,"hue":275,"hue2":25}
 }`);
 
-const HOOK_NAMES = ['derive', 'describe', 'prepare', 'geometry', 'pose', 'animate', 'paint'];
+const HOOK_NAMES = ['derive', 'describe', 'prepare', 'geometry', 'pose', 'animate', 'paint', 'flash'];
 
 const noop = () => {};
 
@@ -36,6 +37,7 @@ function validDescriptor(overrides = {}) {
     pose: noop,
     animate: noop,
     paint: noop,
+    flash: () => null,
     ...overrides
   };
 }
@@ -191,6 +193,7 @@ describe('polyhedron built-in variant', () => {
     assert.equal(registered.pose, poseForState);
     assert.equal(registered.animate, animatePose);
     assert.equal(registered.paint, paintFrame);
+    assert.equal(registered.flash, flashForState);
     assert.equal(resolveVariant(), registered);
     assert.equal(resolveVariant(null), registered);
     assert.equal(resolveVariant('polyhedron'), registered);

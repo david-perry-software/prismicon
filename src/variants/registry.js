@@ -11,6 +11,7 @@
  *   pose(params, state) -> immutable pose
  *   animate(pose, ctx) -> new immutable pose
  *   paint(params, geometry, pose, effects) -> SVG markup string
+ *   flash(params, state) -> { hue?, lighten?, shake? } | null
  *
  * The shared renderer calls them in that order. `geometry` is computed once
  * per instance; `pose` is the rest/target configuration for a state; `animate`
@@ -42,7 +43,7 @@
 /** Ids are stable, URL- and prop-safe tokens. */
 export const VARIANT_ID_PATTERN = /^[a-z][a-z0-9-]*$/;
 
-const HOOK_NAMES = ['derive', 'describe', 'prepare', 'geometry', 'pose', 'animate', 'paint'];
+const HOOK_NAMES = ['derive', 'describe', 'prepare', 'geometry', 'pose', 'animate', 'paint', 'flash'];
 const STRING_FIELDS = ['label', 'spec'];
 const KNOWN_KEYS = new Set(['id', ...STRING_FIELDS, ...HOOK_NAMES]);
 
@@ -58,6 +59,7 @@ const KNOWN_KEYS = new Set(['id', ...STRING_FIELDS, ...HOOK_NAMES]);
  * @property {(params: object, state: string) => object} pose
  * @property {(pose: object, ctx: { params: object, state: string, dt: number, t: number, transientT: number, rest: object }) => object} animate
  * @property {(params: object, geometry: object, pose: object, effects: object) => string} paint
+ * @property {(params: object, state: string) => { hue?: number, lighten?: number, shake?: boolean } | null} flash
  */
 
 function isNonEmptyString(value) {
