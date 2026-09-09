@@ -1,9 +1,18 @@
 import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
-import { deriveV1, renderStaticSVG } from '../src/core.js';
+import { deriveV1, describeParams, renderStaticSVG, mountGlyph } from '../src/core.js';
+import {
+  prepareParams,
+  buildGeometry,
+  poseForState,
+  animatePose,
+  paintFrame,
+  flashForState
+} from '../src/variants/polyhedron.js';
+
+const PARITY_OPTS = [{}, { size: 24 }, { kind: 'user' }, { state: 'thinking', dark: true }];
 import { VARIANT_ID_PATTERN, createVariantRegistry, defineVariant } from '../src/variants/registry.js';
-import { polyhedron } from '../src/variants/polyhedron.js';
-import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, resolveVariant } from '../src/variants/index.js';
+import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, resolveVariant, polyhedron, listVariants } from '../src/variants/index.js';
 
 // Copied verbatim from test/derivation-freeze.test.js (frozen v1 engine, commit 9204c26).
 const FROZEN = JSON.parse(`{
@@ -12,7 +21,7 @@ const FROZEN = JSON.parse(`{
   "Alice@X.com": {"spec":"v1","seed":"alice@x.com","hash":7287120426219225,"n":3,"solidType":2,"finish":0,"prop":0.75,"axisMode":0,"speed":-0.617978259245865,"phase":0.022091764370660297,"precess":true,"zSpeed":-0.16416204493725672,"phase2":3.4083078547770636,"hue":275,"hue2":25}
 }`);
 
-const PARITY_OPTS = [{}, { size: 24 }, { kind: 'user' }, { state: 'thinking', dark: true }];
+const HOOK_NAMES = ['derive', 'describe', 'prepare', 'geometry', 'pose', 'animate', 'paint', 'flash'];
 
 const noop = () => {};
 
@@ -23,8 +32,12 @@ function validDescriptor(overrides = {}) {
     spec: 'v1',
     derive: noop,
     describe: noop,
-    renderStatic: noop,
-    mount: noop,
+    prepare: noop,
+    geometry: noop,
+    pose: noop,
+    animate: noop,
+    paint: noop,
+    flash: () => null,
     ...overrides
   };
 }
@@ -55,7 +68,7 @@ describe('defineVariant', () => {
   });
 
   test('rejects a missing hook naming the field', () => {
-    for (const hook of ['derive', 'describe', 'renderStatic', 'mount']) {
+    for (const hook of HOOK_NAMES) {
       assert.throws(
         () => defineVariant(withoutKey(validDescriptor(), hook)),
         { name: 'TypeError', message: new RegExp(`"${hook}"`) }
@@ -64,7 +77,7 @@ describe('defineVariant', () => {
   });
 
   test('rejects a non-function hook naming the field', () => {
-    for (const hook of ['derive', 'describe', 'renderStatic', 'mount']) {
+    for (const hook of HOOK_NAMES) {
       assert.throws(
         () => defineVariant(validDescriptor({ [hook]: 'not a function' })),
         { name: 'TypeError', message: new RegExp(`"${hook}"`) }
@@ -174,7 +187,13 @@ describe('polyhedron built-in variant', () => {
     const registered = BUILT_IN_VARIANTS.get('polyhedron');
     assert.deepEqual(registered, polyhedron);
     assert.equal(registered.derive, deriveV1);
-    assert.equal(registered.renderStatic, renderStaticSVG);
+    assert.equal(registered.describe, describeParams);
+    assert.equal(registered.prepare, prepareParams);
+    assert.equal(registered.geometry, buildGeometry);
+    assert.equal(registered.pose, poseForState);
+    assert.equal(registered.animate, animatePose);
+    assert.equal(registered.paint, paintFrame);
+    assert.equal(registered.flash, flashForState);
     assert.equal(resolveVariant(), registered);
     assert.equal(resolveVariant(null), registered);
     assert.equal(resolveVariant('polyhedron'), registered);
@@ -189,22 +208,58 @@ describe('polyhedron built-in variant', () => {
     }
   });
 
-  test('renderStatic string-equals renderStaticSVG across option combinations', () => {
+  test('describe matches describeParams', () => {
+    for (const seed of Object.keys(FROZEN)) {
+      const p = polyhedron.derive(seed);
+      assert.equal(polyhedron.describe(p), describeParams(p));
+    }
+  });
+
+  test('renderStaticSVG with explicit variant equals default renderStaticSVG', () => {
     for (const seed of Object.keys(FROZEN)) {
       for (const opts of PARITY_OPTS) {
-        const actual = polyhedron.renderStatic(seed, opts);
+        const actual = renderStaticSVG(seed, { ...opts, variant: 'polyhedron' });
         assert.equal(actual, renderStaticSVG(seed, opts), `${seed} ${JSON.stringify(opts)}`);
-        assert.ok(actual.startsWith('<svg'));
       }
     }
   });
 });
 
+describe('public renderer error contract', () => {
+  test('non-string variant key throws TypeError from renderStaticSVG', () => {
+    for (const key of [42, {}, [], true, Symbol('x')]) {
+      assert.throws(() => renderStaticSVG('x', { variant: key }), TypeError);
+    }
+  });
+
+  test('non-string variant key throws TypeError from mountGlyph before touching the host', () => {
+    for (const key of [42, {}, [], true, Symbol('x')]) {
+      const el = { classList: { add() { throw new Error('host must not be mutated'); } } };
+      assert.throws(() => mountGlyph(el, 'x', { variant: key }), TypeError);
+    }
+  });
+
+  test('unknown variant id throws RangeError naming it and polyhedron', () => {
+    assert.throws(
+      () => renderStaticSVG('x', { variant: 'nope' }),
+      (err) => err instanceof RangeError && /"nope"/.test(err.message) && /polyhedron/.test(err.message)
+    );
+  });
+
+  test('listVariants exposes only id, label and spec, frozen', () => {
+    const info = listVariants();
+    assert.deepEqual(info, [{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]);
+    assert.ok(Object.isFrozen(info));
+    assert.ok(info.every(Object.isFrozen));
+  });
+});
+
 describe('public surface', () => {
-  test('src/index.js exports exactly the eleven v1 names and nothing variant-related', async () => {
+  test('src/index.js exports exactly the thirteen names including variant helpers', async () => {
     const publicApi = await import('../src/index.js');
     const keys = Object.keys(publicApi).sort();
     assert.deepEqual(keys, [
+      'DEFAULT_VARIANT_ID',
       'FINISH_NAMES',
       'PALETTE',
       'SIDE_NAMES',
@@ -213,10 +268,13 @@ describe('public surface', () => {
       'STATES',
       'deriveV1',
       'describeParams',
+      'listVariants',
       'mountGlyph',
       'normalizeSeed',
       'renderStaticSVG'
     ]);
-    assert.deepEqual(keys.filter((key) => /variant/i.test(key)), []);
+    assert.deepEqual(publicApi.DEFAULT_VARIANT_ID, 'polyhedron');
+    assert.deepEqual(publicApi.listVariants(), [{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]);
+    assert.ok(Object.isFrozen(publicApi.listVariants()));
   });
 });

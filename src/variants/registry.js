@@ -2,9 +2,35 @@
  * prismicon variants — descriptor contract and registry.
  *
  * A variant is one complete visual style: a frozen descriptor binding an id to
- * the four pipeline hooks (derive → describe → renderStatic / mount). This
- * module imports nothing from the rendering engine so a dispatcher can depend
- * on it without creating an import cycle.
+ * the seven narrow pipeline hooks consumed by the shared renderer:
+ *
+ *   derive(seed) -> params
+ *   describe(params) -> string
+ *   prepare(params, { size }) -> params
+ *   geometry(params) -> immutable geometry
+ *   pose(params, state) -> immutable pose
+ *   animate(pose, ctx) -> new immutable pose
+ *   paint(params, geometry, pose, effects) -> SVG markup string
+ *   flash(params, state) -> { hue?, lighten?, shake? } | null
+ *     (`lighten` is the peak lightness boost in percentage points; the engine
+ *     scales it by the flash envelope and passes it to `paint` as effects.lighten)
+ *
+ * The shared renderer calls them in that order. `geometry` is computed once
+ * per instance; `pose` is the rest/target configuration for a state; `animate`
+ * is invoked each animation frame. When the engine is in the `settling` state,
+ * returning `ctx.rest` from `animate` signals that motion has finished and the
+ * engine should switch back to `idle`. All pose objects are treated as
+ * immutable — `animate` must return a new object rather than mutating the
+ * input.
+ *
+ * `ctx` passed to `animate` contains:
+ *   params, state, dt (seconds), t (seconds), transientT, rest
+ *
+ * `effects` passed to `paint` contains:
+ *   dark, sleeping, dx, lighten, flash: { hue?, strength }
+ *
+ * This module imports nothing from the rendering engine so a dispatcher can
+ * depend on it without creating an import cycle.
  *
  * Per-icon selection (reserved, not read by this module): the option key
  * `variant` on GlyphOptions / PrismiconProps carries a registered id and is
@@ -19,7 +45,7 @@
 /** Ids are stable, URL- and prop-safe tokens. */
 export const VARIANT_ID_PATTERN = /^[a-z][a-z0-9-]*$/;
 
-const HOOK_NAMES = ['derive', 'describe', 'renderStatic', 'mount'];
+const HOOK_NAMES = ['derive', 'describe', 'prepare', 'geometry', 'pose', 'animate', 'paint', 'flash'];
 const STRING_FIELDS = ['label', 'spec'];
 const KNOWN_KEYS = new Set(['id', ...STRING_FIELDS, ...HOOK_NAMES]);
 
@@ -29,9 +55,13 @@ const KNOWN_KEYS = new Set(['id', ...STRING_FIELDS, ...HOOK_NAMES]);
  * @property {string} label         Human-readable name.
  * @property {string} spec          Derivation spec version the identities are frozen under.
  * @property {(seed: string) => object} derive
- * @property {(params: object) => object} describe
- * @property {(seed: string, opts?: object) => string} renderStatic
- * @property {(el: Element, seed: string, opts?: object) => object} mount
+ * @property {(params: object) => string} describe
+ * @property {(params: object, ctx: { size: number }) => object} prepare
+ * @property {(params: object) => object} geometry
+ * @property {(params: object, state: string) => object} pose
+ * @property {(pose: object, ctx: { params: object, state: string, dt: number, t: number, transientT: number, rest: object }) => object} animate
+ * @property {(params: object, geometry: object, pose: object, effects: object) => string} paint
+ * @property {(params: object, state: string) => { hue?: number, lighten?: number, shake?: boolean } | null} flash
  */
 
 function isNonEmptyString(value) {
