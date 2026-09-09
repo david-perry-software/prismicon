@@ -1,6 +1,18 @@
 import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
+import { deriveV1, renderStaticSVG } from '../src/core.js';
 import { VARIANT_ID_PATTERN, createVariantRegistry, defineVariant } from '../src/variants/registry.js';
+import { polyhedron } from '../src/variants/polyhedron.js';
+import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, resolveVariant } from '../src/variants/index.js';
+
+// Copied verbatim from test/derivation-freeze.test.js (frozen v1 engine, commit 9204c26).
+const FROZEN = JSON.parse(`{
+  "maya": {"spec":"v1","seed":"maya","hash":5672938920960816,"n":3,"solidType":0,"finish":1,"prop":0.75,"axisMode":0,"speed":-0.6900650275871157,"phase":4.301740389782586,"precess":false,"zSpeed":-0.17998544714646414,"phase2":1.8459765366751855,"hue":8,"hue2":145},
+  "build-bot-7": {"spec":"v1","seed":"build-bot-7","hash":3896363917569,"n":4,"solidType":1,"finish":2,"prop":1.3,"axisMode":1,"speed":0.7468891458353027,"phase":3.8428703853993285,"precess":false,"zSpeed":-0.12171955700032414,"phase2":6.1943007512039125,"hue":275,"hue2":25},
+  "Alice@X.com": {"spec":"v1","seed":"alice@x.com","hash":7287120426219225,"n":3,"solidType":2,"finish":0,"prop":0.75,"axisMode":0,"speed":-0.617978259245865,"phase":0.022091764370660297,"precess":true,"zSpeed":-0.16416204493725672,"phase2":3.4083078547770636,"hue":275,"hue2":25}
+}`);
+
+const PARITY_OPTS = [{}, { size: 24 }, { kind: 'user' }, { state: 'thinking', dark: true }];
 
 const noop = () => {};
 
@@ -150,6 +162,40 @@ describe('createVariantRegistry', () => {
     const registry = createVariantRegistry([alpha], { defaultId: 'alpha' });
     for (const key of [42, {}, [], true, Symbol('x')]) {
       assert.throws(() => registry.resolve(key), TypeError);
+    }
+  });
+});
+
+describe('polyhedron built-in variant', () => {
+  test('is the registered default resolved by resolveVariant', () => {
+    assert.equal(DEFAULT_VARIANT_ID, 'polyhedron');
+    assert.deepEqual(BUILT_IN_VARIANTS.ids, ['polyhedron']);
+    assert.equal(BUILT_IN_VARIANTS.defaultId, 'polyhedron');
+    const registered = BUILT_IN_VARIANTS.get('polyhedron');
+    assert.deepEqual(registered, polyhedron);
+    assert.equal(registered.derive, deriveV1);
+    assert.equal(registered.renderStatic, renderStaticSVG);
+    assert.equal(resolveVariant(), registered);
+    assert.equal(resolveVariant(null), registered);
+    assert.equal(resolveVariant('polyhedron'), registered);
+    assert.equal(polyhedron.spec, 'v1');
+    assert.throws(() => resolveVariant('cube'), RangeError);
+  });
+
+  test('derive deep-equals deriveV1 and the frozen v1 fixture', () => {
+    for (const [seed, expected] of Object.entries(FROZEN)) {
+      assert.deepEqual(polyhedron.derive(seed), deriveV1(seed));
+      assert.deepEqual(polyhedron.derive(seed), expected);
+    }
+  });
+
+  test('renderStatic string-equals renderStaticSVG across option combinations', () => {
+    for (const seed of Object.keys(FROZEN)) {
+      for (const opts of PARITY_OPTS) {
+        const actual = polyhedron.renderStatic(seed, opts);
+        assert.equal(actual, renderStaticSVG(seed, opts), `${seed} ${JSON.stringify(opts)}`);
+        assert.ok(actual.startsWith('<svg'));
+      }
     }
   });
 });
