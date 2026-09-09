@@ -199,3 +199,24 @@ describe('polyhedron built-in variant', () => {
     }
   });
 });
+
+describe('public surface', () => {
+  test('src/index.js exports exactly the eleven v1 names and nothing variant-related', async () => {
+    const publicApi = await import('../src/index.js');
+    const keys = Object.keys(publicApi).sort();
+    assert.deepEqual(keys, [
+      'FINISH_NAMES',
+      'PALETTE',
+      'SIDE_NAMES',
+      'SOLID_NAMES',
+      'SPEC_VERSION',
+      'STATES',
+      'deriveV1',
+      'describeParams',
+      'mountGlyph',
+      'normalizeSeed',
+      'renderStaticSVG'
+    ]);
+    assert.deepEqual(keys.filter((key) => /variant/i.test(key)), []);
+  });
+});
