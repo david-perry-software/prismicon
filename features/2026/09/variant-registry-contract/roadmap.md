@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/variant-registry-contract
 last-updated: 2026-09-08
-next-step: "3.3 — confirm npm pack --dry-run lists src/variants/*.js and sideEffects: false is intact"
+next-step: "3.4 — merge origin/main, rerun npm test, push, set status: in-review"
 initiative: "scalable-icon-variants"
 ```
 
@@ -24,5 +24,5 @@ initiative: "scalable-icon-variants"
 
 - [x] 3.1 Confirm untouched files: `git diff --quiet origin/main -- src/index.js src/core.js src/react.js index.d.ts README.md demo/index.html package.json package-lock.json test/derivation-freeze.test.js test/prismicon.test.js` — verify: command exits 0 and `git status --porcelain` lists only `src/variants/` and `test/variants.test.js` as additions plus `features/` edits
 - [x] 3.2 Run the complete gate (no lint configured — AGENTS.md): `npm test` — verify: exit 0, `# fail 0`, and `# pass` equals 13 plus the number of subtests in `test/variants.test.js`; record the counts in the commit message body against the baseline `13 pass / 0 fail`
-- [ ] 3.3 Confirm packaging: `npm pack --dry-run 2>&1 | grep -E "src/variants/(registry|polyhedron|index)\.js"` — verify: all three paths listed, and `grep '"sideEffects": false' package.json` still matches
+- [x] 3.3 Confirm packaging: `npm pack --dry-run 2>&1 | grep -E "src/variants/(registry|polyhedron|index)\.js"` — verify: all three paths listed, and `grep '"sideEffects": false' package.json` still matches
 - [ ] 3.4 Merge `origin/main` into `feature/variant-registry-contract` (merge, never rebase), rerun `npm test`, push, and set the roadmap header `status: in-review` with `next-step: ""` — verify: `git log --oneline -1 origin/main` is an ancestor of `HEAD` (`git merge-base --is-ancestor origin/main HEAD` exits 0) and `npm test` exits 0
