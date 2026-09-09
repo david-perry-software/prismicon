@@ -2,13 +2,13 @@
 status: in-progress
 branch: feature/variant-registry-contract
 last-updated: 2026-09-08
-next-step: "1.1 — create src/variants/registry.js with the descriptor validator"
+next-step: "1.2 — create test/variants.test.js covering defineVariant"
 initiative: "scalable-icon-variants"
 ```
 
 ## Phase 1: Descriptor and registry contract
 
-- [ ] 1.1 Create `src/variants/registry.js` exporting `VARIANT_ID_PATTERN` and `defineVariant(descriptor)`: validate `id` (pattern), `label` and `spec` (non-empty strings), the four function hooks `derive`, `describe`, `renderStatic`, `mount`, reject unknown keys, throw `TypeError` naming the field, return `Object.freeze`d copy; add the module header documenting the reserved `variant` option key and the fallback rule; no import from `core.js` — verify: `node -e "import('./src/variants/registry.js').then(m => console.log(Object.keys(m).sort().join(',')))"` prints `VARIANT_ID_PATTERN,defineVariant` and `grep -c "core.js" src/variants/registry.js` prints `0`
+- [x] 1.1 Create `src/variants/registry.js` exporting `VARIANT_ID_PATTERN` and `defineVariant(descriptor)`: validate `id` (pattern), `label` and `spec` (non-empty strings), the four function hooks `derive`, `describe`, `renderStatic`, `mount`, reject unknown keys, throw `TypeError` naming the field, return `Object.freeze`d copy; add the module header documenting the reserved `variant` option key and the fallback rule; no import from `core.js` — verify: `node -e "import('./src/variants/registry.js').then(m => console.log(Object.keys(m).sort().join(',')))"` prints `VARIANT_ID_PATTERN,defineVariant` and `grep -c "core.js" src/variants/registry.js` prints `0`
 - [ ] 1.2 Create `test/variants.test.js` (`node:test` + `node:assert/strict`) covering `defineVariant`: valid descriptor is returned frozen; bad `id`, missing hook, non-function hook, unknown key, non-string `label`/`spec` each throw `TypeError` mentioning the field — verify: `node --test test/variants.test.js` exits 0 with every subtest `ok`
 - [ ] 1.3 Add `createVariantRegistry(descriptors, { defaultId })` to `src/variants/registry.js`: runs each descriptor through `defineVariant`, rejects duplicate ids and an unregistered `defaultId` (`TypeError`), returns a frozen object with frozen `ids` (registration order), `defaultId`, `has(id)`, `get(id)` (unknown → `RangeError` `Unknown prismicon variant "<id>"; registered: <ids>`), `resolve(key)` (`undefined`/`null` → default, string → `get`, other → `TypeError`); `Map`-backed lookup — verify: `node -e "import('./src/variants/registry.js').then(m => console.log(typeof m.createVariantRegistry))"` prints `function`
 - [ ] 1.4 Extend `test/variants.test.js` with registry tests: duplicate id rejected, unknown `defaultId` rejected, `ids` order and frozenness, `has`/`get`, `resolve(undefined)`/`resolve(null)` return the default, `resolve('nope')` throws `RangeError` whose message contains `"nope"` and the registered ids, `resolve(42)` throws `TypeError` — verify: `node --test test/variants.test.js` exits 0
