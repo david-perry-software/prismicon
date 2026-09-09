@@ -2,7 +2,7 @@
 status: in-review
 branch: feature/variant-renderer-integration
 last-updated: 2026-09-08
-next-step: "6.1 Merge origin/main and run complete gate"
+next-step: ""
 initiative: "scalable-icon-variants"
 ```
 
@@ -36,5 +36,5 @@ initiative: "scalable-icon-variants"
 
 ## Phase 6: Gate and hand-off
 
-- [ ] 6.1 Merge `origin/main`, then run the complete gate *(review 2026-09-08: unticked — re-run after 3.3)*: `npm ci && npm test` prints `# fail 0` with `# tests` ≥ 32 + new; `npm pack --dry-run 2>&1 | grep -E "src/|test/|scripts/"` lists `src/core.js`, `src/index.js`, `src/react.js`, `src/variants/index.js`, `src/variants/registry.js`, `src/variants/polyhedron.js` and nothing under `test/` or `scripts/`; `git diff --quiet origin/main -- test/prismicon.test.js test/derivation-freeze.test.js src/react.js package.json`; `grep -c "core.js" src/variants/*.js` prints `0` for every file — verify: every command exits 0 and outputs match
-- [ ] 6.2 Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push *(review 2026-09-08: unticked — re-run after 3.3 and 6.1)* — verify: `git status --porcelain` is empty and `git log origin/feature/variant-renderer-integration -1 --format=%s` shows the roadmap commit
+- [x] 6.1 Merge `origin/main`, then run the complete gate *(review 2026-09-08: unticked — re-run after 3.3)*: `npm ci && npm test` prints `# fail 0` with `# tests` ≥ 32 + new; `npm pack --dry-run 2>&1 | grep -E "src/|test/|scripts/"` lists `src/core.js`, `src/index.js`, `src/react.js`, `src/variants/index.js`, `src/variants/registry.js`, `src/variants/polyhedron.js` and nothing under `test/` or `scripts/`; `git diff --quiet origin/main -- test/prismicon.test.js test/derivation-freeze.test.js src/react.js package.json`; `grep -c "core.js" src/variants/*.js` prints `0` for every file — verify: every command exits 0 and outputs match
+- [x] 6.2 Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push *(review 2026-09-08: unticked — re-run after 3.3 and 6.1)* — verify: `git status --porcelain` is empty and `git log origin/feature/variant-renderer-integration -1 --format=%s` shows the roadmap commit
