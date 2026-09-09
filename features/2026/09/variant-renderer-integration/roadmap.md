@@ -1,8 +1,8 @@
 ```yaml
-status: request-changes
+status: in-progress
 branch: feature/variant-renderer-integration
 last-updated: 2026-09-09
-next-step: "Resolve review findings: (1) validate variant before getEngine() in mountGlyph; (2) remove params.hue read from core engine by adding a variant flash/effect hook."
+next-step: "Complete added review-fix steps 7.1 and 7.2, then rerun the full gate and return to in-review."
 initiative: "scalable-icon-variants"
 ```
 
@@ -36,5 +36,10 @@ initiative: "scalable-icon-variants"
 
 ## Phase 6: Gate and hand-off
 
-- [x] 6.1 Merge `origin/main`, then run the complete gate *(review 2026-09-08: unticked — re-run after 3.3)*: `npm ci && npm test` prints `# fail 0` with `# tests` ≥ 32 + new; `npm pack --dry-run 2>&1 | grep -E "src/|test/|scripts/"` lists `src/core.js`, `src/index.js`, `src/react.js`, `src/variants/index.js`, `src/variants/registry.js`, `src/variants/polyhedron.js` and nothing under `test/` or `scripts/`; `git diff --quiet origin/main -- test/prismicon.test.js test/derivation-freeze.test.js src/react.js package.json`; `grep -c "core.js" src/variants/*.js` prints `0` for every file — verify: every command exits 0 and outputs match
-- [x] 6.2 Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push *(review 2026-09-08: unticked — re-run after 3.3 and 6.1)* — verify: `git status --porcelain` is empty and `git log origin/feature/variant-renderer-integration -1 --format=%s` shows the roadmap commit
+- [ ] 6.1 Merge `origin/main`, then run the complete gate *(review 2026-09-08: unticked — re-run after 3.3; review 2026-09-09: re-opened after added review-fix steps)*: `npm ci && npm test` prints `# fail 0` with `# tests` ≥ 32 + new; `npm pack --dry-run 2>&1 | grep -E "src/|test/|scripts/"` lists `src/core.js`, `src/index.js`, `src/react.js`, `src/variants/index.js`, `src/variants/registry.js`, `src/variants/polyhedron.js` and nothing under `test/` or `scripts/`; `git diff --quiet origin/main -- test/prismicon.test.js test/derivation-freeze.test.js src/react.js package.json`; `grep -c "core.js" src/variants/*.js` prints `0` for every file — verify: every command exits 0 and outputs match
+- [ ] 6.2 Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push *(review 2026-09-08: unticked — re-run after 3.3 and 6.1; review 2026-09-09: re-opened after added review-fix steps)* — verify: `git status --porcelain` is empty and `git log origin/feature/variant-renderer-integration -1 --format=%s` shows the roadmap commit
+
+## Phase 7: Review fixes (2026-09-09)
+
+- [ ] 7.1 (added 2026-09-09) Resolve and validate `opts.variant` before `getEngine()` in `mountGlyph`, preserving an untouched host and document head for invalid variant ids and key types; add focused regression coverage — verify: `node --test test/renderer-dispatch.test.js` prints `# fail 0` and invalid mount cases leave `#prismicon-style` absent, the host empty, and the host without the `prismicon` class
+- [ ] 7.2 (added 2026-09-09) Remove `params.hue` reads from `src/core.js` by documenting and validating the narrow `flash(params, state)` variant hook, implement it for the polyhedron and square test variants, and cover a square receiving transition without a hue assumption — verify: `node --test test/renderer-dispatch.test.js` prints `# fail 0` and `grep -nE "p\\.hue|params\\.hue" src/core.js` prints no lines
