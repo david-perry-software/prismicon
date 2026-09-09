@@ -32,3 +32,5 @@ None.
 | Domain | Skill |
 |---|---|
 | none needed | none installed |
+| Modern JavaScript / Node.js ESM | modern-javascript-patterns |
+| React integration | vercel-react-best-practices |
