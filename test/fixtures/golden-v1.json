@@ -1,0 +1,922 @@
+{
+  "static": {
+    "maya|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: triangle prism, two-tone, squat, idle\"><g><path d=\"M47.2 30.0 L65.5 65.4 L26.3 61.8 Z\" fill=\"hsl(145 52% 33%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L65.5 65.4 L47.2 30.0 Z\" fill=\"hsl(8 52% 33%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M30.9 58.3 L53.0 24.2 L47.2 30.0 L26.3 61.8 Z\" fill=\"hsl(8 52% 35%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M73.1 62.7 L30.9 58.3 L26.3 61.8 L65.5 65.4 Z\" fill=\"hsl(8 52% 38%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L30.9 58.3 Z\" fill=\"hsl(145 52% 54%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "maya|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"maya: triangle prism, two-tone, squat, idle\"><g><path d=\"M47.2 30.0 L65.5 65.4 L26.3 61.8 Z\" fill=\"hsl(145 52% 33%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L65.5 65.4 L47.2 30.0 Z\" fill=\"hsl(8 52% 33%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M30.9 58.3 L53.0 24.2 L47.2 30.0 L26.3 61.8 Z\" fill=\"hsl(8 52% 35%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M73.1 62.7 L30.9 58.3 L26.3 61.8 L65.5 65.4 Z\" fill=\"hsl(8 52% 38%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L30.9 58.3 Z\" fill=\"hsl(145 52% 54%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "maya|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: triangle prism, two-tone, squat\"><g><path d=\"M47.2 30.0 L65.5 65.4 L26.3 61.8 Z\" fill=\"hsl(145 52% 33%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L65.5 65.4 L47.2 30.0 Z\" fill=\"hsl(8 52% 33%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M30.9 58.3 L53.0 24.2 L47.2 30.0 L26.3 61.8 Z\" fill=\"hsl(8 52% 35%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M73.1 62.7 L30.9 58.3 L26.3 61.8 L65.5 65.4 Z\" fill=\"hsl(8 52% 38%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L30.9 58.3 Z\" fill=\"hsl(145 52% 54%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "maya|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: triangle prism, two-tone, squat, thinking\"><g><path d=\"M47.2 30.0 L65.5 65.4 L26.3 61.8 Z\" fill=\"hsl(145 52% 43%)\" stroke=\"hsl(145 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L65.5 65.4 L47.2 30.0 Z\" fill=\"hsl(8 52% 43%)\" stroke=\"hsl(8 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M30.9 58.3 L53.0 24.2 L47.2 30.0 L26.3 61.8 Z\" fill=\"hsl(8 52% 45%)\" stroke=\"hsl(8 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M73.1 62.7 L30.9 58.3 L26.3 61.8 L65.5 65.4 Z\" fill=\"hsl(8 52% 48%)\" stroke=\"hsl(8 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L30.9 58.3 Z\" fill=\"hsl(145 52% 63%)\" stroke=\"hsl(145 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+    "maya|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: triangle prism, two-tone, squat, waiting\"><g><path d=\"M47.2 30.0 L65.5 65.4 L26.3 61.8 Z\" fill=\"hsl(145 52% 33%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L65.5 65.4 L47.2 30.0 Z\" fill=\"hsl(8 52% 33%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M30.9 58.3 L53.0 24.2 L47.2 30.0 L26.3 61.8 Z\" fill=\"hsl(8 52% 35%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M73.1 62.7 L30.9 58.3 L26.3 61.8 L65.5 65.4 Z\" fill=\"hsl(8 52% 38%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L30.9 58.3 Z\" fill=\"hsl(145 52% 54%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+    "maya|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"maya: triangle prism, two-tone, squat, error\"><g><path d=\"M47.2 30.0 L65.5 65.4 L26.3 61.8 Z\" fill=\"hsl(145 52% 33%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L65.5 65.4 L47.2 30.0 Z\" fill=\"hsl(8 52% 33%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M30.9 58.3 L53.0 24.2 L47.2 30.0 L26.3 61.8 Z\" fill=\"hsl(8 52% 35%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M73.1 62.7 L30.9 58.3 L26.3 61.8 L65.5 65.4 Z\" fill=\"hsl(8 52% 38%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M53.0 24.2 L73.1 62.7 L30.9 58.3 Z\" fill=\"hsl(145 52% 54%)\" stroke=\"hsl(145 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+    "build-bot-7|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: square pyramid, wireframe, tall, idle\"><g><path d=\"M40.5 27.3 L52.4 54.8 M52.4 54.8 L39.9 76.5 M39.9 76.5 L24.1 46.3 M24.1 46.3 L40.5 27.3 M40.5 27.3 L52.4 54.8 M52.4 54.8 L73.3 47.3 M73.3 47.3 L40.5 27.3 M52.4 54.8 L39.9 76.5 M39.9 76.5 L73.3 47.3 M73.3 47.3 L52.4 54.8 M39.9 76.5 L24.1 46.3 M24.1 46.3 L73.3 47.3 M73.3 47.3 L39.9 76.5 M24.1 46.3 L40.5 27.3 M40.5 27.3 L73.3 47.3 M73.3 47.3 L24.1 46.3 \" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "build-bot-7|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"build-bot-7: square pyramid, shaded, tall, idle\"><g><path d=\"M40.5 27.3 L52.4 54.8 L73.3 47.3 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M40.5 27.3 L52.4 54.8 L39.9 76.5 L24.1 46.3 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M52.4 54.8 L39.9 76.5 L73.3 47.3 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M24.1 46.3 L40.5 27.3 L73.3 47.3 Z\" fill=\"hsl(275 52% 48%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M39.9 76.5 L24.1 46.3 L73.3 47.3 Z\" fill=\"hsl(275 52% 55%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "build-bot-7|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: square pyramid, wireframe, tall\"><g><path d=\"M40.5 27.3 L52.4 54.8 M52.4 54.8 L39.9 76.5 M39.9 76.5 L24.1 46.3 M24.1 46.3 L40.5 27.3 M40.5 27.3 L52.4 54.8 M52.4 54.8 L73.3 47.3 M73.3 47.3 L40.5 27.3 M52.4 54.8 L39.9 76.5 M39.9 76.5 L73.3 47.3 M73.3 47.3 L52.4 54.8 M39.9 76.5 L24.1 46.3 M24.1 46.3 L73.3 47.3 M73.3 47.3 L39.9 76.5 M24.1 46.3 L40.5 27.3 M40.5 27.3 L73.3 47.3 M73.3 47.3 L24.1 46.3 \" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "build-bot-7|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: square pyramid, wireframe, tall, thinking\"><g><path d=\"M40.5 27.3 L52.4 54.8 M52.4 54.8 L39.9 76.5 M39.9 76.5 L24.1 46.3 M24.1 46.3 L40.5 27.3 M40.5 27.3 L52.4 54.8 M52.4 54.8 L73.3 47.3 M73.3 47.3 L40.5 27.3 M52.4 54.8 L39.9 76.5 M39.9 76.5 L73.3 47.3 M73.3 47.3 L52.4 54.8 M39.9 76.5 L24.1 46.3 M24.1 46.3 L73.3 47.3 M73.3 47.3 L39.9 76.5 M24.1 46.3 L40.5 27.3 M40.5 27.3 L73.3 47.3 M73.3 47.3 L24.1 46.3 \" fill=\"none\" stroke=\"hsl(275 52% 62%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+    "build-bot-7|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: square pyramid, wireframe, tall, waiting\"><g><path d=\"M40.5 27.3 L52.4 54.8 M52.4 54.8 L39.9 76.5 M39.9 76.5 L24.1 46.3 M24.1 46.3 L40.5 27.3 M40.5 27.3 L52.4 54.8 M52.4 54.8 L73.3 47.3 M73.3 47.3 L40.5 27.3 M52.4 54.8 L39.9 76.5 M39.9 76.5 L73.3 47.3 M73.3 47.3 L52.4 54.8 M39.9 76.5 L24.1 46.3 M24.1 46.3 L73.3 47.3 M73.3 47.3 L39.9 76.5 M24.1 46.3 L40.5 27.3 M40.5 27.3 L73.3 47.3 M73.3 47.3 L24.1 46.3 \" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+    "build-bot-7|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"build-bot-7: square pyramid, wireframe, tall, error\"><g><path d=\"M40.5 27.3 L52.4 54.8 M52.4 54.8 L39.9 76.5 M39.9 76.5 L24.1 46.3 M24.1 46.3 L40.5 27.3 M40.5 27.3 L52.4 54.8 M52.4 54.8 L73.3 47.3 M73.3 47.3 L40.5 27.3 M52.4 54.8 L39.9 76.5 M39.9 76.5 L73.3 47.3 M73.3 47.3 L52.4 54.8 M39.9 76.5 L24.1 46.3 M24.1 46.3 L73.3 47.3 M73.3 47.3 L39.9 76.5 M24.1 46.3 L40.5 27.3 M40.5 27.3 L73.3 47.3 M73.3 47.3 L24.1 46.3 \" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+    "Alice@X.com|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: triangle bipyramid, shaded, squat, idle\"><g><path d=\"M50.0 26.8 L60.2 63.1 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.2 63.1 L61.2 48.9 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L61.2 48.9 Z\" fill=\"hsl(275 52% 43%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(275 52% 53%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "Alice@X.com|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"Alice@X.com: triangle bipyramid, shaded, squat, idle\"><g><path d=\"M50.0 26.8 L60.2 63.1 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.2 63.1 L61.2 48.9 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L61.2 48.9 Z\" fill=\"hsl(275 52% 43%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(275 52% 53%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "Alice@X.com|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: triangle bipyramid, shaded, squat\"><g><path d=\"M50.0 26.8 L60.2 63.1 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.2 63.1 L61.2 48.9 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L61.2 48.9 Z\" fill=\"hsl(275 52% 43%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(275 52% 53%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "Alice@X.com|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: triangle bipyramid, shaded, squat, thinking\"><g><path d=\"M50.0 26.8 L60.2 63.1 L39.7 51.0 Z\" fill=\"hsl(275 52% 43%)\" stroke=\"hsl(275 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.2 63.1 L61.2 48.9 Z\" fill=\"hsl(275 52% 43%)\" stroke=\"hsl(275 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L39.7 51.0 Z\" fill=\"hsl(275 52% 43%)\" stroke=\"hsl(275 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(275 52% 43%)\" stroke=\"hsl(275 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L61.2 48.9 Z\" fill=\"hsl(275 52% 52%)\" stroke=\"hsl(275 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(275 52% 62%)\" stroke=\"hsl(275 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+    "Alice@X.com|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: triangle bipyramid, shaded, squat, waiting\"><g><path d=\"M50.0 26.8 L60.2 63.1 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.2 63.1 L61.2 48.9 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L61.2 48.9 Z\" fill=\"hsl(275 52% 43%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(275 52% 53%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+    "Alice@X.com|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"Alice@X.com: triangle bipyramid, shaded, squat, error\"><g><path d=\"M50.0 26.8 L60.2 63.1 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.2 63.1 L61.2 48.9 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(275 52% 33%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.2 63.1 L37.1 60.6 L61.2 48.9 Z\" fill=\"hsl(275 52% 43%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M37.1 60.6 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(275 52% 53%)\" stroke=\"hsl(275 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+    "Ada Lovelace|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: pentagon pyramid, wireframe, squat, idle\"><g><path d=\"M44.5 26.5 L55.5 47.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L35.2 70.6 M35.2 70.6 L29.7 37.1 M29.7 37.1 L44.5 26.5 M44.5 26.5 L55.5 47.5 M55.5 47.5 L63.0 48.5 M63.0 48.5 L44.5 26.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L63.0 48.5 M63.0 48.5 L55.5 47.5 M51.6 72.1 L35.2 70.6 M35.2 70.6 L63.0 48.5 M63.0 48.5 L51.6 72.1 M35.2 70.6 L29.7 37.1 M29.7 37.1 L63.0 48.5 M63.0 48.5 L35.2 70.6 M29.7 37.1 L44.5 26.5 M44.5 26.5 L63.0 48.5 M63.0 48.5 L29.7 37.1 \" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "Ada Lovelace|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"Ada Lovelace: pentagon pyramid, shaded, squat, idle\"><g><path d=\"M55.5 47.5 L51.6 72.1 L63.0 48.5 Z\" fill=\"hsl(8 52% 33%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M44.5 26.5 L55.5 47.5 L63.0 48.5 Z\" fill=\"hsl(8 52% 33%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M44.5 26.5 L55.5 47.5 L51.6 72.1 L35.2 70.6 L29.7 37.1 Z\" fill=\"hsl(8 52% 33%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M51.6 72.1 L35.2 70.6 L63.0 48.5 Z\" fill=\"hsl(8 52% 44%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M29.7 37.1 L44.5 26.5 L63.0 48.5 Z\" fill=\"hsl(8 52% 46%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M35.2 70.6 L29.7 37.1 L63.0 48.5 Z\" fill=\"hsl(8 52% 57%)\" stroke=\"hsl(8 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "Ada Lovelace|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: pentagon pyramid, wireframe, squat\"><g><path d=\"M44.5 26.5 L55.5 47.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L35.2 70.6 M35.2 70.6 L29.7 37.1 M29.7 37.1 L44.5 26.5 M44.5 26.5 L55.5 47.5 M55.5 47.5 L63.0 48.5 M63.0 48.5 L44.5 26.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L63.0 48.5 M63.0 48.5 L55.5 47.5 M51.6 72.1 L35.2 70.6 M35.2 70.6 L63.0 48.5 M63.0 48.5 L51.6 72.1 M35.2 70.6 L29.7 37.1 M29.7 37.1 L63.0 48.5 M63.0 48.5 L35.2 70.6 M29.7 37.1 L44.5 26.5 M44.5 26.5 L63.0 48.5 M63.0 48.5 L29.7 37.1 \" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "Ada Lovelace|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: pentagon pyramid, wireframe, squat, thinking\"><g><path d=\"M44.5 26.5 L55.5 47.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L35.2 70.6 M35.2 70.6 L29.7 37.1 M29.7 37.1 L44.5 26.5 M44.5 26.5 L55.5 47.5 M55.5 47.5 L63.0 48.5 M63.0 48.5 L44.5 26.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L63.0 48.5 M63.0 48.5 L55.5 47.5 M51.6 72.1 L35.2 70.6 M35.2 70.6 L63.0 48.5 M63.0 48.5 L51.6 72.1 M35.2 70.6 L29.7 37.1 M29.7 37.1 L63.0 48.5 M63.0 48.5 L35.2 70.6 M29.7 37.1 L44.5 26.5 M44.5 26.5 L63.0 48.5 M63.0 48.5 L29.7 37.1 \" fill=\"none\" stroke=\"hsl(8 52% 62%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+    "Ada Lovelace|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: pentagon pyramid, wireframe, squat, waiting\"><g><path d=\"M44.5 26.5 L55.5 47.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L35.2 70.6 M35.2 70.6 L29.7 37.1 M29.7 37.1 L44.5 26.5 M44.5 26.5 L55.5 47.5 M55.5 47.5 L63.0 48.5 M63.0 48.5 L44.5 26.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L63.0 48.5 M63.0 48.5 L55.5 47.5 M51.6 72.1 L35.2 70.6 M35.2 70.6 L63.0 48.5 M63.0 48.5 L51.6 72.1 M35.2 70.6 L29.7 37.1 M29.7 37.1 L63.0 48.5 M63.0 48.5 L35.2 70.6 M29.7 37.1 L44.5 26.5 M44.5 26.5 L63.0 48.5 M63.0 48.5 L29.7 37.1 \" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+    "Ada Lovelace|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"Ada Lovelace: pentagon pyramid, wireframe, squat, error\"><g><path d=\"M44.5 26.5 L55.5 47.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L35.2 70.6 M35.2 70.6 L29.7 37.1 M29.7 37.1 L44.5 26.5 M44.5 26.5 L55.5 47.5 M55.5 47.5 L63.0 48.5 M63.0 48.5 L44.5 26.5 M55.5 47.5 L51.6 72.1 M51.6 72.1 L63.0 48.5 M63.0 48.5 L55.5 47.5 M51.6 72.1 L35.2 70.6 M35.2 70.6 L63.0 48.5 M63.0 48.5 L51.6 72.1 M35.2 70.6 L29.7 37.1 M29.7 37.1 L63.0 48.5 M63.0 48.5 L35.2 70.6 M29.7 37.1 L44.5 26.5 M44.5 26.5 L63.0 48.5 M63.0 48.5 L29.7 37.1 \" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+    "demo-agent|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: pentagon bipyramid, shaded, squat, idle\"><g><path d=\"M60.9 46.1 L57.2 69.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.9 46.1 L57.2 69.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L61.2 48.9 Z\" fill=\"hsl(220 52% 45%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 48%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L61.2 48.9 Z\" fill=\"hsl(220 52% 55%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "demo-agent|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"demo-agent: pentagon bipyramid, shaded, squat, idle\"><g><path d=\"M60.9 46.1 L57.2 69.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.9 46.1 L57.2 69.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L61.2 48.9 Z\" fill=\"hsl(220 52% 45%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 48%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L61.2 48.9 Z\" fill=\"hsl(220 52% 55%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "demo-agent|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: pentagon bipyramid, shaded, squat\"><g><path d=\"M60.9 46.1 L57.2 69.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.9 46.1 L57.2 69.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L61.2 48.9 Z\" fill=\"hsl(220 52% 45%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 48%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L61.2 48.9 Z\" fill=\"hsl(220 52% 55%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g></g></svg>",
+    "demo-agent|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: pentagon bipyramid, shaded, squat, thinking\"><g><path d=\"M60.9 46.1 L57.2 69.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 43%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L39.7 51.0 Z\" fill=\"hsl(220 52% 43%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.9 46.1 L57.2 69.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 43%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L61.2 48.9 Z\" fill=\"hsl(220 52% 43%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L39.7 51.0 Z\" fill=\"hsl(220 52% 43%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 43%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L61.2 48.9 Z\" fill=\"hsl(220 52% 54%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 57%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L39.7 51.0 Z\" fill=\"hsl(220 52% 43%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L61.2 48.9 Z\" fill=\"hsl(220 52% 64%)\" stroke=\"hsl(220 52% 78%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+    "demo-agent|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: pentagon bipyramid, shaded, squat, waiting\"><g><path d=\"M60.9 46.1 L57.2 69.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.9 46.1 L57.2 69.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L61.2 48.9 Z\" fill=\"hsl(220 52% 45%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 48%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L61.2 48.9 Z\" fill=\"hsl(220 52% 55%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+    "demo-agent|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"demo-agent: pentagon bipyramid, shaded, squat, error\"><g><path d=\"M60.9 46.1 L57.2 69.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M60.9 46.1 L57.2 69.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M50.0 26.8 L60.9 46.1 L61.2 48.9 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M57.2 69.8 L41.6 69.3 L61.2 48.9 Z\" fill=\"hsl(220 52% 45%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M36.0 38.4 L50.0 26.8 L61.2 48.9 Z\" fill=\"hsl(220 52% 48%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L39.7 51.0 Z\" fill=\"hsl(220 52% 33%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/><path d=\"M41.6 69.3 L36.0 38.4 L61.2 48.9 Z\" fill=\"hsl(220 52% 55%)\" stroke=\"hsl(220 52% 24%)\" stroke-width=\"1\" stroke-linejoin=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>"
+  },
+  "mounted": {
+    "maya|{}": [
+      {
+        "state": "working",
+        "t": 1000,
+        "hash": "206bc9b7e9f393654321bda085311a235d67aaade105a56cee708071302698f9"
+      },
+      {
+        "state": "working",
+        "t": 1033,
+        "hash": "b9a906cd55a303599be1564b1e936dddcf24c505f6ed3692609ff6a2f9d0be40"
+      },
+      {
+        "state": "working",
+        "t": 1066,
+        "hash": "c5fb3b52343ba23e022b30e1553ad622b83091b2fa8db9bc776bc48b3420dac9"
+      },
+      {
+        "state": "working",
+        "t": 1099,
+        "hash": "0ebd77c2c5664e19cb4f25e848d7907697a2d8d35f08f00382573619107b2b15"
+      },
+      {
+        "state": "working",
+        "t": 1132,
+        "hash": "84fcb9eeba2f90e3db703522031959505fc147b58e04ad752bd97ec2d5b4abf5"
+      },
+      {
+        "state": "working",
+        "t": 1165,
+        "hash": "e835375fff9b96bf6ffae7250099b11492b2e7aff1b5638b8c676acba548ef7b"
+      },
+      {
+        "state": "working",
+        "t": 1198,
+        "hash": "e2a3251d084370d8bebe48f169e51d63a02635af22c71474fb5c8c5664365811"
+      },
+      {
+        "state": "working",
+        "t": 1231,
+        "hash": "ae6f9164da9a1c609109507217e5ad2d272da67c02139afbf372b377b9b7f619"
+      },
+      {
+        "state": "working",
+        "t": 1264,
+        "hash": "af487770857a36c617c41d924cf6b2d54fcd97b5c25e1682b98d4d02e0773e61"
+      },
+      {
+        "state": "working",
+        "t": 1297,
+        "hash": "17f51ff6c6640737569d19de121fc9463720ea9a1c54528f94c870700379b9e5"
+      },
+      {
+        "state": "waiting",
+        "t": 1330,
+        "hash": "5e7a07ce28ff24ecd118d9bff4482a12c7951d47551a37379e798cf7b16aa45c"
+      },
+      {
+        "state": "waiting",
+        "t": 1363,
+        "hash": "18df788e1687bc3f2ba20b930e76b44e6311b8e683e7f0f936bb72d92db8190b"
+      },
+      {
+        "state": "waiting",
+        "t": 1396,
+        "hash": "afc9b960b7ef5c3a7a2632b2ba132dea4d6551b26042d8e9bdf9d9ee7c2e43cf"
+      },
+      {
+        "state": "waiting",
+        "t": 1429,
+        "hash": "ee916e3a60f859e78c5fe20a2bb004c12dad9137abd12483b792fbf762061914"
+      },
+      {
+        "state": "thinking",
+        "t": 1462,
+        "hash": "da2889ddac5f4acfe1aee2036673d33f270373e0c8691b8517e4fddca5ba1584"
+      },
+      {
+        "state": "thinking",
+        "t": 1495,
+        "hash": "4d1562435048a71c2385274ffd12512971b76c12fd6a5eec30ee73ed6911ee70"
+      },
+      {
+        "state": "thinking",
+        "t": 1528,
+        "hash": "925a84a929ffdc37f95641bac0cc7a0e92168fcdd7c93d1d374f03a80f08b450"
+      },
+      {
+        "state": "thinking",
+        "t": 1561,
+        "hash": "7b337e52790cfa3c5bd55bba6896c26bf8ab639c2249705d6dee8e4ff40e66eb"
+      },
+      {
+        "state": "sleeping",
+        "t": 1594,
+        "hash": "c1d4f9ffa6cd22ab4a6e717c418ec7bfee649fa8316b20aab7b84edc77459ef3"
+      },
+      {
+        "state": "sleeping",
+        "t": 1627,
+        "hash": "9d37ce8665f2a75f010efba79b1ab736d7e3b18458fda3b35461cd8dfbb84c8d"
+      },
+      {
+        "state": "sleeping",
+        "t": 1660,
+        "hash": "426bc22f755dcf15984e8f376408632187528d539b0a80af844364e55152f9a9"
+      },
+      {
+        "state": "sleeping",
+        "t": 1693,
+        "hash": "91f37755523705679a58149c630a2f11a650bb5e9b6714c716fe9b281a3cccbe"
+      },
+      {
+        "state": "sending",
+        "t": 1726,
+        "hash": "4267cec8f39606278cfe7e06ddf63f2043ee541665ff363e338f4c14924f698c"
+      },
+      {
+        "state": "sending",
+        "t": 1759,
+        "hash": "c83fc1594f871f8ae653a14db961d5a86bad53b830d77257dccb50658cf9c431"
+      },
+      {
+        "state": "sending",
+        "t": 1792,
+        "hash": "de5762841fc602bd266934f7704ba25e553f13cae5e7f7711c42a3c71d406fe2"
+      },
+      {
+        "state": "sending",
+        "t": 1825,
+        "hash": "47508f7240bf46f92a3310a3e424bfc90ce219d0c1e4b02e17e32d6648c233ff"
+      },
+      {
+        "state": "receiving",
+        "t": 1858,
+        "hash": "ba78501cc06c9d6cb603aea418fadde142008fa0e46ed9ac40c196a85e950526"
+      },
+      {
+        "state": "receiving",
+        "t": 1891,
+        "hash": "0970b1288e698d364073d7a4481a4a907350078fa786e9867abaff9dd3cde875"
+      },
+      {
+        "state": "receiving",
+        "t": 1924,
+        "hash": "0d6b4144f732e15a058d9177d5e484cc57281888aacfa757512e8ed03de6007e"
+      },
+      {
+        "state": "receiving",
+        "t": 1957,
+        "hash": "ff6aa3621356dcc2dc2682000629d0d7df9f93bfee3d3c74a570c13992bc47f2"
+      },
+      {
+        "state": "done",
+        "t": 1990,
+        "hash": "3a128f9e684f60ede421452b33f27c0ab07d7cd72f9ac7fc576ce16e511daed7"
+      },
+      {
+        "state": "done",
+        "t": 2023,
+        "hash": "26b40a285e6c9091a6ba3e1423ee83db3dc35042ed6b5ec7802c7e15d95d7f1f"
+      },
+      {
+        "state": "done",
+        "t": 2056,
+        "hash": "8daaf349c1d791b30e2b5bfdf3a6ff71ca00c981fcb4ebb334b94cb9fa83d144"
+      },
+      {
+        "state": "done",
+        "t": 2089,
+        "hash": "d1163c630fc8d453bf51bf79d20887c005d71230910cc0f797843af14038ea2b"
+      },
+      {
+        "state": "error",
+        "t": 2122,
+        "hash": "30521648546d53e88adc9d8ffe1b82a739b98b73dec635062d3c6e66af71e82a"
+      },
+      {
+        "state": "error",
+        "t": 2155,
+        "hash": "2e15c9898c5892fd0db6b20bd4a8a8cd6c3d8110d73ce8a23f3fb6c05365eb36"
+      },
+      {
+        "state": "error",
+        "t": 2188,
+        "hash": "617874105ee47bbb3cffad3e8fbe36fdb51e9e4b5c4077c16dab91210c332598"
+      },
+      {
+        "state": "error",
+        "t": 2221,
+        "hash": "ce65665997f20a10bf20dc0c40aa9dda3f2b2bd4d5b3f0c93c9e55dc451625cd"
+      },
+      {
+        "state": "idle",
+        "t": 2254,
+        "hash": "e7518ec1afc1e25c9573b972d87d2a928c4142e193b52f5c19f7ead3f24c869c"
+      },
+      {
+        "state": "idle",
+        "t": 2287,
+        "hash": "7b541decd0cb97b185323d996bc1e5b939363976bcd5a481a453041b70ddd41c"
+      },
+      {
+        "state": "idle",
+        "t": 2320,
+        "hash": "d6c2a6b7a9a11efa38bb2ab8cc7b171c48b01f7bf7eeae0ded3d78f5b0fdc3b3"
+      },
+      {
+        "state": "idle",
+        "t": 2353,
+        "hash": "d19d2b79e9c96cb70f4eea8d98303675b0d0cbdc876b1d1f078b0b061c88838f"
+      }
+    ],
+    "build-bot-7|{}": [
+      {
+        "state": "working",
+        "t": 1000,
+        "hash": "8c5ba6b26f5708ef8933106e5b85a469b910e4f65b71e69b8630855332a2f524"
+      },
+      {
+        "state": "working",
+        "t": 1033,
+        "hash": "7166ccc81e704111afb45dfac803548481ef38151a8c72901907b74f0a6f61b6"
+      },
+      {
+        "state": "working",
+        "t": 1066,
+        "hash": "d941ae79df625292ea50b1777981e1544c4ed7a8588d0ac04e4deda91eb15f15"
+      },
+      {
+        "state": "working",
+        "t": 1099,
+        "hash": "fccfb6eb9c78cc45b15da6ee688316ac19ffb83b5085d96552b1262517e635e6"
+      },
+      {
+        "state": "working",
+        "t": 1132,
+        "hash": "ddb49d1c4b8d2a51191e2dd75684f40a0acd866554e7694d744eccebd4794f3f"
+      },
+      {
+        "state": "working",
+        "t": 1165,
+        "hash": "0eab36855a7c356ed4cc58e94055829b1702da9617457aedb9e351cf3dc930f2"
+      },
+      {
+        "state": "working",
+        "t": 1198,
+        "hash": "365d1e5fcd6462cb6b2d9d9d1f14333e243e53c689e116bde11bd96892459f27"
+      },
+      {
+        "state": "working",
+        "t": 1231,
+        "hash": "95e1f0764e8058b4870e83d55dbb6fae526da060c32f68680a5cb3590c41c391"
+      },
+      {
+        "state": "working",
+        "t": 1264,
+        "hash": "560beff1ba99dbdddaa7247b07d8ccb76fbd677a0ae76767c0d266fb3ef5a7c4"
+      },
+      {
+        "state": "working",
+        "t": 1297,
+        "hash": "dbf7dd2ffe9f3eb1fe2a0a8bf5f0e0c433c112de88fc56bd32cd4f30da3ef55c"
+      },
+      {
+        "state": "waiting",
+        "t": 1330,
+        "hash": "b82f083d4f365507e165b5c67083635ca0029979ad2110d59a5803b2eb5989b7"
+      },
+      {
+        "state": "waiting",
+        "t": 1363,
+        "hash": "bd33a419c2a1cb42912133c86c16ac8542ebaa50c8dd08d30c24844d1bf26fb0"
+      },
+      {
+        "state": "waiting",
+        "t": 1396,
+        "hash": "746cdc7669f8f65180e8639149e887794fca06aba8c4675fb676b6fda6bfd9f7"
+      },
+      {
+        "state": "waiting",
+        "t": 1429,
+        "hash": "a481127cac2ade72438a68f59a15e29d144439245ca6caf1985b08932fe03d4c"
+      },
+      {
+        "state": "thinking",
+        "t": 1462,
+        "hash": "17b2df0336e4e8e53e3f52892d563ab4d47062ce8f2814402fd889f95c9bb20a"
+      },
+      {
+        "state": "thinking",
+        "t": 1495,
+        "hash": "6e4a2cf8776f2d231ce744d924986a5abf86733f86643b7a4b9bf24ed8c5ed3e"
+      },
+      {
+        "state": "thinking",
+        "t": 1528,
+        "hash": "7a4b525ad25bfa1c3ce345fac620fa09a521f63247842481395866a38ba37f68"
+      },
+      {
+        "state": "thinking",
+        "t": 1561,
+        "hash": "56818533a0007bc7737433d6e0b383b598588f8399d146c92a8a1134d3856888"
+      },
+      {
+        "state": "sleeping",
+        "t": 1594,
+        "hash": "73ce3e874681a7ad5ce315c0cd85a2128520b5f79f29459788c5f6a2f8178d83"
+      },
+      {
+        "state": "sleeping",
+        "t": 1627,
+        "hash": "5a99829cdd9242aae472a16fbf0957097b2129ef3d01ae9c15cac2143c6c9413"
+      },
+      {
+        "state": "sleeping",
+        "t": 1660,
+        "hash": "8c43fe8245dca2c30863b74aaa09083f4fc2cad7ea68918edcff316d5ba16fa8"
+      },
+      {
+        "state": "sleeping",
+        "t": 1693,
+        "hash": "f27e6ac742a0d0759bacd486b9f4a0f60545373f145f90b36528303354e0381c"
+      },
+      {
+        "state": "sending",
+        "t": 1726,
+        "hash": "df17062a549ab7ec55d6743844b6af36e3a0e45e1eaa772f4ddfccb784c14ab2"
+      },
+      {
+        "state": "sending",
+        "t": 1759,
+        "hash": "89dfdba1cc8b81f8a3af2a58c7a76074bdfaf1014584e67385ec8c72229c094c"
+      },
+      {
+        "state": "sending",
+        "t": 1792,
+        "hash": "3f899f854c3059c542cc08500ce35b9fa76dbe2ddccd6123fe7b4434e5453dfa"
+      },
+      {
+        "state": "sending",
+        "t": 1825,
+        "hash": "2cd6b1b11aa34a7ec7bdce2bf9239402fc1335554f1b325c0ccaecb8c72653fa"
+      },
+      {
+        "state": "receiving",
+        "t": 1858,
+        "hash": "8bc14022191476531ca45ff2985e2ba949da74cd7a5c8c6c5abd942e9c4a6187"
+      },
+      {
+        "state": "receiving",
+        "t": 1891,
+        "hash": "99ac808056973c0cfe9a7538ec8ceaabf8ce29db73d94a0af90ac3b008399fe8"
+      },
+      {
+        "state": "receiving",
+        "t": 1924,
+        "hash": "fa78021221c26380f4ea3bbcf25aa716a0539293f97ccb311c4de37cd15a9682"
+      },
+      {
+        "state": "receiving",
+        "t": 1957,
+        "hash": "ba9f6e790593ba83be31e49ab84a17b8dd10217a2317bcfea204d18c445c493a"
+      },
+      {
+        "state": "done",
+        "t": 1990,
+        "hash": "253eff7e99d63aedf20929a2d95d55dc07766cd6331504f1b154fd20129fdba1"
+      },
+      {
+        "state": "done",
+        "t": 2023,
+        "hash": "63d24508bd4f504202cde3807ed697c59804bf855d3ca155c040a95f7894f5bf"
+      },
+      {
+        "state": "done",
+        "t": 2056,
+        "hash": "c6bb62b0860184df7e82825200bdade00b853b87a6dce5f2dcb720ff50bccb3b"
+      },
+      {
+        "state": "done",
+        "t": 2089,
+        "hash": "f5daa0537286fe7aa2bc45c24c5261d5689cefccddbb991289e5485e8e9efb17"
+      },
+      {
+        "state": "error",
+        "t": 2122,
+        "hash": "4fe27b6481fbe4826b37b1534605c042c38ef9f30f62f604200868ee78e1bdcc"
+      },
+      {
+        "state": "error",
+        "t": 2155,
+        "hash": "aad1fbc75cf2f035d746b7f97771b36b71e3618caa0cd8ffa8260221dafb3242"
+      },
+      {
+        "state": "error",
+        "t": 2188,
+        "hash": "b907a616c1f545c3f09b7f8ab4a20067ccc49b3254c10c8d3aa2e07777a6b390"
+      },
+      {
+        "state": "error",
+        "t": 2221,
+        "hash": "84fed6bee375a3c3f82e077d6367348805bfd4806c237e1953d1b22cfade53b2"
+      },
+      {
+        "state": "idle",
+        "t": 2254,
+        "hash": "ac8eae23eaf9b8bf92c12cc929860a5e3a159c27aae60f66a1dd53a1115c5c2f"
+      },
+      {
+        "state": "idle",
+        "t": 2287,
+        "hash": "a28de5ab803232bcea23fe821ce9d6c1772ffc6146909dbb611de3bec93ac5a1"
+      },
+      {
+        "state": "idle",
+        "t": 2320,
+        "hash": "7d77ebaab8781bfaa6b656a267c54d0eb046a39b924df68967d5cfba5cb1d480"
+      },
+      {
+        "state": "idle",
+        "t": 2353,
+        "hash": "2a216a314d32f8cccf6c8180e5b43f5a115fa456a2963ee41637735e76005d1e"
+      }
+    ],
+    "maya|{\"size\":24}": [
+      {
+        "state": "working",
+        "t": 1000,
+        "hash": "64304711435265f7499a9d9a957bceb959a2750b12ac0b5d80311fb0fc15c55c"
+      },
+      {
+        "state": "working",
+        "t": 1033,
+        "hash": "04587491aa4834b6f8bd93751277c89fe5bfc66f92a34437680380a269e487ec"
+      },
+      {
+        "state": "working",
+        "t": 1066,
+        "hash": "820b580805be708b8f0a7ae312f1bfaeb921132342738cd075f2c9163ce58b7f"
+      },
+      {
+        "state": "working",
+        "t": 1099,
+        "hash": "00e88a8b6add116414e336fff26035e1980903f0e3f046398652aa75223d12e5"
+      },
+      {
+        "state": "working",
+        "t": 1132,
+        "hash": "dac085441009b8dbb78a89ad1bf812d516e906efdbcc7cd7e1fb94601bfbf08a"
+      },
+      {
+        "state": "working",
+        "t": 1165,
+        "hash": "2d3ed574880018f01dd87adaef3f034f580cb5321eec1669deef016971a7450b"
+      },
+      {
+        "state": "working",
+        "t": 1198,
+        "hash": "7b825de2310775887fe2fee1e24cbe73114ba7756c7d1a00afcc0aeeb01fa60e"
+      },
+      {
+        "state": "working",
+        "t": 1231,
+        "hash": "65dca76a81d62723abec41a4937fe22cd6c865174a32fb1a0540c4558c941f8a"
+      },
+      {
+        "state": "working",
+        "t": 1264,
+        "hash": "15190f1dbbb3ca989c97675d6ca06ec7638f3f1737dbe7e1d44a6bbce4a4191c"
+      },
+      {
+        "state": "working",
+        "t": 1297,
+        "hash": "659dd43bbb1308bef67d97361b0226f4e52929d8f26f6ca5120a7deb51a00c6d"
+      },
+      {
+        "state": "waiting",
+        "t": 1330,
+        "hash": "097b6e68316607c344f3b29f91ef28d422c77ec6bdce866feea2a96e7f83b9f2"
+      },
+      {
+        "state": "waiting",
+        "t": 1363,
+        "hash": "120fa19d0a8b77139fd1f427cb00f0e426ff68a02df641b643482b97380214a9"
+      },
+      {
+        "state": "waiting",
+        "t": 1396,
+        "hash": "b5b2eab0d72f617f130039df3292364a0c0048fafb253c0dbf1397c6fd740afe"
+      },
+      {
+        "state": "waiting",
+        "t": 1429,
+        "hash": "0ec00b0dc446a8c0e635a514d8bd53131c5bb5608d348953b48a8652076721cf"
+      },
+      {
+        "state": "thinking",
+        "t": 1462,
+        "hash": "d9334cb5932982c82cef944010444a1336a9c39a85dab9fef568b3ae9441319b"
+      },
+      {
+        "state": "thinking",
+        "t": 1495,
+        "hash": "20f8e561ca99a3c053439070804101be4aa7724ebfeef2fe503cb67b9c2a866e"
+      },
+      {
+        "state": "thinking",
+        "t": 1528,
+        "hash": "9d0a7fe60ffa8b0d70001c6536d8d806782024621edc3e2bc529a478381d170c"
+      },
+      {
+        "state": "thinking",
+        "t": 1561,
+        "hash": "db73a8be085d73210075609b5cc2fe4cd0dd76ef19ce149426622fbcfbe99985"
+      },
+      {
+        "state": "sleeping",
+        "t": 1594,
+        "hash": "306fdf89f114ab5655932f0d701c53e212be533ebf04cba03029f63c99ff451b"
+      },
+      {
+        "state": "sleeping",
+        "t": 1627,
+        "hash": "523749f441e054b367fd8a401432a2291bd757753a3cbb6ba18d39c62a55193d"
+      },
+      {
+        "state": "sleeping",
+        "t": 1660,
+        "hash": "313cbd67936edca2e52b52d6c0035a50c1cd28034574a9f8c06b8fd952249e6f"
+      },
+      {
+        "state": "sleeping",
+        "t": 1693,
+        "hash": "aa5e163666eeafb203106080b3d3094f562bd05784790fd515fe87698abddab9"
+      },
+      {
+        "state": "sending",
+        "t": 1726,
+        "hash": "db64f94e2b0edda8e8cea5007ed9d77d8a65f96e9b1da969b912ab7298b1e40d"
+      },
+      {
+        "state": "sending",
+        "t": 1759,
+        "hash": "03e7a9f8936681933d9161299cf2f76b1918376aeb3bd8e9725b86243c4913dc"
+      },
+      {
+        "state": "sending",
+        "t": 1792,
+        "hash": "9279d363bbfd935017f258fa8d8b5caab153c58cc27a27aaeacc326d11d09789"
+      },
+      {
+        "state": "sending",
+        "t": 1825,
+        "hash": "371dda6ee78a809f48d347c5935c07bdcaacef019a6d5077b67ab796d6e6d36a"
+      },
+      {
+        "state": "receiving",
+        "t": 1858,
+        "hash": "21b5b4b089f0a322a045e19f8243c033d01684a80bfdc547d3cee1e61b5a74dd"
+      },
+      {
+        "state": "receiving",
+        "t": 1891,
+        "hash": "91ee89989aa1850b8b8d800662e0c730130476b411af6c333a5e28a4b1ebb0f0"
+      },
+      {
+        "state": "receiving",
+        "t": 1924,
+        "hash": "f6f2ea70e0ccf185111f2b4f24c50ee52eb9782f12ffab2c5454c1fabf193327"
+      },
+      {
+        "state": "receiving",
+        "t": 1957,
+        "hash": "fb616aa8f1b45fbba6dafff66e708144a0c34cd8f5fcb444e19707437c9aa660"
+      },
+      {
+        "state": "done",
+        "t": 1990,
+        "hash": "137bad111deca5530dc07df327079e0b8f29fed0a7d10b0e1fae7c7fecf32307"
+      },
+      {
+        "state": "done",
+        "t": 2023,
+        "hash": "627d641369d0391bad906df2cbe8386628058a904b24d0f9d916f1db4f0c32f9"
+      },
+      {
+        "state": "done",
+        "t": 2056,
+        "hash": "76e6263b16f5127465f24e3dea68dafc5974d8f1092063dab60c71a065c9f8c6"
+      },
+      {
+        "state": "done",
+        "t": 2089,
+        "hash": "ea8bce18025f86836166496ef0f5beb63a64d86c997aef6ac6acd11a086f7b35"
+      },
+      {
+        "state": "error",
+        "t": 2122,
+        "hash": "05f6e2b6f5138db3b160e4891df7f4f13c0c1230c0d25162910d32bdfdb15a2a"
+      },
+      {
+        "state": "error",
+        "t": 2155,
+        "hash": "4ee857a4cb2cb6a9e9fb6ee5835ab3f6087d0ec30ead15541e76885cf6dc4e95"
+      },
+      {
+        "state": "error",
+        "t": 2188,
+        "hash": "0e3257619313073ae8f8d0cee2784484bf91ca06f2cfa4efdb1f065260c13295"
+      },
+      {
+        "state": "error",
+        "t": 2221,
+        "hash": "26f94733494287a1af786a0a8f10630cbd6f25f327c13c8c14433ab9bca69e85"
+      },
+      {
+        "state": "idle",
+        "t": 2254,
+        "hash": "083e3e7fc833503fafd91531e6e4265c7bae4871d4dc27a381a775bd441be12c"
+      },
+      {
+        "state": "idle",
+        "t": 2287,
+        "hash": "0b568c9ef91060a0f6da7a3c9264ef11cc1a436b42d2388b88a0e4c5ac876275"
+      },
+      {
+        "state": "idle",
+        "t": 2320,
+        "hash": "bbb0560123482333af7df8965f47e736aead448cf95ee02e4e19ac7d05879e12"
+      },
+      {
+        "state": "idle",
+        "t": 2353,
+        "hash": "b7a743db4ebd65dc263890ea3828db20d6137cba78139bb2f06b7f329fa58a45"
+      }
+    ],
+    "build-bot-7|{\"dark\":true}": [
+      {
+        "state": "working",
+        "t": 1000,
+        "hash": "1d254c6eb226e6b2913274d4b90452f529eefd206cd181a229a3cf51cc551b97"
+      },
+      {
+        "state": "working",
+        "t": 1033,
+        "hash": "2c17696dab3176fc4c0a02fa04a31e063448f164db2e60c16950c455cc243ac7"
+      },
+      {
+        "state": "working",
+        "t": 1066,
+        "hash": "9fbb27414c563e976d5356d8fcf156c05d4ea4d56f44ac57b243a66706e6cfa8"
+      },
+      {
+        "state": "working",
+        "t": 1099,
+        "hash": "0a898a2083a41fca5a3872bd75f6b45b187945c585d9ad93cad70cf654671dc0"
+      },
+      {
+        "state": "working",
+        "t": 1132,
+        "hash": "251e5a60e329a1878dbc0e767ea9536a8a15810aed65784ae4da6dc5c67e511d"
+      },
+      {
+        "state": "working",
+        "t": 1165,
+        "hash": "31206840c920327a5094b4248f7257cd28612b6da82aaa912ccd954fe4853012"
+      },
+      {
+        "state": "working",
+        "t": 1198,
+        "hash": "d46a3a0e1c54461218bdbd24ef5b741a4adf4740417ba19273ed89a6eb30cae6"
+      },
+      {
+        "state": "working",
+        "t": 1231,
+        "hash": "547b8a8d4810242caf65c284401de53307729a1a8888ad044471524c119c7812"
+      },
+      {
+        "state": "working",
+        "t": 1264,
+        "hash": "6c3c7bd325c0983461ca7d59a1d93789910baeffbb579a7f1da3ba8ba84090f8"
+      },
+      {
+        "state": "working",
+        "t": 1297,
+        "hash": "1d85dcf0edae31ca4cd6c5fb9a5c886b38cac3f84355fbd14a91201ad0328909"
+      },
+      {
+        "state": "waiting",
+        "t": 1330,
+        "hash": "bd9a1576599b823cb44126422076c29cedde26739aebb300578116f33ea3710d"
+      },
+      {
+        "state": "waiting",
+        "t": 1363,
+        "hash": "b99dd1b62a1fb678d6c94515a78543a0ea7b28d34f1e2c60b4fec13ed8e13ae1"
+      },
+      {
+        "state": "waiting",
+        "t": 1396,
+        "hash": "e35f12335b659b928d364b4788a8ff0f0e76d0e19be1713f4d410754497e1b70"
+      },
+      {
+        "state": "waiting",
+        "t": 1429,
+        "hash": "7d4f6d1ed3bb0b6ba6472c87b62eca9920c7a9ad9a35e22a77a14269baa4ea2f"
+      },
+      {
+        "state": "thinking",
+        "t": 1462,
+        "hash": "a7ec0098bc04bc6dccc4517d7382e96be0c3ccd673e494a6d9c1ba46206f126e"
+      },
+      {
+        "state": "thinking",
+        "t": 1495,
+        "hash": "27f9163fd1eba8fbae38b0d1ccff6428e5c35804aea9cd98bbe1306ea3bb2941"
+      },
+      {
+        "state": "thinking",
+        "t": 1528,
+        "hash": "09f4da4e68d168ca0fd18e598c6c330a1626f5a8f25bafae8097e119c7856733"
+      },
+      {
+        "state": "thinking",
+        "t": 1561,
+        "hash": "c339f1e88e4e191df3085de5caa42bd47935e9fe3e3a797f9149e101e22bf1bc"
+      },
+      {
+        "state": "sleeping",
+        "t": 1594,
+        "hash": "a1dde2f4979c63387161c1a965b8d785d67fe2036da129aa8eb50035077e1172"
+      },
+      {
+        "state": "sleeping",
+        "t": 1627,
+        "hash": "c53c222de04bf3e291676d31ddf517e4332273041c6d1d095b757d4570e20995"
+      },
+      {
+        "state": "sleeping",
+        "t": 1660,
+        "hash": "b37a0b3d53799ab5a1710a365931f34636e163d1a0ff6c8e76885f746f44db65"
+      },
+      {
+        "state": "sleeping",
+        "t": 1693,
+        "hash": "f7e5c431433ba837aca12cf8479934c64006ff3bf74ec8189f87baa7403b6a2b"
+      },
+      {
+        "state": "sending",
+        "t": 1726,
+        "hash": "de96649626282dda72cd0418fc57a0670c099a17b4ffe16d2a3135bc4bde3391"
+      },
+      {
+        "state": "sending",
+        "t": 1759,
+        "hash": "3e151cf1b3f7f9d95e7892d43e8f850e9b3d74b6d0230e2a79136b15e1ed13f9"
+      },
+      {
+        "state": "sending",
+        "t": 1792,
+        "hash": "7bf408353e5f75cea19c7191a44fb229bd2ae2896b6ca61d1ff02e5fe7d9f237"
+      },
+      {
+        "state": "sending",
+        "t": 1825,
+        "hash": "696875355652978ca07c34e3522b70034a4ea9e117a6c726f83293cb118d4214"
+      },
+      {
+        "state": "receiving",
+        "t": 1858,
+        "hash": "c8779ddee435cecaccf72378c34296631943ada8251a7edba7333e35d75d5283"
+      },
+      {
+        "state": "receiving",
+        "t": 1891,
+        "hash": "bd46abc2002c5b2639847adff69f13929372e53298a50f0ed22d460a73357808"
+      },
+      {
+        "state": "receiving",
+        "t": 1924,
+        "hash": "c946965da0a772e129405e68d34ae07fd1b93e63e3345a5c0e76ee7b1f34ee95"
+      },
+      {
+        "state": "receiving",
+        "t": 1957,
+        "hash": "0728f08bf9baf6096dc4c2d54790a7782f1385e472d9fe8e4a8135a3eac4189a"
+      },
+      {
+        "state": "done",
+        "t": 1990,
+        "hash": "d80127376523db1a2d951f366fd74db7f0697542ad90893efddabf2a00d79f86"
+      },
+      {
+        "state": "done",
+        "t": 2023,
+        "hash": "19652dd5c21d6994d03d962a44ac35ac23f566fa24015a55cdfa579d618f10e8"
+      },
+      {
+        "state": "done",
+        "t": 2056,
+        "hash": "6cb4cc045af8c4fd0ecb1d0490e9703b391909db6929d9e74276e8aa631e281d"
+      },
+      {
+        "state": "done",
+        "t": 2089,
+        "hash": "e5c12d92e22ae6df5621f4ba3ae5099ea278c8c663c90d4488f38fa2a2f34195"
+      },
+      {
+        "state": "error",
+        "t": 2122,
+        "hash": "a79b4f1566529ab28ec62d2703b8f025f53ac3428a7c5bf74e0e44520453ddf7"
+      },
+      {
+        "state": "error",
+        "t": 2155,
+        "hash": "5977fd2b0139f713aae7063d6f7f975dee666569b67bb73881679bfd01e04eeb"
+      },
+      {
+        "state": "error",
+        "t": 2188,
+        "hash": "1a0372b4d73ae0647f06c460e7b287f77f3899a4926a3cd21292a686d8e8c262"
+      },
+      {
+        "state": "error",
+        "t": 2221,
+        "hash": "4bdeaf0129c394fe45a2a1a342aae45b64134f33885b6b4a9342619e7e7723af"
+      },
+      {
+        "state": "idle",
+        "t": 2254,
+        "hash": "fa54c078c050c3d05db17ba635fa822f418e183ca8b432b5268ce6004857a8e0"
+      },
+      {
+        "state": "idle",
+        "t": 2287,
+        "hash": "72bd08000f8b8573bdcb0ee92bdb7fb41f2fffc1dcfab16c352fc969c425e4eb"
+      },
+      {
+        "state": "idle",
+        "t": 2320,
+        "hash": "847f6cd5db4bc71ea9b37a85938eb6d91587299e8caa472e56e4903b891be632"
+      },
+      {
+        "state": "idle",
+        "t": 2353,
+        "hash": "60336cbe0f90b21f9e351cc48789966fe3e1c65ea5dc8247d95687751516a9d2"
+      }
+    ],
+    "Ada Lovelace|reduced": [
+      {
+        "state": "working",
+        "hash": "c4db4ad5b76bacf4f8034945a328977d8229e064b35b00cf2712290fb25b4591"
+      },
+      {
+        "state": "waiting",
+        "hash": "f8b32aeb0f90b885fa165222bf491db79a279f557ba78f4e7422764a8c55a187"
+      },
+      {
+        "state": "thinking",
+        "hash": "16452fb059837e7c56324a9757691b9eb3da5994ac2a90bf4801bbf349873a9f"
+      },
+      {
+        "state": "sleeping",
+        "hash": "95c1bde1962625a3722304d772d37cd261626db5082cd6b4146db9dfa037c3b0"
+      },
+      {
+        "state": "sending",
+        "hash": "d50c4c8c3af38d58a92b176a689c415ecfcc9aba9dad2dcc6ad75371baef3daf"
+      },
+      {
+        "state": "receiving",
+        "hash": "d34b82b0dc89c1bc99ba0a4ecb13855090fd9065c29a13e96c026936c20f2cb5"
+      },
+      {
+        "state": "done",
+        "hash": "3c132dcf1bc478cd5982940e7e63b1e54d46cffa82e35be89096da94c2a204a5"
+      },
+      {
+        "state": "error",
+        "hash": "6de6d52d76aa7d85b3c6e8fb968f56258a9eb9be264d5b656ae9cda7b3dfe8cb"
+      },
+      {
+        "state": "idle",
+        "hash": "551a01141c5f1c5e3e1d018f4e6406a9a8fb5a8884bc5c1cc9909486de863f05"
+      }
+    ]
+  }
+}

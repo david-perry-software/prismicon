@@ -2,14 +2,14 @@
 status: in-progress
 branch: feature/variant-renderer-integration
 last-updated: 2026-09-08
-next-step: "1.1 Golden harness and fixture captured from unmodified src/"
+next-step: "2.1 Refactor src/core.js in place into shared pipeline with polyhedron hooks"
 initiative: "scalable-icon-variants"
 ```
 
 ## Phase 1: Golden guard rails (before any `src/` change)
 
-- [ ] 1.1 Add `test/helpers/golden.js` (JSDOM harness modelled on `test/prismicon.test.js` — mocked `matchMedia`, counted `requestAnimationFrame`, no `IntersectionObserver` — exporting `captureGolden()` that returns full `renderStaticSVG` strings for seeds `maya`, `build-bot-7`, `Alice@X.com`, `Ada Lovelace`, `demo-agent` × options `{}`, `{ size: 24 }`, `{ kind: 'user' }`, `{ state: 'thinking', dark: true }`, `{ state: 'waiting' }`, `{ state: 'error', size: 140 }`, plus SHA-256 digests of `svg.outerHTML` per frame for mounted agents `maya`, `build-bot-7`, `maya` at `size: 24`, `build-bot-7` with `dark: true`, driven at timestamps `1000 + 33·k` through `working` (10 frames) then `waiting, thinking, sleeping, sending, receiving, done, error, idle` (4 frames each), and a reduced-motion sequence over the same states) and `scripts/generate-golden.mjs` that writes `test/fixtures/golden-v1.json`; run it with `src/` untouched — verify: `git diff --quiet origin/main -- src && node scripts/generate-golden.mjs && node --input-type=module -e "import {readFileSync} from 'node:fs'; const g = JSON.parse(readFileSync('test/fixtures/golden-v1.json','utf8')); console.log(Object.keys(g.static).length, Object.keys(g.mounted).length)"` prints `30 5`
-- [ ] 1.2 Add `test/golden-v1.test.js` asserting `captureGolden()` deep-equals the fixture, with a failure message naming the scenario/frame and `node scripts/generate-golden.mjs` — verify: `npm test` prints `# fail 0` and `# tests` ≥ 33; commit fixture + test before any `src/` change
+- [x] 1.1 Add `test/helpers/golden.js` (JSDOM harness modelled on `test/prismicon.test.js` — mocked `matchMedia`, counted `requestAnimationFrame`, no `IntersectionObserver` — exporting `captureGolden()` that returns full `renderStaticSVG` strings for seeds `maya`, `build-bot-7`, `Alice@X.com`, `Ada Lovelace`, `demo-agent` × options `{}`, `{ size: 24 }`, `{ kind: 'user' }`, `{ state: 'thinking', dark: true }`, `{ state: 'waiting' }`, `{ state: 'error', size: 140 }`, plus SHA-256 digests of `svg.outerHTML` per frame for mounted agents `maya`, `build-bot-7`, `maya` at `size: 24`, `build-bot-7` with `dark: true`, driven at timestamps `1000 + 33·k` through `working` (10 frames) then `waiting, thinking, sleeping, sending, receiving, done, error, idle` (4 frames each), and a reduced-motion sequence over the same states) and `scripts/generate-golden.mjs` that writes `test/fixtures/golden-v1.json`; run it with `src/` untouched — verify: `git diff --quiet origin/main -- src && node scripts/generate-golden.mjs && node --input-type=module -e "import {readFileSync} from 'node:fs'; const g = JSON.parse(readFileSync('test/fixtures/golden-v1.json','utf8')); console.log(Object.keys(g.static).length, Object.keys(g.mounted).length)"` prints `30 5`
+- [x] 1.2 Add `test/golden-v1.test.js` asserting `captureGolden()` deep-equals the fixture, with a failure message naming the scenario/frame and `node scripts/generate-golden.mjs` — verify: `npm test` prints `# fail 0` and `# tests` ≥ 33; commit fixture + test before any `src/` change
 
 ## Phase 2: Split the shared pipeline from the polyhedron implementation
 
