@@ -2,8 +2,7 @@ import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
 import { deriveV1, renderStaticSVG } from '../src/core.js';
 import { VARIANT_ID_PATTERN, createVariantRegistry, defineVariant } from '../src/variants/registry.js';
-import { polyhedron } from '../src/variants/polyhedron.js';
-import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, resolveVariant } from '../src/variants/index.js';
+import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, resolveVariant, polyhedron } from '../src/variants/index.js';
 
 // Copied verbatim from test/derivation-freeze.test.js (frozen v1 engine, commit 9204c26).
 const FROZEN = JSON.parse(`{
