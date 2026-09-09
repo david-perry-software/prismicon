@@ -123,9 +123,11 @@ describe('renderer dispatch', () => {
     );
   });
 
-  test('unknown variant id throws RangeError and leaves host untouched from mount entry', () => {
+  test('unknown variant id throws RangeError and leaves host untouched from mount entry', async () => {
     const dom = installDom();
-    const { mountGlyph } = createTestRenderer();
+    // Fresh module so the engine singleton has not already been created against an earlier document.
+    const { createRenderer: freshCreateRenderer } = await import('../src/core.js?no-style-unknown-id');
+    const { mountGlyph } = freshCreateRenderer(createVariantRegistry([polyhedron, square], { defaultId: 'polyhedron' }));
     assert.throws(
       () => mountGlyph(dom.container, 'x', { variant: 'triangle' }),
       (err) => err instanceof RangeError && /polyhedron, square/.test(err.message)
@@ -135,9 +137,10 @@ describe('renderer dispatch', () => {
     assert.equal(document.getElementById('prismicon-style'), null, 'invalid variant must not inject global style');
   });
 
-  test('invalid variant key throws before engine mutates the document', () => {
+  test('invalid variant key throws before engine mutates the document', async () => {
     const dom = installDom();
-    const { mountGlyph } = createTestRenderer();
+    const { createRenderer: freshCreateRenderer } = await import('../src/core.js?no-style-invalid-key');
+    const { mountGlyph } = freshCreateRenderer(createVariantRegistry([polyhedron, square], { defaultId: 'polyhedron' }));
     assert.throws(() => mountGlyph(dom.container, 'x', { variant: 42 }), TypeError);
     assert.equal(dom.container.innerHTML, '');
     assert.equal(dom.container.classList.contains('prismicon'), false);
@@ -168,22 +171,25 @@ describe('renderer dispatch', () => {
     s.destroy();
   });
 
-  test('square receiving state uses its own flash hook without throwing', async () => {
+  test('square receiving state consults the variant flash hook and settles to rest', async () => {
     const dom = installDom();
+    const flashCalls = [];
+    const spiedSquare = { ...square, flash: (p, s) => { flashCalls.push(s); return square.flash(p, s); } };
     const { createRenderer: freshCreateRenderer } = await import('../src/core.js?flash-hook');
-    const { mountGlyph } = freshCreateRenderer(createVariantRegistry([polyhedron, square], { defaultId: 'polyhedron' }));
+    const { mountGlyph } = freshCreateRenderer(createVariantRegistry([polyhedron, spiedSquare], { defaultId: 'polyhedron' }));
     const handle = mountGlyph(dom.container, 'Ada Lovelace', { variant: 'square', state: 'working' });
-    handle.setState('receiving');
-    // receiving is transient; it schedules frames until it settles after 0.4 s.
+    const rotation = () => dom.container.querySelector('rect').getAttribute('transform');
     dom.advanceAnimationFrame(1000);
-    dom.advanceAnimationFrame(1033);
-    dom.advanceAnimationFrame(1066);
-    dom.advanceAnimationFrame(1100);
-    // advance through settling frames until the square variant reports rest
-    dom.advanceAnimationFrame(1133);
-    dom.advanceAnimationFrame(1166);
-    dom.advanceAnimationFrame(1200);
-    handle.setState('idle');
+    assert.notEqual(rotation(), 'rotate(0.0 50 50)', 'working pose must be off rest before receiving');
+    handle.setState('receiving');
+    assert.deepEqual(flashCalls, ['receiving']);
+    // receiving is transient (0.4 s) and then settles; drive frames until the square reports rest.
+    let now = 1033;
+    for (let i = 0; i < 200 && rotation() !== 'rotate(0.0 50 50)'; i++, now += 33) {
+      dom.advanceAnimationFrame(now);
+    }
+    assert.equal(rotation(), 'rotate(0.0 50 50)', 'square must settle back to its rest pose');
+    assert.match(dom.container.querySelector('svg').getAttribute('aria-label'), /, receiving$/);
     handle.destroy();
   });
 

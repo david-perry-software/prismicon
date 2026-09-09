@@ -104,7 +104,7 @@ export function createRenderer(registry) {
       svg, g: gs[0], sg: gs[1], variant, p, geo, kind, dark, seedRaw: String(seed),
       state: !eng.reduced && (initial === 'working' || initial === 'waiting' || initial === 'thinking' || initial === 'sleeping') ? initial : 'idle',
       rest, pose: initialPose,
-      flash: null, flashT: 0, shake: false, transientT: 0, lightenFlash: false, visible: true,
+      flash: null, flashT: 0, shake: false, transientT: 0, lighten: 0, visible: true,
       publicState: initial
     };
     inst.g.innerHTML = variant.paint(p, geo, inst.pose, { dark, sleeping: initial === 'sleeping', dx: 0, lighten: 0, flash: null });
@@ -136,18 +136,18 @@ export function createRenderer(registry) {
           return;
         }
         if (name === 'working' || name === 'waiting' || name === 'thinking' || name === 'sleeping') {
-          inst.state = name; inst.flash = null; inst.lightenFlash = false;
+          inst.state = name; inst.flash = null; inst.lighten = 0;
         } else if (name === 'sending' || name === 'receiving') {
           inst.state = name; inst.transientT = 0; inst.flashT = 0; inst.shake = false;
           const flash = variant.flash(p, name) || {};
           inst.flash = flash.hue != null ? flash.hue : null;
-          inst.lightenFlash = flash.lighten != null ? flash.lighten : false;
+          inst.lighten = flash.lighten || 0;
         } else {
           inst.state = 'settling'; inst.flashT = 0;
           const flash = variant.flash(p, name) || {};
           inst.flash = flash.hue != null ? flash.hue : null;
           inst.shake = !!flash.shake;
-          inst.lightenFlash = flash.lighten != null ? flash.lighten : false;
+          inst.lighten = flash.lighten || 0;
         }
         applyStatus(inst, name, true);
         eng.ensureRunning();
@@ -237,12 +237,12 @@ function getEngine() {
       if (t < 1.4) {
         const s = t < 0.12 ? t / 0.12 : Math.exp(-(t - 0.12) * 3);
         effects.flash = { hue: inst.flash, strength: 0.75 * s };
-        if (inst.lightenFlash) effects.lighten = 26 * s;
+        if (inst.lighten) effects.lighten = inst.lighten * s;
         if (inst.shake) effects.dx = Math.sin(t * 36) * 3.2 * Math.exp(-t * 6);
         dirty = true;
       } else {
         inst.flash = null;
-        inst.lightenFlash = false;
+        inst.lighten = 0;
         dirty = true;
       }
     }

@@ -12,6 +12,8 @@
  *   animate(pose, ctx) -> new immutable pose
  *   paint(params, geometry, pose, effects) -> SVG markup string
  *   flash(params, state) -> { hue?, lighten?, shake? } | null
+ *     (`lighten` is the peak lightness boost in percentage points; the engine
+ *     scales it by the flash envelope and passes it to `paint` as effects.lighten)
  *
  * The shared renderer calls them in that order. `geometry` is computed once
  * per instance; `pose` is the rest/target configuration for a state; `animate`
