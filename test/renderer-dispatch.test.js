@@ -132,6 +132,16 @@ describe('renderer dispatch', () => {
     );
     assert.equal(dom.container.innerHTML, '');
     assert.equal(dom.container.classList.contains('prismicon'), false);
+    assert.equal(document.getElementById('prismicon-style'), null, 'invalid variant must not inject global style');
+  });
+
+  test('invalid variant key throws before engine mutates the document', () => {
+    const dom = installDom();
+    const { mountGlyph } = createTestRenderer();
+    assert.throws(() => mountGlyph(dom.container, 'x', { variant: 42 }), TypeError);
+    assert.equal(dom.container.innerHTML, '');
+    assert.equal(dom.container.classList.contains('prismicon'), false);
+    assert.equal(document.getElementById('prismicon-style'), null, 'invalid variant must not inject global style');
   });
 
   test('non-string variant key throws TypeError', () => {
@@ -156,6 +166,25 @@ describe('renderer dispatch', () => {
     const s = mountBoth(dom.container, 'x', { variant: 'square' });
     assert.equal(s.variant, 'square');
     s.destroy();
+  });
+
+  test('square receiving state uses its own flash hook without throwing', async () => {
+    const dom = installDom();
+    const { createRenderer: freshCreateRenderer } = await import('../src/core.js?flash-hook');
+    const { mountGlyph } = freshCreateRenderer(createVariantRegistry([polyhedron, square], { defaultId: 'polyhedron' }));
+    const handle = mountGlyph(dom.container, 'Ada Lovelace', { variant: 'square', state: 'working' });
+    handle.setState('receiving');
+    // receiving is transient; it schedules frames until it settles after 0.4 s.
+    dom.advanceAnimationFrame(1000);
+    dom.advanceAnimationFrame(1033);
+    dom.advanceAnimationFrame(1066);
+    dom.advanceAnimationFrame(1100);
+    // advance through settling frames until the square variant reports rest
+    dom.advanceAnimationFrame(1133);
+    dom.advanceAnimationFrame(1166);
+    dom.advanceAnimationFrame(1200);
+    handle.setState('idle');
+    handle.destroy();
   });
 
   test('two renderers share one rAF chain', async () => {

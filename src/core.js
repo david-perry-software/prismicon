@@ -85,8 +85,8 @@ export function createRenderer(registry) {
   }
 
   function mountGlyph(el, seed, opts = {}) {
-    const eng = getEngine();
     const variant = registry.resolve(opts.variant);
+    const eng = getEngine();
     const kind = opts.kind || 'agent';
     const size = opts.size || 64;
     const dark = opts.dark != null ? !!opts.dark : autoDark();
@@ -139,14 +139,15 @@ export function createRenderer(registry) {
           inst.state = name; inst.flash = null; inst.lightenFlash = false;
         } else if (name === 'sending' || name === 'receiving') {
           inst.state = name; inst.transientT = 0; inst.flashT = 0; inst.shake = false;
-          if (name === 'receiving') { inst.flash = p.hue; inst.lightenFlash = true; }
-          else { inst.flash = null; inst.lightenFlash = false; }
+          const flash = variant.flash(p, name) || {};
+          inst.flash = flash.hue != null ? flash.hue : null;
+          inst.lightenFlash = flash.lighten != null ? flash.lighten : false;
         } else {
           inst.state = 'settling'; inst.flashT = 0;
-          if (name === 'done') { inst.flash = 145; inst.shake = false; }
-          else if (name === 'error') { inst.flash = 4; inst.shake = true; }
-          else { inst.flash = null; }
-          inst.lightenFlash = false;
+          const flash = variant.flash(p, name) || {};
+          inst.flash = flash.hue != null ? flash.hue : null;
+          inst.shake = !!flash.shake;
+          inst.lightenFlash = flash.lighten != null ? flash.lighten : false;
         }
         applyStatus(inst, name, true);
         eng.ensureRunning();
