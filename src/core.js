@@ -150,7 +150,7 @@ export function createRenderer(registry) {
     }
     return {
       params: p,
-      variant: variant.id,
+      get variant() { return variant.id; },
       get state() { return inst.publicState; },
       setState(name) {
         if (kind !== 'agent' || STATES.indexOf(name) < 0) return;

@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/variant-renderer-integration
 last-updated: 2026-09-09
-next-step: "3.1 Add createRenderer(registry) public export"
+next-step: "3.2 Square fixture variant and renderer-dispatch tests"
 initiative: "scalable-icon-variants"
 ```
 
@@ -19,7 +19,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 3: Route rendering through the registry
 
-- [ ] 3.1 Add `createRenderer(registry)` to `src/core.js` returning `{ renderStaticSVG, mountGlyph }` that resolve `opts.variant` via `registry.resolve` before any option normalisation or DOM mutation, share the module engine, and set `handle.variant`; export the public `renderStaticSVG`/`mountGlyph` as the default renderer over `BUILT_IN_VARIANTS`; add `renderStaticSVG(seed, { variant: 'polyhedron' }) === renderStaticSVG(seed)` for `PARITY_OPTS` to `test/variants.test.js` — verify: `npm test` prints `# fail 0` and `node --input-type=module -e "const m = await import('./src/index.js'); try { m.renderStaticSVG('x', { variant: 'nope' }) } catch (e) { console.log(e.constructor.name, /polyhedron/.test(e.message)) }"` prints `RangeError true`
+- [x] 3.1 Add `createRenderer(registry)` to `src/core.js` returning `{ renderStaticSVG, mountGlyph }` that resolve `opts.variant` via `registry.resolve` before any option normalisation or DOM mutation, share the module engine, and set `handle.variant`; export the public `renderStaticSVG`/`mountGlyph` as the default renderer over `BUILT_IN_VARIANTS`; add `renderStaticSVG(seed, { variant: 'polyhedron' }) === renderStaticSVG(seed)` for `PARITY_OPTS` to `test/variants.test.js` — verify: `npm test` prints `# fail 0` and `node --input-type=module -e "const m = await import('./src/index.js'); try { m.renderStaticSVG('x', { variant: 'nope' }) } catch (e) { console.log(e.constructor.name, /polyhedron/.test(e.message)) }"` prints `RangeError true`
 - [ ] 3.2 Add `test/fixtures/square-variant.js` (`id: 'square'`, `label: 'Square'`, `spec: 'test-square-1'`; `derive` → `{ spec, seed, hue }`, `paint` → one `<rect>` rotated by the pose angle, `animate` spins while `working`, eases toward and returns `ctx.rest` when `settling`, returns the same pose otherwise) and `test/renderer-dispatch.test.js` using `createRenderer(createVariantRegistry([polyhedron, square], { defaultId: 'polyhedron' }))` covering: static `<rect>` + ring + aria-label `"<seed>: <describe>, working"`; `kind: 'user'` has no ring/suffix; mounted `working` geometry differs across frames; `setState('waiting')` ring `0.1 9` + aria-label; reduced motion → zero rAF, geometry identical across frames, ring still updates; `destroy()` empties host; unknown id → `RangeError` from both entry points with `el.innerHTML === ''` and no `prismicon` class; non-string → `TypeError`; default renderer rejects `'square'`; `handle.variant === 'square'` / `'polyhedron'`; two renderers share one rAF chain — verify: `node --test test/renderer-dispatch.test.js` prints `# fail 0` and `npm test` prints `# fail 0`
 
 ## Phase 4: Public surface, types, docs

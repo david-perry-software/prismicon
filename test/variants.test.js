@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
-import { deriveV1, describeParams } from '../src/core.js';
+import { deriveV1, describeParams, renderStaticSVG } from '../src/core.js';
 import {
   prepareParams,
   buildGeometry,
@@ -8,6 +8,8 @@ import {
   animatePose,
   paintFrame
 } from '../src/variants/polyhedron.js';
+
+const PARITY_OPTS = [{}, { size: 24 }, { kind: 'user' }, { state: 'thinking', dark: true }];
 import { VARIANT_ID_PATTERN, createVariantRegistry, defineVariant } from '../src/variants/registry.js';
 import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, resolveVariant, polyhedron, listVariants } from '../src/variants/index.js';
 
@@ -207,6 +209,15 @@ describe('polyhedron built-in variant', () => {
     for (const seed of Object.keys(FROZEN)) {
       const p = polyhedron.derive(seed);
       assert.equal(polyhedron.describe(p), describeParams(p));
+    }
+  });
+
+  test('renderStaticSVG with explicit variant equals default renderStaticSVG', () => {
+    for (const seed of Object.keys(FROZEN)) {
+      for (const opts of PARITY_OPTS) {
+        const actual = renderStaticSVG(seed, { ...opts, variant: 'polyhedron' });
+        assert.equal(actual, renderStaticSVG(seed, opts), `${seed} ${JSON.stringify(opts)}`);
+      }
     }
   });
 
