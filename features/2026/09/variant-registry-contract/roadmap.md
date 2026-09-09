@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/variant-registry-contract
 last-updated: 2026-09-08
-next-step: "2.1 — create src/variants/polyhedron.js binding core exports"
+next-step: "2.2 — create src/variants/index.js with BUILT_IN_VARIANTS and resolveVariant"
 initiative: "scalable-icon-variants"
 ```
 
@@ -15,7 +15,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 2: Built-in default variant
 
-- [ ] 2.1 Create `src/variants/polyhedron.js` exporting `polyhedron = defineVariant({ id: 'polyhedron', label: 'Polyhedron', spec: SPEC_VERSION, derive: deriveV1, describe: describeParams, renderStatic: renderStaticSVG, mount: mountGlyph })` importing those names from `../core.js` — verify: `node -e "import('./src/variants/polyhedron.js').then(m => console.log(m.polyhedron.id, m.polyhedron.spec, Object.isFrozen(m.polyhedron)))"` prints `polyhedron v1 true`
+- [x] 2.1 Create `src/variants/polyhedron.js` exporting `polyhedron = defineVariant({ id: 'polyhedron', label: 'Polyhedron', spec: SPEC_VERSION, derive: deriveV1, describe: describeParams, renderStatic: renderStaticSVG, mount: mountGlyph })` importing those names from `../core.js` — verify: `node -e "import('./src/variants/polyhedron.js').then(m => console.log(m.polyhedron.id, m.polyhedron.spec, Object.isFrozen(m.polyhedron)))"` prints `polyhedron v1 true`
 - [ ] 2.2 Create `src/variants/index.js` exporting `DEFAULT_VARIANT_ID = 'polyhedron'`, `BUILT_IN_VARIANTS = createVariantRegistry([polyhedron], { defaultId: DEFAULT_VARIANT_ID })`, `resolveVariant(key, registry = BUILT_IN_VARIANTS)`, and re-exporting `defineVariant`, `createVariantRegistry`, `VARIANT_ID_PATTERN` — verify: `node -e "import('./src/variants/index.js').then(m => console.log(m.resolveVariant().id, m.BUILT_IN_VARIANTS.ids.join(',')))"` prints `polyhedron polyhedron`
 - [ ] 2.3 Add parity tests to `test/variants.test.js`: for seeds `maya`, `build-bot-7`, `Alice@X.com`, `polyhedron.derive(seed)` deep-equals `deriveV1(seed)` and the `FROZEN` values from `test/derivation-freeze.test.js` (copy the fixture literal; do not modify that file), and `polyhedron.renderStatic(seed, opts)` string-equals `renderStaticSVG(seed, opts)` for `opts` in `{}`, `{ size: 24 }`, `{ kind: 'user' }`, `{ state: 'thinking', dark: true }` — verify: `node --test test/variants.test.js` exits 0
 - [ ] 2.4 Add a public-surface guard test to `test/variants.test.js`: `Object.keys(await import('../src/index.js')).sort()` deep-equals the sorted list `FINISH_NAMES, PALETTE, SIDE_NAMES, SOLID_NAMES, SPEC_VERSION, STATES, deriveV1, describeParams, mountGlyph, normalizeSeed, renderStaticSVG`, and `import('../src/index.js')` exposes no key containing `variant` (case-insensitive) — verify: `node --test test/variants.test.js` exits 0
