@@ -22,6 +22,11 @@
 <p>Deterministic 3D identicons with lifecycle states. Open the console and try
 <code>handle.setState('done')</code>.</p>
 
+<p>
+  <label for="variant">Variant:</label>
+  <select id="variant"></select>
+</p>
+
 <h2>An agent, controllable</h2>
 <div class="buttons" id="buttons"></div>
 <div id="hero"></div>
@@ -33,14 +38,30 @@
 <div class="row" id="people"></div>
 
 <script type="module">
-import { mountGlyph, STATES, describeParams, deriveV1 } from '../src/index.js';
+import { mountGlyph, STATES, describeParams, deriveV1, listVariants, DEFAULT_VARIANT_ID } from '../src/index.js';
 
 const dark = matchMedia('(prefers-color-scheme: dark)').matches;
 
-const hero = document.getElementById('hero');
-const handle = mountGlyph(hero, 'demo-agent', { kind: 'agent', size: 140, state: 'working', dark });
-window.handle = handle;
-console.log('anatomy:', describeParams(deriveV1('demo-agent')));
+function mountHero(variant) {
+  const hero = document.getElementById('hero');
+  const state = window.handle?.state || 'working';
+  if (window.handle) window.handle.destroy();
+  const handle = mountGlyph(hero, 'demo-agent', { kind: 'agent', size: 140, state, dark, variant });
+  window.handle = handle;
+  console.log('variant:', handle.variant, 'anatomy:', describeParams(deriveV1('demo-agent')));
+}
+
+const variantSelect = document.getElementById('variant');
+for (const { id, label } of listVariants()) {
+  const option = document.createElement('option');
+  option.value = id;
+  option.textContent = label;
+  if (id === DEFAULT_VARIANT_ID) option.selected = true;
+  variantSelect.appendChild(option);
+}
+variantSelect.addEventListener('change', () => mountHero(variantSelect.value));
+
+mountHero(DEFAULT_VARIANT_ID);
 
 const buttons = document.getElementById('buttons');
 STATES.forEach((s) => {
