@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
-import { deriveV1, describeParams, renderStaticSVG } from '../src/core.js';
+import { deriveV1, describeParams, renderStaticSVG, mountGlyph } from '../src/core.js';
 import {
   prepareParams,
   buildGeometry,
@@ -219,6 +219,28 @@ describe('polyhedron built-in variant', () => {
         assert.equal(actual, renderStaticSVG(seed, opts), `${seed} ${JSON.stringify(opts)}`);
       }
     }
+  });
+});
+
+describe('public renderer error contract', () => {
+  test('non-string variant key throws TypeError from renderStaticSVG', () => {
+    for (const key of [42, {}, [], true, Symbol('x')]) {
+      assert.throws(() => renderStaticSVG('x', { variant: key }), TypeError);
+    }
+  });
+
+  test('non-string variant key throws TypeError from mountGlyph before touching the host', () => {
+    for (const key of [42, {}, [], true, Symbol('x')]) {
+      const el = { classList: { add() { throw new Error('host must not be mutated'); } } };
+      assert.throws(() => mountGlyph(el, 'x', { variant: key }), TypeError);
+    }
+  });
+
+  test('unknown variant id throws RangeError naming it and polyhedron', () => {
+    assert.throws(
+      () => renderStaticSVG('x', { variant: 'nope' }),
+      (err) => err instanceof RangeError && /"nope"/.test(err.message) && /polyhedron/.test(err.message)
+    );
   });
 
   test('listVariants exposes only id, label and spec, frozen', () => {

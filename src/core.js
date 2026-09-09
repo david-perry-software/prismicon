@@ -16,13 +16,9 @@ import {
   FINISH_NAMES,
   normalizeSeed,
   deriveV1,
-  describeParams,
-  prepareParams,
-  buildGeometry,
-  poseForState,
-  animatePose,
-  paintFrame
+  describeParams
 } from './variants/polyhedron.js';
+import { BUILT_IN_VARIANTS } from './variants/index.js';
 
 export const STATES = ['idle', 'working', 'waiting', 'done', 'error', 'thinking', 'sending', 'receiving', 'sleeping'];
 
@@ -72,30 +68,6 @@ function describeInstance(variant, seedRaw, p, kind, state) {
 }
 
 // ---------------------------------------------------------------- renderer factory
-
-const polyhedron = {
-  id: 'polyhedron',
-  label: 'Polyhedron',
-  spec: SPEC_VERSION,
-  derive: deriveV1,
-  describe: describeParams,
-  prepare: prepareParams,
-  geometry: buildGeometry,
-  pose: poseForState,
-  animate: animatePose,
-  paint: paintFrame
-};
-
-const BUILT_IN_VARIANTS = {
-  defaultId: 'polyhedron',
-  resolve(key) {
-    if (key === undefined || key === null) return polyhedron;
-    if (key !== 'polyhedron') {
-      throw new RangeError('Unknown prismicon variant "' + key + '"; registered: polyhedron');
-    }
-    return polyhedron;
-  }
-};
 
 export function createRenderer(registry) {
   function renderStaticSVG(seed, opts = {}) {

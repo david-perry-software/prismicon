@@ -72,8 +72,6 @@ declare module 'prismicon/react' {
     kind?: GlyphKind;
     state?: GlyphState;
     dark?: boolean;
-    /** Variant id. Omit to use the default variant. React variant support is coming in a later release. */
-    variant?: string;
     className?: string;
     style?: CSSProperties;
     title?: string;
