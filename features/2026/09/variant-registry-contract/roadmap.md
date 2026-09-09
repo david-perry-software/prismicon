@@ -1,5 +1,5 @@
 ```yaml
-status: planned
+status: in-progress
 branch: feature/variant-registry-contract
 last-updated: 2026-09-08
 next-step: "1.1 — create src/variants/registry.js with the descriptor validator"
