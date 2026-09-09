@@ -38,72 +38,84 @@ mounting with bad options must not touch the host element, and also pollutes
 **Fix:** resolve `opts.variant` before calling `getEngine()`. Any code that needs the
 engine's reduced-motion state to pick the initial pose can defer that lookup until
 after validation (the invalid-input path does not need the engine). The `renderStaticSVG`
-path already validates first and is unaffected.
+# Review: variant-renderer-integration
 
-**Test to add:** in `test/renderer-dispatch.test.js` (or `test/variants.test.js`),
-assert that after an invalid `variant` is rejected by `mountGlyph`:
+Verdict: approve
 
-- `document.getElementById('prismicon-style')` is `null`, and
-- the host element's `innerHTML === ''` and it has no `prismicon` class.
+Reviewed `6228064` on `feature/variant-renderer-integration` against `origin/main`
+(`ec81fac`). `agento.mjs resolve feature variant-renderer-integration` returned
+`status: ok`; the worktree owns the roadmap branch, `origin/main` is an ancestor,
+and the worktree was clean before this review artifact update.
 
-Because `getEngine()` is a singleton, tests may currently share a single engine instance
-across the process; use per-test module cache-busting or test against a fresh JSDOM
-document so the style element is not left over from a previous test. The assertion must
-be strong enough to fail with the current code.
+## Acceptance checklist results
 
-### Major — shared engine reads `params.hue`, violating opaque params contract
+All 16 plan acceptance items pass:
 
-[src/core.js](../../../../src/core.js#L165-L168)
+- Pass — `npm ci && npm test`: 52 tests, 52 pass, 0 fail.
+- Pass — `node scripts/generate-golden.mjs` wrote 30 static and 5 mounted entries;
+  `git diff --quiet -- test/fixtures/golden-v1.json` exited 0. The fixture commit
+  `2fc35d1` precedes every later `src/` change in `git log --oneline --reverse
+  origin/main..HEAD -- src test/fixtures`.
+- Pass — `git diff --quiet origin/main -- test/prismicon.test.js
+  test/derivation-freeze.test.js src/react.js package.json` exited 0.
+- Pass — `test/variants.test.js` verifies all seven v2 hooks are required and
+  rejects the removed `renderStatic` and `mount` keys; the full suite passed.
+- Pass — the polyhedron parity tests cover every `PARITY_OPTS` entry and the frozen
+  seeds; the full suite passed.
+- Pass — `node --test test/renderer-dispatch.test.js` passed all 14 tests covering
+  square rendering, state rings, reduced motion, animation, and cleanup.
+- Pass — the same 14-test suite verifies unknown ids and non-string keys throw before
+  host/document mutation, and the default renderer rejects `square`.
+- Pass — the dispatch suite verifies `handle.variant` for both polyhedron and square.
+- Pass — the dispatch suite verifies two renderers share one rAF chain.
+- Pass — the public-surface suite verifies exactly 13 exports and frozen discovery
+  records from `listVariants()`.
+- Pass — `grep -F 'core.js' src/variants/{registry,polyhedron,index}.js` found no
+  imports.
+- Pass — the roadmap TypeScript command reported only the documented pre-existing
+  `TS7016` diagnostic for the unresolved React declaration.
+- Pass — `README.md` contains the `## Variants` section between the vanilla API and
+  frozen derivation sections with the requested API and error behavior.
+- Pass — browser verification at `http://127.0.0.1:3128/demo/index.html`: no page
+  load errors, one selected `Polyhedron` option, hero `working` label, `done` label
+  after clicking the state button, and a new SVG node after re-selecting the variant
+  while preserving the `done` label. The committed screenshot is
+  [evidence/step-5-2-demo-variant-select.png](evidence/step-5-2-demo-variant-select.png).
+- Pass — `npm pack --dry-run` listed all six required `src` files and no `test/` or
+  `scripts/` paths.
+- Pass — AGENTS.md declares no lint or typecheck command; the complete `npm test`
+  gate passed against the recorded 32-test baseline, with no lint findings.
 
-```js
-} else if (name === 'sending' || name === 'receiving') {
-  inst.state = name; inst.transientT = 0; inst.flashT = 0; inst.shake = false;
-  if (name === 'receiving') { inst.flash = p.hue; inst.lightenFlash = true; }
-```
+## Plan vs implementation
 
-`setState('receiving')` reaches into `p.hue` to configure the flash effect. The variant
-contract documented in [src/variants/registry.js](../../../../src/variants/registry.js)
-says `params` is returned by `prepare(params, { size })` and is otherwise opaque to the
-shared engine. A variant that does not derive a `hue` field (e.g. the test-only `square`
-fixture, or any future non-polyhedron variant) will set `inst.flash = undefined`, which
-silently disables the `receiving` flash instead of letting the variant decide how to
-paint that transient state.
+The implementation matches the planned v2 architecture: the shared engine owns
+accessibility, rings, reduced motion, lifecycle scheduling, and DOM writes while
+variant descriptors own derivation, geometry, poses, animation, painting, and flash
+effects. The two 2026-09-09 review fixes are present and verified:
 
-**Fix:** the engine must ask the variant descriptor for the flash color/hue for transient
-states. Options, in order of preference:
+- [src/core.js](../../../../src/core.js) resolves the variant before `getEngine()` in
+  `mountGlyph`; the regression test confirms invalid mounts leave the host empty,
+  without the `prismicon` class, and without the injected style element.
+- [src/variants/registry.js](../../../../src/variants/registry.js), the polyhedron
+  descriptor, and the square fixture define and use the narrow `flash` hook. The
+  square receiving-state test passes, and a static search found no `p.hue` or
+  `params.hue` read in `src/core.js`.
 
-1. Add a narrow hook `flash(params, state) → { hue?, lighten?, shake? } | null` to the
-descriptor contract and have `setState` call `variant.flash(p, name)` for `sending`,
-`receiving`, `done`, and `error`. The polyhedron implementation returns the hue values
-and shake flag the engine currently hard-codes; other variants can return their own
-values or `null` to opt out.
-2. Have `pose(params, state)` or a new `effect(params, state)` hook return a richer
-object that includes transient flash metadata alongside the pose.
+No undocumented implementation deviations were found. Protected v1 tests, React
+integration, and package metadata remain unchanged as planned.
 
-Either approach is acceptable as long as `params.hue` is no longer read by `src/core.js`.
-Update `src/variants/registry.js` documentation, `HOOK_NAMES`, `defineVariant`, the
-`VariantDescriptor` typedef, and the polyhedron descriptor accordingly.
+## Roadmap audit
 
-**Tests to add:**
+All roadmap steps 1.1 through 7.2 are ticked and have matching evidence. The
+roadmap header is `status: in-review`, `next-step: ""`, and `last-updated:
+2026-09-09`. The browser evidence file exists, no manual step is falsely ticked,
+and no missing-work step or roadmap repair is required.
 
-- `test/renderer-dispatch.test.js`: with the `square` variant, `setState('receiving')`
-  completes its transient animation without reading `params.hue` and without throwing.
-- A static analysis guard: `grep -n "p\.hue\|params\.hue" src/core.js` must print
-  nothing (or add a project-level check in the gate).
+## Findings
 
-## Plan vs implementation notes
-
-The two issues above are regressions/oversights in the otherwise correct v2 contract
-refactor. The remainder of the implementation matches the plan: descriptor contract v2,
-cycle-free imports, `createRenderer` over `BUILT_IN_VARIANTS`, `handle.variant`, public
-surface of 13 names, README and demo updates, byte-identical golden output, and
-`npm test` 50/0. This review only blocks on the two findings; all other acceptance
-checklist items will be re-verified after they are fixed.
+None. The two prior major findings are fixed by commits `dd19c2b` and `f4c0c2d`
+and are covered by focused regression tests.
 
 ## Follow-ups
 
-- Re-run the full gate (`npm ci && npm test`, `npm pack --dry-run`, golden regeneration
-  diff-quiet, `grep -c "core.js" src/variants/*.js`, and the browser demo assertions)
-  once both findings are fixed.
-- Consider adding a regression test that enumerates all `BUILT_IN_VARIANTS` ids and
-asserts `mountGlyph` throws before mutating the host for each invalid input shape.
+None.
