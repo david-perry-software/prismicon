@@ -99,6 +99,135 @@ export function describeParams(p) {
     FINISH_NAMES[p.finish] + (p.prop < 1 ? ', squat' : ', tall');
 }
 
+// ---------------------------------------------------------------- hooks for the default polyhedron variant
+
+function prepareParams(params, { size }) {
+  if (size < 28 && params.finish === 2) return { ...params, finish: 0 };
+  return params;
+}
+
+function buildGeometry(params) {
+  return buildSolid(params.solidType, params.n, params.prop);
+}
+
+function poseForState(params, state) {
+  if (state === 'working') {
+    return params.axisMode === 0
+      ? { ax: 0.18, ay: params.phase, az: params.precess ? params.phase2 : 0 }
+      : params.axisMode === 1
+        ? { ax: params.phase, ay: 0.18, az: params.precess ? params.phase2 : 0 }
+        : { ax: 0.42, ay: 0, az: params.phase };
+  }
+  return PORTRAITS[params.solidType];
+}
+
+function animatePose(pose, ctx) {
+  const { params: p, state, dt, t, transientT, rest } = ctx;
+  if (state === 'idle') return pose;
+  if (state === 'working') {
+    const k = Math.min(1, dt * 3);
+    const next = { ...pose };
+    if (p.axisMode === 0) {
+      next.ay = wrapAngle(pose.ay + p.speed * dt); next.ax += (0.18 - pose.ax) * k;
+      if (p.precess) next.az = wrapAngle(pose.az + p.zSpeed * dt); else next.az += angDiff(0, pose.az) * k;
+    } else if (p.axisMode === 1) {
+      next.ax = wrapAngle(pose.ax + p.speed * dt); next.ay += (0.18 - pose.ay) * k;
+      if (p.precess) next.az = wrapAngle(pose.az + p.zSpeed * dt); else next.az += angDiff(0, pose.az) * k;
+    } else {
+      next.az = wrapAngle(pose.az + p.speed * dt); next.ax += (0.42 - pose.ax) * k; next.ay += angDiff(0, pose.ay) * k;
+    }
+    return next;
+  }
+  if (state === 'waiting') {
+    const port = PORTRAITS[p.solidType];
+    const tx = port.ax + Math.sin(t * 0.8 + p.phase) * 0.05;
+    const ty = port.ay + Math.sin(t * 0.55 + p.phase2) * 0.10;
+    const k = Math.min(1, dt * 3.5);
+    return {
+      ax: pose.ax + angDiff(tx, pose.ax) * k,
+      ay: pose.ay + angDiff(ty, pose.ay) * k,
+      az: pose.az + angDiff(port.az, pose.az) * k
+    };
+  }
+  if (state === 'settling') {
+    const k = Math.min(1, dt * 4.5);
+    const da = angDiff(rest.ax, pose.ax), db = angDiff(rest.ay, pose.ay), dc = angDiff(rest.az, pose.az);
+    if (Math.abs(da) < 0.015 && Math.abs(db) < 0.015 && Math.abs(dc) < 0.015) return rest;
+    return {
+      ax: pose.ax + da * k,
+      ay: pose.ay + db * k,
+      az: pose.az + dc * k
+    };
+  }
+  if (state === 'thinking') {
+    const port = PORTRAITS[p.solidType];
+    const wobbleA = Math.sin(t * 0.6 + p.phase) * 0.10;
+    const wobbleB = Math.sin(t * 0.45 + p.phase2) * 0.08;
+    const nod = Math.max(0, Math.sin(t * 0.35 + p.phase)) * 0.12;
+    const k = Math.min(1, dt * 2.2);
+    return {
+      ax: pose.ax + angDiff(port.ax + wobbleA, pose.ax) * k,
+      ay: pose.ay + angDiff(port.ay + wobbleB + nod, pose.ay) * k,
+      az: pose.az + angDiff(port.az, pose.az) * k
+    };
+  }
+  if (state === 'sleeping') {
+    const port = PORTRAITS[p.solidType];
+    const bob = Math.sin(t * 0.25 + p.phase) * 0.03;
+    const k = Math.min(1, dt * 1.2);
+    return {
+      ax: pose.ax + angDiff(port.ax + bob, pose.ax) * k,
+      ay: pose.ay + angDiff(port.ay, pose.ay) * k,
+      az: pose.az + angDiff(port.az, pose.az) * k
+    };
+  }
+  if (state === 'sending' || state === 'receiving') {
+    const dir = state === 'sending' ? 1 : -1;
+    const spin = p.speed * 3.2 * Math.exp(-transientT * 7);
+    return {
+      ax: pose.ax + angDiff(PORTRAITS[p.solidType].ax, pose.ax) * Math.min(1, dt * 4),
+      ay: wrapAngle(pose.ay + dir * spin * dt),
+      az: pose.az
+    };
+  }
+  return pose;
+}
+
+function paintFrame(params, geometry, pose, effects) {
+  const hueMix = effects.flash ? lerpHue(params.hue, effects.flash.hue ?? params.hue, effects.flash.strength) : null;
+  return renderInner(params, geometry, pose, {
+    dark: effects.dark,
+    dx: effects.dx,
+    hueMix,
+    lighten: effects.lighten,
+    sleeping: effects.sleeping
+  });
+}
+
+const polyhedron = {
+  id: 'polyhedron',
+  label: 'Polyhedron',
+  spec: SPEC_VERSION,
+  derive: deriveV1,
+  describe: describeParams,
+  prepare: prepareParams,
+  geometry: buildGeometry,
+  pose: poseForState,
+  animate: animatePose,
+  paint: paintFrame
+};
+
+const BUILT_IN_VARIANTS = {
+  defaultId: 'polyhedron',
+  resolve(key) {
+    if (key === undefined || key === null) return polyhedron;
+    if (key !== 'polyhedron') {
+      throw new RangeError('Unknown prismicon variant "' + key + '"; registered: polyhedron');
+    }
+    return polyhedron;
+  }
+};
+
 // ---------------------------------------------------------------- geometry
 
 function buildSolid(type, n, prop) {
@@ -244,28 +373,109 @@ function ringMarkup(status, animate) {
     (animation ? ' style="animation:' + animation + '"' : '') + '/>';
 }
 
-function describeInstance(seedRaw, p, kind, state) {
-  let s = seedRaw + ': ' + describeParams(p);
+function describeInstance(variant, seedRaw, p, kind, state) {
+  let s = seedRaw + ': ' + variant.describe(p);
   if (kind === 'agent') s += ', ' + (state || 'idle');
   return s;
 }
 
-/**
- * Pure static render — safe on the server. Returns a complete SVG string in
- * the identity's portrait pose, with the state's persistent ring if any.
- */
-export function renderStaticSVG(seed, opts = {}) {
-  const size = opts.size || 64;
-  const kind = opts.kind || 'agent';
-  let p = deriveV1(seed);
-  if (size < 28 && p.finish === 2) p = { ...p, finish: 0 };
-  const geo = buildSolid(p.solidType, p.n, p.prop);
-  const status = kind === 'agent' ? RING_FOR_STATE[opts.state] || null : null;
-  const inner = renderInner(p, geo, PORTRAITS[p.solidType], { dark: opts.dark });
-  return '<svg viewBox="0 0 100 100" width="' + size + '" height="' + size +
-    '" role="img" aria-label="' + describeInstance(String(seed), p, kind, opts.state) + '">' +
-    '<g>' + inner + '</g><g>' + ringMarkup(status, false) + '</g></svg>';
+export function createRenderer(registry) {
+  function renderStaticSVG(seed, opts = {}) {
+    const variant = registry.resolve(opts.variant);
+    const size = opts.size || 64;
+    const kind = opts.kind || 'agent';
+    const p = variant.prepare(variant.derive(seed), { size });
+    const geo = variant.geometry(p);
+    const rest = variant.pose(p, 'idle');
+    const status = kind === 'agent' ? RING_FOR_STATE[opts.state] || null : null;
+    const inner = variant.paint(p, geo, rest, { dark: opts.dark, sleeping: false, dx: 0, lighten: 0, flash: null });
+    return '<svg viewBox="0 0 100 100" width="' + size + '" height="' + size +
+      '" role="img" aria-label="' + describeInstance(variant, String(seed), p, kind, opts.state) + '">' +
+      '<g>' + inner + '</g><g>' + ringMarkup(status, false) + '</g></svg>';
+  }
+
+  function mountGlyph(el, seed, opts = {}) {
+    const eng = getEngine();
+    const variant = registry.resolve(opts.variant);
+    const kind = opts.kind || 'agent';
+    const size = opts.size || 64;
+    const dark = opts.dark != null ? !!opts.dark : autoDark();
+    const p = variant.prepare(variant.derive(seed), { size });
+    const geo = variant.geometry(p);
+    const initial = kind === 'user' ? 'idle' : (opts.state || 'idle');
+    el.classList.add('prismicon');
+    el.innerHTML = '<svg viewBox="0 0 100 100" width="' + size + '" height="' + size +
+      '" role="img"><g></g><g></g></svg>';
+    const svg = el.querySelector('svg');
+    const gs = el.querySelectorAll('g');
+    const rest = variant.pose(p, 'idle');
+    const initialPose = !eng.reduced && initial === 'working' ? variant.pose(p, 'working') : rest;
+    const inst = {
+      svg, g: gs[0], sg: gs[1], variant, p, geo, kind, dark, seedRaw: String(seed),
+      state: !eng.reduced && (initial === 'working' || initial === 'waiting' || initial === 'thinking' || initial === 'sleeping') ? initial : 'idle',
+      rest, pose: initialPose,
+      flash: null, flashT: 0, shake: false, transientT: 0, lightenFlash: false, visible: true,
+      publicState: initial
+    };
+    inst.g.innerHTML = variant.paint(p, geo, inst.pose, { dark, sleeping: initial === 'sleeping', dx: 0, lighten: 0, flash: null });
+    if (initial === 'sleeping') inst.g.setAttribute('opacity', '0.7');
+    applyStatus(inst, initial, false);
+    if (kind === 'agent' && !eng.reduced) {
+      eng.instances.push(inst);
+      if (eng.io) eng.io.observe(svg);
+      eng.ensureRunning();
+    }
+    function applyStatus(target, stateName, animate) {
+      const status = RING_FOR_STATE[stateName] || null;
+      target.sg.innerHTML = ringMarkup(status, animate);
+      target.svg.setAttribute('aria-label', describeInstance(target.variant, target.seedRaw, target.p, target.kind, stateName));
+    }
+    return {
+      params: p,
+      variant: variant.id,
+      get state() { return inst.publicState; },
+      setState(name) {
+        if (kind !== 'agent' || STATES.indexOf(name) < 0) return;
+        inst.publicState = name;
+        if (eng.reduced) {
+          inst.pose = inst.rest;
+          inst.g.innerHTML = variant.paint(p, geo, inst.pose, { dark, sleeping: name === 'sleeping', dx: 0, lighten: 0, flash: null });
+          if (name === 'sleeping') inst.g.setAttribute('opacity', '0.7');
+          else inst.g.removeAttribute('opacity');
+          applyStatus(inst, name, false);
+          return;
+        }
+        if (name === 'working' || name === 'waiting' || name === 'thinking' || name === 'sleeping') {
+          inst.state = name; inst.flash = null; inst.lightenFlash = false;
+        } else if (name === 'sending' || name === 'receiving') {
+          inst.state = name; inst.transientT = 0; inst.flashT = 0; inst.shake = false;
+          if (name === 'receiving') { inst.flash = p.hue; inst.lightenFlash = true; }
+          else { inst.flash = null; inst.lightenFlash = false; }
+        } else {
+          inst.state = 'settling'; inst.flashT = 0;
+          if (name === 'done') { inst.flash = 145; inst.shake = false; }
+          else if (name === 'error') { inst.flash = 4; inst.shake = true; }
+          else { inst.flash = null; }
+          inst.lightenFlash = false;
+        }
+        applyStatus(inst, name, true);
+        eng.ensureRunning();
+      },
+      destroy() {
+        const i = eng.instances.indexOf(inst);
+        if (i >= 0) eng.instances.splice(i, 1);
+        if (eng.io) eng.io.unobserve(svg);
+        el.innerHTML = '';
+        el.classList.remove('prismicon');
+      }
+    };
+  }
+
+  return { renderStaticSVG, mountGlyph };
 }
+
+const { renderStaticSVG, mountGlyph } = createRenderer(BUILT_IN_VARIANTS);
+export { renderStaticSVG, mountGlyph };
 
 // ---------------------------------------------------------------- runtime
 
@@ -312,81 +522,43 @@ function getEngine() {
   }
   function step(inst, dt, tSec) {
     if (!inst.visible) return;
-    const p = inst.p, o = inst.ori;
-    let dirty = false, hueMix = null, dx = 0, lighten = 0;
-    if (inst.state === 'working') {
-      const k = Math.min(1, dt * 3);
-      if (p.axisMode === 0) {
-        o.ay = wrapAngle(o.ay + p.speed * dt); o.ax += (0.18 - o.ax) * k;
-        if (p.precess) o.az = wrapAngle(o.az + p.zSpeed * dt); else o.az += angDiff(0, o.az) * k;
-      } else if (p.axisMode === 1) {
-        o.ax = wrapAngle(o.ax + p.speed * dt); o.ay += (0.18 - o.ay) * k;
-        if (p.precess) o.az = wrapAngle(o.az + p.zSpeed * dt); else o.az += angDiff(0, o.az) * k;
-      } else {
-        o.az = wrapAngle(o.az + p.speed * dt); o.ax += (0.42 - o.ax) * k; o.ay += angDiff(0, o.ay) * k;
-      }
-      dirty = true;
-    } else if (inst.state === 'waiting') {
-      const port = PORTRAITS[p.solidType];
-      const tx = port.ax + Math.sin(tSec * 0.8 + p.phase) * 0.05;
-      const ty = port.ay + Math.sin(tSec * 0.55 + p.phase2) * 0.10;
-      const k = Math.min(1, dt * 3.5);
-      o.ax += angDiff(tx, o.ax) * k;
-      o.ay += angDiff(ty, o.ay) * k;
-      o.az += angDiff(port.az, o.az) * k;
-      dirty = true;
-    } else if (inst.state === 'settling') {
-      const tgt = PORTRAITS[p.solidType];
-      const k = Math.min(1, dt * 4.5);
-      const da = angDiff(tgt.ax, o.ax), db = angDiff(tgt.ay, o.ay), dc = angDiff(tgt.az, o.az);
-      o.ax += da * k; o.ay += db * k; o.az += dc * k;
-      if (Math.abs(da) < 0.015 && Math.abs(db) < 0.015 && Math.abs(dc) < 0.015) {
-        o.ax = tgt.ax; o.ay = tgt.ay; o.az = tgt.az;
-        inst.state = 'idle';
-      }
-      dirty = true;
-    } else if (inst.state === 'thinking') {
-      const port = PORTRAITS[p.solidType];
-      const wobbleA = Math.sin(tSec * 0.6 + p.phase) * 0.10;
-      const wobbleB = Math.sin(tSec * 0.45 + p.phase2) * 0.08;
-      const nod = Math.max(0, Math.sin(tSec * 0.35 + p.phase)) * 0.12;
-      const k = Math.min(1, dt * 2.2);
-      o.ax += angDiff(port.ax + wobbleA, o.ax) * k;
-      o.ay += angDiff(port.ay + wobbleB + nod, o.ay) * k;
-      o.az += angDiff(port.az, o.az) * k;
-      dirty = true;
-    } else if (inst.state === 'sleeping') {
-      const port = PORTRAITS[p.solidType];
-      const bob = Math.sin(tSec * 0.25 + p.phase) * 0.03;
-      const k = Math.min(1, dt * 1.2);
-      o.ax += angDiff(port.ax + bob, o.ax) * k;
-      o.ay += angDiff(port.ay, o.ay) * k;
-      o.az += angDiff(port.az, o.az) * k;
-      dirty = true;
-    } else if (inst.state === 'sending' || inst.state === 'receiving') {
-      const dir = inst.state === 'sending' ? 1 : -1;
+    const { variant, p, geo } = inst;
+    let dirty = false;
+    const effects = { dark: inst.dark, sleeping: false, dx: 0, lighten: 0, flash: null };
+    if (inst.state === 'sending' || inst.state === 'receiving') {
       inst.transientT += dt;
-      const t = inst.transientT;
-      const spin = p.speed * 3.2 * Math.exp(-t * 7);
-      o.ay = wrapAngle(o.ay + dir * spin * dt);
-      o.ax += angDiff(PORTRAITS[p.solidType].ax, o.ax) * Math.min(1, dt * 4);
-      if (t > 0.4) inst.state = 'settling';
+    }
+    const ctx = { params: p, state: inst.state, dt, t: tSec, transientT: inst.transientT, rest: inst.rest };
+    const nextPose = variant.animate(inst.pose, ctx);
+    if (nextPose !== inst.pose) {
+      inst.pose = nextPose;
       dirty = true;
+    }
+    if (inst.state === 'settling' && nextPose === inst.rest) {
+      inst.state = 'idle';
+    }
+    if ((inst.state === 'sending' || inst.state === 'receiving') && inst.transientT > 0.4) {
+      inst.state = 'settling';
     }
     if (inst.flash != null) {
       inst.flashT += dt;
       const t = inst.flashT;
       if (t < 1.4) {
         const s = t < 0.12 ? t / 0.12 : Math.exp(-(t - 0.12) * 3);
-        hueMix = lerpHue(p.hue, inst.flash, 0.75 * s);
-        if (inst.lightenFlash) lighten = 26 * s;
-        if (inst.shake) dx = Math.sin(t * 36) * 3.2 * Math.exp(-t * 6);
+        effects.flash = { hue: inst.flash, strength: 0.75 * s };
+        if (inst.lightenFlash) effects.lighten = 26 * s;
+        if (inst.shake) effects.dx = Math.sin(t * 36) * 3.2 * Math.exp(-t * 6);
         dirty = true;
-      } else { inst.flash = null; inst.lightenFlash = false; dirty = true; }
+      } else {
+        inst.flash = null;
+        inst.lightenFlash = false;
+        dirty = true;
+      }
     }
+    effects.sleeping = inst.state === 'sleeping';
     if (dirty) {
-      inst.g.innerHTML = renderInner(p, inst.geo, o, { dark: inst.dark, hueMix, dx, lighten, sleeping: inst.state === 'sleeping' });
-      if (inst.state === 'sleeping') inst.g.setAttribute('opacity', '0.7');
+      inst.g.innerHTML = variant.paint(p, geo, inst.pose, effects);
+      if (effects.sleeping) inst.g.setAttribute('opacity', '0.7');
       else inst.g.removeAttribute('opacity');
     }
   }
@@ -399,88 +571,3 @@ function autoDark() {
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
 
-/**
- * Mount a live glyph into `el`. Returns a handle:
- *   handle.setState('idle'|'working'|'waiting'|'done'|'error')
- *   handle.destroy()
- *   handle.params — the derived identity parameters
- *
- * kind 'user' glyphs are always static portraits and ignore setState.
- */
-export function mountGlyph(el, seed, opts = {}) {
-  const eng = getEngine();
-  const kind = opts.kind || 'agent';
-  const size = opts.size || 64;
-  const dark = opts.dark != null ? !!opts.dark : autoDark();
-  let p = deriveV1(seed);
-  if (size < 28 && p.finish === 2) p = { ...p, finish: 0 };
-  const geo = buildSolid(p.solidType, p.n, p.prop);
-  const initial = kind === 'user' ? 'idle' : (opts.state || 'idle');
-  el.classList.add('prismicon');
-  el.innerHTML = '<svg viewBox="0 0 100 100" width="' + size + '" height="' + size +
-    '" role="img"><g></g><g></g></svg>';
-  const svg = el.querySelector('svg');
-  const gs = el.querySelectorAll('g');
-  const inst = {
-    svg, g: gs[0], sg: gs[1], p, geo, kind, dark, seedRaw: String(seed),
-    state: !eng.reduced && (initial === 'working' || initial === 'waiting' || initial === 'thinking' || initial === 'sleeping') ? initial : 'idle',
-    ori: !eng.reduced && initial === 'working'
-      ? (p.axisMode === 0 ? { ax: 0.18, ay: p.phase, az: p.precess ? p.phase2 : 0 }
-        : p.axisMode === 1 ? { ax: p.phase, ay: 0.18, az: p.precess ? p.phase2 : 0 }
-        : { ax: 0.42, ay: 0, az: p.phase })
-      : { ...PORTRAITS[p.solidType] },
-    flash: null, flashT: 0, shake: false, transientT: 0, lightenFlash: false, visible: true,
-    publicState: initial
-  };
-  inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark, sleeping: initial === 'sleeping' });
-  if (initial === 'sleeping') inst.g.setAttribute('opacity', '0.7');
-  applyStatus(inst, initial, false);
-  if (kind === 'agent' && !eng.reduced) {
-    eng.instances.push(inst);
-    if (eng.io) eng.io.observe(svg);
-    eng.ensureRunning();
-  }
-  function applyStatus(target, stateName, animate) {
-    const status = RING_FOR_STATE[stateName] || null;
-    target.sg.innerHTML = ringMarkup(status, animate);
-    target.svg.setAttribute('aria-label', describeInstance(target.seedRaw, target.p, target.kind, stateName));
-  }
-  return {
-    params: p,
-    get state() { return inst.publicState; },
-    setState(name) {
-      if (kind !== 'agent' || STATES.indexOf(name) < 0) return;
-      inst.publicState = name;
-      if (eng.reduced) {
-        inst.ori = { ...PORTRAITS[p.solidType] };
-        inst.g.innerHTML = renderInner(p, geo, inst.ori, { dark, sleeping: name === 'sleeping' });
-        if (name === 'sleeping') inst.g.setAttribute('opacity', '0.7');
-        else inst.g.removeAttribute('opacity');
-        applyStatus(inst, name, false);
-        return;
-      }
-      if (name === 'working' || name === 'waiting' || name === 'thinking' || name === 'sleeping') {
-        inst.state = name; inst.flash = null; inst.lightenFlash = false;
-      } else if (name === 'sending' || name === 'receiving') {
-        inst.state = name; inst.transientT = 0; inst.flashT = 0; inst.shake = false;
-        if (name === 'receiving') { inst.flash = p.hue; inst.lightenFlash = true; }
-        else { inst.flash = null; inst.lightenFlash = false; }
-      } else {
-        inst.state = 'settling'; inst.flashT = 0;
-        if (name === 'done') { inst.flash = 145; inst.shake = false; }
-        else if (name === 'error') { inst.flash = 4; inst.shake = true; }
-        else { inst.flash = null; }
-        inst.lightenFlash = false;
-      }
-      applyStatus(inst, name, true);
-      eng.ensureRunning();
-    },
-    destroy() {
-      const i = eng.instances.indexOf(inst);
-      if (i >= 0) eng.instances.splice(i, 1);
-      if (eng.io) eng.io.unobserve(svg);
-      el.innerHTML = '';
-      el.classList.remove('prismicon');
-    }
-  };
-}
