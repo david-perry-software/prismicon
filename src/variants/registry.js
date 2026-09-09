@@ -69,3 +69,60 @@ export function defineVariant(descriptor) {
   }
   return Object.freeze({ ...descriptor });
 }
+
+/**
+ * @typedef {object} VariantRegistry
+ * @property {ReadonlyArray<string>} ids       Registered ids in registration order.
+ * @property {string} defaultId
+ * @property {(id: string) => boolean} has
+ * @property {(id: string) => Readonly<VariantDescriptor>} get      Unknown id → RangeError.
+ * @property {(key?: string | null) => Readonly<VariantDescriptor>} resolve  Per-icon selection.
+ */
+
+/**
+ * Build an immutable registry from descriptors. There is no mutation API:
+ * adding a variant means creating a new registry from a longer list.
+ * @param {VariantDescriptor[]} descriptors
+ * @param {{ defaultId: string }} options
+ * @returns {Readonly<VariantRegistry>}
+ * @throws {TypeError} on duplicate ids or an unregistered defaultId
+ */
+export function createVariantRegistry(descriptors, { defaultId } = {}) {
+  if (!Array.isArray(descriptors)) {
+    throw new TypeError('Variant registry requires an array of descriptors');
+  }
+  const byId = new Map();
+  for (const descriptor of descriptors) {
+    const variant = defineVariant(descriptor);
+    if (byId.has(variant.id)) {
+      throw new TypeError(`Duplicate prismicon variant id "${variant.id}"`);
+    }
+    byId.set(variant.id, variant);
+  }
+  const ids = Object.freeze([...byId.keys()]);
+  if (!byId.has(defaultId)) {
+    throw new TypeError(`Default variant ${JSON.stringify(defaultId)} is not registered; registered: ${ids.join(', ')}`);
+  }
+
+  function has(id) {
+    return byId.has(id);
+  }
+
+  function get(id) {
+    const variant = byId.get(id);
+    if (!variant) {
+      throw new RangeError(`Unknown prismicon variant "${id}"; registered: ${ids.join(', ')}`);
+    }
+    return variant;
+  }
+
+  function resolve(key) {
+    if (key === undefined || key === null) return byId.get(defaultId);
+    if (typeof key !== 'string') {
+      throw new TypeError(`Variant key must be a string; got ${typeof key}`);
+    }
+    return get(key);
+  }
+
+  return Object.freeze({ ids, defaultId, has, get, resolve });
+}
