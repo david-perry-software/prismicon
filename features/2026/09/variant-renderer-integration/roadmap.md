@@ -1,8 +1,8 @@
 ```yaml
-status: in-review
+status: request-changes
 branch: feature/variant-renderer-integration
-last-updated: 2026-09-08
-next-step: ""
+last-updated: 2026-09-09
+next-step: "Resolve review findings: (1) validate variant before getEngine() in mountGlyph; (2) remove params.hue read from core engine by adding a variant flash/effect hook."
 initiative: "scalable-icon-variants"
 ```
 
