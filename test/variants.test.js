@@ -1,8 +1,15 @@
 import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
-import { deriveV1, renderStaticSVG } from '../src/core.js';
+import { deriveV1, describeParams } from '../src/core.js';
+import {
+  prepareParams,
+  buildGeometry,
+  poseForState,
+  animatePose,
+  paintFrame
+} from '../src/variants/polyhedron.js';
 import { VARIANT_ID_PATTERN, createVariantRegistry, defineVariant } from '../src/variants/registry.js';
-import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, resolveVariant, polyhedron } from '../src/variants/index.js';
+import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, resolveVariant, polyhedron, listVariants } from '../src/variants/index.js';
 
 // Copied verbatim from test/derivation-freeze.test.js (frozen v1 engine, commit 9204c26).
 const FROZEN = JSON.parse(`{
@@ -11,7 +18,7 @@ const FROZEN = JSON.parse(`{
   "Alice@X.com": {"spec":"v1","seed":"alice@x.com","hash":7287120426219225,"n":3,"solidType":2,"finish":0,"prop":0.75,"axisMode":0,"speed":-0.617978259245865,"phase":0.022091764370660297,"precess":true,"zSpeed":-0.16416204493725672,"phase2":3.4083078547770636,"hue":275,"hue2":25}
 }`);
 
-const PARITY_OPTS = [{}, { size: 24 }, { kind: 'user' }, { state: 'thinking', dark: true }];
+const HOOK_NAMES = ['derive', 'describe', 'prepare', 'geometry', 'pose', 'animate', 'paint'];
 
 const noop = () => {};
 
@@ -22,8 +29,11 @@ function validDescriptor(overrides = {}) {
     spec: 'v1',
     derive: noop,
     describe: noop,
-    renderStatic: noop,
-    mount: noop,
+    prepare: noop,
+    geometry: noop,
+    pose: noop,
+    animate: noop,
+    paint: noop,
     ...overrides
   };
 }
@@ -54,7 +64,7 @@ describe('defineVariant', () => {
   });
 
   test('rejects a missing hook naming the field', () => {
-    for (const hook of ['derive', 'describe', 'renderStatic', 'mount']) {
+    for (const hook of HOOK_NAMES) {
       assert.throws(
         () => defineVariant(withoutKey(validDescriptor(), hook)),
         { name: 'TypeError', message: new RegExp(`"${hook}"`) }
@@ -63,7 +73,7 @@ describe('defineVariant', () => {
   });
 
   test('rejects a non-function hook naming the field', () => {
-    for (const hook of ['derive', 'describe', 'renderStatic', 'mount']) {
+    for (const hook of HOOK_NAMES) {
       assert.throws(
         () => defineVariant(validDescriptor({ [hook]: 'not a function' })),
         { name: 'TypeError', message: new RegExp(`"${hook}"`) }
@@ -173,7 +183,12 @@ describe('polyhedron built-in variant', () => {
     const registered = BUILT_IN_VARIANTS.get('polyhedron');
     assert.deepEqual(registered, polyhedron);
     assert.equal(registered.derive, deriveV1);
-    assert.equal(registered.renderStatic, renderStaticSVG);
+    assert.equal(registered.describe, describeParams);
+    assert.equal(registered.prepare, prepareParams);
+    assert.equal(registered.geometry, buildGeometry);
+    assert.equal(registered.pose, poseForState);
+    assert.equal(registered.animate, animatePose);
+    assert.equal(registered.paint, paintFrame);
     assert.equal(resolveVariant(), registered);
     assert.equal(resolveVariant(null), registered);
     assert.equal(resolveVariant('polyhedron'), registered);
@@ -188,14 +203,18 @@ describe('polyhedron built-in variant', () => {
     }
   });
 
-  test('renderStatic string-equals renderStaticSVG across option combinations', () => {
+  test('describe matches describeParams', () => {
     for (const seed of Object.keys(FROZEN)) {
-      for (const opts of PARITY_OPTS) {
-        const actual = polyhedron.renderStatic(seed, opts);
-        assert.equal(actual, renderStaticSVG(seed, opts), `${seed} ${JSON.stringify(opts)}`);
-        assert.ok(actual.startsWith('<svg'));
-      }
+      const p = polyhedron.derive(seed);
+      assert.equal(polyhedron.describe(p), describeParams(p));
     }
+  });
+
+  test('listVariants exposes only id, label and spec, frozen', () => {
+    const info = listVariants();
+    assert.deepEqual(info, [{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]);
+    assert.ok(Object.isFrozen(info));
+    assert.ok(info.every(Object.isFrozen));
   });
 });
 

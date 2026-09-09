@@ -2,9 +2,9 @@
  * prismicon polyhedron variant — the frozen v1 3D identicon engine.
  *
  * This module owns every polyhedron-specific concern: derivation spec v1,
- * geometry construction, per-state pose/motion, and painting. It imports
- * nothing from the shared renderer, so the shared pipeline can import it
- * without creating a cycle.
+ * geometry construction, per-state pose/motion, and painting. It imports only
+ * the registry validator, so the shared pipeline can import it without
+ * creating a cycle.
  *
  * Derivation spec v1 (FROZEN — do not reorder draws):
  *   seed -> normalize (trim + lowercase) -> cyrb53 hash -> mulberry32 PRNG
@@ -12,6 +12,8 @@
  *               phase, precess, zSpeedMag, zSpeedSign, phase2
  *   hue = PALETTE[hash % 12]; hue2 = PALETTE[(idx + 4) % 12]
  */
+
+import { defineVariant } from './registry.js';
 
 const TAU = Math.PI * 2;
 const F = 150; // perspective focal length
@@ -323,4 +325,17 @@ export function paintFrame(params, geometry, pose, effects) {
     sleeping: effects.sleeping
   });
 }
+
+export const polyhedron = defineVariant({
+  id: 'polyhedron',
+  label: 'Polyhedron',
+  spec: SPEC_VERSION,
+  derive: deriveV1,
+  describe: describeParams,
+  prepare: prepareParams,
+  geometry: buildGeometry,
+  pose: poseForState,
+  animate: animatePose,
+  paint: paintFrame
+});
 
