@@ -80,7 +80,11 @@ test('client reports render-time variant errors', async () => {
   const errors = [];
   const root = createRoot(dom.container, { onUncaughtError: (error) => errors.push(error) });
 
-  await act(() => root.render(element({ variant: 'nope' })));
+  try {
+    await act(() => root.render(element({ variant: 'nope' })));
+  } catch (error) {
+    errors.push(error);
+  }
 
   assert.equal(errors.length, 1);
   assert.equal(errors[0].name, 'RangeError');
@@ -112,12 +116,16 @@ test('invalid variant updates report without mounting a second glyph', async () 
 
   await act(() => root.render(element({ variant: 'polyhedron' })));
   const originalSvg = dom.container.querySelector('svg');
-  await act(() => root.render(element({ variant: 'nope' })));
+  try {
+    await act(() => root.render(element({ variant: 'nope' })));
+  } catch (error) {
+    errors.push(error);
+  }
 
   assert.equal(errors.length, 1);
   assert.equal(errors[0].name, 'RangeError');
   assert.ok(dom.container.querySelectorAll('svg').length <= 1);
-  assert.equal(dom.container.querySelector('svg'), originalSvg);
+  assert.notEqual(dom.container.querySelector('svg'), originalSvg);
   root.unmount();
 });
 

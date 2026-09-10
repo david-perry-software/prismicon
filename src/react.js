@@ -12,6 +12,7 @@
 
 import { createElement as h, memo, useEffect, useRef } from 'react';
 import { renderStaticSVG, mountGlyph } from './core.js';
+import { resolveVariant } from './variants/index.js';
 
 const GlyphHost = memo(function GlyphHost({ hostRef, className, title, style, markup }) {
   return h('span', {
@@ -30,27 +31,30 @@ export function Prismicon(props) {
     kind = 'agent',
     state = 'idle',
     dark,
+    variant,
     className,
     style,
     title
   } = props;
 
+  resolveVariant(variant);
+
   const ref = useRef(null);
   const handle = useRef(null);
   const initialMarkup = useRef(null);
   if (initialMarkup.current === null) {
-    initialMarkup.current = renderStaticSVG(seed, { size, kind, state, dark });
+    initialMarkup.current = renderStaticSVG(seed, { size, kind, state, dark, variant });
   }
 
   useEffect(() => {
     if (!ref.current) return undefined;
-    handle.current = mountGlyph(ref.current, seed, { kind, size, dark, state });
+    handle.current = mountGlyph(ref.current, seed, { kind, size, dark, state, variant });
     return () => {
       if (handle.current) handle.current.destroy();
       handle.current = null;
     };
     // Remount when identity or geometry-affecting props change.
-  }, [seed, size, kind, dark]);
+  }, [seed, size, kind, dark, variant]);
 
   useEffect(() => {
     if (handle.current) handle.current.setState(state);
