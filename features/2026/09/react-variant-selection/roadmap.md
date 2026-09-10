@@ -1,8 +1,8 @@
 ```yaml
-status: in-progress
+status: in-review
 branch: feature/react-variant-selection
 last-updated: 2026-09-09
-next-step: "4.2 set the roadmap in-review and push the completed branch"
+next-step: ""
 initiative: "scalable-icon-variants"
 ```
 
@@ -23,4 +23,4 @@ initiative: "scalable-icon-variants"
 ## Phase 4: Gate and hand-off
 
 - [x] 4.1 Merge `origin/main` (merge, never rebase), then run the complete gate: `npm ci && npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# tests` ≥ 60 and `# fail 0`; `git diff --quiet origin/main -- src/core.js src/index.js src/variants test/prismicon.test.js test/variants.test.js test/renderer-dispatch.test.js test/golden-v1.test.js test/derivation-freeze.test.js test/fixtures package.json demo` exits 0; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures/golden-v1.json` exits 0; `npm pack --dry-run 2>&1 | grep -E "src/|index.d.ts|test/|scripts/"` lists `src/react.js` and `index.d.ts` and nothing under `test/` or `scripts/`; the `index.d.ts` compile check from 2.2 still prints `1` — verify: every command exits 0 and outputs match
-- [ ] 4.2 Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push — verify: `git status --porcelain` is empty and `git log origin/feature/react-variant-selection -1 --format=%s` shows the roadmap commit
+- [x] 4.2 Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push — verify: `git status --porcelain` is empty and `git log origin/feature/react-variant-selection -1 --format=%s` shows the roadmap commit
