@@ -2,13 +2,13 @@
 status: in-progress
 branch: feature/react-variant-selection
 last-updated: 2026-09-09
-next-step: "1.1 confirm the 52-test baseline on the branch"
+next-step: "1.2 add the focused React variant regression suite"
 initiative: "scalable-icon-variants"
 ```
 
 ## Phase 1: Baseline and failing tests
 
-- [ ] 1.1 Confirm the recorded baseline on this branch before touching any file — verify: `npm ci && npm test 2>&1 | grep -E "^# (tests|pass|fail)"` prints `# tests 52`, `# pass 52`, `# fail 0` and `git diff --quiet origin/main -- src index.d.ts README.md` exits 0
+- [x] 1.1 Confirm the recorded baseline on this branch before touching any file — verify: `npm ci && npm test 2>&1 | grep -E "^# (tests|pass|fail)"` prints `# tests 52`, `# pass 52`, `# fail 0` and `git diff --quiet origin/main -- src index.d.ts README.md` exits 0
 - [ ] 1.2 Add `test/react-variant.test.js` with a self-contained JSDOM harness (mocked `matchMedia`, counted `requestAnimationFrame`, no `IntersectionObserver`, globals restored `afterEach`, `IS_REACT_ACT_ENVIRONMENT` set around `act`) and the eight cases from plan.md `## Approach` — SSR parity, SSR `RangeError`/`TypeError`, client mount with explicit variant, client render-time throw via `createRoot(container, { onUncaughtError })`, variant change remounts preserving `state` then `state` change keeps the node, invalid update reported with no second glyph, `hydrateRoot` over `renderToString` with `onRecoverableError`, React entry exports exactly `['Prismicon', 'default']` — and commit it **before** any `src/` change — verify: `node --test test/react-variant.test.js; echo "exit=$?"` prints `exit=1` with the SSR-error, render-time-throw, variant-change-remount, and invalid-update cases reported `not ok` while the parity, hydration, and entry-surface cases pass; `git diff --quiet origin/main -- src` exits 0
 
 ## Phase 2: Implementation
