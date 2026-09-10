@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/react-variant-selection
 last-updated: 2026-09-09
-next-step: "2.2 add the typed React variant prop"
+next-step: "3.1 document React variant selection"
 initiative: "scalable-icon-variants"
 ```
 
@@ -14,7 +14,7 @@ initiative: "scalable-icon-variants"
 ## Phase 2: Implementation
 
 - [x] 2.1 Update `src/react.js`: import `resolveVariant` from `./variants/index.js`; destructure `variant` (no default); call `resolveVariant(variant)` as the first statement after destructuring so unknown ids throw during render; pass `variant` to `renderStaticSVG` for `initialMarkup` and to `mountGlyph` in the mount effect; add `variant` to the mount-effect deps `[seed, size, kind, dark, variant]`; leave the `[state]` effect and the exports unchanged — verify: `node --test test/react-variant.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# tests 8` and `# fail 0`; `grep -c "resolveVariant" src/react.js` prints `2`; `grep -c "variant" src/react.js` ≥ 5; `npm test 2>&1 | grep -E "^# fail"` prints `# fail 0`
-- [ ] 2.2 Add `variant?: string` to `PrismiconProps` in `index.d.ts` with JSDoc ("Variant id. Omit to use the default variant. Unknown ids throw RangeError during render.") — verify: `grep -c "variant?: string" index.d.ts` prints `2` and `npx -y -p typescript tsc --noEmit --strict --target es2020 --lib es2020,dom --types "" index.d.ts 2>&1 | grep -cE "error TS"` prints `1` and that single line names `'react'` (pre-existing TS7016)
+- [x] 2.2 Add `variant?: string` to `PrismiconProps` in `index.d.ts` with JSDoc ("Variant id. Omit to use the default variant. Unknown ids throw RangeError during render.") — verify: `grep -c "variant?: string" index.d.ts` prints `2` and `npx -y -p typescript tsc --noEmit --strict --target es2020 --lib es2020,dom --types "" index.d.ts 2>&1 | grep -cE "error TS"` prints `1` and that single line names `'react'` (pre-existing TS7016)
 
 ## Phase 3: Documentation
 
