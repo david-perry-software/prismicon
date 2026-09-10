@@ -77,6 +77,7 @@ The ring patterns (solid / dashed / dotted / long-dash / ripple) carry the statu
   kind="agent"         // 'agent' | 'user', default 'agent'
   state="working"      // GlyphState, default 'idle' (ignored for kind='user')
   dark={isDarkMode}    // optional; defaults to prefers-color-scheme
+  variant="polyhedron"  // optional; see Variants
   className="…"
   style={{ … }}
   title="build-bot-7"
@@ -123,7 +124,16 @@ const handle = mountGlyph(el, 'maya', { variant: 'polyhedron', state: 'working' 
 - An unknown id throws `RangeError`; there is no silent fallback.
 - `handle.variant` reports the resolved variant id.
 
-React support for the `variant` prop is planned for a later release.
+React uses the same variant ids as the core API:
+
+```jsx
+<Prismicon seed="maya" variant="polyhedron" state="working" />
+```
+
+Omit `variant` to use `DEFAULT_VARIANT_ID`. An unknown id throws `RangeError`
+during render, so wrap user-supplied ids in an error boundary. Changing
+`variant` remounts the glyph; changing `state` updates the existing glyph and
+never remounts it.
 
 ## Derivation spec v1 (frozen)
 

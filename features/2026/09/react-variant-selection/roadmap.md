@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/react-variant-selection
 last-updated: 2026-09-09
-next-step: "3.1 document React variant selection"
+next-step: "4.1 merge origin/main and run the complete delivery gate"
 initiative: "scalable-icon-variants"
 ```
 
@@ -18,7 +18,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 3: Documentation
 
-- [ ] 3.1 Update `README.md`: add `variant="polyhedron"  // optional; see Variants` to the `## React API` prop block, and replace the sentence "React support for the `variant` prop is planned for a later release." in `## Variants` with a `<Prismicon seed="maya" variant="polyhedron" state="working" />` example plus the rules (same ids as the core API; omitted → `DEFAULT_VARIANT_ID`; unknown id throws `RangeError` during render — wrap user-supplied ids in an error boundary; changing `variant` remounts the glyph; `state` changes still never remount) — verify: `grep -c "planned for a later release" README.md` prints `0`; `grep -c 'variant="polyhedron"' README.md` ≥ 2; `grep -n "^## " README.md` shows `## React API`, `## Vanilla API`, `## Variants`, `## Derivation spec v1 (frozen)` still in that order
+- [x] 3.1 Update `README.md`: add `variant="polyhedron"  // optional; see Variants` to the `## React API` prop block, and replace the sentence "React support for the `variant` prop is planned for a later release." in `## Variants` with a `<Prismicon seed="maya" variant="polyhedron" state="working" />` example plus the rules (same ids as the core API; omitted → `DEFAULT_VARIANT_ID`; unknown id throws `RangeError` during render — wrap user-supplied ids in an error boundary; changing `variant` remounts the glyph; `state` changes still never remount) — verify: `grep -c "planned for a later release" README.md` prints `0`; `grep -c 'variant="polyhedron"' README.md` ≥ 2; `grep -n "^## " README.md` shows `## React API`, `## Vanilla API`, `## Variants`, `## Derivation spec v1 (frozen)` still in that order
 
 ## Phase 4: Gate and hand-off
 
