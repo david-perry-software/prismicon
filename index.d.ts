@@ -72,6 +72,8 @@ declare module 'prismicon/react' {
     kind?: GlyphKind;
     state?: GlyphState;
     dark?: boolean;
+    /** Variant id. Omit to use the default variant. Unknown ids throw RangeError during render. */
+    variant?: string;
     className?: string;
     style?: CSSProperties;
     title?: string;
