@@ -1,5 +1,5 @@
 ```yaml
-status: planned
+status: in-progress
 branch: feature/react-variant-selection
 last-updated: 2026-09-09
 next-step: "1.1 confirm the 52-test baseline on the branch"
