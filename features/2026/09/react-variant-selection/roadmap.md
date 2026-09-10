@@ -1,5 +1,5 @@
 ```yaml
-status: in-review
+status: complete
 branch: feature/react-variant-selection
 last-updated: 2026-09-09
 next-step: ""
