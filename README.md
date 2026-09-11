@@ -107,33 +107,92 @@ describeParams(p); // → 'pentagon bipyramid, two-tone, tall'
 
 ## Variants
 
-Variants are separate visual styles registered with the renderer. The built-in `polyhedron` variant is the default and remains unchanged, so existing code keeps working.
+Variants are separate visual styles registered with the renderer. The built-in `polyhedron` variant is the default and remains unchanged, so existing code keeps working. The n-cube family (`ncube`, `ncube-3` … `ncube-6`) is the second built-in.
 
 ```js
 import { renderStaticSVG, mountGlyph, DEFAULT_VARIANT_ID, listVariants } from 'prismicon';
 
 listVariants();
-// → [{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]
+// → [
+//   { id: 'polyhedron', label: 'Polyhedron',           spec: 'v1' },
+//   { id: 'ncube',      label: 'N-cube',               spec: 'ncube-v1' },
+//   { id: 'ncube-3',    label: '3-cube (cube)',        spec: 'ncube-v1' },
+//   { id: 'ncube-4',    label: '4-cube (tesseract)',   spec: 'ncube-v1' },
+//   { id: 'ncube-5',    label: '5-cube (penteract)',   spec: 'ncube-v1' },
+//   { id: 'ncube-6',    label: '6-cube (hexeract)',    spec: 'ncube-v1' }
+// ]
 
 renderStaticSVG('maya', { variant: 'polyhedron' });
-const handle = mountGlyph(el, 'maya', { variant: 'polyhedron', state: 'working' });
+const handle = mountGlyph(el, 'maya', { variant: 'ncube-4', state: 'working' });
 ```
 
 - Pass `variant` to either `renderStaticSVG` or `mountGlyph` to pick a style.
 - Omit `variant` to get `DEFAULT_VARIANT_ID` (`'polyhedron'`).
 - An unknown id throws `RangeError`; there is no silent fallback.
 - `handle.variant` reports the resolved variant id.
+- `handle.params` is typed `GlyphParams | NcubeParams`; narrow on `handle.variant`
+  (or `'dimension' in handle.params`) before reading variant-specific fields.
 
 React uses the same variant ids as the core API:
 
 ```jsx
-<Prismicon seed="maya" variant="polyhedron" state="working" />
+<Prismicon seed="maya" variant="ncube-5" state="working" />
 ```
 
 Omit `variant` to use `DEFAULT_VARIANT_ID`. An unknown id throws `RangeError`
 during render, so wrap user-supplied ids in an error boundary. Changing
 `variant` remounts the glyph; changing `state` updates the existing glyph and
-never remounts it.
+never remounts it. `index.d.ts` exports `BuiltInVariantId` so built-in ids
+autocomplete while custom ids stay accepted as plain strings.
+
+### N-cube family
+
+Deterministic projected hypercubes drawn onto the same 100×100 plane as the
+polyhedron: cube, tesseract, penteract and hexeract, each rendered in one of the
+three finishes (shaded, two-tone, wireframe) with a seed-derived rest orientation.
+
+- `ncube` derives the dimension from the seed (3 to `NCUBE_MAX_DIMENSION`).
+- `ncube-<d>` fixes the dimension. For a given seed, `ncube-<d>` differs from
+  `ncube` **only** in `dimension`; every other param (finish, angles, hues) is
+  identical, so `ncube-4` for a seed equals `ncube` whenever that seed derives 4.
+- The aria label reads `"<seed>: <d>-cube (<name>), <finish>"`, e.g.
+  `maya: 3-cube (cube), shaded`.
+- Motion is deliberately static in this release: `pose` returns the seed-derived
+  rest orientation for every state and `animate` settles immediately. State-aware
+  motion arrives with the `ncube-motion-system` feature; lifecycle flashes
+  (`receiving`, `done`, `error`) already work.
+
+**Derivation spec `ncube-v1` (frozen).** `seed → normalizeSeed → cyrb53 → mulberry32`,
+then draws in this order:
+
+1. `dimension = 3 + floor(r() * (NCUBE_MAX_DIMENSION - 3 + 1))` — always drawn,
+   even for `ncube-<d>`, which then overrides the value.
+2. `finish = floor(r() * 3)` (shaded, two-tone, wireframe).
+3. `theta[k]` for axes `3 … NCUBE_MAX_DIMENSION - 1`, each `r() * TAU` — always
+   `NCUBE_MAX_DIMENSION - 3` draws regardless of the instance's dimension.
+4. `ax, ay, az` — the 3D rest orientation, each `r() * TAU`.
+5. `hue = PALETTE[hash % 12]`, `hue2 = PALETTE[(idx + 4) % 12]` (not PRNG draws).
+
+`NCUBE_MAX_DIMENSION = 6` is frozen with the spec: raising it changes the
+`dimension` draw and the `theta` count and therefore requires `ncube-v2`.
+
+**Support table.** The bound was measured with `scripts/measure-ncube.mjs`
+(static SVG at size 64, five seeds, 200 `paint()` calls on Node 22). A dimension
+is supported when, for every finish, the static SVG is ≤ 32768 bytes, the median
+projected edge is ≥ 2.5 viewBox units and the median `paint()` takes ≤ 5 ms:
+
+| d | vertices | edges | faces | max bytes (shaded / wireframe) | median edge | median paint ms (shaded) | supported |
+|---|----------|-------|-------|--------------------------------|-------------|--------------------------|-----------|
+| 3 | 8 | 12 | 6 | 845 / 517 | 25.39 | 0.041 | yes |
+| 4 | 16 | 32 | 24 | 2779 / 960 | 15.72 | 0.059 | yes |
+| 5 | 32 | 80 | 80 | 8771 / 2018 | 10.60 | 0.135 | yes |
+| 6 | 64 | 192 | 240 | 25890 / 4479 | 7.29 | 0.370 | yes |
+| 7 | 128 | 448 | 672 | 72115 / 10114 | 5.29 | 0.863 | no (bytes) |
+| 8 | 256 | 1024 | 1792 | 191954 / 22785 | 3.53 | 3.040 | no (bytes) |
+| 9 | 512 | 2304 | 4608 | 493266 / 50943 | 2.27 | 10.680 | no (all three) |
+
+Dimensions above 6 are not registered; requesting `ncube-7` throws `RangeError`
+like any unknown id.
 
 ## Derivation spec v1 (frozen)
 
