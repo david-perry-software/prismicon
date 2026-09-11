@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/ncube-geometry-family
 last-updated: 2026-09-10
-next-step: "4.3 add the Dimensions gallery to demo/index.html and verify on local:3173"
+next-step: "5.1 merge origin/main and run the complete gate"
 initiative: "scalable-icon-variants"
 ```
 
@@ -29,7 +29,7 @@ initiative: "scalable-icon-variants"
 
 - [x] 4.1 Update `index.d.ts`: add `BuiltInVariantId`, `NcubeParams`, change `GlyphOptions.variant` and `PrismiconProps.variant` to `BuiltInVariantId | (string & {})`, widen `GlyphHandle.params` to `GlyphParams | NcubeParams` with JSDoc explaining the narrowing — verify: `grep -c "BuiltInVariantId" index.d.ts` ≥ 3 and `npx -y -p typescript tsc --noEmit --strict --target es2020 --lib es2020,dom --types "" index.d.ts 2>&1 | grep -cE "error TS"` prints `1` and that single line names `'react'`
 - [x] 4.2 Update `README.md` `## Variants`: new `listVariants()` output, `### N-cube family` subsection (ids, `ncube` vs `ncube-<d>`, frozen `ncube-v1` draw order, support table and bound criteria copied from `evidence/ncube-bounds.txt`, motion deferred to `ncube-motion-system`, `handle.params` narrowing note) — verify: `grep -c "ncube-v1" README.md` ≥ 1, `grep -c "NCUBE_MAX_DIMENSION\|N-cube family" README.md` ≥ 2, and `grep -n "^## " README.md` shows `## React API`, `## Vanilla API`, `## Variants`, `## Derivation spec v1 (frozen)` in that order
-- [ ] 4.3 Add a "Dimensions" gallery to `demo/index.html`: a seed `<input>` and a row that mounts the seed once per id from `listVariants()` filtered by the `ncube-` prefix, captioned with the dimension, re-rendering on input change and destroying previous handles — verify: `local:3173` — run `python3 -m http.server 3173 --directory .` in the worktree, open `http://localhost:3173/demo/index.html` in the browser, confirm the hero `<select>` lists `N-cube` and every `ncube-<d>`, the Dimensions row shows one glyph per dimension, and changing the seed re-renders them; save the screenshot as `features/2026/09/ncube-geometry-family/evidence/step-4-3-demo-dimensions.png` and stop the server
+- [x] 4.3 Add a "Dimensions" gallery to `demo/index.html`: a seed `<input>` and a row that mounts the seed once per id from `listVariants()` filtered by the `ncube-` prefix, captioned with the dimension, re-rendering on input change and destroying previous handles — verify: `local:3173` — run `python3 -m http.server 3173 --directory .` in the worktree, open `http://localhost:3173/demo/index.html` in the browser, confirm the hero `<select>` lists `N-cube` and every `ncube-<d>`, the Dimensions row shows one glyph per dimension, and changing the seed re-renders them; save the screenshot as `features/2026/09/ncube-geometry-family/evidence/step-4-3-demo-dimensions.png` and stop the server — evidence: [step-4-3-demo-dimensions.png](evidence/step-4-3-demo-dimensions.png) (select options: Polyhedron, N-cube, 3-cube…6-cube; row shows 3-cube…6-cube; seed `build-bot-7` re-rendered all four, still exactly 4 `<svg>`)
 
 ## Phase 5: Gate and hand-off
 

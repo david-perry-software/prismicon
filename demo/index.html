@@ -37,6 +37,13 @@
 <h2>People (static)</h2>
 <div class="row" id="people"></div>
 
+<h2>Dimensions (n-cube family)</h2>
+<p>
+  <label for="dimension-seed">Seed:</label>
+  <input id="dimension-seed" type="text" value="maya" autocomplete="off" />
+</p>
+<div class="row" id="dimensions"></div>
+
 <script type="module">
 import { mountGlyph, STATES, describeParams, deriveV1, listVariants, DEFAULT_VARIANT_ID } from '../src/index.js';
 
@@ -91,6 +98,29 @@ const agentStates = ['working', 'done', 'working', 'error', 'waiting', 'idle'];
   cell.appendChild(document.createTextNode(seed));
   document.getElementById('people').appendChild(cell);
 });
+
+const dimensionIds = listVariants().map((v) => v.id).filter((id) => id.startsWith('ncube-'));
+const dimensionsRow = document.getElementById('dimensions');
+const dimensionSeed = document.getElementById('dimension-seed');
+let dimensionHandles = [];
+
+function mountDimensions(seed) {
+  dimensionHandles.forEach((h) => h.destroy());
+  dimensionsRow.replaceChildren();
+  dimensionHandles = dimensionIds.map((variant) => {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    const box = document.createElement('div');
+    const handle = mountGlyph(box, seed, { kind: 'agent', size: 72, state: 'idle', dark, variant });
+    cell.appendChild(box);
+    cell.appendChild(document.createTextNode(`${handle.params.dimension}-cube`));
+    dimensionsRow.appendChild(cell);
+    return handle;
+  });
+}
+
+dimensionSeed.addEventListener('input', () => mountDimensions(dimensionSeed.value || 'maya'));
+mountDimensions(dimensionSeed.value);
 </script>
 </body>
 </html>
