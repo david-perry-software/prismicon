@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/custom-variant-authoring
 last-updated: 2026-09-11
-next-step: "2.2 Add src/authoring.js and root exports"
+next-step: "3.1 Add PrismiconProvider to src/react.js"
 initiative: "scalable-icon-variants"
 ```
 
@@ -15,7 +15,7 @@ initiative: "scalable-icon-variants"
 ## Phase 2: Validation and factory
 
 - [x] 2.1 Add `src/variants/validate.js` exporting `validateVariant(descriptor, { seeds, size, states } = {})` per plan.md `## Approach` item 1 (shape via `defineVariant`, output contract, determinism probe over `STATIC_SEEDS`/both `dark` values/every state + `'settling'` + one `animate` step with `dt: 1/60`, SSR probe redefining configurable browser globals with throwing getters and restoring descriptors in `finally`), with the probed state list as a local `PROBE_STATES` constant (`core.js` imports `variants/index.js`, so importing `STATES` back would create a cycle) that `test/authoring.test.js` asserts `deepEqual` to `[...STATES, 'settling']`, and re-export it from `src/variants/index.js` — verify: `node --test test/authoring.test.js 2>&1 | grep -E "^# (tests|fail)"` shows all `validateVariant` and globals-restoration cases passing (remaining failures are `createPrismicon`/export cases only); `node -e "import('./src/variants/validate.js')"` exits 0
-- [ ] 2.2 Add `src/authoring.js` exporting `createPrismicon({ variants = [], defaultId = DEFAULT_VARIANT_ID, builtIns = true, validate = true } = {})` per plan.md `## Approach` item 2, returning `Object.freeze({ registry, renderStaticSVG, mountGlyph, listVariants })` built from `createRenderer(registry)`; add `createPrismicon`, `defineVariant`, `createVariantRegistry`, `validateVariant`, `VARIANT_ID_PATTERN` to `src/index.js` — verify: `node --test test/authoring.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0`; `npm test 2>&1 | grep -E "^# fail"` prints `# fail 0` except the pending `test/react-variant.test.js` cases; `git diff --quiet origin/main -- src/core.js src/variants/registry.js src/variants/polyhedron.js src/variants/ncube.js` exits 0
+- [x] 2.2 Add `src/authoring.js` exporting `createPrismicon({ variants = [], defaultId = DEFAULT_VARIANT_ID, builtIns = true, validate = true } = {})` per plan.md `## Approach` item 2, returning `Object.freeze({ registry, renderStaticSVG, mountGlyph, listVariants })` built from `createRenderer(registry)`; add `createPrismicon`, `defineVariant`, `createVariantRegistry`, `validateVariant`, `VARIANT_ID_PATTERN` to `src/index.js` — verify: `node --test test/authoring.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0`; `npm test 2>&1 | grep -E "^# fail"` prints `# fail 0` except the pending `test/react-variant.test.js` cases; `git diff --quiet origin/main -- src/core.js src/variants/registry.js src/variants/polyhedron.js src/variants/ncube.js` exits 0
 
 ## Phase 3: React provider
 

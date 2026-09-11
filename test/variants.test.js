@@ -273,7 +273,7 @@ describe('public renderer error contract', () => {
 });
 
 describe('public surface', () => {
-  test('src/index.js exports exactly the thirteen names including variant helpers', async () => {
+  test('src/index.js exports exactly the eighteen names including variant and authoring helpers', async () => {
     const publicApi = await import('../src/index.js');
     const keys = Object.keys(publicApi).sort();
     assert.deepEqual(keys, [
@@ -284,12 +284,17 @@ describe('public surface', () => {
       'SOLID_NAMES',
       'SPEC_VERSION',
       'STATES',
+      'VARIANT_ID_PATTERN',
+      'createPrismicon',
+      'createVariantRegistry',
+      'defineVariant',
       'deriveV1',
       'describeParams',
       'listVariants',
       'mountGlyph',
       'normalizeSeed',
-      'renderStaticSVG'
+      'renderStaticSVG',
+      'validateVariant'
     ]);
     assert.deepEqual(publicApi.DEFAULT_VARIANT_ID, 'polyhedron');
     assert.deepEqual(publicApi.listVariants()[0], POLYHEDRON_INFO);
