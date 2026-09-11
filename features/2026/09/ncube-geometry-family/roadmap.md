@@ -1,7 +1,7 @@
 ```yaml
-status: in-review
+status: complete
 branch: feature/ncube-geometry-family
-last-updated: 2026-09-10
+last-updated: 2026-09-11
 next-step: ""
 initiative: "scalable-icon-variants"
 ```
