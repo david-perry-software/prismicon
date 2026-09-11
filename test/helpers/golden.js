@@ -64,20 +64,25 @@ function hashSvg(svg) {
   return createHash('sha256').update(svg.outerHTML, 'utf8').digest('hex');
 }
 
-function captureStatic() {
+// Fixture keys never include the variant; each variant gets its own golden file.
+function withVariant(opts, variant) {
+  return variant ? { ...opts, variant } : opts;
+}
+
+function captureStatic(variant) {
   const out = {};
   for (const seed of STATIC_SEEDS) {
     for (const opts of STATIC_OPTS) {
-      out[keyFor(seed, opts)] = renderStaticSVG(seed, opts);
+      out[keyFor(seed, opts)] = renderStaticSVG(seed, withVariant(opts, variant));
     }
   }
   return out;
 }
 
-async function captureMountedScenario(seed, opts) {
+async function captureMountedScenario(seed, opts, variant) {
   const dom = installDom();
-  const { mountGlyph } = await import('../../src/core.js?golden-' + keyFor(seed, opts));
-  const handle = mountGlyph(dom.container, seed, { state: 'working', ...opts });
+  const { mountGlyph } = await import('../../src/core.js?golden-' + (variant ?? '') + keyFor(seed, opts));
+  const handle = mountGlyph(dom.container, seed, withVariant({ state: 'working', ...opts }, variant));
   const svg = dom.container.querySelector('svg');
   const frames = [];
   let t = 1000;
@@ -102,10 +107,10 @@ async function captureMountedScenario(seed, opts) {
   return frames;
 }
 
-async function captureReducedMotion(seed = 'Ada Lovelace') {
+async function captureReducedMotion(seed = 'Ada Lovelace', variant) {
   const dom = installDom({ reducedMotion: true });
-  const { mountGlyph } = await import('../../src/core.js?golden-reduced-' + seed);
-  const handle = mountGlyph(dom.container, seed, { state: 'working' });
+  const { mountGlyph } = await import('../../src/core.js?golden-reduced-' + (variant ?? '') + seed);
+  const handle = mountGlyph(dom.container, seed, withVariant({ state: 'working' }, variant));
   const svg = dom.container.querySelector('svg');
   const states = ['working', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving', 'done', 'error', 'idle'];
   const frames = [];
@@ -119,12 +124,12 @@ async function captureReducedMotion(seed = 'Ada Lovelace') {
   return frames;
 }
 
-export async function captureGolden() {
-  const staticFixtures = captureStatic();
+export async function captureGolden({ variant } = {}) {
+  const staticFixtures = captureStatic(variant);
   const mountedFixtures = {};
   for (const { seed, opts } of MOUNTED_SCENARIOS) {
-    mountedFixtures[keyFor(seed, opts)] = await captureMountedScenario(seed, opts);
+    mountedFixtures[keyFor(seed, opts)] = await captureMountedScenario(seed, opts, variant);
   }
-  mountedFixtures[`Ada Lovelace|reduced`] = await captureReducedMotion('Ada Lovelace');
+  mountedFixtures[`Ada Lovelace|reduced`] = await captureReducedMotion('Ada Lovelace', variant);
   return { static: staticFixtures, mounted: mountedFixtures };
 }

@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/ncube-geometry-family
 last-updated: 2026-09-10
-next-step: "3.4 thread variant through golden helper, generate golden-ncube-v1.json, add golden-ncube test"
+next-step: "4.1 update index.d.ts with BuiltInVariantId and NcubeParams"
 initiative: "scalable-icon-variants"
 ```
 
@@ -23,7 +23,7 @@ initiative: "scalable-icon-variants"
 - [x] 3.1 Add `scripts/measure-ncube.mjs` that, for `d` in 3..10 (building geometry directly, bypassing the registry) and each finish, renders the five golden seeds at size 64 and prints a table of vertices, edges, faces, max SVG bytes, median projected edge length (viewBox units), and median `paint()` ms over 200 calls, then prints `recommended NCUBE_MAX_DIMENSION=<d>` per the criteria in plan.md (`≤ 32768` bytes, median edge `≥ 2.5`, median paint `≤ 5` ms) — verify: `node scripts/measure-ncube.mjs | tee features/2026/09/ncube-geometry-family/evidence/ncube-bounds.txt` exits 0 and the last line matches `^recommended NCUBE_MAX_DIMENSION=[0-9]+$`
 - [x] 3.2 Set `NCUBE_MAX_DIMENSION` in `src/variants/ncube.js` to the recommended value, extend `NCUBE_NAMES` to cover it, and commit `evidence/ncube-bounds.txt` — verify: `node -e "import('./src/variants/ncube.js').then(m => console.log(m.NCUBE_MAX_DIMENSION, m.ncubeVariants.length))"` prints `<MAX> <MAX-1>` matching the evidence file, and `npm test 2>&1 | grep -E "^# fail"` prints `# fail 0`
 - [x] 3.3 Add `test/ncube-derivation-freeze.test.js` and `test/fixtures/ncube-v1-identities.json` pinning `deriveNcube` for the seeds `maya`, `build-bot-7`, `Alice@X.com`, `Ada Lovelace`, `demo-agent` under `ncube` and under `ncube-4`, with a header comment naming spec `ncube-v1` and this slug — verify: `node --test test/ncube-derivation-freeze.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0`, and temporarily editing one hue in the fixture makes it print `# fail 1` (revert afterwards; `git diff --quiet -- test/fixtures/ncube-v1-identities.json` exits 0)
-- [ ] 3.4 Thread a `variant` option through `test/helpers/golden.js` (`captureGolden({ variant })`, default behavior unchanged), make `scripts/generate-golden.mjs` also write `test/fixtures/golden-ncube-v1.json` for `variant: 'ncube'` and `variant: 'ncube-4'`, and add `test/golden-ncube.test.js` mirroring `test/golden-v1.test.js` — verify: `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures/golden-v1.json` exits 0, `test -s test/fixtures/golden-ncube-v1.json`, and `npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` with `# tests` ≥ 75
+- [x] 3.4 Thread a `variant` option through `test/helpers/golden.js` (`captureGolden({ variant })`, default behavior unchanged), make `scripts/generate-golden.mjs` also write `test/fixtures/golden-ncube-v1.json` for `variant: 'ncube'` and `variant: 'ncube-4'`, and add `test/golden-ncube.test.js` mirroring `test/golden-v1.test.js` — verify: `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures/golden-v1.json` exits 0, `test -s test/fixtures/golden-ncube-v1.json`, and `npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` with `# tests` ≥ 75
 
 ## Phase 4: Types, docs and demo
 
