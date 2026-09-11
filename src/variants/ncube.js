@@ -20,6 +20,7 @@ const TAU = Math.PI * 2;
 
 export const NCUBE_SPEC_VERSION = 'ncube-v1';
 export const NCUBE_MIN_DIMENSION = 3;
+// Fixed by scripts/measure-ncube.mjs (features/2026/09/ncube-geometry-family/evidence/ncube-bounds.txt); frozen with ncube-v1.
 export const NCUBE_MAX_DIMENSION = 6;
 export const NCUBE_NAMES = Object.freeze({
   3: 'cube', 4: 'tesseract', 5: 'penteract', 6: 'hexeract',
