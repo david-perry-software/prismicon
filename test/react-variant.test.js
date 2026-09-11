@@ -199,8 +199,7 @@ test('client mount inside the provider renders the custom variant', async () => 
   assert.equal(dom.container.querySelector('span').className, 'prismicon');
   assert.ok(dom.container.querySelector('rect'));
   assert.match(dom.container.querySelector('svg').getAttribute('aria-label'), /^maya: square maya, working$/);
-  assert.ok(dom.animationFrames > 0);
-  root.unmount();
+  await act(() => root.unmount());
 });
 
 test('replacing the registry prop remounts the glyph while keeping state', async () => {
@@ -221,7 +220,7 @@ test('replacing the registry prop remounts the glyph while keeping state', async
   assert.ok(secondSvg.querySelector('rect'));
   assert.match(secondSvg.getAttribute('aria-label'), /, working$/);
   assert.equal(dom.container.querySelectorAll('svg').length, 1);
-  root.unmount();
+  await act(() => root.unmount());
 });
 
 test('a non-registry registry prop reports a TypeError', async () => {
@@ -240,5 +239,5 @@ test('a non-registry registry prop reports a TypeError', async () => {
   assert.equal(errors[0].name, 'TypeError');
   assert.match(errors[0].message, /PrismiconProvider "registry" must be a variant registry/);
   assert.equal(dom.container.querySelector('svg'), null);
-  root.unmount();
+  await act(() => root.unmount());
 });

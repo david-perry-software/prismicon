@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/custom-variant-authoring
 last-updated: 2026-09-11
-next-step: "3.1 Add PrismiconProvider to src/react.js"
+next-step: "4.1 Extend index.d.ts"
 initiative: "scalable-icon-variants"
 ```
 
@@ -19,7 +19,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 3: React provider
 
-- [ ] 3.1 Update `src/react.js` per plan.md `## Approach` item 4: `createContext(null)`, exported `PrismiconProvider({ registry, children })` that throws `TypeError('PrismiconProvider "registry" must be a variant registry')` unless `registry` has `resolve`, `get` and `ids`, memoises `{ registry, ...createRenderer(registry) }` on `[registry]`, and provides it; `Prismicon` reads the context, falls back to a module-level frozen `{ registry: BUILT_IN_VARIANTS, renderStaticSVG, mountGlyph }`, resolves `variant` through `ctx.registry.resolve`, uses `ctx.renderStaticSVG` / `ctx.mountGlyph`, and adds `ctx` to the mount-effect deps — verify: `node --test test/react-variant.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0`; `npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` and `# tests` ≥ 110; `grep -c "PrismiconProvider" src/react.js` ≥ 2; `head -1 src/react.js` prints `'use client';`
+- [x] 3.1 Update `src/react.js` per plan.md `## Approach` item 4: `createContext(null)`, exported `PrismiconProvider({ registry, children })` that throws `TypeError('PrismiconProvider "registry" must be a variant registry')` unless `registry` has `resolve`, `get` and `ids`, memoises `{ registry, ...createRenderer(registry) }` on `[registry]`, and provides it; `Prismicon` reads the context, falls back to a module-level frozen `{ registry: BUILT_IN_VARIANTS, renderStaticSVG, mountGlyph }`, resolves `variant` through `ctx.registry.resolve`, uses `ctx.renderStaticSVG` / `ctx.mountGlyph`, and adds `ctx` to the mount-effect deps — verify: `node --test test/react-variant.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0`; `npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` and `# tests` ≥ 110; `grep -c "PrismiconProvider" src/react.js` ≥ 2; `head -1 src/react.js` prints `'use client';`
 
 ## Phase 4: Types, example, docs
 
