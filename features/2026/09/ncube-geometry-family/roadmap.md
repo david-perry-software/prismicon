@@ -1,14 +1,14 @@
 ```yaml
-status: planned
+status: in-progress
 branch: feature/ncube-geometry-family
 last-updated: 2026-09-10
-next-step: "1.1 confirm baseline"
+next-step: "1.2 extract seed helpers"
 initiative: "scalable-icon-variants"
 ```
 
 ## Phase 1: Baseline and shared seed helpers
 
-- [ ] 1.1 Confirm the recorded baseline on this branch before touching any file — verify: `npm ci && npm test 2>&1 | grep -E "^# (tests|pass|fail)"` prints `# tests 60`, `# pass 60`, `# fail 0` and `git diff --quiet origin/main -- src index.d.ts README.md demo test scripts` exits 0
+- [x] 1.1 Confirm the recorded baseline on this branch before touching any file — verify: `npm ci && npm test 2>&1 | grep -E "^# (tests|pass|fail)"` prints `# tests 60`, `# pass 60`, `# fail 0` and `git diff --quiet origin/main -- src index.d.ts README.md demo test scripts` exits 0
 - [ ] 1.2 Create `src/variants/seed.js` exporting `cyrb53` and `mulberry32` moved verbatim from `src/variants/polyhedron.js`; make `polyhedron.js` import them (keep `normalizeSeed`, `deriveV1`, `describeParams` and all other exports where they are) — verify: `grep -cE "^function (cyrb53|mulberry32)" src/variants/polyhedron.js` prints `0`; `grep -c "from './seed.js'" src/variants/polyhedron.js` prints `1`; `npm test 2>&1 | grep -E "^# fail"` prints `# fail 0`; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures/golden-v1.json` exits 0
 
 ## Phase 2: N-cube geometry, derivation and failing tests
