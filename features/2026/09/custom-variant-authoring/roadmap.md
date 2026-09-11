@@ -1,5 +1,5 @@
 ```yaml
-status: planned
+status: in-progress
 branch: feature/custom-variant-authoring
 last-updated: 2026-09-11
 next-step: "1.1 Confirm the recorded baseline"
