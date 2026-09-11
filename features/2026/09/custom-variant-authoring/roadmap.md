@@ -1,8 +1,8 @@
 ```yaml
-status: in-progress
+status: in-review
 branch: feature/custom-variant-authoring
 last-updated: 2026-09-11
-next-step: "5.3 Set status in-review"
+next-step: ""
 initiative: "scalable-icon-variants"
 ```
 
@@ -32,4 +32,4 @@ initiative: "scalable-icon-variants"
 
 - [x] 5.1 Merge `origin/main` (merge, never rebase), then run the complete gate (policy §5 — no lint configured, so the gate is the full suite plus the ad-hoc checks): `npm ci && npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` and `# tests` ≥ 110; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures` exits 0; `git diff --quiet origin/main -- src/core.js src/variants/registry.js src/variants/polyhedron.js src/variants/ncube.js` exits 0; `npm pack --dry-run 2>&1 | grep -E "src/|index.d.ts|test/|demo/"` lists `src/authoring.js`, `src/variants/validate.js`, `index.d.ts` and nothing under `test/` or `demo/`; the `index.d.ts` compile check from 4.1 still prints `1` — verify: every command exits 0 and outputs match
 - [x] 5.2 Browser check of the demo — evidence: [evidence/step-5-2-demo-custom-variant.png](evidence/step-5-2-demo-custom-variant.png) (2026-09-11, Chromium via `python3 -m http.server 3115`; hero `<select>` lists `Square` after the six built-ins, selecting it mounts a square whose `rotate(...)` advanced 170.0→207.5 over 400 ms, Custom variant row shows three `<rect>` at `idle`/`working`/`done`, Dimensions renders 3-cube…6-cube, zero console errors/warnings on load and after selection; page zoomed to 0.68 for the capture only because the embedded browser paints just the viewport) — verify: `local:3115` — run `python3 -m http.server 3115 --directory .` in the worktree, open `http://localhost:3115/demo/index.html`, confirm the hero `<select>` lists `Square` after the built-ins and selecting it mounts a spinning square, the Custom variant section shows three squares (`idle`, `working`, `done`), the console shows no errors, and the Dimensions gallery still renders 3-cube…6-cube; save the screenshot as `features/2026/09/custom-variant-authoring/evidence/step-5-2-demo-custom-variant.png`, link it from this step, and stop the server
-- [ ] 5.3 Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push — verify: `git status --porcelain` is empty and `git log origin/feature/custom-variant-authoring -1 --format=%s` shows the roadmap commit
+- [x] 5.3 Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push — verify: `git status --porcelain` is empty and `git log origin/feature/custom-variant-authoring -1 --format=%s` shows the roadmap commit
