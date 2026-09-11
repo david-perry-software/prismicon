@@ -86,17 +86,130 @@ export function ncubeGeometry(params) {
   return buildNcube(params.dimension);
 }
 
-// ---------------------------------------------------------------- variant hooks (paint side lands in step 2.3)
+// ---------------------------------------------------------------- math (mirrors polyhedron.js)
 
-function notImplemented() {
-  throw new Error('ncube paint-side hooks are not implemented yet');
+const F = 150;            // 3D -> 2D perspective focal length, as in polyhedron
+const FIT_RADIUS = 26;    // projected 3D silhouette radius around (50, 50)
+const VIEW_DISTANCE = 3;  // d -> 3 perspective eye distance in normalized units (outer:inner cell = 2:1)
+const FACE_OPACITY = '0.65';
+
+function rot3(v, ax, ay, az) {
+  const x = v[0], y = v[1], z = v[2];
+  let c = Math.cos(az), s = Math.sin(az);
+  const x1 = x * c - y * s, y1 = x * s + y * c;
+  c = Math.cos(ay); s = Math.sin(ay);
+  const x2 = x1 * c + z * s, z1 = -x1 * s + z * c;
+  c = Math.cos(ax); s = Math.sin(ax);
+  return [x2, y1 * c - z1 * s, y1 * s + z1 * c];
 }
 
-export const prepareNcube = notImplemented;
-export const poseNcube = notImplemented;
-export const animateNcube = notImplemented;
-export const paintNcube = notImplemented;
-export const flashNcube = notImplemented;
+function lerpHue(a, b, t) {
+  const d = ((b - a + 540) % 360) - 180;
+  return (a + d * t + 360) % 360;
+}
+
+function shadeFor(dark) {
+  return dark
+    ? { base: 40, range: 26, edge: 78, wire: 62 }
+    : { base: 30, range: 28, edge: 24, wire: 45 };
+}
+
+/**
+ * Project the d-cube vertices into 3D. For each higher axis k (from d-1 down to
+ * 3): rotate the plane (k mod 3, k) by theta[k - 3], then apply a perspective
+ * division from axis k, normalized by the largest |x_k| so every level nests
+ * the far cell inside the near one at the same ratio. The result is scaled so
+ * the farthest point sits at FIT_RADIUS.
+ */
+function projectTo3(geo, p) {
+  const pts = geo.V.map((v) => v.slice());
+  for (let k = geo.dimension - 1; k >= 3; k--) {
+    const i = k % 3;
+    const c = Math.cos(p.theta[k - 3]), s = Math.sin(p.theta[k - 3]);
+    let reach = 0;
+    for (const pt of pts) {
+      const a = pt[i], b = pt[k];
+      pt[i] = a * c - b * s;
+      pt[k] = a * s + b * c;
+      reach = Math.max(reach, Math.abs(pt[k]));
+    }
+    reach = reach || 1;
+    for (const pt of pts) {
+      const w = VIEW_DISTANCE / (VIEW_DISTANCE - pt[k] / reach);
+      for (let j = 0; j < k; j++) pt[j] *= w;
+    }
+  }
+  let radius = 0;
+  for (const pt of pts) radius = Math.max(radius, Math.hypot(pt[0], pt[1], pt[2]));
+  const scale = FIT_RADIUS / (radius || 1);
+  return pts.map((pt) => [pt[0] * scale, pt[1] * scale, pt[2] * scale]);
+}
+
+const STROKE_BY_DIMENSION = { 3: 3.5, 4: 3, 5: 2.5, 6: 2, 7: 1.6, 8: 1.3 };
+
+function strokeWidthFor(dimension) {
+  return STROKE_BY_DIMENSION[dimension] ?? 1;
+}
+
+// ---------------------------------------------------------------- variant hooks
+
+export function prepareNcube(params, { size }) {
+  const finish = size < 28 && params.finish === 2 ? 0 : params.finish;
+  return { ...params, finish, strokeWidth: strokeWidthFor(params.dimension) };
+}
+
+/** Rest orientation for every state; motion belongs to ncube-motion-system. */
+export function poseNcube(params) {
+  return Object.freeze({ ax: params.ax, ay: params.ay, az: params.az });
+}
+
+export function animateNcube(pose, ctx) {
+  return ctx.state === 'settling' ? ctx.rest : pose;
+}
+
+export function paintNcube(p, geo, o, effects) {
+  const shade = shadeFor(!!effects.dark);
+  const off = effects.dx || 0;
+  const lighten = effects.lighten || 0;
+  const range = effects.sleeping ? shade.range * 0.55 : shade.range;
+  const hueMix = effects.flash ? lerpHue(p.hue, effects.flash.hue ?? p.hue, effects.flash.strength) : null;
+  const strokeWidth = p.strokeWidth ?? strokeWidthFor(p.dimension);
+  const pts3 = projectTo3(geo, p).map((v) => rot3(v, o.ax, o.ay, o.az));
+  const proj = pts3.map((v) => {
+    const s = F / (F - v[2]);
+    return (50 + off + v[0] * s).toFixed(1) + ' ' + (50 + v[1] * s).toFixed(1);
+  });
+  const ink = (h, L) => 'hsl(' + Math.round(h) + ' 52% ' + Math.round(Math.min(92, L + lighten)) + '%)';
+  if (p.finish === 2) {
+    const d = geo.edges.map(([a, b]) => 'M' + proj[a] + ' L' + proj[b]).join(' ');
+    return '<path d="' + d + '" fill="none" stroke="' + ink(hueMix ?? p.hue, shade.wire) +
+      '" stroke-width="' + strokeWidth + '" stroke-linecap="round" stroke-linejoin="round"/>';
+  }
+  const faces = geo.faces.map((f) => {
+    const [a, b, , d] = f.v;
+    const z = (pts3[a][2] + pts3[b][2] + pts3[f.v[2]][2] + pts3[d][2]) / 4;
+    const u = [pts3[b][0] - pts3[a][0], pts3[b][1] - pts3[a][1], pts3[b][2] - pts3[a][2]];
+    const v = [pts3[d][0] - pts3[a][0], pts3[d][1] - pts3[a][1], pts3[d][2] - pts3[a][2]];
+    const nx = u[1] * v[2] - u[2] * v[1], ny = u[2] * v[0] - u[0] * v[2], nz = u[0] * v[1] - u[1] * v[0];
+    const m = Math.hypot(nx, ny, nz) || 1;
+    return { v: f.v, axes: f.axes, z, nz: Math.abs(nz / m) };
+  });
+  faces.sort((a, b) => a.z - b.z);
+  const edgeWidth = (strokeWidth / 3.5).toFixed(2).replace(/\.?0+$/, '');
+  return '<g stroke-width="' + edgeWidth + '" stroke-linejoin="round" fill-opacity="' + FACE_OPACITY + '">' +
+    faces.map((f) => {
+      const h = hueMix ?? (p.finish === 1 && (f.axes[0] + f.axes[1]) % 2 === 1 ? p.hue2 : p.hue);
+      const L = shade.base + range * Math.max(0.12, f.nz);
+      return '<path d="M' + f.v.map((i) => proj[i]).join(' L') + ' Z" fill="' + ink(h, L) + '" stroke="' + ink(h, shade.edge) + '"/>';
+    }).join('') + '</g>';
+}
+
+export function flashNcube(params, state) {
+  if (state === 'receiving') return { hue: params.hue, lighten: 26 };
+  if (state === 'done') return { hue: 145 };
+  if (state === 'error') return { hue: 4, shake: true };
+  return null;
+}
 
 // ---------------------------------------------------------------- descriptors
 

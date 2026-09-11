@@ -324,7 +324,7 @@ test('render: static markup equals the mounted markup at rest', async () => {
       const staticInner = dom.scratch.querySelector('svg > g').innerHTML;
       const handle = mountGlyph(dom.container, seed, { variant: v.id, dark: false });
       assert.equal(handle.variant, v.id);
-      assert.deepEqual(handle.params, v.derive(seed));
+      assert.deepEqual(handle.params, v.prepare(v.derive(seed), { size: 64 }));
       const mountedInner = dom.container.querySelector('svg > g').innerHTML;
       assert.equal(mountedInner, staticInner, `${v.id} ${seed}`);
       handle.destroy();
@@ -357,9 +357,12 @@ test('render: reduced motion mount queues no frames and keeps the rest markup th
   assert.equal(inner(), staticInner);
   for (const state of STATES) {
     handle.setState(state);
-    assert.equal(inner(), staticInner, state);
+    if (state === 'sleeping') assert.notEqual(inner(), staticInner, 'sleeping repaints with the dimmer ramp');
+    else assert.equal(inner(), staticInner, state);
     assert.equal(dom.animationFrames, 0);
   }
+  handle.setState('idle');
+  assert.equal(inner(), staticInner);
   handle.destroy();
 });
 
