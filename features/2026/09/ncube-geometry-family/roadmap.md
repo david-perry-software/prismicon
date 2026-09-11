@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/ncube-geometry-family
 last-updated: 2026-09-10
-next-step: "5.1 merge origin/main and run the complete gate"
+next-step: "5.2 set status in-review, commit and push"
 initiative: "scalable-icon-variants"
 ```
 
@@ -33,5 +33,5 @@ initiative: "scalable-icon-variants"
 
 ## Phase 5: Gate and hand-off
 
-- [ ] 5.1 Merge `origin/main` (merge, never rebase), then run the complete gate from plan.md `## Acceptance checklist`: `npm ci && npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0`; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures` exits 0; `git diff --quiet origin/main -- src/core.js src/react.js src/index.js package.json test/fixtures/golden-v1.json` exits 0; `npm pack --dry-run 2>&1 | grep -E "src/|index.d.ts|test/|scripts/"` lists `src/variants/seed.js`, `src/variants/ncube.js`, `index.d.ts` and nothing under `test/` or `scripts/`; the `index.d.ts` compile check from 4.1 still prints `1` — verify: every command exits 0 and outputs match
+- [x] 5.1 Merge `origin/main` (merge, never rebase), then run the complete gate from plan.md `## Acceptance checklist`: `npm ci && npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0`; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures` exits 0; `git diff --quiet origin/main -- src/core.js src/react.js src/index.js package.json test/fixtures/golden-v1.json` exits 0; `npm pack --dry-run 2>&1 | grep -E "src/|index.d.ts|test/|scripts/"` lists `src/variants/seed.js`, `src/variants/ncube.js`, `index.d.ts` and nothing under `test/` or `scripts/`; the `index.d.ts` compile check from 4.1 still prints `1` — verify: every command exits 0 and outputs match — result: `origin/main` already an ancestor (merge no-op); `# tests 86`, `# pass 86`, `# fail 0`; fixtures and untouched files clean; pack lists `index.d.ts`, `src/**` (incl. `seed.js`, `ncube.js`), no `test/` or `scripts/`; tsc prints exactly 1 error (`TS7016` for `'react'`)
 - [ ] 5.2 Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push — verify: `git status --porcelain` is empty and `git log origin/feature/ncube-geometry-family -1 --format=%s` shows the roadmap commit
