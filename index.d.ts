@@ -27,6 +27,30 @@ declare module 'prismicon' {
     hue2: number;
   }
 
+  /**
+   * Built-in variant ids: `polyhedron` (default), `ncube` (dimension derived from
+   * the seed) and `ncube-<d>` for each supported dimension, 3 up to the frozen
+   * NCUBE_MAX_DIMENSION. Custom ids remain accepted as plain strings.
+   */
+  export type BuiltInVariantId = 'polyhedron' | 'ncube' | `ncube-${number}`;
+
+  /** Params produced by the n-cube family (spec `ncube-v1`). */
+  export interface NcubeParams {
+    spec: string;
+    seed: string;
+    hash: number;
+    /** Cube dimension in [3, NCUBE_MAX_DIMENSION]. */
+    dimension: number;
+    finish: 0 | 1 | 2;
+    /** Plane angles for axes 3.., always NCUBE_MAX_DIMENSION - 3 entries. */
+    theta: readonly number[];
+    ax: number;
+    ay: number;
+    az: number;
+    hue: number;
+    hue2: number;
+  }
+
   export interface GlyphOptions {
     size?: number;
     kind?: GlyphKind;
@@ -35,11 +59,16 @@ declare module 'prismicon' {
     /**
      * Variant id. Omit to use the default variant. Unknown ids throw RangeError.
      */
-    variant?: string;
+    variant?: BuiltInVariantId | (string & {});
   }
 
   export interface GlyphHandle {
-    readonly params: GlyphParams;
+    /**
+     * Derived params of the mounted variant. Narrow on `variant` (or on
+     * `'dimension' in params`) before reading variant-specific fields:
+     * `polyhedron` yields GlyphParams, the n-cube family yields NcubeParams.
+     */
+    readonly params: GlyphParams | NcubeParams;
     readonly variant: string;
     readonly state: GlyphState;
     setState(state: GlyphState): void;
@@ -64,7 +93,7 @@ declare module 'prismicon' {
 
 declare module 'prismicon/react' {
   import type { CSSProperties, ReactElement } from 'react';
-  import type { GlyphKind, GlyphState } from 'prismicon';
+  import type { BuiltInVariantId, GlyphKind, GlyphState } from 'prismicon';
 
   export interface PrismiconProps {
     seed: string;
@@ -73,7 +102,7 @@ declare module 'prismicon/react' {
     state?: GlyphState;
     dark?: boolean;
     /** Variant id. Omit to use the default variant. Unknown ids throw RangeError during render. */
-    variant?: string;
+    variant?: BuiltInVariantId | (string & {});
     className?: string;
     style?: CSSProperties;
     title?: string;

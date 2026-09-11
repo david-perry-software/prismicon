@@ -1,0 +1,32 @@
+n-cube bound measurement — spec ncube-v1, size 64, seeds: maya, build-bot-7, Alice@X.com, Ada Lovelace, demo-agent
+node v22.22.3, linux x64, 2026-09-11
+criteria: max static SVG <= 32768 bytes, median projected edge >= 2.5 viewBox units, median paint() <= 5 ms over 200 calls
+
+| d  | vertices | edges | faces | finish    | max bytes | median edge | median paint ms | pass |
+|----|----------|-------|-------|-----------|-----------|-------------|-----------------|------|
+| 3  |        8 |    12 |     6 | shaded    |       845 |       25.39 |           0.020 | yes  |
+| 3  |        8 |    12 |     6 | two-tone  |       846 |       25.39 |           0.022 | yes  |
+| 3  |        8 |    12 |     6 | wireframe |       517 |       25.39 |           0.009 | yes  |
+| 4  |       16 |    32 |    24 | shaded    |      2779 |       15.72 |           0.052 | yes  |
+| 4  |       16 |    32 |    24 | two-tone  |      2780 |       15.72 |           0.035 | yes  |
+| 4  |       16 |    32 |    24 | wireframe |       960 |       15.72 |           0.018 | yes  |
+| 5  |       32 |    80 |    80 | shaded    |      8771 |       10.60 |           0.099 | yes  |
+| 5  |       32 |    80 |    80 | two-tone  |      8772 |       10.60 |           0.139 | yes  |
+| 5  |       32 |    80 |    80 | wireframe |      2018 |       10.60 |           0.035 | yes  |
+| 6  |       64 |   192 |   240 | shaded    |     25890 |        7.29 |           0.278 | yes  |
+| 6  |       64 |   192 |   240 | two-tone  |     25891 |        7.29 |           0.255 | yes  |
+| 6  |       64 |   192 |   240 | wireframe |      4479 |        7.29 |           0.075 | yes  |
+| 7  |      128 |   448 |   672 | shaded    |     72115 |        5.29 |           0.958 | no   |
+| 7  |      128 |   448 |   672 | two-tone  |     72116 |        5.29 |           0.894 | no   |
+| 7  |      128 |   448 |   672 | wireframe |     10114 |        5.29 |           0.156 | yes  |
+| 8  |      256 |  1024 |  1792 | shaded    |    191954 |        3.53 |           3.150 | no   |
+| 8  |      256 |  1024 |  1792 | two-tone  |    191955 |        3.53 |           3.110 | no   |
+| 8  |      256 |  1024 |  1792 | wireframe |     22785 |        3.53 |           0.395 | yes  |
+| 9  |      512 |  2304 |  4608 | shaded    |    493266 |        2.27 |          10.352 | no   |
+| 9  |      512 |  2304 |  4608 | two-tone  |    493267 |        2.27 |          11.032 | no   |
+| 9  |      512 |  2304 |  4608 | wireframe |     50943 |        2.27 |           0.926 | no   |
+| 10 |     1024 |  5120 | 11520 | shaded    |   1232851 |        1.44 |          25.168 | no   |
+| 10 |     1024 |  5120 | 11520 | two-tone  |   1232852 |        1.44 |          25.759 | no   |
+| 10 |     1024 |  5120 | 11520 | wireframe |    112896 |        1.44 |           2.187 | no   |
+
+recommended NCUBE_MAX_DIMENSION=6

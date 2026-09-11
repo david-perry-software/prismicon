@@ -1,13 +1,15 @@
 import { createVariantRegistry } from './registry.js';
 import { polyhedron } from './polyhedron.js';
+import { ncubeVariants } from './ncube.js';
 
 export { VARIANT_ID_PATTERN, createVariantRegistry, defineVariant } from './registry.js';
 export { polyhedron } from './polyhedron.js';
+export { ncube, ncubeVariants, NCUBE_MIN_DIMENSION, NCUBE_MAX_DIMENSION, NCUBE_SPEC_VERSION } from './ncube.js';
 
 export const DEFAULT_VARIANT_ID = 'polyhedron';
 
 /** Immutable registry of built-in variants; no import-time registration side effects. */
-export const BUILT_IN_VARIANTS = createVariantRegistry([polyhedron], { defaultId: DEFAULT_VARIANT_ID });
+export const BUILT_IN_VARIANTS = createVariantRegistry([polyhedron, ...ncubeVariants], { defaultId: DEFAULT_VARIANT_ID });
 
 /**
  * Per-icon selection: resolve the reserved `variant` option key to a descriptor.

@@ -12,7 +12,22 @@ import {
 
 const PARITY_OPTS = [{}, { size: 24 }, { kind: 'user' }, { state: 'thinking', dark: true }];
 import { VARIANT_ID_PATTERN, createVariantRegistry, defineVariant } from '../src/variants/registry.js';
-import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, resolveVariant, polyhedron, listVariants } from '../src/variants/index.js';
+import {
+  BUILT_IN_VARIANTS,
+  DEFAULT_VARIANT_ID,
+  resolveVariant,
+  polyhedron,
+  listVariants,
+  NCUBE_MIN_DIMENSION,
+  NCUBE_MAX_DIMENSION,
+  NCUBE_SPEC_VERSION
+} from '../src/variants/index.js';
+
+const NCUBE_IDS = ['ncube', ...Array.from(
+  { length: NCUBE_MAX_DIMENSION - NCUBE_MIN_DIMENSION + 1 },
+  (_, i) => `ncube-${NCUBE_MIN_DIMENSION + i}`
+)];
+const POLYHEDRON_INFO = { id: 'polyhedron', label: 'Polyhedron', spec: 'v1' };
 
 // Copied verbatim from test/derivation-freeze.test.js (frozen v1 engine, commit 9204c26).
 const FROZEN = JSON.parse(`{
@@ -182,7 +197,7 @@ describe('createVariantRegistry', () => {
 describe('polyhedron built-in variant', () => {
   test('is the registered default resolved by resolveVariant', () => {
     assert.equal(DEFAULT_VARIANT_ID, 'polyhedron');
-    assert.deepEqual(BUILT_IN_VARIANTS.ids, ['polyhedron']);
+    assert.deepEqual(BUILT_IN_VARIANTS.ids, ['polyhedron', ...NCUBE_IDS]);
     assert.equal(BUILT_IN_VARIANTS.defaultId, 'polyhedron');
     const registered = BUILT_IN_VARIANTS.get('polyhedron');
     assert.deepEqual(registered, polyhedron);
@@ -248,7 +263,10 @@ describe('public renderer error contract', () => {
 
   test('listVariants exposes only id, label and spec, frozen', () => {
     const info = listVariants();
-    assert.deepEqual(info, [{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]);
+    assert.deepEqual(info[0], POLYHEDRON_INFO);
+    assert.deepEqual(info.map((v) => v.id), ['polyhedron', ...NCUBE_IDS]);
+    for (const entry of info) assert.deepEqual(Object.keys(entry).sort(), ['id', 'label', 'spec']);
+    for (const entry of info.slice(1)) assert.equal(entry.spec, NCUBE_SPEC_VERSION);
     assert.ok(Object.isFrozen(info));
     assert.ok(info.every(Object.isFrozen));
   });
@@ -274,7 +292,8 @@ describe('public surface', () => {
       'renderStaticSVG'
     ]);
     assert.deepEqual(publicApi.DEFAULT_VARIANT_ID, 'polyhedron');
-    assert.deepEqual(publicApi.listVariants(), [{ id: 'polyhedron', label: 'Polyhedron', spec: 'v1' }]);
+    assert.deepEqual(publicApi.listVariants()[0], POLYHEDRON_INFO);
+    assert.deepEqual(publicApi.listVariants().map((v) => v.id), ['polyhedron', ...NCUBE_IDS]);
     assert.ok(Object.isFrozen(publicApi.listVariants()));
   });
 });
