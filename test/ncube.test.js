@@ -390,9 +390,9 @@ test('registry: built-ins are polyhedron (default) followed by the n-cube family
   assert.equal(DEFAULT_VARIANT_ID, 'polyhedron');
   assert.equal(BUILT_IN_VARIANTS.defaultId, 'polyhedron');
   assert.deepEqual(BUILT_IN_VARIANTS.ids, ['polyhedron', 'ncube', ...dimensions().map((d) => `ncube-${d}`)]);
-  assert.equal(resolveVariant('ncube'), ncube);
-  assert.equal(resolveVariant('ncube-4'), ncubeVariants[2]);
-  assert.equal(resolveVariant(), polyhedron);
+  assert.deepEqual(resolveVariant('ncube'), ncube);
+  assert.deepEqual(resolveVariant('ncube-4'), ncubeVariants[2]);
+  assert.deepEqual(resolveVariant(), polyhedron);
   const info = listVariants();
   assert.deepEqual(info[0], { id: 'polyhedron', label: 'Polyhedron', spec: 'v1' });
   assert.deepEqual(info[1], { id: 'ncube', label: 'N-cube', spec: NCUBE_SPEC_VERSION });
