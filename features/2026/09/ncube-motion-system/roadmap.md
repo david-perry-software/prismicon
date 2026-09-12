@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/ncube-motion-system
 last-updated: 2026-09-12
-next-step: "5.3 demo Lifecycle (n-cube family) row with STATES button strip"
+next-step: "6.1 run the full gate (npm test, golden regen diff, static-equal, npm pack)"
 initiative: "scalable-icon-variants"
 ```
 
@@ -38,8 +38,9 @@ initiative: "scalable-icon-variants"
 
 - [x] 5.1 Extend `index.d.ts` `NcubeParams` with the prepared, non-identity fields (`strokeWidth`, `dir`, `hyperSpeed`, `spinAxis`, `spin3`, `phase`, `phase2`) as optional readonly members with JSDoc noting they come from `prepare`, not `deriveNcube` — verify: `npx -y -p typescript tsc --noEmit --strict --target es2020 --lib es2020,dom --types "" index.d.ts 2>&1 | grep -cE "error TS"` prints `1` and `… | grep -E "error TS" | grep -c "'react'"` prints `1`
 - [x] 5.2 Update README `### N-cube family`: replace the "deliberately static" bullet with a "Motion model" subsection (per-state table, highest-plane/cascade rule, d = 3 case, trait derivation with no new draws, reduced motion) and add the median frame column from `evidence/ncube-motion-frames.txt` to the support table — verify: `grep -c "deliberately static" README.md` prints `0`; `grep -n "^## " README.md` shows `## React API`, `## Vanilla API`, `## Variants`, `## Custom variants`, `## Derivation spec v1 (frozen)` in that order; `grep -c "Motion model" README.md` prints `1`
-- [ ] 5.3 Add the "Lifecycle (n-cube family)" row to `demo/index.html`: one `ncube-<d>` per registered id at size 72 for the seed input, plus a `STATES` button strip calling `setState` on every glyph in the row; re-mount on seed input like the Dimensions row — verify: `ss -ltn | grep -c ':3173 '` prints `0`, then serve `python3 -m http.server 3173 --directory .`, open `http://localhost:3173/demo/index.html`, click `working` then `thinking` on the new strip, confirm all four glyphs animate and the page stays responsive — target `local:3173`
-- [ ] 5.4 Capture browser evidence — verify: screenshots `evidence/step-5-4-lifecycle-working.png` and `evidence/step-5-4-lifecycle-thinking.png` exist, are committed, and show four animated n-cubes in the named state
+- [x] 5.3 Add the "Lifecycle (n-cube family)" row to `demo/index.html`: one `ncube-<d>` per registered id at size 72 for the seed input, plus a `STATES` button strip calling `setState` on every glyph in the row; re-mount on seed input like the Dimensions row — verify: `ss -ltn | grep -c ':3173 '` prints `0`, then serve `python3 -m http.server 3173 --directory .`, open `http://localhost:3173/demo/index.html`, click `working` then `thinking` on the new strip, confirm all four glyphs animate and the page stays responsive — target `local:3173`
+- [x] 5.4 Capture browser evidence — verify: screenshots `evidence/step-5-4-lifecycle-working.png` and `evidence/step-5-4-lifecycle-thinking.png` exist, are committed, and show four animated n-cubes in the named state
+  - Evidence (2026-09-12, steps 5.3/5.4): served `python3 -m http.server 3173 --directory .` (port free beforehand), drove `http://localhost:3173/demo/index.html` with the integrated browser. After clicking `working` all four `#lifecycle` glyph `<g>` bodies differed between two samples 400 ms apart (aria-labels `…, working`); after `thinking` likewise (`…, thinking`, dashed ring visible); two back-to-back `requestAnimationFrame`s resolved in 23–24 ms with all four dimensions animating; typing `build-bot-7` into the row's seed input re-mounted four two-tone glyphs in the current state. Server killed afterwards.
 
 ## Phase 6: Verification and hand-off
 
