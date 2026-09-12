@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/ncube-motion-system
 last-updated: 2026-09-12
-next-step: "6.1 run the full gate (npm test, golden regen diff, static-equal, npm pack)"
+next-step: "6.2 confirm the untouched-file contract diff against origin/main"
 initiative: "scalable-icon-variants"
 ```
 
@@ -44,6 +44,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 6: Verification and hand-off
 
-- [ ] 6.1 Run the full gate — verify: `npm test` exits 0 with `# fail 0` and `# tests ≥ 114 + new cases`; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures` exits 0; `bash features/2026/09/ncube-motion-system/evidence/static-equal.sh` prints `static-equal: true`; `npm pack --dry-run 2>&1 | grep -cE "^npm notice [0-9.kMB]+ (test|scripts|features)/"` prints `0`
+- [x] 6.1 Run the full gate — verify: `npm test` exits 0 with `# fail 0` and `# tests ≥ 114 + new cases`; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures` exits 0; `bash features/2026/09/ncube-motion-system/evidence/static-equal.sh` prints `static-equal: true`; `npm pack --dry-run 2>&1 | grep -cE "^npm notice [0-9.kMB]+ (test|scripts|features)/"` prints `0`
+  - Evidence (2026-09-12): `npm test` → `# tests 124`, `# pass 124`, `# fail 0`; golden regeneration left `test/fixtures` unchanged; `static-equal: true`; `npm pack --dry-run` lists 14 files (LICENSE, README.md, index.d.ts, package.json, `src/**`) and no test/scripts/features entries.
 - [ ] 6.2 Confirm the untouched-file contract — verify: `git diff --quiet origin/main -- src/core.js src/react.js src/index.js src/variants/registry.js src/variants/validate.js src/variants/index.js src/variants/seed.js package.json test/fixtures/golden-v1.json test/fixtures/ncube-v1-identities.json` exits 0
 - [ ] 6.3 Integrate `origin/main` by merge, push, and set the roadmap to `in-review` with `next-step` pointing at review — verify: `git fetch origin && git merge origin/main` exits 0 (or is already up to date), `npm test` exits 0 after the merge, `git push` exits 0, `gh pr view --json isDraft,headRefName` shows `feature/ncube-motion-system` as a draft
