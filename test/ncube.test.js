@@ -303,6 +303,41 @@ test('paint: prepare keeps identity fields and downgrades wireframe below size 2
   assert.ok(thin.strokeWidth <= thick.strokeWidth, 'stroke width does not grow with dimension');
 });
 
+test('prepare: motion traits are deterministic, within the documented ranges and spread across seeds', () => {
+  const dirs = new Set();
+  const axes = new Set();
+  for (const seed of SEEDS) {
+    for (const d of dimensions()) {
+      const p = deriveNcube(seed, d);
+      const a = ncube.prepare(p, { size: 64 });
+      const b = ncube.prepare(p, { size: 140 });
+      for (const key of ['dir', 'hyperSpeed', 'spinAxis', 'spin3', 'phase', 'phase2']) {
+        assert.deepEqual(a[key], b[key], `${seed} d=${d} ${key} deterministic across sizes`);
+      }
+      assert.ok(a.dir === 1 || a.dir === -1, 'dir is ±1');
+      assert.ok(['ax', 'ay', 'az'].includes(a.spinAxis), 'spinAxis names a 3D angle');
+      assert.equal(a.phase, p.ax, 'phase reuses ax');
+      assert.equal(a.phase2, p.ay, 'phase2 reuses ay');
+      if (d === 3) {
+        assert.equal(a.hyperSpeed, 0, 'a cube has no hyper plane');
+        assert.ok(Math.abs(a.spin3) >= 0.45 && Math.abs(a.spin3) <= 0.85, `cube spin3 ${a.spin3}`);
+      } else {
+        const damp = 1 + 0.25 * (d - 4);
+        assert.ok(a.hyperSpeed >= 0.55 / damp - 1e-12 && a.hyperSpeed <= 0.9 / damp + 1e-12, `d=${d} hyperSpeed ${a.hyperSpeed}`);
+        assert.equal(Math.abs(a.spin3), 0.22, 'hyper-rotating cubes drift slowly in 3D');
+      }
+      assert.equal(Math.sign(a.spin3), a.dir, 'spin3 follows dir');
+      for (const key of Object.keys(p)) {
+        if (key === 'finish') continue;
+        assert.deepEqual(a[key], p[key], `identity field ${key} unchanged`);
+      }
+      if (d === p.dimension) { dirs.add(a.dir); axes.add(a.spinAxis); }
+    }
+  }
+  assert.ok(dirs.size > 1, 'golden seeds do not all share dir');
+  assert.ok(axes.size > 1, 'golden seeds do not all share spinAxis');
+});
+
 test('render: static SVG stays inside the viewBox and names the dimension for every id and finish', () => {
   const { renderStaticSVG } = localRenderer();
   for (const v of ncubeVariants) {
