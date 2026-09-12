@@ -3,11 +3,22 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
-import { captureGolden } from './helpers/golden.js';
+import { captureGolden, fixtureFor } from './helpers/golden.js';
+import { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID } from '../src/variants/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
-const fixturePath = join(dirname(__filename), 'fixtures', 'golden-ncube-v1.json');
+const fixturesDir = process.env.PRISMICON_CHECK_FIXTURES_DIR ?? join(dirname(__filename), 'fixtures');
+const fixturePath = join(fixturesDir, 'golden-ncube-v1.json');
 const fixture = JSON.parse(readFileSync(fixturePath, 'utf8'));
+
+test('every registered non-default variant has a golden entry', () => {
+  const expectedIds = BUILT_IN_VARIANTS.ids.filter((id) => id !== DEFAULT_VARIANT_ID && fixtureFor(id) === 'golden-ncube-v1.json');
+  assert.deepEqual(
+    Object.keys(fixture),
+    expectedIds,
+    'golden-ncube-v1.json keys must equal the registered n-cube ids; regenerate with: node scripts/generate-golden.mjs'
+  );
+});
 
 for (const [variant, expectedGolden] of Object.entries(fixture)) {
   test(`${variant} renderer output is byte-identical to the golden fixture`, async () => {
