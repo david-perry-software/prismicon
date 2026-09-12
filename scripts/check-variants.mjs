@@ -2,8 +2,9 @@
 // Maintainer gate: fails when a built-in variant breaks the contract or the
 // package surface drifts. Run with `npm run check:variants`.
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import {
@@ -40,6 +41,15 @@ const EXPECTED_INDEX_EXPORTS = [
 const EXPECTED_REACT_EXPORTS = ['Prismicon', 'PrismiconProvider', 'default'];
 const EXPECTED_FILES = ['src', 'index.d.ts', 'README.md', 'LICENSE'];
 const EXPECTED_EXPORT_KEYS = ['.', './react'];
+const TSC_ARGS = ['--noEmit', '--strict', '--target', 'es2020', '--lib', 'es2020,dom', 'index.d.ts'];
+const FORBIDDEN_PACK_PREFIXES = ['test/', 'scripts/', 'demo/', '.github/'];
+
+function listFilesUnder(dir) {
+  return readdirSync(join(root, dir)).flatMap((name) => {
+    const rel = join(dir, name);
+    return statSync(join(root, rel)).isDirectory() ? listFilesUnder(rel) : [rel];
+  });
+}
 
 async function checkContract() {
   const { ids } = BUILT_IN_VARIANTS;
@@ -75,9 +85,40 @@ async function checkExports() {
   assert.equal(pkg.bin, undefined, 'package.json must not declare a bin');
 }
 
+async function checkTypes() {
+  const tsc = join(root, 'node_modules', '.bin', 'tsc');
+  assert.ok(existsSync(tsc), 'node_modules/.bin/tsc is missing; run npm ci');
+  const result = spawnSync(tsc, TSC_ARGS, { cwd: root, encoding: 'utf8' });
+  assert.equal(
+    result.status,
+    0,
+    `tsc ${TSC_ARGS.join(' ')} exited ${result.status}\n${(result.stdout + result.stderr).trim()}`
+  );
+}
+
+async function checkPack() {
+  const result = spawnSync('npm', ['pack', '--dry-run', '--json'], { cwd: root, encoding: 'utf8' });
+  assert.equal(result.status, 0, `npm pack --dry-run exited ${result.status}\n${result.stderr.trim()}`);
+  const parsed = JSON.parse(result.stdout);
+  // npm 10 emits [{ files: [{ path }] }]; tolerate a bare file array too.
+  const entries = Array.isArray(parsed) && parsed[0]?.files ? parsed[0].files : parsed;
+  const packed = entries.map((entry) => (typeof entry === 'string' ? entry : entry.path)).sort();
+
+  const expected = EXPECTED_FILES.flatMap((entry) => (statSync(join(root, entry)).isDirectory() ? listFilesUnder(entry) : [entry]))
+    .concat('package.json')
+    .map((path) => relative(root, join(root, path)))
+    .sort();
+  assert.deepEqual(packed, expected, 'npm pack file list differs from package.json files');
+
+  const leaked = packed.filter((path) => FORBIDDEN_PACK_PREFIXES.some((prefix) => path.startsWith(prefix)));
+  assert.deepEqual(leaked, [], `npm pack would publish maintainer-only files: ${leaked.join(', ')}`);
+}
+
 const checks = [
   { name: 'contract', run: checkContract },
-  { name: 'exports', run: checkExports }
+  { name: 'exports', run: checkExports },
+  { name: 'types', run: checkTypes },
+  { name: 'pack', run: checkPack }
 ];
 
 let failed = false;
