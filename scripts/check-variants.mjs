@@ -14,8 +14,11 @@ import {
   listVariants,
   validateVariant
 } from '../src/variants/index.js';
+import { captureGolden, fixtureFor } from '../test/helpers/golden.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const fixturesDir = process.env.PRISMICON_CHECK_FIXTURES_DIR ?? join(root, 'test', 'fixtures');
+const REGENERATE_HINT = 'regenerate with: node scripts/generate-golden.mjs';
 const readJson = (path) => JSON.parse(readFileSync(join(root, path), 'utf8'));
 
 const EXPECTED_INDEX_EXPORTS = [
@@ -114,11 +117,34 @@ async function checkPack() {
   assert.deepEqual(leaked, [], `npm pack would publish maintainer-only files: ${leaked.join(', ')}`);
 }
 
+function loadFixture(file) {
+  const path = join(fixturesDir, file);
+  assert.ok(existsSync(path), `golden fixture ${file} is missing from ${fixturesDir}; ${REGENERATE_HINT}`);
+  return JSON.parse(readFileSync(path, 'utf8'));
+}
+
+// The default variant's fixture is the bare golden; every other id is keyed inside its family file.
+function expectedGoldenFor(id) {
+  const fixture = loadFixture(fixtureFor(id));
+  if (id === DEFAULT_VARIANT_ID) return fixture;
+  assert.ok(Object.hasOwn(fixture, id), `variant '${id}' has no golden entry in ${fixtureFor(id)}; ${REGENERATE_HINT}`);
+  return fixture[id];
+}
+
+async function checkGoldens() {
+  for (const id of BUILT_IN_VARIANTS.ids) {
+    const expected = expectedGoldenFor(id);
+    const actual = await captureGolden(id === DEFAULT_VARIANT_ID ? {} : { variant: id });
+    assert.deepEqual(actual, expected, `golden for variant '${id}' is stale; ${REGENERATE_HINT}`);
+  }
+}
+
 const checks = [
   { name: 'contract', run: checkContract },
   { name: 'exports', run: checkExports },
   { name: 'types', run: checkTypes },
-  { name: 'pack', run: checkPack }
+  { name: 'pack', run: checkPack },
+  { name: 'goldens', run: checkGoldens }
 ];
 
 let failed = false;
