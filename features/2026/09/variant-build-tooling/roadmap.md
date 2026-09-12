@@ -1,8 +1,8 @@
 ```yaml
-status: in-progress
+status: in-review
 branch: feature/variant-build-tooling
 last-updated: 2026-09-12
-next-step: "6.2 Integrate origin/main, set status: in-review, push"
+next-step: "Reviewer: /review-feature variant-build-tooling (PR #13)"
 initiative: "scalable-icon-variants"
 ```
 
@@ -39,4 +39,4 @@ initiative: "scalable-icon-variants"
 ## Phase 6: Final gate
 
 - [x] 6.1 Run the complete gate (policy §5, no lint configured) and record results in plan.md `## Research` — verify: `npm ci && npm test` prints `# fail 0` and `# tests` ≥ 127; `npm run check:variants` exits 0; `npm run lint` still prints `Missing script` (record otherwise); `git diff --quiet origin/main -- src index.d.ts test/fixtures/golden-v1.json test/fixtures/ncube-v1-identities.json scripts/measure-ncube.mjs` exits 0; `npm pack --dry-run` lists no `test/`, `scripts/`, `demo/`, `.github/` entries.
-- [ ] 6.2 Integrate `origin/main`, set `status: in-review`, push — verify: `git status --porcelain` empty; `git log origin/main..HEAD --oneline` shows only this feature's commits; `gh pr view <n> --json isDraft -q .isDraft` prints `true`.
+- [x] 6.2 Integrate `origin/main`, set `status: in-review`, push — verify: `git status --porcelain` empty; `git log origin/main..HEAD --oneline` shows only this feature's commits; `gh pr view <n> --json isDraft -q .isDraft` prints `true`.
