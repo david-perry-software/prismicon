@@ -1,7 +1,7 @@
 ```yaml
-status: in-review
+status: complete
 branch: feature/custom-variant-authoring
-last-updated: 2026-09-11
+last-updated: 2026-09-12
 next-step: ""
 initiative: "scalable-icon-variants"
 ```
@@ -40,3 +40,7 @@ initiative: "scalable-icon-variants"
 - [x] 6.2 (added 2026-09-11) review.md Finding 2: type `VariantDescriptor.flash` as `state: GlyphState | 'settling'` in `index.d.ts` (matching `pose`) and note in its JSDoc that `validateVariant` probes it with `'settling'`; add a `test/authoring.test.js` case with a spy `flash` recording the states it sees, asserting `validateVariant` passes and the recorded set equals `[...STATES, 'settling']` — verify: `grep -c "flash(params: P, state: GlyphState | 'settling')" index.d.ts` prints `1`; `npx -y -p typescript tsc --noEmit --strict --target es2020 --lib es2020,dom --types "" index.d.ts 2>&1 | grep -cE "error TS"` prints `1` and that line names `'react'`; `node --test test/authoring.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` and `# tests` ≥ 22
 - [x] 6.3 (added 2026-09-11) review.md Finding 3: change `VariantPaintEffects.dark` to `dark?: boolean` in `index.d.ts` with a one-line JSDoc noting it is `undefined` when a static-render caller omits `dark`, update the README hook table wording for `paint`'s `effects.dark` accordingly, and add a `test/authoring.test.js` case with a spy `paint` asserting `effects.dark === undefined` for `renderStaticSVG(seed, { variant })` without `dark` and `true` with `dark: true` — verify: `grep -c "dark?: boolean" index.d.ts` prints `3` (the two pre-existing `GlyphOptions`/React-prop declarations plus `VariantPaintEffects`; verify repaired 2026-09-11 from `1`, which overlooked the pre-existing matches) and `grep -c "^    dark: boolean" index.d.ts` prints `0`; `grep -c "effects.dark" README.md` ≥ 1; the `index.d.ts` compile check from 6.2 still prints `1`; `npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` and `# tests` ≥ 114; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures` exits 0; `git diff --quiet origin/main -- src/core.js src/variants/registry.js src/variants/polyhedron.js src/variants/ncube.js` exits 0
 - [x] 6.4 (added 2026-09-11) Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push — verify: `git status --porcelain` is empty and `git log origin/feature/custom-variant-authoring -1 --format=%s` shows the roadmap commit
+
+## Follow-ups (accepted at ship)
+
+- README's custom-variant hook table does not mention that `validateVariant` probes `flash` with `'settling'`; the surrounding validation prose and `index.d.ts` JSDoc document it. Accepted as a cosmetic follow-up on 2026-09-12.
