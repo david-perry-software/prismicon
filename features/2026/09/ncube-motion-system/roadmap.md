@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/ncube-motion-system
 last-updated: 2026-09-12
-next-step: "4.3 commit the benchmark output to evidence/ncube-motion-frames.txt"
+next-step: "5.1 extend index.d.ts NcubeParams with prepared motion fields"
 initiative: "scalable-icon-variants"
 ```
 
@@ -32,7 +32,7 @@ initiative: "scalable-icon-variants"
 
 - [x] 4.1 Add `test/react-variant.test.js` "hydration of an animated n-cube has no recoverable errors and rotates after frames" (SSR `variant: 'ncube-4', state: 'working'` equals `renderStaticSVG`; hydrate with a fake rAF queue; zero recoverable errors; `<g>` innerHTML differs after frames) — verify: `node --test test/react-variant.test.js` exits 0 and lists the new case as `ok`; `git diff --quiet origin/main -- src/react.js` exits 0
 - [x] 4.2 Extend `scripts/measure-ncube.mjs` with the animated-frame benchmark (60 working frames at `dt=1/30`, 12 `sending` frames, `settling` to rest; median and p95 `animate + paint` ms per registered dimension and finish; settling frame count) printing a second table and a `frame gate: pass|fail` line against median ≤ 2 ms, p95 ≤ 4 ms, settling ≤ 60 frames — verify: `node scripts/measure-ncube.mjs` exits 0 and the last line reads `frame gate: pass`
-- [ ] 4.3 Commit the benchmark output — verify: `node scripts/measure-ncube.mjs > features/2026/09/ncube-motion-system/evidence/ncube-motion-frames.txt` exits 0 and `grep -c 'frame gate: pass' features/2026/09/ncube-motion-system/evidence/ncube-motion-frames.txt` prints `1`
+- [x] 4.3 Commit the benchmark output — verify: `node scripts/measure-ncube.mjs > features/2026/09/ncube-motion-system/evidence/ncube-motion-frames.txt` exits 0 and `grep -c 'frame gate: pass' features/2026/09/ncube-motion-system/evidence/ncube-motion-frames.txt` prints `1`
 
 ## Phase 5: Types, docs, demo
 
