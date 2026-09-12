@@ -166,6 +166,9 @@ const MOTION_SPIN3_HYPER = 0.22;   // rad/s slow 3D drift accompanying hyper-rot
 const MOTION_SPIN3_BASE = 0.45;    // rad/s floor of a cube's 3D spin (its only working motion)
 const MOTION_SPIN3_SPREAD = 0.4;   // per-seed spread of the cube spin
 const MOTION_CASCADE = 0.4;        // speed ratio between a plane and the one above it in working
+const MOTION_BURST_GAIN = 3.2;     // sending/receiving burst speed as a multiple of the working speed
+const MOTION_BURST_DECAY = 7;      // exponential decay rate (1/s) of the burst over transientT
+const MOTION_SETTLE_EPS = 0.015;   // rad; settling snaps to ctx.rest once every angle is this close
 const SPIN_AXES = Object.freeze(['ax', 'ay', 'az']);
 
 function motionTraits(params) {
@@ -244,7 +247,32 @@ export function animateNcube(pose, ctx) {
       theta: easeTheta(k)
     });
   }
-  return state === 'settling' ? rest : pose;
+  if (state === 'sending' || state === 'receiving') {
+    const sign = state === 'sending' ? 1 : -1;
+    const decay = MOTION_BURST_GAIN * Math.exp(-ctx.transientT * MOTION_BURST_DECAY) * dt;
+    const next = { ...pose, ax: ease(pose.ax, rest.ax, Math.min(1, dt * 4)) };
+    if (top >= 0) {
+      next.theta = Object.freeze(pose.theta.map((th, i) => (i === top ? wrapAngle(th + sign * p.hyperSpeed * decay) : th)));
+    } else {
+      next[p.spinAxis] = wrapAngle(pose[p.spinAxis] + sign * p.spin3 * decay);
+    }
+    return Object.freeze(next);
+  }
+  if (state === 'settling') {
+    const k = Math.min(1, dt * 4.5);
+    const settled = Math.abs(angDiff(rest.ax, pose.ax)) < MOTION_SETTLE_EPS &&
+      Math.abs(angDiff(rest.ay, pose.ay)) < MOTION_SETTLE_EPS &&
+      Math.abs(angDiff(rest.az, pose.az)) < MOTION_SETTLE_EPS &&
+      pose.theta.every((th, i) => Math.abs(angDiff(rest.theta[i], th)) < MOTION_SETTLE_EPS);
+    if (settled) return rest;
+    return Object.freeze({
+      ax: ease(pose.ax, rest.ax, k),
+      ay: ease(pose.ay, rest.ay, k),
+      az: ease(pose.az, rest.az, k),
+      theta: easeTheta(k)
+    });
+  }
+  return pose;
 }
 
 export function paintNcube(p, geo, o, effects) {
