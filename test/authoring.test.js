@@ -267,6 +267,26 @@ describe('createPrismicon', () => {
     assert.equal(BUILT_IN_VARIANTS.has('square'), false);
     assert.throws(() => renderStaticSVG('maya', { variant: 'square' }), RangeError);
   });
+
+  test('static renders forward dark to paint unnormalised', async () => {
+    const { createPrismicon } = await loadAuthoring();
+    const darkValues = [];
+    const spyPaint = {
+      ...square,
+      id: 'spy',
+      paint: (params, geometry, pose, effects) => {
+        darkValues.push(effects.dark);
+        return square.paint(params, geometry, pose, effects);
+      }
+    };
+    const instance = createPrismicon({ variants: [spyPaint] });
+    darkValues.length = 0;
+    instance.renderStaticSVG('maya', { variant: 'spy' });
+    assert.deepEqual(darkValues, [undefined]);
+    darkValues.length = 0;
+    instance.renderStaticSVG('maya', { variant: 'spy', dark: true });
+    assert.deepEqual(darkValues, [true]);
+  });
 });
 
 describe('root exports', () => {

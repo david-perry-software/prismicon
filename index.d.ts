@@ -109,7 +109,8 @@ declare module 'prismicon' {
 
   /** Effects the engine passes to `paint`; under reduced motion these are the idle values. */
   export interface VariantPaintEffects {
-    dark: boolean;
+    /** `undefined` when a static-render caller omits `dark`; mounted glyphs always pass a boolean. */
+    dark?: boolean;
     sleeping: boolean;
     dx: number;
     lighten: number;

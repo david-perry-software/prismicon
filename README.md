@@ -223,7 +223,7 @@ Plus the eight hooks, all required, all pure functions of their arguments:
 | `geometry` | `(params) → geometry` | Once per render or mount, after `prepare`; reused for every frame. |
 | `pose` | `(params, state) → pose` | For the rest pose of a state: `'idle'` for static renders, and on every `setState`. `state` may also be the internal `'settling'`. |
 | `animate` | `(pose, ctx) → pose` | Once per animation frame while motion is enabled. `ctx` is `{ params, state, dt, t, transientT, rest }` (seconds). Return a **new** object; while `state === 'settling'`, return `ctx.rest` to signal motion has finished. |
-| `paint` | `(params, geometry, pose, effects) → string` | Every static render and every frame. Returns the inner SVG markup for a 100×100 viewBox. `effects` is `{ dark, sleeping, dx, lighten, flash }`. |
+| `paint` | `(params, geometry, pose, effects) → string` | Every static render and every frame. Returns the inner SVG markup for a 100×100 viewBox. `effects` is `{ dark, sleeping, dx, lighten, flash }`; `effects.dark` is `undefined` when a `renderStaticSVG` caller omits `dark` (mounted glyphs always pass a boolean), so treat it as falsy rather than comparing it to `false`. |
 | `flash` | `(params, state) → { hue?, lighten?, shake? } \| null` | On each state transition. `lighten` is the peak lightness boost in percentage points; the engine scales it by the flash envelope and passes it to `paint` as `effects.lighten`. |
 
 **Reduced motion.** When `prefers-reduced-motion` is set, `animate` is never called and
