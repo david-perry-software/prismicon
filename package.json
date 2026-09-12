@@ -41,7 +41,9 @@
     }
   },
   "scripts": {
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "check:variants": "node scripts/check-variants.mjs",
+    "verify": "npm test && npm run check:variants"
   },
   "devDependencies": {
     "@types/react": "^19.3.0",
