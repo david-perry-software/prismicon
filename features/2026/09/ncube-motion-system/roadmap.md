@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/ncube-motion-system
 last-updated: 2026-09-12
-next-step: "1.3 update pose test to assert theta"
+next-step: "1.4 record evidence/static-equal.sh"
 initiative: "scalable-icon-variants"
 ```
 
@@ -10,7 +10,7 @@ initiative: "scalable-icon-variants"
 
 - [x] 1.1 Export `angDiff` and `wrapAngle` from `src/variants/polyhedron.js` (add the `export` keyword only; no other change) — verify: `git diff origin/main -- src/variants/polyhedron.js | grep -c '^[-+]export function \(angDiff\|wrapAngle\)'` prints `2` and `git diff origin/main --stat -- src/variants/polyhedron.js` reports 2 insertions, 2 deletions; `npm test` exits 0 with `# fail 0`
 - [x] 1.2 In `src/variants/ncube.js` make `poseNcube` return a frozen `{ ax, ay, az, theta: params.theta }` for every state and make `projectTo3`/`paintNcube` read the plane angles from the pose (`o.theta`) — verify: `node --test test/golden-ncube.test.js test/ncube-derivation-freeze.test.js` exits 0 (static and mounted goldens still byte-identical because nothing moves yet)
-- [ ] 1.3 Update `test/ncube.test.js` "hooks: pose returns the same frozen rest orientation for every state" to assert `{ ax, ay, az, theta }` with `theta === p.theta` for `[...STATES, 'settling']` — verify: `node --test test/ncube.test.js` exits 0 with `# fail 0`
+- [x] 1.3 Update `test/ncube.test.js` "hooks: pose returns the same frozen rest orientation for every state" to assert `{ ax, ay, az, theta }` with `theta === p.theta` for `[...STATES, 'settling']` — verify: `node --test test/ncube.test.js` exits 0 with `# fail 0`
 - [ ] 1.4 Record the static-equality check command for later steps in `evidence/static-equal.sh`: `node -e` that loads `git show origin/main:test/fixtures/golden-ncube-v1.json` and the working file and prints `static-equal: <bool>` comparing the `static` objects of `ncube` and `ncube-4` — verify: `bash features/2026/09/ncube-motion-system/evidence/static-equal.sh` prints `static-equal: true`
 
 ## Phase 2: Motion traits and the working state

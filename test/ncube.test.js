@@ -226,8 +226,13 @@ test('hooks: pose returns the same frozen rest orientation for every state', () 
     const p = deriveNcube(seed);
     const rest = poseNcube(p, 'idle');
     assert.ok(Object.isFrozen(rest));
-    assert.deepEqual(rest, { ax: p.ax, ay: p.ay, az: p.az });
-    for (const state of [...STATES, 'settling']) assert.deepEqual(poseNcube(p, state), rest);
+    assert.deepEqual(rest, { ax: p.ax, ay: p.ay, az: p.az, theta: p.theta });
+    assert.equal(rest.theta, p.theta, 'rest pose carries the params theta array by identity');
+    for (const state of [...STATES, 'settling']) {
+      const pose = poseNcube(p, state);
+      assert.deepEqual(pose, rest, state);
+      assert.equal(pose.theta, p.theta, state);
+    }
   }
 });
 
