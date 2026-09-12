@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/variant-build-tooling
 last-updated: 2026-09-12
-next-step: "3.5 Add test/check-variants.test.js"
+next-step: "4.1 README: Adding a variant section, flash 'settling' clause, support table timings"
 initiative: "scalable-icon-variants"
 ```
 
@@ -24,7 +24,7 @@ initiative: "scalable-icon-variants"
 - [x] 3.2 Add the `types` check (spawn `node_modules/.bin/tsc --noEmit --strict --target es2020 --lib es2020,dom index.d.ts`) and the `pack` check (`npm pack --dry-run --json`, file list equals the expected set, nothing from `test/`, `scripts/`, `demo/`, `.github/`) — verify: `node scripts/check-variants.mjs` prints `✓ types` and `✓ pack` and exits 0; `node_modules/.bin/tsc --noEmit --strict --target es2020 --lib es2020,dom index.d.ts; echo "exit=$?"` prints `exit=0` (the code the check keys on).
 - [x] 3.3 Add the `goldens` check: for `DEFAULT_VARIANT_ID` and every other registered id, `captureGolden({ variant })` deep-equals the entry in `fixtureFor(id)` (fixtures dir from `PRISMICON_CHECK_FIXTURES_DIR`, default `test/fixtures`); a missing entry fails with `regenerate with: node scripts/generate-golden.mjs` — verify: `node scripts/check-variants.mjs` prints `✓ goldens` and exits 0; `mkdir -p /tmp/vbt && node -e "const g=require('./test/fixtures/golden-ncube-v1.json'); delete g['ncube-5']; require('fs').writeFileSync('/tmp/vbt/golden-ncube-v1.json', JSON.stringify(g)); require('fs').copyFileSync('test/fixtures/golden-v1.json','/tmp/vbt/golden-v1.json')" && PRISMICON_CHECK_FIXTURES_DIR=/tmp/vbt node scripts/check-variants.mjs; echo "exit=$?"` prints a `✗ goldens` line naming `ncube-5` and `generate-golden.mjs` and `exit=1`.
 - [x] 3.4 Add `package.json` scripts `check:variants` (`node scripts/check-variants.mjs`) and `verify` (`npm test && npm run check:variants`); update `AGENTS.md` `### Commands` (`Typecheck: npm run check:variants` (types group), `Full verification: npm run verify`) — verify: `npm run check:variants` exits 0; `npm run verify` exits 0; `grep -c "check:variants" AGENTS.md` ≥ 1.
-- [ ] 3.5 Add `test/check-variants.test.js` (spawns the script: exit 0 with one `✓` per check name; with `PRISMICON_CHECK_FIXTURES_DIR` at a temp fixtures dir missing `ncube-5`, non-zero exit and output naming `ncube-5` and `generate-golden.mjs`) — verify: `node --test test/check-variants.test.js` prints `# fail 0` with ≥ 2 tests; `npm test` prints `# fail 0` and `# tests` ≥ 127.
+- [x] 3.5 Add `test/check-variants.test.js` (spawns the script: exit 0 with one `✓` per check name; with `PRISMICON_CHECK_FIXTURES_DIR` at a temp fixtures dir missing `ncube-5`, non-zero exit and output naming `ncube-5` and `generate-golden.mjs`) — verify: `node --test test/check-variants.test.js` prints `# fail 0` with ≥ 2 tests; `npm test` prints `# fail 0` and `# tests` ≥ 127.
 
 ## Phase 4: Docs and demo
 
