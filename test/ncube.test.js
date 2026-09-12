@@ -336,6 +336,80 @@ test('hooks: animate never mutates its frozen input', () => {
   }
 });
 
+test('hooks: waiting, thinking, sleeping, sending and receiving move on the first frame and stay near rest', () => {
+  const dt = 1 / 30;
+  for (const seed of SEEDS) {
+    for (const d of dimensions()) {
+      const p = preparedFor(seed, d);
+      const rest = poseNcube(p, 'idle');
+      for (const state of ['waiting', 'thinking', 'sleeping', 'sending', 'receiving']) {
+        const first = animateNcube(rest, { params: p, state, dt, t: 0, transientT: dt, rest });
+        assert.notEqual(first, rest, `${seed} d=${d} ${state} returns a new object`);
+        assert.ok(Object.isFrozen(first) && Object.isFrozen(first.theta), 'frames are frozen');
+        assert.notDeepEqual(first, rest, `${seed} d=${d} ${state} differs from rest on the first frame`);
+        if (state === 'sending' || state === 'receiving') continue;
+        const frames = runFrames(p, rest, state, 60, dt);
+        const last = frames[frames.length - 1];
+        for (const axis of ['ax', 'ay', 'az']) assert.ok(Math.abs(wrapDiff(last[axis], rest[axis])) < 0.2, `${seed} d=${d} ${state} ${axis} bounded`);
+        last.theta.forEach((th, i) => assert.ok(Math.abs(wrapDiff(th, rest.theta[i])) < 0.2, `${seed} d=${d} ${state} theta[${i}] bounded`));
+      }
+    }
+  }
+});
+
+test('hooks: sending and receiving burst in opposite directions on the highest plane (or the cube spin axis)', () => {
+  const dt = 1 / 30;
+  for (const seed of SEEDS) {
+    for (const d of dimensions()) {
+      const p = preparedFor(seed, d);
+      const rest = poseNcube(p, 'idle');
+      const top = d - 4;
+      const read = (pose) => (top >= 0 ? pose.theta[top] : pose[p.spinAxis]);
+      const sending = animateNcube(rest, { params: p, state: 'sending', dt, t: 0, transientT: dt, rest });
+      const receiving = animateNcube(rest, { params: p, state: 'receiving', dt, t: 0, transientT: dt, rest });
+      const ds = wrapDiff(read(sending), read(rest));
+      const dr = wrapDiff(read(receiving), read(rest));
+      assert.ok(ds !== 0 && Math.sign(ds) === -Math.sign(dr), `${seed} d=${d} opposite bursts (${ds}, ${dr})`);
+      assert.ok(Math.abs(Math.abs(ds) - Math.abs(dr)) < 1e-12, 'symmetric magnitude');
+      if (top >= 0) {
+        rest.theta.forEach((th, i) => { if (i !== top) assert.equal(sending.theta[i], th, `theta[${i}] untouched by the burst`); });
+      } else {
+        assert.equal(sending.theta, rest.theta, 'a cube burst never touches theta');
+      }
+      const late = animateNcube(rest, { params: p, state: 'sending', dt, t: 0.4, transientT: 0.4, rest });
+      assert.ok(Math.abs(wrapDiff(read(late), read(rest))) < Math.abs(ds), 'the burst decays over transientT');
+    }
+  }
+});
+
+test('hooks: settling eases every angle to rest and returns ctx.rest by identity within 60 frames', () => {
+  for (const seed of SEEDS) {
+    for (const d of dimensions()) {
+      const p = preparedFor(seed, d);
+      const rest = poseNcube(p, 'idle');
+      let pose = Object.freeze({ ax: rest.ax + 1, ay: rest.ay - 1, az: rest.az + 1, theta: Object.freeze(rest.theta.map((th) => th + 1)) });
+      let settledAt = -1;
+      for (let i = 1; i <= 60; i += 1) {
+        const next = animateNcube(pose, { params: p, state: 'settling', dt: 1 / 30, t: i / 30, transientT: 0, rest });
+        if (next === rest) { settledAt = i; break; }
+        assert.notEqual(next, pose, 'each settling frame is a new object');
+        for (const axis of ['ax', 'ay', 'az']) assert.ok(Math.abs(wrapDiff(next[axis], rest[axis])) < Math.abs(wrapDiff(pose[axis], rest[axis])), `${axis} converges`);
+        pose = next;
+      }
+      assert.ok(settledAt > 0 && settledAt <= 60, `${seed} d=${d} settled at frame ${settledAt}`);
+    }
+  }
+});
+
+test('hooks: validateVariant passes for ncube and every ncube-<d>', async () => {
+  const { validateVariant } = await import('../src/variants/validate.js');
+  for (const v of ncubeVariants) {
+    let validated;
+    assert.doesNotThrow(() => { validated = validateVariant(v); }, v.id);
+    assert.equal(validated.id, v.id);
+  }
+});
+
 test('hooks: flash mirrors polyhedron', () => {
   const p = deriveNcube('maya');
   assert.deepEqual(flashNcube(p, 'receiving'), { hue: p.hue, lighten: 26 });
