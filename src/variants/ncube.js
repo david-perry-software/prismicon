@@ -10,11 +10,16 @@
  *
  * Raising NCUBE_MAX_DIMENSION changes the dimension draw and the theta count,
  * so it requires a new spec version.
+ *
+ * Motion traits (dir, hyperSpeed, spinAxis, spin3, phase, phase2) are NOT part of
+ * the spec: prepareNcube derives them from params.hash bit ranges and the existing
+ * angles without new PRNG draws, so deriveNcube output and the static portrait are
+ * unchanged. The MOTION_* constants below are tunable, non-identity values.
  */
 
 import { defineVariant } from './registry.js';
 import { cyrb53, mulberry32 } from './seed.js';
-import { FINISH_NAMES, PALETTE, normalizeSeed } from './polyhedron.js';
+import { FINISH_NAMES, PALETTE, angDiff, normalizeSeed, wrapAngle } from './polyhedron.js';
 
 const TAU = Math.PI * 2;
 
@@ -122,11 +127,11 @@ function shadeFor(dark) {
  * the far cell inside the near one at the same ratio. The result is scaled so
  * the farthest point sits at FIT_RADIUS.
  */
-function projectTo3(geo, p) {
+function projectTo3(geo, theta) {
   const pts = geo.V.map((v) => v.slice());
   for (let k = geo.dimension - 1; k >= 3; k--) {
     const i = k % 3;
-    const c = Math.cos(p.theta[k - 3]), s = Math.sin(p.theta[k - 3]);
+    const c = Math.cos(theta[k - 3]), s = Math.sin(theta[k - 3]);
     let reach = 0;
     for (const pt of pts) {
       const a = pt[i], b = pt[k];
@@ -152,20 +157,122 @@ function strokeWidthFor(dimension) {
   return STROKE_BY_DIMENSION[dimension] ?? 1;
 }
 
+// ---------------------------------------------------------------- motion traits (tunable, non-identity)
+
+const MOTION_HYPER_BASE = 0.55;    // rad/s floor of the highest-plane rotation at d = 4
+const MOTION_HYPER_SPREAD = 0.35;  // per-seed spread added to the floor
+const MOTION_HYPER_DAMP = 0.25;    // slow-down per dimension above 4 so 5-/6-cubes stay legible
+const MOTION_SPIN3_HYPER = 0.22;   // rad/s slow 3D drift accompanying hyper-rotation (d >= 4)
+const MOTION_SPIN3_BASE = 0.45;    // rad/s floor of a cube's 3D spin (its only working motion)
+const MOTION_SPIN3_SPREAD = 0.4;   // per-seed spread of the cube spin
+const MOTION_CASCADE = 0.4;        // speed ratio between a plane and the one above it in working
+const MOTION_BURST_GAIN = 3.2;     // sending/receiving burst speed as a multiple of the working speed
+const MOTION_BURST_DECAY = 7;      // exponential decay rate (1/s) of the burst over transientT
+const MOTION_SETTLE_EPS = 0.015;   // rad; settling snaps to ctx.rest once every angle is this close
+const SPIN_AXES = Object.freeze(['ax', 'ay', 'az']);
+
+function motionTraits(params) {
+  const { hash, dimension } = params;
+  const dir = hash % 2 === 0 ? 1 : -1;
+  const hyperSpeed = dimension >= 4
+    ? (MOTION_HYPER_BASE + (Math.floor(hash / 2) % 256) / 255 * MOTION_HYPER_SPREAD) / (1 + MOTION_HYPER_DAMP * (dimension - 4))
+    : 0;
+  const spinAxis = SPIN_AXES[Math.floor(hash / 512) % 3];
+  const spin3 = dimension >= 4
+    ? dir * MOTION_SPIN3_HYPER
+    : dir * (MOTION_SPIN3_BASE + (Math.floor(hash / 1536) % 256) / 255 * MOTION_SPIN3_SPREAD);
+  return { dir, hyperSpeed, spinAxis, spin3, phase: params.ax, phase2: params.ay };
+}
+
 // ---------------------------------------------------------------- variant hooks
 
 export function prepareNcube(params, { size }) {
   const finish = size < 28 && params.finish === 2 ? 0 : params.finish;
-  return { ...params, finish, strokeWidth: strokeWidthFor(params.dimension) };
+  return { ...params, finish, strokeWidth: strokeWidthFor(params.dimension), ...motionTraits(params) };
 }
 
-/** Rest orientation for every state; motion belongs to ncube-motion-system. */
+/**
+ * Rest pose for every state: the seed's 3D angles plus the plane angles. Motion
+ * always starts from rest so the first mounted frame equals the static portrait.
+ */
 export function poseNcube(params) {
-  return Object.freeze({ ax: params.ax, ay: params.ay, az: params.az });
+  return Object.freeze({ ax: params.ax, ay: params.ay, az: params.az, theta: params.theta });
 }
 
 export function animateNcube(pose, ctx) {
-  return ctx.state === 'settling' ? ctx.rest : pose;
+  const { params: p, state, dt, t, rest } = ctx;
+  if (state === 'idle' || state === 'done' || state === 'error') return pose;
+  const top = p.dimension - 4;
+  const ease = (cur, target, k) => cur + angDiff(target, cur) * k;
+  const easeTheta = (k, topTarget = null) => Object.freeze(pose.theta.map((th, i) =>
+    ease(th, i === top && topTarget !== null ? topTarget : rest.theta[i], k)));
+  if (state === 'working') {
+    const k = Math.min(1, dt * 3);
+    const theta = top < 0
+      ? pose.theta
+      : Object.freeze(pose.theta.map((th, i) =>
+        i > top ? th : wrapAngle(th + p.dir * p.hyperSpeed * MOTION_CASCADE ** (top - i) * dt)));
+    const next = { ax: ease(pose.ax, rest.ax, k), ay: ease(pose.ay, rest.ay, k), az: ease(pose.az, rest.az, k) };
+    next[p.spinAxis] = wrapAngle(pose[p.spinAxis] + p.spin3 * dt);
+    return Object.freeze({ ...next, theta });
+  }
+  if (state === 'waiting') {
+    const k = Math.min(1, dt * 3.5);
+    return Object.freeze({
+      ax: ease(pose.ax, rest.ax + Math.sin(t * 0.8 + p.phase) * 0.05, k),
+      ay: ease(pose.ay, rest.ay + Math.sin(t * 0.55 + p.phase2) * 0.10, k),
+      az: ease(pose.az, rest.az, k),
+      theta: easeTheta(k)
+    });
+  }
+  if (state === 'thinking') {
+    const k = Math.min(1, dt * 2.2);
+    const wobbleA = Math.sin(t * 0.6 + p.phase) * 0.10;
+    const wobbleB = Math.sin(t * 0.45 + p.phase2) * 0.08;
+    const nod = Math.max(0, Math.sin(t * 0.35 + p.phase)) * 0.12;
+    const hyperWobble = top >= 0 ? rest.theta[top] + Math.sin(t * 0.5 + p.phase) * 0.12 : null;
+    return Object.freeze({
+      ax: ease(pose.ax, rest.ax + wobbleA, k),
+      ay: ease(pose.ay, rest.ay + wobbleB + nod, k),
+      az: ease(pose.az, rest.az, k),
+      theta: easeTheta(k, hyperWobble)
+    });
+  }
+  if (state === 'sleeping') {
+    const k = Math.min(1, dt * 1.2);
+    return Object.freeze({
+      ax: ease(pose.ax, rest.ax + Math.sin(t * 0.25 + p.phase) * 0.03, k),
+      ay: ease(pose.ay, rest.ay, k),
+      az: ease(pose.az, rest.az, k),
+      theta: easeTheta(k)
+    });
+  }
+  if (state === 'sending' || state === 'receiving') {
+    const sign = state === 'sending' ? 1 : -1;
+    const decay = MOTION_BURST_GAIN * Math.exp(-ctx.transientT * MOTION_BURST_DECAY) * dt;
+    const next = { ...pose, ax: ease(pose.ax, rest.ax, Math.min(1, dt * 4)) };
+    if (top >= 0) {
+      next.theta = Object.freeze(pose.theta.map((th, i) => (i === top ? wrapAngle(th + sign * p.hyperSpeed * decay) : th)));
+    } else {
+      next[p.spinAxis] = wrapAngle(pose[p.spinAxis] + sign * p.spin3 * decay);
+    }
+    return Object.freeze(next);
+  }
+  if (state === 'settling') {
+    const k = Math.min(1, dt * 4.5);
+    const settled = Math.abs(angDiff(rest.ax, pose.ax)) < MOTION_SETTLE_EPS &&
+      Math.abs(angDiff(rest.ay, pose.ay)) < MOTION_SETTLE_EPS &&
+      Math.abs(angDiff(rest.az, pose.az)) < MOTION_SETTLE_EPS &&
+      pose.theta.every((th, i) => Math.abs(angDiff(rest.theta[i], th)) < MOTION_SETTLE_EPS);
+    if (settled) return rest;
+    return Object.freeze({
+      ax: ease(pose.ax, rest.ax, k),
+      ay: ease(pose.ay, rest.ay, k),
+      az: ease(pose.az, rest.az, k),
+      theta: easeTheta(k)
+    });
+  }
+  return pose;
 }
 
 export function paintNcube(p, geo, o, effects) {
@@ -175,7 +282,7 @@ export function paintNcube(p, geo, o, effects) {
   const range = effects.sleeping ? shade.range * 0.55 : shade.range;
   const hueMix = effects.flash ? lerpHue(p.hue, effects.flash.hue ?? p.hue, effects.flash.strength) : null;
   const strokeWidth = p.strokeWidth ?? strokeWidthFor(p.dimension);
-  const pts3 = projectTo3(geo, p).map((v) => rot3(v, o.ax, o.ay, o.az));
+  const pts3 = projectTo3(geo, o.theta).map((v) => rot3(v, o.ax, o.ay, o.az));
   const proj = pts3.map((v) => {
     const s = F / (F - v[2]);
     return (50 + off + v[0] * s).toFixed(1) + ' ' + (50 + v[1] * s).toFixed(1);

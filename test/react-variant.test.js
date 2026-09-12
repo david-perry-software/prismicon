@@ -21,19 +21,27 @@ afterEach(() => {
 });
 
 function installDom() {
-  const dom = new JSDOM('<!doctype html><html><body><div id="glyph"></div></body></html>');
+  const dom = new JSDOM('<!doctype html><html><body><div id="glyph"></div><div id="scratch"></div></body></html>');
   let animationFrames = 0;
+  const frameCallbacks = [];
   dom.window.matchMedia = (query) => ({ matches: false, media: query });
   globalThis.window = dom.window;
   globalThis.document = dom.window.document;
   globalThis.IntersectionObserver = undefined;
-  globalThis.requestAnimationFrame = () => {
+  globalThis.requestAnimationFrame = (callback) => {
     animationFrames += 1;
+    frameCallbacks.push(callback);
     return animationFrames;
   };
   globalThis.IS_REACT_ACT_ENVIRONMENT = true;
   return {
     container: dom.window.document.getElementById('glyph'),
+    scratch: dom.window.document.getElementById('scratch'),
+    advanceAnimationFrame(now) {
+      const callback = frameCallbacks.shift();
+      assert.ok(callback, 'expected a queued animation frame');
+      callback(now);
+    },
     get animationFrames() {
       return animationFrames;
     }
@@ -61,6 +69,39 @@ test('SSR rejects unknown and non-string variants', () => {
     return true;
   });
   assert.throws(() => renderToStaticMarkup(element({ variant: 42 })), { name: 'TypeError' });
+});
+
+// Runs before any other mount: the shared engine is a module singleton whose
+// frame loop must start under this test's queued requestAnimationFrame, and the
+// final drained frame stops the loop so later mounts request frames again.
+test('hydration of an animated n-cube has no recoverable errors and rotates after frames', async () => {
+  const dom = installDom();
+  const props = { variant: 'ncube-4', state: 'working' };
+  dom.scratch.innerHTML = renderStaticSVG('Ada Lovelace', props);
+  const staticInner = dom.scratch.querySelector('svg > g').innerHTML;
+  dom.container.innerHTML = renderToString(element(props));
+  const inner = () => dom.container.querySelector('svg > g').innerHTML;
+  assert.equal(inner(), staticInner, 'SSR markup equals the static portrait');
+  const errors = [];
+
+  const root = await act(() => hydrateRoot(dom.container, element(props), {
+    onRecoverableError: (error) => errors.push(error)
+  }));
+
+  assert.deepEqual(errors, []);
+  assert.match(dom.container.querySelector('svg').getAttribute('aria-label'), /4-cube \(tesseract\), .+, working$/);
+  assert.equal(inner(), staticInner, 'the first mounted working frame equals the static portrait');
+  let now = 1000;
+  const seen = new Set([staticInner]);
+  for (let i = 0; i < 4; i += 1, now += 33) {
+    dom.advanceAnimationFrame(now);
+    seen.add(inner());
+  }
+  assert.ok(seen.size > 2, 'the tesseract rotates across frames while working');
+
+  await act(() => root.unmount());
+  dom.advanceAnimationFrame(now);
+  assert.equal(dom.container.querySelector('svg'), null);
 });
 
 test('client mounts an explicit variant', async () => {

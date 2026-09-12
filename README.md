@@ -157,10 +157,40 @@ three finishes (shaded, two-tone, wireframe) with a seed-derived rest orientatio
   identical, so `ncube-4` for a seed equals `ncube` whenever that seed derives 4.
 - The aria label reads `"<seed>: <d>-cube (<name>), <finish>"`, e.g.
   `maya: 3-cube (cube), shaded`.
-- Motion is deliberately static in this release: `pose` returns the seed-derived
-  rest orientation for every state and `animate` settles immediately. State-aware
-  motion arrives with the `ncube-motion-system` feature; lifecycle flashes
-  (`receiving`, `done`, `error`) already work.
+
+**Motion model.** Every state starts from the seed's rest orientation (so the
+first mounted frame equals the static portrait) and follows the same lifecycle
+as the polyhedron in `## States`, expressed as rotations of the 3D angles
+(`ax`, `ay`, `az`) and the plane angles `theta[k]` (plane `k + 3`):
+
+| State | N-cube motion |
+|---|---|
+| `idle`, `done`, `error` | none — the engine drives the flash; the pose is returned unchanged |
+| `working` | highest plane `theta[d-4]` rotates at `dir · hyperSpeed`; each lower plane follows at `0.4^(top - i)` of that speed (the cascade); the seed's `spinAxis` drifts at `spin3` while the other two 3D angles ease to rest |
+| `waiting` | gentle sway of `ax`/`ay` around rest; planes ease to rest |
+| `thinking` | slow precessing wobble with a periodic nod on `ax`/`ay`; for d ≥ 4 the highest plane adds a slow hyper-wobble (±0.12 rad) |
+| `sending` / `receiving` | burst on the highest plane (`3.2 × hyperSpeed`, decaying with `exp(−7·t)`), sending forward and receiving backward; then settles |
+| `sleeping` | very slow bob of `ax`, dimmed |
+| settling (after transient states) | every angle eases to rest and the pose snaps to the exact rest object once all are within 0.015 rad |
+
+- **Highest-plane rule.** Only planes up to the instance's highest plane move;
+  `theta[i]` for `i > d - 4` stays at rest, so a 4-cube rotates one plane, a
+  5-cube two (the second at 40 % speed), a 6-cube three.
+- **d = 3.** A cube has no plane angles: in `working` it spins on `spinAxis` at
+  `spin3` (faster than the 4+ drift, since it is the cube's only motion) and the
+  send/receive bursts apply to that axis instead.
+- **Traits without new draws.** `dir`, `hyperSpeed`, `spinAxis`, `spin3`, `phase`
+  and `phase2` are derived by `prepare` from disjoint bit ranges of `params.hash`
+  and the existing `ax`/`ay` angles — no extra PRNG draws, so `deriveNcube`
+  output and the static portrait are unchanged and the spec stays `ncube-v1`.
+  `hyperSpeed` is `0.55–0.90 rad/s` at d = 4, slowed by `1 / (1 + 0.25·(d − 4))`
+  above; `spin3` is `±0.22 rad/s` for d ≥ 4 and `±0.45–0.85 rad/s` for a cube.
+  These constants are tunable, non-identity values (`MOTION_*` in
+  `src/variants/ncube.js`). `GlyphHandle.params` exposes them; they are optional
+  on `NcubeParams`.
+- **Reduced motion.** Under `prefers-reduced-motion` the engine queues no frames,
+  so a mounted n-cube equals its static markup in every state (only the ring and
+  the dimming change).
 
 **Derivation spec `ncube-v1` (frozen).** `seed → normalizeSeed → cyrb53 → mulberry32`,
 then draws in this order:
@@ -179,17 +209,21 @@ then draws in this order:
 **Support table.** The bound was measured with `scripts/measure-ncube.mjs`
 (static SVG at size 64, five seeds, 200 `paint()` calls on Node 22). A dimension
 is supported when, for every finish, the static SVG is ≤ 32768 bytes, the median
-projected edge is ≥ 2.5 viewBox units and the median `paint()` takes ≤ 5 ms:
+projected edge is ≥ 2.5 viewBox units and the median `paint()` takes ≤ 5 ms. The
+"median frame ms" column is the animated `animate + paint` cost per frame from the
+same script's frame benchmark (60 working frames at 30 fps, a send burst, then
+settling; gate median ≤ 2 ms, p95 ≤ 4 ms, settling ≤ 60 frames — recorded in
+`features/2026/09/ncube-motion-system/evidence/ncube-motion-frames.txt`):
 
-| d | vertices | edges | faces | max bytes (shaded / wireframe) | median edge | median paint ms (shaded) | supported |
-|---|----------|-------|-------|--------------------------------|-------------|--------------------------|-----------|
-| 3 | 8 | 12 | 6 | 845 / 517 | 25.39 | 0.041 | yes |
-| 4 | 16 | 32 | 24 | 2779 / 960 | 15.72 | 0.059 | yes |
-| 5 | 32 | 80 | 80 | 8771 / 2018 | 10.60 | 0.135 | yes |
-| 6 | 64 | 192 | 240 | 25890 / 4479 | 7.29 | 0.370 | yes |
-| 7 | 128 | 448 | 672 | 72115 / 10114 | 5.29 | 0.863 | no (bytes) |
-| 8 | 256 | 1024 | 1792 | 191954 / 22785 | 3.53 | 3.040 | no (bytes) |
-| 9 | 512 | 2304 | 4608 | 493266 / 50943 | 2.27 | 10.680 | no (all three) |
+| d | vertices | edges | faces | max bytes (shaded / wireframe) | median edge | median paint ms (shaded) | median frame ms (shaded) | supported |
+|---|----------|-------|-------|--------------------------------|-------------|--------------------------|--------------------------|-----------|
+| 3 | 8 | 12 | 6 | 845 / 517 | 25.39 | 0.041 | 0.014 | yes |
+| 4 | 16 | 32 | 24 | 2779 / 960 | 15.72 | 0.059 | 0.032 | yes |
+| 5 | 32 | 80 | 80 | 8771 / 2018 | 10.60 | 0.135 | 0.081 | yes |
+| 6 | 64 | 192 | 240 | 25890 / 4479 | 7.29 | 0.370 | 0.236 | yes |
+| 7 | 128 | 448 | 672 | 72115 / 10114 | 5.29 | 0.863 | — | no (bytes) |
+| 8 | 256 | 1024 | 1792 | 191954 / 22785 | 3.53 | 3.040 | — | no (bytes) |
+| 9 | 512 | 2304 | 4608 | 493266 / 50943 | 2.27 | 10.680 | — | no (all three) |
 
 Dimensions above 6 are not registered; requesting `ncube-7` throws `RangeError`
 like any unknown id.
