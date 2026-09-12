@@ -515,7 +515,10 @@ test('render: setState through every STATES entry never throws and settles back 
     assert.equal(handle.state, state);
     for (let i = 0; i < 60; i += 1, now += 33) dom.advanceAnimationFrame(now);
   }
-  assert.equal(inner(), rest, 'after every flash decays the glyph is back at its rest markup');
+  assert.notEqual(inner(), rest, 'sleeping (the last STATES entry) bobs and paints the dimmer ramp');
+  handle.setState('idle');
+  for (let i = 0; i < 60; i += 1, now += 33) dom.advanceAnimationFrame(now);
+  assert.equal(inner(), rest, 'after every flash decays and settling completes the glyph is back at its rest markup');
   handle.destroy();
 });
 

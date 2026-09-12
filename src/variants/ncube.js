@@ -197,10 +197,12 @@ export function poseNcube(params) {
 }
 
 export function animateNcube(pose, ctx) {
-  const { params: p, state, dt, rest } = ctx;
+  const { params: p, state, dt, t, rest } = ctx;
   if (state === 'idle' || state === 'done' || state === 'error') return pose;
   const top = p.dimension - 4;
   const ease = (cur, target, k) => cur + angDiff(target, cur) * k;
+  const easeTheta = (k, topTarget = null) => Object.freeze(pose.theta.map((th, i) =>
+    ease(th, i === top && topTarget !== null ? topTarget : rest.theta[i], k)));
   if (state === 'working') {
     const k = Math.min(1, dt * 3);
     const theta = top < 0
@@ -210,6 +212,37 @@ export function animateNcube(pose, ctx) {
     const next = { ax: ease(pose.ax, rest.ax, k), ay: ease(pose.ay, rest.ay, k), az: ease(pose.az, rest.az, k) };
     next[p.spinAxis] = wrapAngle(pose[p.spinAxis] + p.spin3 * dt);
     return Object.freeze({ ...next, theta });
+  }
+  if (state === 'waiting') {
+    const k = Math.min(1, dt * 3.5);
+    return Object.freeze({
+      ax: ease(pose.ax, rest.ax + Math.sin(t * 0.8 + p.phase) * 0.05, k),
+      ay: ease(pose.ay, rest.ay + Math.sin(t * 0.55 + p.phase2) * 0.10, k),
+      az: ease(pose.az, rest.az, k),
+      theta: easeTheta(k)
+    });
+  }
+  if (state === 'thinking') {
+    const k = Math.min(1, dt * 2.2);
+    const wobbleA = Math.sin(t * 0.6 + p.phase) * 0.10;
+    const wobbleB = Math.sin(t * 0.45 + p.phase2) * 0.08;
+    const nod = Math.max(0, Math.sin(t * 0.35 + p.phase)) * 0.12;
+    const hyperWobble = top >= 0 ? rest.theta[top] + Math.sin(t * 0.5 + p.phase) * 0.12 : null;
+    return Object.freeze({
+      ax: ease(pose.ax, rest.ax + wobbleA, k),
+      ay: ease(pose.ay, rest.ay + wobbleB + nod, k),
+      az: ease(pose.az, rest.az, k),
+      theta: easeTheta(k, hyperWobble)
+    });
+  }
+  if (state === 'sleeping') {
+    const k = Math.min(1, dt * 1.2);
+    return Object.freeze({
+      ax: ease(pose.ax, rest.ax + Math.sin(t * 0.25 + p.phase) * 0.03, k),
+      ay: ease(pose.ay, rest.ay, k),
+      az: ease(pose.az, rest.az, k),
+      theta: easeTheta(k)
+    });
   }
   return state === 'settling' ? rest : pose;
 }
