@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/variant-build-tooling
 last-updated: 2026-09-12
-next-step: "5.2 Merge origin/main, push, confirm CI green on PR #13"
+next-step: "6.1 Run the complete gate and record in plan.md ## Research"
 initiative: "scalable-icon-variants"
 ```
 
@@ -34,7 +34,7 @@ initiative: "scalable-icon-variants"
 ## Phase 5: CI
 
 - [x] 5.1 Add `.github/workflows/ci.yml` (`name: CI`; on `pull_request` and `push` to `main`; `permissions: contents: read`; `ubuntu-latest`; `actions/checkout@v4`, `actions/setup-node@v4` with `node-version: 22` and `cache: npm`; `npm ci`, `npm test`, `npm run check:variants`) — verify: `node -e "const y=require('fs').readFileSync('.github/workflows/ci.yml','utf8'); for (const s of ['pull_request','npm ci','npm test','npm run check:variants','node-version: 22','contents: read']) if(!y.includes(s)) throw new Error(s); console.log('ok')"` prints `ok`.
-- [ ] 5.2 Merge `origin/main`, push, and confirm the workflow runs green on this PR — verify: `preview: GitHub Actions is the only executor of the workflow` — `scripts/wait-for-checks.sh pr <n>` exits 0 with a `CI` check reported `success`; record the run URL on this line.
+- [x] 5.2 Merge `origin/main`, push, and confirm the workflow runs green on this PR — verify: `preview: GitHub Actions is the only executor of the workflow` — `scripts/wait-for-checks.sh pr <n>` exits 0 with a `CI` check reported `success`; record the run URL on this line. Done 2026-09-12: `origin/main` (1a02709) already an ancestor of HEAD; `scripts/wait-for-checks.sh pr 13` → `pass=1 fail=0 pending=0 … RESULT: success`, exit 0; workflow `CI` / job `verify` SUCCESS — run: https://github.com/david-perry-software/prismicon/actions/runs/34709582102/job/103595748820
 
 ## Phase 6: Final gate
 
