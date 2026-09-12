@@ -44,8 +44,21 @@
 </p>
 <div class="row" id="dimensions"></div>
 
+<h2>Custom variant</h2>
+<p>The <code>Square</code> entry above is not built in: <code>demo/square-variant.js</code> defines it
+with <code>defineVariant</code> and this page registers it through
+<code>createPrismicon({ variants: [square] })</code>, so the same <code>mountGlyph</code> renders
+it at <code>idle</code>, <code>working</code> and <code>done</code>. See README
+<em>Custom variants</em> for the descriptor contract and validation probes.</p>
+<div class="row" id="custom"></div>
+
 <script type="module">
-import { mountGlyph, STATES, describeParams, deriveV1, listVariants, DEFAULT_VARIANT_ID } from '../src/index.js';
+import { createPrismicon, STATES, describeParams, deriveV1, DEFAULT_VARIANT_ID } from '../src/index.js';
+import { square } from './square-variant.js';
+
+// Hoisted to module scope so the registry identity is stable for the page's lifetime.
+const prismicon = createPrismicon({ variants: [square] });
+const { mountGlyph, listVariants } = prismicon;
 
 const dark = matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -121,6 +134,17 @@ function mountDimensions(seed) {
 
 dimensionSeed.addEventListener('input', () => mountDimensions(dimensionSeed.value || 'maya'));
 mountDimensions(dimensionSeed.value);
+
+const customRow = document.getElementById('custom');
+['idle', 'working', 'done'].forEach((state) => {
+  const cell = document.createElement('div');
+  cell.className = 'cell';
+  const box = document.createElement('div');
+  mountGlyph(box, 'demo-agent', { kind: 'agent', size: 72, state, dark, variant: square.id });
+  cell.appendChild(box);
+  cell.appendChild(document.createTextNode(state));
+  customRow.appendChild(cell);
+});
 </script>
 </body>
 </html>

@@ -3,6 +3,7 @@ import { polyhedron } from './polyhedron.js';
 import { ncubeVariants } from './ncube.js';
 
 export { VARIANT_ID_PATTERN, createVariantRegistry, defineVariant } from './registry.js';
+export { validateVariant } from './validate.js';
 export { polyhedron } from './polyhedron.js';
 export { ncube, ncubeVariants, NCUBE_MIN_DIMENSION, NCUBE_MAX_DIMENSION, NCUBE_SPEC_VERSION } from './ncube.js';
 

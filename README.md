@@ -194,6 +194,192 @@ projected edge is ≥ 2.5 viewBox units and the median `paint()` takes ≤ 5 ms:
 Dimensions above 6 are not registered; requesting `ncube-7` throws `RangeError`
 like any unknown id.
 
+## Custom variants
+
+You can add your own visual style without touching package internals. A variant is
+a plain descriptor object; `createPrismicon` builds a renderer for the built-ins plus
+your descriptors, and `PrismiconProvider` makes that renderer available to React.
+Callers that use none of this keep byte-identical output.
+
+```js
+import { createPrismicon, defineVariant, validateVariant } from 'prismicon';
+```
+
+### The descriptor contract
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | `string` | Must match `VARIANT_ID_PATTERN` (`/^[a-z][a-z0-9-]*$/`) and be unique in its registry. |
+| `label` | `string` | Human-readable name returned by `listVariants()`. |
+| `spec` | `string` | Names the derivation spec your seed→params mapping is frozen under. Bump it whenever `derive` changes what a seed maps to, exactly as the built-ins use `v1` / `ncube-v1`. |
+
+Plus the eight hooks, all required, all pure functions of their arguments:
+
+| Hook | Signature | When the engine calls it |
+|---|---|---|
+| `derive` | `(seed) → params` | Once per render or mount, with the raw seed string. |
+| `describe` | `(params) → string` | Once per render or mount, for the accessible `<title>`/`aria-label`; must be non-empty. |
+| `prepare` | `(params, { size }) → params` | Once per render or mount, after `derive`, with the pixel size. |
+| `geometry` | `(params) → geometry` | Once per render or mount, after `prepare`; reused for every frame. |
+| `pose` | `(params, state) → pose` | For the rest pose of a state: `'idle'` for static renders, and on every `setState`. `state` may also be the internal `'settling'`. |
+| `animate` | `(pose, ctx) → pose` | Once per animation frame while motion is enabled. `ctx` is `{ params, state, dt, t, transientT, rest }` (seconds). Return a **new** object; while `state === 'settling'`, return `ctx.rest` to signal motion has finished. |
+| `paint` | `(params, geometry, pose, effects) → string` | Every static render and every frame. Returns the inner SVG markup for a 100×100 viewBox. `effects` is `{ dark, sleeping, dx, lighten, flash }`; `effects.dark` is `undefined` when a `renderStaticSVG` caller omits `dark` (mounted glyphs always pass a boolean), so treat it as falsy rather than comparing it to `false`. |
+| `flash` | `(params, state) → { hue?, lighten?, shake? } \| null` | On each state transition. `lighten` is the peak lightness boost in percentage points; the engine scales it by the flash envelope and passes it to `paint` as `effects.lighten`. |
+
+**Reduced motion.** When `prefers-reduced-motion` is set, `animate` is never called and
+`pose(params, state)` is painted as-is, so your idle `paint` output *is* the variant's
+reduced-motion appearance. Make it a good portrait.
+
+`defineVariant(descriptor)` runs the shape check only (known keys, id pattern,
+non-empty `label`/`spec`, eight functions) and returns a frozen copy. Use it at module
+scope when you export a variant, as the example below does.
+
+### Validating a variant
+
+```js
+const myVariant = validateVariant(descriptor); // returns the frozen descriptor
+```
+
+`validateVariant(descriptor, { seeds?, size?, states? })` runs `defineVariant` and then
+two smoke probes over five fixed seeds (override with `seeds`), both `dark` values, and
+every state plus `'settling'`:
+
+- **Determinism** — the full pipeline (`derive → prepare → geometry → pose → paint`,
+  plus `flash` and one `animate` step per state) runs twice and every params, geometry,
+  pose and flash object must `JSON.stringify` identically and every `paint` string must
+  be strictly equal. This catches `Math.random`, `Date.now` and hidden mutable state.
+- **SSR safety** — the static pipeline (`derive → describe → prepare → geometry →
+  pose('idle') → paint`) runs while `window`, `document`, `navigator`, `matchMedia`,
+  `requestAnimationFrame`, `cancelAnimationFrame`, `localStorage`, `sessionStorage` and
+  `IntersectionObserver` are replaced by throwing getters. The original property
+  descriptors are restored in `finally`, even when a probe fails. `typeof window`
+  guards also fail the probe — static-path hooks must not read browser globals at
+  all, because an environment-dependent branch would make server and client output
+  disagree.
+
+The probes also enforce the output contract they need to compare results: `derive`,
+`prepare`, `geometry`, `pose` and `animate` return objects, `describe` returns a
+non-empty string, `paint` returns a string, `flash` returns `null` or a plain object
+with only `hue` (number), `lighten` (number) and `shake` (boolean).
+
+Every failure is a `TypeError` whose message starts with `Variant "<id>"` and names the
+probe and hook, e.g. `Variant "square" failed the determinism probe: hook "paint"
+returned different output for seed "maya" (dark: false, state: "working")` or
+`Variant "square" hook "derive" accessed browser global "window" during static
+rendering`. Two identical runs cannot prove determinism; freeze goldens for anything
+you ship, the way `scripts/generate-golden.mjs` does for the built-ins.
+
+### `createPrismicon`
+
+```js
+import { createPrismicon } from 'prismicon';
+import { square } from './square-variant.js';
+
+// Module scope: one registry for the app's lifetime.
+export const prismicon = createPrismicon({ variants: [square] });
+
+prismicon.listVariants().map((v) => v.id);
+// → ['polyhedron', 'ncube', 'ncube-3', 'ncube-4', 'ncube-5', 'ncube-6', 'square']
+prismicon.renderStaticSVG('maya', { variant: 'square' });
+const handle = prismicon.mountGlyph(el, 'maya', { variant: 'square', state: 'working' });
+```
+
+Options:
+
+| Option | Default | Meaning |
+|---|---|---|
+| `variants` | `[]` | Array of descriptors to register after the built-ins. Non-arrays throw `TypeError`. |
+| `defaultId` | `DEFAULT_VARIANT_ID` | Id resolved when `variant` is omitted. Must be registered. |
+| `builtIns` | `true` | Include the built-in variants. With `false`, `defaultId` must name one of your `variants`. |
+| `validate` | `true` | Run `validateVariant` on each descriptor. `false` keeps only the shape check (for example when you already validate at build time). |
+
+Ids must be unique: registering two descriptors with the same id, or one whose id
+shadows a built-in (`'polyhedron'`, `'ncube-4'`, …), throws
+`TypeError: Duplicate prismicon variant id "…"`. Use `builtIns: false` when you want
+a registry containing only your own variants.
+
+The instance is frozen: `{ registry, renderStaticSVG, mountGlyph, listVariants }`.
+`renderStaticSVG` and `mountGlyph` have the same signatures as the root exports and
+resolve `variant` against `registry`; for every built-in id they produce byte-identical
+output to the root exports. Calling `createPrismicon` never mutates the module-level
+registry, so several instances coexist and share only the animation loop. Hoist the
+call to module scope so `registry` keeps a stable identity — the React provider
+remounts glyphs when it changes.
+
+### React: `PrismiconProvider`
+
+```jsx
+import { Prismicon, PrismiconProvider } from 'prismicon/react';
+import { prismicon } from './prismicon.js'; // createPrismicon({ variants: [square] })
+
+export function App() {
+  return (
+    <PrismiconProvider registry={prismicon.registry}>
+      <Prismicon seed="maya" variant="square" state="working" />
+    </PrismiconProvider>
+  );
+}
+```
+
+`<Prismicon>` resolves `variant` against the nearest provider's `registry`; without a
+provider it uses the built-ins, so existing trees are unaffected. Server rendering
+inside the provider produces the same markup as `prismicon.renderStaticSVG`. Nested
+providers work like any React context: the innermost registry wins. Replacing the
+`registry` prop with a different object remounts every glyph below the provider
+(their `state` is preserved via props), and passing anything that is not a registry
+throws `TypeError` during render. Keep the registry at module scope; do not create it
+inline in JSX. `PrismiconProviderProps` and `VariantRegistry` are exported from
+`index.d.ts`.
+
+### Example: a spinning square
+
+`demo/square-variant.js` is the complete example, and it is the variant the package's
+own dispatch tests run against. Excerpt:
+
+```js
+import { defineVariant } from 'prismicon';
+
+export const SPEC_VERSION = 'test-square-1';
+
+export function derive(seed) {
+  const norm = String(seed).trim().toLowerCase();
+  let hash = 0;
+  for (let i = 0; i < norm.length; i++) hash = ((hash << 5) - hash) + norm.charCodeAt(i);
+  return { spec: SPEC_VERSION, seed: norm, hue: 60 + (Math.abs(hash) % 300) };
+}
+
+export function pose(params, state) {
+  if (state === 'working') return { angle: (params.seed.length * 17) % 360 };
+  return { angle: 0 };
+}
+
+export function animate(pose, ctx) {
+  const { state, dt, rest } = ctx;
+  if (state === 'working') return { angle: (pose.angle + 90 * dt) % 360 };
+  if (state === 'settling') {
+    const diff = ((rest.angle - pose.angle + 540) % 360) - 180;
+    if (Math.abs(diff) < 0.5) return rest;
+    return { angle: (pose.angle + diff * Math.min(1, dt * 4) + 360) % 360 };
+  }
+  return pose;
+}
+
+export function paint(params, geometry, pose) {
+  const half = geometry.side / 2;
+  return `<rect x="${50 - half}" y="${50 - half}" width="${geometry.side}" height="${geometry.side}"
+    fill="hsl(${params.hue} 70% 50%)" stroke="black" stroke-width="${params.stroke}"
+    transform="rotate(${pose.angle.toFixed(1)} 50 50)"/>`;
+}
+
+export const square = defineVariant({
+  id: 'square', label: 'Square', spec: SPEC_VERSION,
+  derive, describe, prepare, geometry, pose, animate, paint, flash
+});
+```
+
+`demo/index.html` registers it with `createPrismicon({ variants: [square] })` and shows
+it at `idle`, `working` and `done` under **Custom variant**.
+
 ## Derivation spec v1 (frozen)
 
 Identity must be stable across releases, so the derivation is versioned and frozen:

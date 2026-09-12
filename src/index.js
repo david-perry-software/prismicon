@@ -12,4 +12,12 @@ export {
   mountGlyph
 } from './core.js';
 
-export { DEFAULT_VARIANT_ID, listVariants } from './variants/index.js';
+export {
+  DEFAULT_VARIANT_ID,
+  VARIANT_ID_PATTERN,
+  createVariantRegistry,
+  defineVariant,
+  listVariants,
+  validateVariant
+} from './variants/index.js';
+export { createPrismicon } from './authoring.js';
