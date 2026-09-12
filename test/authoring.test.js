@@ -89,6 +89,21 @@ describe('validateVariant', () => {
     assert.ok(Object.isFrozen(PROBE_STATES));
   });
 
+  test('calls flash with every engine state plus settling and accepts a valid answer for each', () => {
+    const seen = new Set();
+    const spyFlash = {
+      ...square,
+      id: 'spy',
+      flash: (params, state) => {
+        seen.add(state);
+        return square.flash(params, state);
+      }
+    };
+    assert.doesNotThrow(() => validateVariant(spyFlash));
+    assert.deepEqual([...seen].sort(), [...STATES, 'settling'].sort());
+    assert.ok(seen.has('settling'));
+  });
+
   test('rejects a paint hook that uses Math.random (determinism probe)', () => {
     assert.throws(() => validateVariant(randomPaint), (error) => {
       assert.equal(error.name, 'TypeError');

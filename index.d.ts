@@ -155,8 +155,8 @@ declare module 'prismicon' {
     animate(pose: Pose, ctx: VariantAnimateContext<P, Pose>): Pose;
     /** Called for every static render and every frame; returns the inner SVG markup string. */
     paint(params: P, geometry: G, pose: Pose, effects: VariantPaintEffects): string;
-    /** Called on each state transition; return `null` for no emphasis. */
-    flash(params: P, state: GlyphState): VariantFlash | null;
+    /** Called on each state transition; return `null` for no emphasis. `validateVariant` also probes it with `'settling'`. */
+    flash(params: P, state: GlyphState | 'settling'): VariantFlash | null;
   }
 
   /** Immutable registry: adding a variant means building a new registry from a longer list. */
