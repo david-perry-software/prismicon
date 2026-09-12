@@ -44,9 +44,11 @@
     "test": "node --test test/*.test.js"
   },
   "devDependencies": {
+    "@types/react": "^19.3.0",
     "jsdom": "^26.1.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "typescript": "^7.0.2"
   },
   "license": "MIT"
 }

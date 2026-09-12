@@ -2,13 +2,13 @@
 status: in-progress
 branch: feature/variant-build-tooling
 last-updated: 2026-09-12
-next-step: "1.1 Add typescript and @types/react devDependencies"
+next-step: "1.2 Confirm the untouched baseline"
 initiative: "scalable-icon-variants"
 ```
 
 ## Phase 1: Toolchain and baseline
 
-- [ ] 1.1 Add `typescript` and `@types/react` to `devDependencies` (caret ranges) with `npm install --save-dev typescript @types/react`, commit `package.json` + `package-lock.json` — verify: `npm ci && node_modules/.bin/tsc --noEmit --strict --target es2020 --lib es2020,dom index.d.ts` exits 0 with zero `error TS` lines (baseline had one TS7016 for `'react'`).
+- [x] 1.1 Add `typescript` and `@types/react` to `devDependencies` (caret ranges) with `npm install --save-dev typescript @types/react`, commit `package.json` + `package-lock.json` — verify: `npm ci && node_modules/.bin/tsc --noEmit --strict --target es2020 --lib es2020,dom index.d.ts` exits 0 with zero `error TS` lines (baseline had one TS7016 for `'react'`).
 - [ ] 1.2 Confirm the untouched baseline before any script change — verify: `npm test` prints `# tests 124` and `# fail 0`; `npm pack --dry-run` lists no `test/`, `scripts/`, `demo/` files; `grep -c "readonly strokeWidth?: number" index.d.ts` prints `1` (follow-up (c) already resolved — record in plan.md if it differs).
 
 ## Phase 2: Registry-driven goldens
