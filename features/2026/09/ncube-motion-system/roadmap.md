@@ -1,5 +1,5 @@
 ```yaml
-status: planned
+status: in-progress
 branch: feature/ncube-motion-system
 last-updated: 2026-09-12
 next-step: "1.1 export angDiff/wrapAngle from polyhedron.js"
