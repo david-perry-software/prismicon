@@ -49,6 +49,23 @@ declare module 'prismicon' {
     az: number;
     hue: number;
     hue2: number;
+    /**
+     * Prepared, non-identity fields below are present on `GlyphHandle.params`
+     * (output of `prepare`), not in `deriveNcube` output.
+     */
+    /** Edge stroke width in viewBox units, chosen per dimension. */
+    readonly strokeWidth?: number;
+    /** Sense of the hyper-rotation and send/receive burst. */
+    readonly dir?: 1 | -1;
+    /** rad/s of the highest plane `theta[dimension - 4]` while working; 0 for a 3-cube. */
+    readonly hyperSpeed?: number;
+    /** The 3D angle that drifts while working. */
+    readonly spinAxis?: 'ax' | 'ay' | 'az';
+    /** rad/s of the slow 3D spin on `spinAxis` while working. */
+    readonly spin3?: number;
+    /** Sway/wobble phase offsets (reuse `ax` / `ay`). */
+    readonly phase?: number;
+    readonly phase2?: number;
   }
 
   export interface GlyphOptions {
