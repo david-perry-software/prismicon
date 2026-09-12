@@ -1,8 +1,8 @@
 ```yaml
-status: in-progress
+status: in-review
 branch: feature/ncube-motion-system
 last-updated: 2026-09-12
-next-step: "6.3 merge origin/main, npm test, push, set in-review"
+next-step: "Review: run /review-feature ncube-motion-system against draft PR #12"
 initiative: "scalable-icon-variants"
 ```
 
@@ -48,4 +48,5 @@ initiative: "scalable-icon-variants"
   - Evidence (2026-09-12): `npm test` → `# tests 124`, `# pass 124`, `# fail 0`; golden regeneration left `test/fixtures` unchanged; `static-equal: true`; `npm pack --dry-run` lists 14 files (LICENSE, README.md, index.d.ts, package.json, `src/**`) and no test/scripts/features entries.
 - [x] 6.2 Confirm the untouched-file contract — verify: `git diff --quiet origin/main -- src/core.js src/react.js src/index.js src/variants/registry.js src/variants/validate.js src/variants/index.js src/variants/seed.js package.json test/fixtures/golden-v1.json test/fixtures/ncube-v1-identities.json` exits 0
   - Evidence (2026-09-12): the diff exited 0 against `origin/main` after `git fetch origin`.
-- [ ] 6.3 Integrate `origin/main` by merge, push, and set the roadmap to `in-review` with `next-step` pointing at review — verify: `git fetch origin && git merge origin/main` exits 0 (or is already up to date), `npm test` exits 0 after the merge, `git push` exits 0, `gh pr view --json isDraft,headRefName` shows `feature/ncube-motion-system` as a draft
+- [x] 6.3 Integrate `origin/main` by merge, push, and set the roadmap to `in-review` with `next-step` pointing at review — verify: `git fetch origin && git merge origin/main` exits 0 (or is already up to date), `npm test` exits 0 after the merge, `git push` exits 0, `gh pr view --json isDraft,headRefName` shows `feature/ncube-motion-system` as a draft
+  - Evidence (2026-09-12): `git merge origin/main` → `Already up to date`; `npm test` → `# tests 124`, `# pass 124`, `# fail 0`; pushed; `gh pr view --json isDraft,headRefName` → `{"headRefName":"feature/ncube-motion-system","isDraft":true}`.
