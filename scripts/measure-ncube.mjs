@@ -9,6 +9,11 @@
  * over 200 calls. The recommended NCUBE_MAX_DIMENSION is the largest d for
  * which every smaller-or-equal dimension passes all three criteria.
  *
+ * A second table simulates the engine loop for every registered dimension and
+ * finish (60 working frames at dt = 1/30, 12 sending frames, then settling until
+ * animate returns ctx.rest) and reports median/p95 animate + paint ms and the
+ * settling frame count, gated as `frame gate: pass|fail`.
+ *
  * Not published (scripts/ is outside package.json "files").
  */
 
@@ -18,6 +23,8 @@ import { createVariantRegistry, defineVariant } from '../src/variants/registry.j
 import { FINISH_NAMES } from '../src/variants/polyhedron.js';
 import { cyrb53, mulberry32 } from '../src/variants/seed.js';
 import {
+  NCUBE_MAX_DIMENSION,
+  NCUBE_MIN_DIMENSION,
   NCUBE_NAMES,
   NCUBE_SPEC_VERSION,
   animateNcube,
@@ -32,6 +39,10 @@ import {
 
 const SEEDS = ['maya', 'build-bot-7', 'Alice@X.com', 'Ada Lovelace', 'demo-agent'];
 const DIMENSIONS = [3, 4, 5, 6, 7, 8, 9, 10];
+const REGISTERED_DIMENSIONS = Array.from(
+  { length: NCUBE_MAX_DIMENSION - NCUBE_MIN_DIMENSION + 1 },
+  (_, i) => NCUBE_MIN_DIMENSION + i
+);
 const SIZE = 64;
 const PAINT_CALLS = 200;
 const MAX_BYTES = 32 * 1024;
@@ -128,3 +139,73 @@ for (const r of results) {
   recommended = r.dimension;
 }
 console.log(`recommended NCUBE_MAX_DIMENSION=${recommended}`);
+
+// ---------------------------------------------------------------- animated-frame benchmark (ncube-motion-system)
+
+const FRAME_DT = 1 / 30;
+const WORKING_FRAMES = 60;
+const SENDING_FRAMES = 12;
+const MAX_SETTLE_FRAMES = 60;
+const MAX_MEDIAN_FRAME_MS = 2;
+const MAX_P95_FRAME_MS = 4;
+
+function percentile(values, q) {
+  const sorted = [...values].sort((a, b) => a - b);
+  return sorted[Math.min(sorted.length - 1, Math.ceil(q * sorted.length) - 1)];
+}
+
+/** Simulate the engine loop for one prepared glyph, timing animate + paint per frame. */
+function simulateFrames(p, geo) {
+  const rest = poseNcube(p, 'idle');
+  const times = [];
+  let pose = rest;
+  let t = 0;
+  let settleFrames = -1;
+  const frame = (state, transientT) => {
+    t += FRAME_DT;
+    const t0 = performance.now();
+    pose = animateNcube(pose, { params: p, state, dt: FRAME_DT, t, transientT, rest });
+    paintNcube(p, geo, pose, EFFECTS);
+    times.push(performance.now() - t0);
+  };
+  for (let i = 0; i < WORKING_FRAMES; i += 1) frame('working', 0);
+  for (let i = 1; i <= SENDING_FRAMES; i += 1) frame('sending', i * FRAME_DT);
+  for (let i = 1; i <= MAX_SETTLE_FRAMES + 1; i += 1) {
+    frame('settling', 0);
+    if (pose === rest) { settleFrames = i; break; }
+  }
+  return { times, settleFrames };
+}
+
+function measureFrames(dimension) {
+  const geo = buildNcube(dimension);
+  return [0, 1, 2].map((finish) => {
+    const times = [];
+    let settleFrames = 0;
+    for (const seed of SEEDS) {
+      const p = prepareNcube({ ...deriveNcube(seed, dimension), finish }, { size: SIZE });
+      const run = simulateFrames(p, geo);
+      times.push(...run.times);
+      settleFrames = Math.max(settleFrames, run.settleFrames < 0 ? Infinity : run.settleFrames);
+    }
+    const medianMs = median(times);
+    const p95Ms = percentile(times, 0.95);
+    const pass = medianMs <= MAX_MEDIAN_FRAME_MS && p95Ms <= MAX_P95_FRAME_MS && settleFrames <= MAX_SETTLE_FRAMES;
+    return { dimension, finish: FINISH_NAMES[finish], medianMs, p95Ms, settleFrames, pass };
+  });
+}
+
+const frameRows = REGISTERED_DIMENSIONS.flatMap(measureFrames);
+
+console.log('');
+console.log(`n-cube animated-frame benchmark — registered dimensions ${NCUBE_MIN_DIMENSION}..${NCUBE_MAX_DIMENSION}, size ${SIZE}, dt ${FRAME_DT.toFixed(4)} s`);
+console.log(`per seed: ${WORKING_FRAMES} working frames, ${SENDING_FRAMES} sending frames, then settling until animate returns ctx.rest`);
+console.log(`criteria: median animate+paint <= ${MAX_MEDIAN_FRAME_MS} ms, p95 <= ${MAX_P95_FRAME_MS} ms, settling <= ${MAX_SETTLE_FRAMES} frames`);
+console.log('');
+console.log('| d  | finish    | median frame ms | p95 frame ms | settle frames | pass |');
+console.log('|----|-----------|-----------------|--------------|---------------|------|');
+for (const row of frameRows) {
+  console.log(`| ${String(row.dimension).padEnd(2)} | ${row.finish.padEnd(9)} | ${row.medianMs.toFixed(3).padStart(15)} | ${row.p95Ms.toFixed(3).padStart(12)} | ${String(row.settleFrames).padStart(13)} | ${row.pass ? 'yes ' : 'no  '} |`);
+}
+console.log('');
+console.log(`frame gate: ${frameRows.every((row) => row.pass) ? 'pass' : 'fail'}`);
