@@ -1,8 +1,8 @@
 ```yaml
-status: in-review
+status: complete
 branch: feature/ncube-motion-system
 last-updated: 2026-09-12
-next-step: "Review: run /review-feature ncube-motion-system against draft PR #12"
+next-step: ""
 initiative: "scalable-icon-variants"
 ```
 
@@ -50,3 +50,8 @@ initiative: "scalable-icon-variants"
   - Evidence (2026-09-12): the diff exited 0 against `origin/main` after `git fetch origin`.
 - [x] 6.3 Integrate `origin/main` by merge, push, and set the roadmap to `in-review` with `next-step` pointing at review — verify: `git fetch origin && git merge origin/main` exits 0 (or is already up to date), `npm test` exits 0 after the merge, `git push` exits 0, `gh pr view --json isDraft,headRefName` shows `feature/ncube-motion-system` as a draft
   - Evidence (2026-09-12): `git merge origin/main` → `Already up to date`; `npm test` → `# tests 124`, `# pass 124`, `# fail 0`; pushed; `gh pr view --json isDraft,headRefName` → `{"headRefName":"feature/ncube-motion-system","isDraft":true}`.
+
+## Follow-ups (accepted at ship)
+
+- Synchronize the README `median frame ms (shaded)` values with the committed benchmark evidence, or state that the table reflects a separate run. Accepted as cosmetic timing drift on 2026-09-12.
+- The React animated n-cube hydration regression test depends on running before other mounting tests because the renderer is a module singleton. Accepted on 2026-09-12; the dependency is documented in the test and the current file order enforces it.
