@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/ncube-motion-system
 last-updated: 2026-09-12
-next-step: "2.3 implement animateNcube working state"
+next-step: "3.1 implement waiting/thinking/sleeping"
 initiative: "scalable-icon-variants"
 ```
 
@@ -17,8 +17,8 @@ initiative: "scalable-icon-variants"
 
 - [x] 2.1 Extend `prepareNcube` with `dir`, `hyperSpeed`, `spinAxis`, `spin3`, `phase`, `phase2` derived from `params.hash` and existing angles exactly as plan.md `## Approach` tabulates; document the constants as tunable, non-identity values in the module header — verify: `node -e "import('./src/variants/ncube.js').then(m => { for (const s of ['maya','build-bot-7','Alice@X.com','Ada Lovelace','demo-agent']) console.log(s, JSON.stringify(m.prepareNcube(m.deriveNcube(s), { size: 64 })).slice(0, 400)); })"` prints the six fields for every seed with `hyperSpeed === 0` only when `dimension === 3`; `node --test test/ncube-derivation-freeze.test.js` exits 0
 - [x] 2.2 Add `test/ncube.test.js` cases: prepared motion fields are deterministic, within the documented ranges, and the five golden seeds do not all share `dir` or `spinAxis`; `prepare` still keeps every identity field unchanged — verify: `node --test test/ncube.test.js` exits 0 with the new cases listed as `ok`
-- [ ] 2.3 Implement `animateNcube` for `working` (highest plane `theta[d-4]` at `dir·hyperSpeed`, cascade `0.4^(top-i)` on lower planes, `spinAxis` at `spin3`, other 3D angles ease to rest; d = 3 spins on `spinAxis` only) returning a new frozen pose with a new `theta` array; `idle`/`done`/`error` return the input — verify: `node -e` script advancing 10 frames at `dt=1/30` for `ncube-4` and `ncube-3` prints strictly increasing/decreasing `theta[0]` for the tesseract and unchanged `theta` for the cube
-- [ ] 2.4 Replace `test/ncube.test.js` "render: working state never repaints a static n-cube across frames" with "working repaints across frames" and add: `theta[d-4]` advances by `dir·hyperSpeed·dt`, `theta[i > top]` stays at rest, d = 3 never changes `theta`, 60 working frames keep every coordinate in `[0, 100]` for every id and finish, `animate` never mutates a frozen input — verify: `node --test test/ncube.test.js` exits 0 with `# fail 0`
+- [x] 2.3 Implement `animateNcube` for `working` (highest plane `theta[d-4]` at `dir·hyperSpeed`, cascade `0.4^(top-i)` on lower planes, `spinAxis` at `spin3`, other 3D angles ease to rest; d = 3 spins on `spinAxis` only) returning a new frozen pose with a new `theta` array; `idle`/`done`/`error` return the input — verify: `node -e` script advancing 10 frames at `dt=1/30` for `ncube-4` and `ncube-3` prints strictly increasing/decreasing `theta[0]` for the tesseract and unchanged `theta` for the cube
+- [x] 2.4 Replace `test/ncube.test.js` "render: working state never repaints a static n-cube across frames" with "working repaints across frames" and add: `theta[d-4]` advances by `dir·hyperSpeed·dt`, `theta[i > top]` stays at rest, d = 3 never changes `theta`, 60 working frames keep every coordinate in `[0, 100]` for every id and finish, `animate` never mutates a frozen input — verify: `node --test test/ncube.test.js` exits 0 with `# fail 0`
 
 ## Phase 3: Secondary states and settling
 

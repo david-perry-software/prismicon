@@ -236,17 +236,104 @@ test('hooks: pose returns the same frozen rest orientation for every state', () 
   }
 });
 
-test('hooks: animate returns its input outside settling and ctx.rest inside it', () => {
-  const p = deriveNcube('maya');
+test('hooks: animate returns its input for idle/done/error and ctx.rest once settled', () => {
+  const p = ncube.prepare(deriveNcube('maya'), { size: 64 });
   const rest = poseNcube(p, 'idle');
-  const pose = { ax: 1, ay: 2, az: 3 };
-  for (const state of STATES) {
-    if (state === 'idle') continue;
-    const ctx = { params: p, state, dt: 0.033, t: 1, transientT: 0, rest };
-    assert.equal(animateNcube(pose, ctx), pose, state);
+  const pose = Object.freeze({ ax: 1, ay: 2, az: 3, theta: Object.freeze([0.5, 1.5, 2.5]) });
+  for (const state of ['idle', 'done', 'error']) {
+    assert.equal(animateNcube(pose, { params: p, state, dt: 0.033, t: 1, transientT: 0, rest }), pose, state);
   }
-  assert.equal(animateNcube(pose, { params: p, state: 'idle', dt: 0.033, t: 1, transientT: 0, rest }), pose);
-  assert.equal(animateNcube(pose, { params: p, state: 'settling', dt: 0.033, t: 1, transientT: 0, rest }), rest);
+  assert.equal(animateNcube(rest, { params: p, state: 'settling', dt: 0.033, t: 1, transientT: 0, rest }), rest);
+});
+
+function preparedFor(seed, d) {
+  return ncube.prepare(deriveNcube(seed, d), { size: 64 });
+}
+
+function runFrames(p, pose, state, frames, dt = 1 / 30) {
+  const rest = poseNcube(p, 'idle');
+  const out = [pose];
+  for (let i = 0; i < frames; i += 1) {
+    pose = animateNcube(pose, { params: p, state, dt, t: (i + 1) * dt, transientT: (i + 1) * dt, rest });
+    out.push(pose);
+  }
+  return out;
+}
+
+function wrapDiff(a, b) {
+  let d = (a - b) % TAU;
+  if (d > Math.PI) d -= TAU;
+  if (d < -Math.PI) d += TAU;
+  return d;
+}
+
+test('hooks: working advances theta[d-4] by dir·hyperSpeed·dt and leaves higher planes at rest', () => {
+  const dt = 1 / 30;
+  for (const seed of SEEDS) {
+    for (const d of dimensions()) {
+      if (d < 4) continue;
+      const p = preparedFor(seed, d);
+      const top = d - 4;
+      const frames = runFrames(p, poseNcube(p, 'idle'), 'working', 12, dt);
+      for (let i = 1; i < frames.length; i += 1) {
+        const prev = frames[i - 1], next = frames[i];
+        assert.notEqual(next, prev, 'each working frame is a new object');
+        assert.ok(Object.isFrozen(next) && Object.isFrozen(next.theta), 'frames are frozen');
+        assert.ok(Math.abs(wrapDiff(next.theta[top], prev.theta[top]) - p.dir * p.hyperSpeed * dt) < 1e-9, `${seed} d=${d} top plane step`);
+        for (let j = top + 1; j < next.theta.length; j += 1) assert.equal(next.theta[j], p.theta[j], `${seed} d=${d} theta[${j}] at rest`);
+        for (let j = 0; j < top; j += 1) {
+          const expected = p.dir * p.hyperSpeed * 0.4 ** (top - j) * dt;
+          assert.ok(Math.abs(wrapDiff(next.theta[j], prev.theta[j]) - expected) < 1e-9, `${seed} d=${d} cascade theta[${j}]`);
+        }
+        assert.ok(Math.abs(wrapDiff(next[p.spinAxis], prev[p.spinAxis]) - p.spin3 * dt) < 1e-9, 'spin axis drifts at spin3');
+      }
+    }
+  }
+});
+
+test('hooks: a working cube never changes theta and spins only on spinAxis', () => {
+  for (const seed of SEEDS) {
+    const p = preparedFor(seed, 3);
+    const rest = poseNcube(p, 'idle');
+    const frames = runFrames(p, rest, 'working', 30);
+    for (let i = 1; i < frames.length; i += 1) {
+      assert.deepEqual(frames[i].theta, p.theta, 'theta unchanged');
+      for (const axis of ['ax', 'ay', 'az']) {
+        if (axis === p.spinAxis) assert.ok(Math.abs(wrapDiff(frames[i][axis], frames[i - 1][axis]) - p.spin3 / 30) < 1e-9, axis);
+        else assert.ok(Math.abs(wrapDiff(frames[i][axis], rest[axis])) < 1e-9, `${axis} stays at rest`);
+      }
+    }
+  }
+});
+
+test('hooks: 60 working frames keep every coordinate inside the viewBox for every id and finish', () => {
+  for (const v of ncubeVariants) {
+    for (const seed of SEEDS) {
+      for (const finish of [0, 1, 2]) {
+        const p = v.prepare({ ...v.derive(seed), finish }, { size: 64 });
+        const geo = v.geometry(p);
+        const frames = runFrames(p, v.pose(p, 'working'), 'working', 60);
+        for (const pose of frames) {
+          const nums = pathNumbers(v.paint(p, geo, pose, { dark: false, sleeping: false, dx: 0, lighten: 0, flash: null }));
+          assert.ok(nums.length > 0);
+          for (const n of nums) assert.ok(n >= 0 && n <= 100, `${v.id} ${seed} finish ${finish}: ${n} outside viewBox`);
+        }
+      }
+    }
+  }
+});
+
+test('hooks: animate never mutates its frozen input', () => {
+  for (const d of dimensions()) {
+    const p = preparedFor('maya', d);
+    const rest = poseNcube(p, 'idle');
+    const input = Object.freeze({ ax: 0.3, ay: 0.6, az: 0.9, theta: Object.freeze([0.1, 0.2, 0.3]) });
+    const snapshot = JSON.parse(JSON.stringify(input));
+    for (const state of [...STATES, 'settling']) {
+      animateNcube(input, { params: p, state, dt: 1 / 30, t: 0.5, transientT: 0.1, rest });
+      assert.deepEqual(JSON.parse(JSON.stringify(input)), snapshot, `${state} d=${d}`);
+    }
+  }
 });
 
 test('hooks: flash mirrors polyhedron', () => {
@@ -372,16 +459,25 @@ test('render: static markup equals the mounted markup at rest', async () => {
   }
 });
 
-test('render: working state never repaints a static n-cube across frames', async () => {
+test('render: working repaints across frames and returns to the exact rest markup after idle', async () => {
   const dom = installDom();
-  const core = await import('../src/core.js?ncube-static-frames');
-  const { mountGlyph } = localRenderer(core);
-  const handle = mountGlyph(dom.container, 'maya', { variant: 'ncube', state: 'working' });
+  const core = await import('../src/core.js?ncube-working-frames');
+  const { renderStaticSVG, mountGlyph } = localRenderer(core);
+  dom.scratch.innerHTML = renderStaticSVG('maya', { variant: 'ncube-4', dark: false });
+  const staticInner = dom.scratch.querySelector('svg > g').innerHTML;
+  const handle = mountGlyph(dom.container, 'maya', { variant: 'ncube-4', state: 'working', dark: false });
   const inner = () => dom.container.querySelector('svg > g').innerHTML;
-  const initial = inner();
+  assert.equal(inner(), staticInner, 'first working frame equals the static portrait');
   let now = 1000;
-  for (let i = 0; i < 6; i += 1, now += 33) dom.advanceAnimationFrame(now);
-  assert.equal(inner(), initial);
+  const seen = new Set([staticInner]);
+  for (let i = 0; i < 6; i += 1, now += 33) {
+    dom.advanceAnimationFrame(now);
+    seen.add(inner());
+  }
+  assert.ok(seen.size > 3, 'working repaints across frames');
+  handle.setState('idle');
+  for (let i = 0; i < 90; i += 1, now += 33) dom.advanceAnimationFrame(now);
+  assert.equal(inner(), staticInner, 'settling returns to the exact rest markup');
   handle.destroy();
 });
 

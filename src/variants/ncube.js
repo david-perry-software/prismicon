@@ -19,7 +19,7 @@
 
 import { defineVariant } from './registry.js';
 import { cyrb53, mulberry32 } from './seed.js';
-import { FINISH_NAMES, PALETTE, normalizeSeed } from './polyhedron.js';
+import { FINISH_NAMES, PALETTE, angDiff, normalizeSeed, wrapAngle } from './polyhedron.js';
 
 const TAU = Math.PI * 2;
 
@@ -165,6 +165,7 @@ const MOTION_HYPER_DAMP = 0.25;    // slow-down per dimension above 4 so 5-/6-cu
 const MOTION_SPIN3_HYPER = 0.22;   // rad/s slow 3D drift accompanying hyper-rotation (d >= 4)
 const MOTION_SPIN3_BASE = 0.45;    // rad/s floor of a cube's 3D spin (its only working motion)
 const MOTION_SPIN3_SPREAD = 0.4;   // per-seed spread of the cube spin
+const MOTION_CASCADE = 0.4;        // speed ratio between a plane and the one above it in working
 const SPIN_AXES = Object.freeze(['ax', 'ay', 'az']);
 
 function motionTraits(params) {
@@ -196,7 +197,21 @@ export function poseNcube(params) {
 }
 
 export function animateNcube(pose, ctx) {
-  return ctx.state === 'settling' ? ctx.rest : pose;
+  const { params: p, state, dt, rest } = ctx;
+  if (state === 'idle' || state === 'done' || state === 'error') return pose;
+  const top = p.dimension - 4;
+  const ease = (cur, target, k) => cur + angDiff(target, cur) * k;
+  if (state === 'working') {
+    const k = Math.min(1, dt * 3);
+    const theta = top < 0
+      ? pose.theta
+      : Object.freeze(pose.theta.map((th, i) =>
+        i > top ? th : wrapAngle(th + p.dir * p.hyperSpeed * MOTION_CASCADE ** (top - i) * dt)));
+    const next = { ax: ease(pose.ax, rest.ax, k), ay: ease(pose.ay, rest.ay, k), az: ease(pose.az, rest.az, k) };
+    next[p.spinAxis] = wrapAngle(pose[p.spinAxis] + p.spin3 * dt);
+    return Object.freeze({ ...next, theta });
+  }
+  return state === 'settling' ? rest : pose;
 }
 
 export function paintNcube(p, geo, o, effects) {
