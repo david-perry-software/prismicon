@@ -55,6 +55,11 @@ const windowDerive = {
   id: 'bad',
   derive: (seed) => ({ ...square.derive(seed), width: globalThis.window.innerWidth })
 };
+const guardedDerive = {
+  ...square,
+  id: 'guarded',
+  derive: (seed) => ({ ...square.derive(seed), width: typeof window !== 'undefined' ? window.innerWidth : 0 })
+};
 const emptyDescribe = { ...square, id: 'bad', describe: () => '' };
 const numericFlash = { ...square, id: 'bad', flash: () => 42 };
 
@@ -97,6 +102,15 @@ describe('validateVariant', () => {
     assert.throws(() => validateVariant(windowDerive), (error) => {
       assert.equal(error.name, 'TypeError');
       assert.match(error.message, /Variant "bad".*"derive".*"window"/);
+      return true;
+    });
+  });
+
+  test('rejects a typeof-window guarded derive hook (SSR probe)', () => {
+    installDom();
+    assert.throws(() => validateVariant(guardedDerive), (error) => {
+      assert.equal(error.name, 'TypeError');
+      assert.match(error.message, /Variant "guarded".*"derive".*"window"/);
       return true;
     });
   });

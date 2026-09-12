@@ -252,7 +252,10 @@ every state plus `'settling'`:
   pose('idle') → paint`) runs while `window`, `document`, `navigator`, `matchMedia`,
   `requestAnimationFrame`, `cancelAnimationFrame`, `localStorage`, `sessionStorage` and
   `IntersectionObserver` are replaced by throwing getters. The original property
-  descriptors are restored in `finally`, even when a probe fails.
+  descriptors are restored in `finally`, even when a probe fails. `typeof window`
+  guards also fail the probe — static-path hooks must not read browser globals at
+  all, because an environment-dependent branch would make server and client output
+  disagree.
 
 The probes also enforce the output contract they need to compare results: `derive`,
 `prepare`, `geometry`, `pose` and `animate` return objects, `describe` returns a

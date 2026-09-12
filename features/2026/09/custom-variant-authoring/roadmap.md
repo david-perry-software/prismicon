@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/custom-variant-authoring
 last-updated: 2026-09-11
-next-step: "6.1"
+next-step: "6.2"
 initiative: "scalable-icon-variants"
 ```
 
@@ -36,7 +36,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 6: Review follow-ups
 
-- [ ] 6.1 (added 2026-09-11) review.md Finding 1: add one sentence to README `### Validating a variant` stating that `typeof window` guards also fail the SSR probe (static-path hooks must not read browser globals at all), and add a `test/authoring.test.js` case asserting a `derive` that does `typeof window !== 'undefined' ? window.innerWidth : 0` is rejected with a `TypeError` matching `/"derive".*"window"/` — verify: `grep -c "typeof window" README.md` ≥ 1; `node --test test/authoring.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` and `# tests` ≥ 21
+- [x] 6.1 (added 2026-09-11) review.md Finding 1: add one sentence to README `### Validating a variant` stating that `typeof window` guards also fail the SSR probe (static-path hooks must not read browser globals at all), and add a `test/authoring.test.js` case asserting a `derive` that does `typeof window !== 'undefined' ? window.innerWidth : 0` is rejected with a `TypeError` matching `/"derive".*"window"/` — verify: `grep -c "typeof window" README.md` ≥ 1; `node --test test/authoring.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` and `# tests` ≥ 21
 - [ ] 6.2 (added 2026-09-11) review.md Finding 2: type `VariantDescriptor.flash` as `state: GlyphState | 'settling'` in `index.d.ts` (matching `pose`) and note in its JSDoc that `validateVariant` probes it with `'settling'`; add a `test/authoring.test.js` case with a spy `flash` recording the states it sees, asserting `validateVariant` passes and the recorded set equals `[...STATES, 'settling']` — verify: `grep -c "flash(params: P, state: GlyphState | 'settling')" index.d.ts` prints `1`; `npx -y -p typescript tsc --noEmit --strict --target es2020 --lib es2020,dom --types "" index.d.ts 2>&1 | grep -cE "error TS"` prints `1` and that line names `'react'`; `node --test test/authoring.test.js 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` and `# tests` ≥ 22
 - [ ] 6.3 (added 2026-09-11) review.md Finding 3: change `VariantPaintEffects.dark` to `dark?: boolean` in `index.d.ts` with a one-line JSDoc noting it is `undefined` when a static-render caller omits `dark`, update the README hook table wording for `paint`'s `effects.dark` accordingly, and add a `test/authoring.test.js` case with a spy `paint` asserting `effects.dark === undefined` for `renderStaticSVG(seed, { variant })` without `dark` and `true` with `dark: true` — verify: `grep -c "dark?: boolean" index.d.ts` prints `1`; `grep -c "effects.dark" README.md` ≥ 1; the `index.d.ts` compile check from 6.2 still prints `1`; `npm test 2>&1 | grep -E "^# (tests|fail)"` prints `# fail 0` and `# tests` ≥ 114; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures` exits 0; `git diff --quiet origin/main -- src/core.js src/variants/registry.js src/variants/polyhedron.js src/variants/ncube.js` exits 0
 - [ ] 6.4 (added 2026-09-11) Set roadmap `status: in-review`, `next-step: ""`, tick this step, commit and push — verify: `git status --porcelain` is empty and `git log origin/feature/custom-variant-authoring -1 --format=%s` shows the roadmap commit
