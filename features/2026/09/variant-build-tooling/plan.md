@@ -150,6 +150,22 @@ not loaded: no React code changes are in scope.
 - **Concurrent delivery:** `gh pr list --state open --json number,headRefName` → `[]`. No
   overlap to record.
 
+### Final gate (step 6.1, 2026-09-12, Node v22.22.3, npm 10.9.8, HEAD 1db21a1)
+
+- **Tests:** `npm ci && npm test` → `# tests 130`, `# suites 9`, `# pass 130`, `# fail 0`
+  (baseline 124; +6 from `test/check-variants.test.js` and the golden completeness test).
+- **Check gate:** `npm run check:variants` → `✓ contract`, `✓ exports`, `✓ types`, `✓ pack`,
+  `✓ goldens`, exit 0.
+- **Lint:** `npm run lint` → `npm error Missing script: "lint"` — unchanged, no lint configured.
+- **Frozen surfaces:** `git diff --quiet origin/main -- src index.d.ts
+  test/fixtures/golden-v1.json test/fixtures/ncube-v1-identities.json scripts/measure-ncube.mjs`
+  → exit 0 (no runtime, type, or frozen-fixture change).
+- **Pack:** `npm pack --dry-run` lists exactly `index.d.ts`, `LICENSE`, `package.json`,
+  `README.md` and the ten `src/**` files; zero entries under `test/`, `scripts/`, `demo/`,
+  `.github/`.
+- **CI:** workflow `CI` / job `verify` SUCCESS on PR #13 —
+  https://github.com/david-perry-software/prismicon/actions/runs/34709582102/job/103595748820
+
 ## Approach
 
 All changes are maintainer-side (`scripts/`, `test/`, `.github/workflows/`, `package.json`
