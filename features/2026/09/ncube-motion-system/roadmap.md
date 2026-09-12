@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/ncube-motion-system
 last-updated: 2026-09-12
-next-step: "3.4 regenerate the n-cube golden fixture (mounted blocks only)"
+next-step: "4.1 React hydration regression test for an animated n-cube"
 initiative: "scalable-icon-variants"
 ```
 
@@ -26,7 +26,7 @@ initiative: "scalable-icon-variants"
 - [x] 3.2 Implement `sending`/`receiving` bursts (`theta[d-4]` for d ≥ 4, `spinAxis` for d = 3; opposite signs; `ax` eases to rest) and `settling` (all angles ease with `k(4.5)`, return `ctx.rest` by identity when every `|angDiff| < 0.015`) — verify: `node -e` script perturbs the rest pose by 1 rad on every angle, runs `settling` at `dt=1/30`, and prints the frame index at which `animate` returned `ctx.rest` (must be ≤ 60); `sending` and `receiving` first-frame `theta[top]` deltas have opposite signs
 - [x] 3.3 Add `test/ncube.test.js` cases for 3.1 and 3.2 (first-frame change per state, opposite burst directions, settling returns `ctx.rest` within 60 frames, `idle`/`done`/`error` identity return) and assert `validateVariant` passes for `ncube` and every `ncube-<d>` — verify: `node --test test/ncube.test.js` exits 0 with `# fail 0`; the existing "render: reduced motion mount queues no frames" case still passes unchanged; "render: setState through every STATES entry never throws and settles back to rest" passes with the repair recorded below
   - Repair (2026-09-12, step 3.1): the STATES-cycle test asserted the rest markup while the glyph was still in `sleeping` (the last `STATES` entry). A static n-cube never repainted there, but a bobbing one repaints with the dimmer ramp (as the reduced-motion test already asserts), so the test now asserts the sleeping frame differs, then `setState('idle')`, advances 60 frames and asserts the exact rest markup — the original intent (settling returns to rest) is preserved.
-- [ ] 3.4 Regenerate the n-cube golden fixture and prove only mounted hashes changed — verify: `node scripts/generate-golden.mjs` exits 0; `git diff --quiet -- test/fixtures/golden-v1.json test/fixtures/ncube-v1-identities.json` exits 0; `bash features/2026/09/ncube-motion-system/evidence/static-equal.sh` prints `static-equal: true`; `npm test` exits 0 with `# fail 0`
+- [x] 3.4 Regenerate the n-cube golden fixture and prove only mounted hashes changed — verify: `node scripts/generate-golden.mjs` exits 0; `git diff --quiet -- test/fixtures/golden-v1.json test/fixtures/ncube-v1-identities.json` exits 0; `bash features/2026/09/ncube-motion-system/evidence/static-equal.sh` prints `static-equal: true`; `npm test` exits 0 with `# fail 0`
 
 ## Phase 4: React regression, benchmark gate
 
