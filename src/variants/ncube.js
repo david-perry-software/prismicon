@@ -10,6 +10,11 @@
  *
  * Raising NCUBE_MAX_DIMENSION changes the dimension draw and the theta count,
  * so it requires a new spec version.
+ *
+ * Motion traits (dir, hyperSpeed, spinAxis, spin3, phase, phase2) are NOT part of
+ * the spec: prepareNcube derives them from params.hash bit ranges and the existing
+ * angles without new PRNG draws, so deriveNcube output and the static portrait are
+ * unchanged. The MOTION_* constants below are tunable, non-identity values.
  */
 
 import { defineVariant } from './registry.js';
@@ -152,11 +157,34 @@ function strokeWidthFor(dimension) {
   return STROKE_BY_DIMENSION[dimension] ?? 1;
 }
 
+// ---------------------------------------------------------------- motion traits (tunable, non-identity)
+
+const MOTION_HYPER_BASE = 0.55;    // rad/s floor of the highest-plane rotation at d = 4
+const MOTION_HYPER_SPREAD = 0.35;  // per-seed spread added to the floor
+const MOTION_HYPER_DAMP = 0.25;    // slow-down per dimension above 4 so 5-/6-cubes stay legible
+const MOTION_SPIN3_HYPER = 0.22;   // rad/s slow 3D drift accompanying hyper-rotation (d >= 4)
+const MOTION_SPIN3_BASE = 0.45;    // rad/s floor of a cube's 3D spin (its only working motion)
+const MOTION_SPIN3_SPREAD = 0.4;   // per-seed spread of the cube spin
+const SPIN_AXES = Object.freeze(['ax', 'ay', 'az']);
+
+function motionTraits(params) {
+  const { hash, dimension } = params;
+  const dir = hash % 2 === 0 ? 1 : -1;
+  const hyperSpeed = dimension >= 4
+    ? (MOTION_HYPER_BASE + (Math.floor(hash / 2) % 256) / 255 * MOTION_HYPER_SPREAD) / (1 + MOTION_HYPER_DAMP * (dimension - 4))
+    : 0;
+  const spinAxis = SPIN_AXES[Math.floor(hash / 512) % 3];
+  const spin3 = dimension >= 4
+    ? dir * MOTION_SPIN3_HYPER
+    : dir * (MOTION_SPIN3_BASE + (Math.floor(hash / 1536) % 256) / 255 * MOTION_SPIN3_SPREAD);
+  return { dir, hyperSpeed, spinAxis, spin3, phase: params.ax, phase2: params.ay };
+}
+
 // ---------------------------------------------------------------- variant hooks
 
 export function prepareNcube(params, { size }) {
   const finish = size < 28 && params.finish === 2 ? 0 : params.finish;
-  return { ...params, finish, strokeWidth: strokeWidthFor(params.dimension) };
+  return { ...params, finish, strokeWidth: strokeWidthFor(params.dimension), ...motionTraits(params) };
 }
 
 /**
