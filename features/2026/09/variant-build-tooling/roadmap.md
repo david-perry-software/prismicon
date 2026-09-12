@@ -1,5 +1,5 @@
 ```yaml
-status: planned
+status: in-progress
 branch: feature/variant-build-tooling
 last-updated: 2026-09-12
 next-step: "1.1 Add typescript and @types/react devDependencies"
