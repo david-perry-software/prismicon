@@ -130,14 +130,14 @@ function lerpHue(a, b, t) {
   return (a + d * t + 360) % 360;
 }
 
-function angDiff(target, cur) {
+export function angDiff(target, cur) {
   let d = (target - cur) % TAU;
   if (d > Math.PI) d -= TAU;
   if (d < -Math.PI) d += TAU;
   return d;
 }
 
-function wrapAngle(a) {
+export function wrapAngle(a) {
   a = a % TAU;
   if (a > Math.PI) a -= TAU;
   if (a < -Math.PI) a += TAU;
