@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/variant-build-tooling
 last-updated: 2026-09-12
-next-step: "4.1 README: Adding a variant section, flash 'settling' clause, support table timings"
+next-step: "4.2 Demo: registry-driven console line; serve on 3183 and capture evidence/step-4-2-demo-registry.png"
 initiative: "scalable-icon-variants"
 ```
 
@@ -28,7 +28,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 4: Docs and demo
 
-- [ ] 4.1 README: add `## Adding a variant (maintainers)` between `### Example: a spinning square` and `## Derivation spec v1 (frozen)` (recipe, what each check verifies, spec-bump rule, CI); append the `'settling'` clause to the `flash` row; replace the support table's shaded paint-ms column with `0.020 / 0.049 / 0.095 / 0.229` and frame-ms with `0.014 / 0.033 / 0.079 / 0.227` citing `features/2026/09/ncube-motion-system/evidence/ncube-motion-frames.txt` — verify: `grep -n "^## \|^### " README.md` shows the new heading immediately before `## Derivation spec v1 (frozen)`; `grep -c "check:variants\|generate-golden.mjs\|fixtureFor\|BuiltInVariantId" README.md` ≥ 4; `sed -n '/^| `flash` |/p' README.md | grep -c "'settling'"` prints `1`; `grep -c "| 6 | 64 | 192 | 240 | 25890 / 4479 | 7.29 | 0.229 | 0.227 | yes |" README.md` prints `1`.
+- [x] 4.1 README: add `## Adding a variant (maintainers)` between `### Example: a spinning square` and `## Derivation spec v1 (frozen)` (recipe, what each check verifies, spec-bump rule, CI); append the `'settling'` clause to the `flash` row; replace the support table's shaded paint-ms column with `0.020 / 0.049 / 0.095 / 0.229` and frame-ms with `0.014 / 0.033 / 0.079 / 0.227` citing `features/2026/09/ncube-motion-system/evidence/ncube-motion-frames.txt` — verify: `grep -n "^## \|^### " README.md` shows the new heading immediately before `## Derivation spec v1 (frozen)`; `grep -c "check:variants\|generate-golden.mjs\|fixtureFor\|BuiltInVariantId" README.md` ≥ 4; `sed -n '/^| `flash` |/p' README.md | grep -c "'settling'"` prints `1`; `grep -c "| 6 | 64 | 192 | 240 | 25890 / 4479 | 7.29 | 0.229 | 0.227 | yes |" README.md` prints `1`.
 - [ ] 4.2 Demo: remove the `describeParams`/`deriveV1` imports and the `anatomy:` console line from `demo/index.html`, logging `variant:` + `handle.params` instead; serve the repo root on the slug port and drive the hero `<select>` through every option, capturing `evidence/step-4-2-demo-registry.png` — verify: `grep -c "describeParams\|deriveV1\|anatomy" demo/index.html` prints `0`; `local:3183` — `npx -y serve -l 3183 .` then `http://localhost:3183/demo/index.html`: each of the six options mounts an `<svg>` and the console shows `variant: <selected id>`; screenshot linked from this step.
 
 ## Phase 5: CI
