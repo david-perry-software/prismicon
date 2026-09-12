@@ -122,11 +122,11 @@ function shadeFor(dark) {
  * the far cell inside the near one at the same ratio. The result is scaled so
  * the farthest point sits at FIT_RADIUS.
  */
-function projectTo3(geo, p) {
+function projectTo3(geo, theta) {
   const pts = geo.V.map((v) => v.slice());
   for (let k = geo.dimension - 1; k >= 3; k--) {
     const i = k % 3;
-    const c = Math.cos(p.theta[k - 3]), s = Math.sin(p.theta[k - 3]);
+    const c = Math.cos(theta[k - 3]), s = Math.sin(theta[k - 3]);
     let reach = 0;
     for (const pt of pts) {
       const a = pt[i], b = pt[k];
@@ -159,9 +159,12 @@ export function prepareNcube(params, { size }) {
   return { ...params, finish, strokeWidth: strokeWidthFor(params.dimension) };
 }
 
-/** Rest orientation for every state; motion belongs to ncube-motion-system. */
+/**
+ * Rest pose for every state: the seed's 3D angles plus the plane angles. Motion
+ * always starts from rest so the first mounted frame equals the static portrait.
+ */
 export function poseNcube(params) {
-  return Object.freeze({ ax: params.ax, ay: params.ay, az: params.az });
+  return Object.freeze({ ax: params.ax, ay: params.ay, az: params.az, theta: params.theta });
 }
 
 export function animateNcube(pose, ctx) {
@@ -175,7 +178,7 @@ export function paintNcube(p, geo, o, effects) {
   const range = effects.sleeping ? shade.range * 0.55 : shade.range;
   const hueMix = effects.flash ? lerpHue(p.hue, effects.flash.hue ?? p.hue, effects.flash.strength) : null;
   const strokeWidth = p.strokeWidth ?? strokeWidthFor(p.dimension);
-  const pts3 = projectTo3(geo, p).map((v) => rot3(v, o.ax, o.ay, o.az));
+  const pts3 = projectTo3(geo, o.theta).map((v) => rot3(v, o.ax, o.ay, o.az));
   const proj = pts3.map((v) => {
     const s = F / (F - v[2]);
     return (50 + off + v[0] * s).toFixed(1) + ' ' + (50 + v[1] * s).toFixed(1);
