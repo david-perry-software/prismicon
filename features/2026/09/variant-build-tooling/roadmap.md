@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/variant-build-tooling
 last-updated: 2026-09-12
-next-step: "2.1 Add fixtureFor(id) to test/helpers/golden.js"
+next-step: "2.2 Rewrite scripts/generate-golden.mjs to iterate BUILT_IN_VARIANTS.ids"
 initiative: "scalable-icon-variants"
 ```
 
@@ -13,7 +13,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 2: Registry-driven goldens
 
-- [ ] 2.1 Add `fixtureFor(id)` to `test/helpers/golden.js` (default id → `golden-v1.json`, `ncube*` → `golden-ncube-v1.json`, unknown family → throws naming the id) and export it — verify: `node -e "import('./test/helpers/golden.js').then(m => { console.log(m.fixtureFor('polyhedron'), m.fixtureFor('ncube-5')); try { m.fixtureFor('zzz') } catch (e) { console.log(e.message) } })"` prints the two file names and an error naming `zzz`.
+- [x] 2.1 Add `fixtureFor(id)` to `test/helpers/golden.js` (default id → `golden-v1.json`, `ncube*` → `golden-ncube-v1.json`, unknown family → throws naming the id) and export it — verify: `node -e "import('./test/helpers/golden.js').then(m => { console.log(m.fixtureFor('polyhedron'), m.fixtureFor('ncube-5')); try { m.fixtureFor('zzz') } catch (e) { console.log(e.message) } })"` prints the two file names and an error naming `zzz`.
 - [ ] 2.2 Rewrite `scripts/generate-golden.mjs` to iterate `BUILT_IN_VARIANTS.ids` (default id → `golden-v1.json` unchanged; other ids grouped by `fixtureFor`), removing `NCUBE_VARIANTS` — verify: `grep -c NCUBE_VARIANTS scripts/generate-golden.mjs` prints `0`; `node scripts/generate-golden.mjs` exits 0 and `node -e "console.log(Object.keys(require('./test/fixtures/golden-ncube-v1.json')).join(','))"` prints `ncube,ncube-3,ncube-4,ncube-5,ncube-6`.
 - [ ] 2.3 Prove regeneration preserved existing entries — verify: `git diff --quiet origin/main -- test/fixtures/golden-v1.json` exits 0 and `node -e "const a=require('./test/fixtures/golden-ncube-v1.json'); const b=JSON.parse(require('child_process').execSync('git show origin/main:test/fixtures/golden-ncube-v1.json')); for (const k of ['ncube','ncube-4']) require('assert').deepStrictEqual(a[k], b[k]); console.log('same')"` prints `same`.
 - [ ] 2.4 Add a completeness test to `test/golden-ncube.test.js` asserting the fixture's key set equals `BUILT_IN_VARIANTS.ids` without `DEFAULT_VARIANT_ID`; prove it bites by running it once against a scratch copy of the fixture with `ncube-5` removed — verify: the scratch run reports a failure naming `ncube-5` (paste the assertion line into the commit message), then `node --test test/golden-ncube.test.js` prints `# fail 0` on the real fixture.
