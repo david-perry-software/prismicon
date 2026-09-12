@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/variant-build-tooling
 last-updated: 2026-09-12
-next-step: "3.1 Create scripts/check-variants.mjs with contract and exports checks"
+next-step: "3.2 Add the types and pack checks"
 initiative: "scalable-icon-variants"
 ```
 
@@ -20,7 +20,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 3: Check script
 
-- [ ] 3.1 Create `scripts/check-variants.mjs` with the `contract` and `exports` checks (validateVariant over every `BUILT_IN_VARIANTS` id, `listVariants` parity, pinned `src/index.js` and `src/react.js` export lists, `package.json` `exports`/`files`/`sideEffects`/no-`bin` assertions) and `✓`/`✗` reporting with non-zero exit on failure — verify: `node scripts/check-variants.mjs` exits 0 and prints `✓ contract` and `✓ exports`.
+- [x] 3.1 Create `scripts/check-variants.mjs` with the `contract` and `exports` checks (validateVariant over every `BUILT_IN_VARIANTS` id, `listVariants` parity, pinned `src/index.js` and `src/react.js` export lists, `package.json` `exports`/`files`/`sideEffects`/no-`bin` assertions) and `✓`/`✗` reporting with non-zero exit on failure — verify: `node scripts/check-variants.mjs` exits 0 and prints `✓ contract` and `✓ exports`.
 - [ ] 3.2 Add the `types` check (spawn `node_modules/.bin/tsc --noEmit --strict --target es2020 --lib es2020,dom index.d.ts`) and the `pack` check (`npm pack --dry-run --json`, file list equals the expected set, nothing from `test/`, `scripts/`, `demo/`, `.github/`) — verify: `node scripts/check-variants.mjs` prints `✓ types` and `✓ pack` and exits 0; `node_modules/.bin/tsc --noEmit --strict --target es2020 --lib es2020,dom index.d.ts; echo "exit=$?"` prints `exit=0` (the code the check keys on).
 - [ ] 3.3 Add the `goldens` check: for `DEFAULT_VARIANT_ID` and every other registered id, `captureGolden({ variant })` deep-equals the entry in `fixtureFor(id)` (fixtures dir from `PRISMICON_CHECK_FIXTURES_DIR`, default `test/fixtures`); a missing entry fails with `regenerate with: node scripts/generate-golden.mjs` — verify: `node scripts/check-variants.mjs` prints `✓ goldens` and exits 0; `mkdir -p /tmp/vbt && node -e "const g=require('./test/fixtures/golden-ncube-v1.json'); delete g['ncube-5']; require('fs').writeFileSync('/tmp/vbt/golden-ncube-v1.json', JSON.stringify(g)); require('fs').copyFileSync('test/fixtures/golden-v1.json','/tmp/vbt/golden-v1.json')" && PRISMICON_CHECK_FIXTURES_DIR=/tmp/vbt node scripts/check-variants.mjs; echo "exit=$?"` prints a `✗ goldens` line naming `ncube-5` and `generate-golden.mjs` and `exit=1`.
 - [ ] 3.4 Add `package.json` scripts `check:variants` (`node scripts/check-variants.mjs`) and `verify` (`npm test && npm run check:variants`); update `AGENTS.md` `### Commands` (`Typecheck: npm run check:variants` (types group), `Full verification: npm run verify`) — verify: `npm run check:variants` exits 0; `npm run verify` exits 0; `grep -c "check:variants" AGENTS.md` ≥ 1.
