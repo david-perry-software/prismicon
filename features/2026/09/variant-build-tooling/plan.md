@@ -82,8 +82,8 @@ not loaded: no React code changes are in scope.
   probe; throws `TypeError` naming id/probe/hook; returns the frozen descriptor
   ([src/variants/validate.js](../../../../src/variants/validate.js#L203-L226)). It already runs
   over every built-in in `test/authoring.test.js` ("accepts every built-in descriptor").
-- Public exports: `src/index.js` exports 12 core names + 6 variant names + `createPrismicon`
-  ([src/index.js](../../../../src/index.js)); `package.json` `exports` maps `.` and `./react`,
+- Public exports: `src/index.js` exports 11 core names + 6 variant names + `createPrismicon`
+  (18 total) ([src/index.js](../../../../src/index.js)); `package.json` `exports` maps `.` and `./react`,
   `files` = `src`, `index.d.ts`, `README.md`, `LICENSE`, `sideEffects: false`, no `bin`
   ([package.json](../../../../package.json#L6-L25)).
 - Golden capture: `captureGolden({ variant })` in
@@ -183,7 +183,7 @@ and exits non-zero on the first failing group with a one-line `✗ <check>: <rea
    also asserts `listVariants()` ids equal `BUILT_IN_VARIANTS.ids`, every `id` matches
    `VARIANT_ID_PATTERN`, `label`/`spec` non-empty, and `DEFAULT_VARIANT_ID` is registered.
 2. **Exports** — `Object.keys(await import('../src/index.js'))` equals a pinned sorted list
-   (the current 19 names); `Object.keys(await import('../src/react.js'))` equals
+   (the current 18 names); `Object.keys(await import('../src/react.js'))` equals
    `['Prismicon', 'PrismiconProvider', 'default']`; `package.json` `exports` has exactly `.`
    and `./react`, each with `types: ./index.d.ts` and an existing `default` file; `files`
    contains `src`, `index.d.ts`, `README.md`, `LICENSE`; `sideEffects === false`; no `bin`.

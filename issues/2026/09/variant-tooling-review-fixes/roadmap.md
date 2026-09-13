@@ -2,7 +2,7 @@
 status: in-progress
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
-next-step: "2.4"
+next-step: "3.1"
 github-issue: "#14"
 ```
 
@@ -49,14 +49,14 @@ github-issue: "#14"
   helper with `'win32'` and `'linux'`; if the helper stayed module-local, assert the
   ternary source text instead per plan decision 4) — verify: `node --test
   test/check-variants.test.js` exits 0 including the two new assertions
-- [ ] 2.4 Correct the export count in
+- [x] 2.4 Correct the export count in
   `features/2026/09/variant-build-tooling/plan.md`: line ~85 "12 core names + 6
   variant names + `createPrismicon`" → "11 core names + 6 variant names +
   `createPrismicon` (18 total)" and line ~186 "(the current 19 names)" → "(the
   current 18 names)" — verify: `grep -n "19 names\|12 core"
   features/2026/09/variant-build-tooling/plan.md` finds nothing and `grep -n "18
   names\|11 core" features/2026/09/variant-build-tooling/plan.md` matches both lines
-- [ ] 2.5 Correct the README "## Adding a variant (maintainers)" step 2: drop "and
+- [x] 2.5 Correct the README "## Adding a variant (maintainers)" step 2: drop "and
   re-exporting it from `src/index.js`" and state that adding the descriptor to
   `BUILT_IN_VARIANTS` in `src/variants/index.js` is the whole registration step (root
   exports stay pinned to the machinery names; a new root export fails the `exports`

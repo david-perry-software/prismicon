@@ -423,8 +423,9 @@ one is a documented, machine-checked recipe rather than a one-off:
 1. Write `src/variants/<id>.js` with `defineVariant({ id, label, spec, … })` and export the
    descriptor. Pick a fresh `spec` string (e.g. `'<family>-v1'`) — it names the frozen
    derivation for this family.
-2. Register it in `src/variants/index.js` by adding it to the `BUILT_IN_VARIANTS`
-   registry and re-exporting it from `src/index.js`.
+2. Register it in `src/variants/index.js` by adding the descriptor to the
+   `BUILT_IN_VARIANTS` registry — that is the whole registration step. Root exports stay
+   pinned to the machinery names; adding a new root export fails the `exports` check.
 3. If it starts a new family, map its ids to a fixture file in `fixtureFor` in
    `test/helpers/golden.js` (`golden-<family>-v1.json`). Ids of an existing family
    (e.g. a new `ncube-N`) need no mapping change.
