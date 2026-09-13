@@ -238,7 +238,7 @@ seed-derived) concentric rings carry seed-placed nodes (1–4 per ring) around a
 core mark (dot, plus or diamond), computed directly in the 100×100 viewBox with
 no 3D math or perspective. The aria label reads
 `"<seed>: <rings>-ring orbit, <nodes> nodes, <mark> core"`, e.g.
-`maya: 2-ring orbit, 3 nodes, plus core`.
+`maya: 2-ring orbit, 3 nodes, dot core`.
 
 **Motion model.** Every state starts from the seed's rest pose (all ring offsets
 zero, `coreScale` 1), so the first mounted frame equals the static portrait.
@@ -284,7 +284,7 @@ five seeds, 200 `paint()` calls; 60 working frames at 30 fps, a send burst,
 then settling; same gates as the n-cube family). The 2026-09-13 run recorded in
 `features/2026/09/alternate-visual-variant/evidence/orbit-benchmark.txt` shows
 static SVGs of 558–1171 bytes with a median `paint()` of 0.006–0.011 ms and a
-median `animate + paint` frame cost of 0.007–0.012 ms (p95 ≤ 0.030 ms,
+median `animate + paint` frame cost of 0.007–0.012 ms (p95 ≤ 0.059 ms,
 settling in 29–31 frames) — both gates pass by a wide margin.
 
 ## Custom variants

@@ -2,7 +2,7 @@
 status: in-review
 branch: feature/alternate-visual-variant
 last-updated: 2026-09-13
-next-step: "review — draft PR #16 ready for the Reviewer"
+next-step: "re-review — PR #16 after README review corrections"
 initiative: "scalable-icon-variants"
 ```
 
@@ -44,3 +44,7 @@ initiative: "scalable-icon-variants"
 - [x] 6.1 Run the full gate — verify: `npm test` exits 0 with `# fail 0` and `# tests` ≥ 132 + the new orbit cases; `npm run check:variants` exits 0 with all five `✓` lines; `node scripts/generate-golden.mjs && git diff --quiet -- test/fixtures/golden-v1.json test/fixtures/golden-ncube-v1.json test/fixtures/ncube-v1-identities.json` exits 0; `npm pack --dry-run 2>&1 | grep -cE "^npm notice [0-9.kMB]+ (test|scripts|demo|features)/"` prints `0`
 - [x] 6.2 Confirm the untouched-file contract — verify: `git diff --quiet origin/main -- src/core.js src/react.js src/index.js src/variants/registry.js src/variants/validate.js src/variants/seed.js src/variants/polyhedron.js src/variants/ncube.js package.json test/fixtures/golden-v1.json test/fixtures/golden-ncube-v1.json test/fixtures/ncube-v1-identities.json` exits 0, and `git diff origin/main --stat -- src/variants/index.js` shows only the orbit import/export/registration lines
 - [x] 6.3 Integrate `origin/main` by merge, push, and set the roadmap to `in-review` with `next-step` pointing at review — verify: `git fetch origin && git merge origin/main` exits 0 (or is already up to date), `npm test` exits 0 after the merge, `git push` exits 0, `gh pr view --json isDraft,headRefName` shows `feature/alternate-visual-variant` as a draft
+
+## Phase 7: Review corrections
+
+- [x] 7.1 Correct the Orbit README benchmark p95 to the committed `0.059 ms` maximum and the `maya` aria example to `dot core`; rerun the full gate — verify: `npm run verify` exits 0 with 160 tests passing and all five variant checks
