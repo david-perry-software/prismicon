@@ -2,7 +2,7 @@
 status: in-progress
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
-next-step: "2.2"
+next-step: "2.3"
 github-issue: "#14"
 ```
 
@@ -39,7 +39,7 @@ github-issue: "#14"
   test and register `t.after(() => rmSync(scratch, { recursive: true, force: true
   }))` (or wrap in `try/finally`) — verify: the 1.4 regression test now passes and
   `node --test test/check-variants.test.js` exits 0
-- [ ] 2.2 Make npm invocation portable: add a small pure helper in
+- [x] 2.2 Make npm invocation portable: add a small pure helper in
   `scripts/check-variants.mjs` (e.g. `const npmCommand = (platform =
   process.platform) => platform === 'win32' ? 'npm.cmd' : 'npm'`) and use it at the
   `checkPack()` spawn site; keep it module-local unless an export is needed for
