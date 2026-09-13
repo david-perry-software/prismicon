@@ -1,8 +1,8 @@
 ```yaml
-status: in-progress
+status: in-review
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
-next-step: "3.1"
+next-step: "done"
 github-issue: "#14"
 ```
 
@@ -65,13 +65,13 @@ github-issue: "#14"
 
 ## Phase 3: Verify and hand off
 
-- [ ] 3.1 Run the full verification battery: `npm test` and `npm run check:variants`
+- [x] 3.1 Run the full verification battery: `npm test` and `npm run check:variants`
   — verify: `npm test` exits 0 with the whole suite green and `npm run
   check:variants` exits 0 printing `✓ contract`, `✓ exports`, `✓ types`, `✓ pack`,
   `✓ goldens`
-- [ ] 3.2 Prove no new temp dirs leak across a full suite run: count
+- [x] 3.2 Prove no new temp dirs leak across a full suite run: count
   `$TMPDIR/prismicon-check-*` before and after `npm test` — verify: counts are equal
-- [ ] 3.3 Record any out-of-scope observations made during the build as Follow-ups in
+- [x] 3.3 Record any out-of-scope observations made during the build as Follow-ups in
   this roadmap (per plan decision 2) and update plan.md `## Resolution` with root
   cause, changes, and proof the 1.4 test passes — verify: plan.md `## Resolution` is
   filled and `git status` shows no unrelated changes
