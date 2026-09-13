@@ -61,7 +61,7 @@ it at <code>idle</code>, <code>working</code> and <code>done</code>. See README
 <div class="row" id="custom"></div>
 
 <script type="module">
-import { createPrismicon, STATES, describeParams, deriveV1, DEFAULT_VARIANT_ID } from '../src/index.js';
+import { createPrismicon, STATES, DEFAULT_VARIANT_ID } from '../src/index.js';
 import { square } from './square-variant.js';
 
 // Hoisted to module scope so the registry identity is stable for the page's lifetime.
@@ -76,7 +76,7 @@ function mountHero(variant) {
   if (window.handle) window.handle.destroy();
   const handle = mountGlyph(hero, 'demo-agent', { kind: 'agent', size: 140, state, dark, variant });
   window.handle = handle;
-  console.log('variant:', handle.variant, 'anatomy:', describeParams(deriveV1('demo-agent')));
+  console.log('variant:', handle.variant, handle.params);
 }
 
 const variantSelect = document.getElementById('variant');

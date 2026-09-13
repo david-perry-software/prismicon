@@ -13,14 +13,16 @@ Delivery work in this repository is driven by the Agento plugin (slash commands
 
 - Install: `npm ci`
 - Test: `npm test`
-- Typecheck: none
+- Typecheck: `npm run check:variants` (types group; also runs contract, exports, pack, goldens)
 - Lint: none
-- Full verification: `npm test`
+- Full verification: `npm run verify`
 
 ### Verification strategy
 
-Pure library: run `npm test` for the Node test suite. Open `demo/index.html` in a
-browser for manual visual verification. No dev server, end-to-end runner, or
+Pure library: run `npm test` for the Node test suite and `npm run check:variants` for
+the maintainer gate (variant contract, exports, `index.d.ts` typecheck, `npm pack`
+contents, golden freshness). Open `demo/index.html` in a browser for manual visual
+verification. No dev server, end-to-end runner, or
 deployment preview system is configured.
 
 ### Shared resources
