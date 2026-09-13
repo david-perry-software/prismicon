@@ -1,8 +1,8 @@
 ```yaml
-status: in-review
+status: complete
 branch: issue/variant-tooling-review-fixes
-last-updated: 2026-09-12
-next-step: "done"
+last-updated: 2026-09-13
+next-step: ""
 github-issue: "#14"
 ```
 
@@ -75,3 +75,9 @@ github-issue: "#14"
   this roadmap (per plan decision 2) and update plan.md `## Resolution` with root
   cause, changes, and proof the 1.4 test passes — verify: plan.md `## Resolution` is
   filled and `git status` shows no unrelated changes
+
+## Follow-ups (accepted at ship)
+
+- The fix commit also rewrote the exposing regression test; reviewer verification independently proved the current test fails without cleanup and passes with it.
+- The temp-directory regression test relies on sequential file execution and the missing-golden test running first; this dependency is documented in the test.
+- Windows npm-command coverage uses a source-text assertion whose exact-format matching may require maintenance after harmless reformatting.
