@@ -120,7 +120,15 @@ export function poseOrbit(params, state) {
 }
 
 export function animateOrbit(pose, ctx) {
-  if (ctx.state === 'settling') return ctx.rest;
+  const { params: p, state, dt, t, rest } = ctx;
+  if (state === 'idle' || state === 'done' || state === 'error') return pose;
+  if (state === 'working') {
+    const k = Math.min(1, dt * 3);
+    const offsets = Object.freeze(pose.offsets.map((off, r) => wrapAngle(off + p.ringSpeeds[r] * dt)));
+    const coreScale = pose.coreScale + (1 + Math.sin(t * 1.2 + p.phase) * 0.06 - pose.coreScale) * k;
+    return Object.freeze({ offsets, coreScale });
+  }
+  if (state === 'settling') return rest;
   return pose;
 }
 
