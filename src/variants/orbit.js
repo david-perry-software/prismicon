@@ -148,7 +148,25 @@ export function animateOrbit(pose, ctx) {
     const breath = 0.85 + Math.sin(t * 0.25 + p.phase) * 0.03;
     return Object.freeze({ offsets, coreScale: pose.coreScale + (breath - pose.coreScale) * k });
   }
-  if (state === 'settling') return rest;
+  if (state === 'sending' || state === 'receiving') {
+    const k = Math.min(1, dt * 4);
+    const top = pose.offsets.length - 1;
+    const sign = state === 'sending' ? 1 : -1;
+    const burst = sign * (0.5 + Math.abs(p.ringSpeeds[top])) * 3.2 * Math.exp(-ctx.transientT * 7) * dt;
+    const offsets = Object.freeze(pose.offsets.map((off, r) => wrapAngle(off + (r === top ? burst : 0))));
+    return Object.freeze({ offsets, coreScale: pose.coreScale + (1 - pose.coreScale) * k });
+  }
+  if (state === 'settling') {
+    const k = Math.min(1, dt * 4.5);
+    let settled = Math.abs(pose.coreScale - 1) < 0.01;
+    const offsets = Object.freeze(pose.offsets.map((off, r) => {
+      const d = angDiff(rest.offsets[r], off);
+      if (Math.abs(d) >= 0.015) settled = false;
+      return off + d * k;
+    }));
+    if (settled) return rest;
+    return Object.freeze({ offsets, coreScale: pose.coreScale + (1 - pose.coreScale) * k });
+  }
   return pose;
 }
 
