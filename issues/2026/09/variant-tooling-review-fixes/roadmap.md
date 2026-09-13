@@ -2,7 +2,7 @@
 status: in-progress
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
-next-step: "1.3"
+next-step: "1.4"
 github-issue: "#14"
 ```
 
@@ -17,7 +17,7 @@ github-issue: "#14"
   plan exist on this branch — verify: `git log --oneline -1 origin/main` is an
   ancestor (`git merge-base --is-ancestor origin/main HEAD`) and `ls
   scripts/check-variants.mjs test/check-variants.test.js` succeeds
-- [ ] 1.3 Re-confirm all four findings still reproduce on the integrated tree (PR #13
+- [x] 1.3 Re-confirm all four findings still reproduce on the integrated tree (PR #13
   may have drifted before merge): leak via before/after count of
   `$TMPDIR/prismicon-check-*` around `node --test test/check-variants.test.js`; wrong
   count via `grep -n "19 names\|12 core"
