@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/alternate-visual-variant
 last-updated: 2026-09-13
-next-step: "step 1.5 — generate orbit golden and add test/golden-orbit.test.js"
+next-step: "step 2.1 — motion traits dir/ringSpeeds/phase in prepareOrbit"
 initiative: "scalable-icon-variants"
 ```
 
@@ -12,7 +12,7 @@ initiative: "scalable-icon-variants"
 - [x] 1.2 Register `orbit` in `src/variants/index.js` (import, export `orbit` and `ORBIT_SPEC_VERSION` next to the ncube exports, append `orbit` to `BUILT_IN_VARIANTS` after the n-cube ids) and update the three pinned id-list assertions: `test/variants.test.js` (`BUILT_IN_VARIANTS.ids` deep-equal and the `listVariants()` ids assertion, adding `ORBIT_INFO = { id: 'orbit', label: 'Orbit', spec: 'orbit-v1' }`) and `test/ncube.test.js` (`BUILT_IN_VARIANTS.ids` deep-equal) — verify: `node --test test/variants.test.js test/ncube.test.js test/authoring.test.js` exits 0 with `# fail 0` and `node -e "import('./src/variants/index.js').then(m => console.log(m.listVariants().map(v => v.id).join(',')))"` prints `polyhedron,ncube,ncube-3,ncube-4,ncube-5,ncube-6,orbit`
 - [x] 1.3 Add the orbit row to `FAMILY_FIXTURES` in `test/helpers/golden.js` (`{ test: (id) => id === 'orbit', file: 'golden-orbit-v1.json' }`) and create `test/orbit.test.js` with the static-contract cases from plan.md (derive determinism and frozen params, draw-order independence of `ringCount`, `describeOrbit` format, frozen bounded `buildOrbit` output, rest pose identical for `[...STATES, 'settling']`, static equals mounted at rest, reduced motion equals static in every state, `animate` identity/`ctx.rest` contract, `paint` honors `dark`/`lighten`/`flash`, `flashOrbit` mapping, `validateVariant(orbit)` passes) — verify: `node --test test/orbit.test.js` exits 0 with `# fail 0`
 - [x] 1.4 Create `test/orbit-derivation-freeze.test.js` pinning `deriveOrbit` output for the five golden seeds against a new `test/fixtures/orbit-v1-identities.json` (mirroring `test/ncube-derivation-freeze.test.js`; generate the fixture from the implementation and eyeball it once) — verify: `node --test test/orbit-derivation-freeze.test.js` exits 0
-- [ ] 1.5 Generate the orbit golden and add `test/golden-orbit.test.js` (mirror of `test/golden-ncube.test.js` filtered on `fixtureFor(id) === 'golden-orbit-v1.json'`) — verify: `node scripts/generate-golden.mjs` exits 0; `git status --porcelain test/fixtures` lists only `golden-orbit-v1.json` as new; `git diff --quiet -- test/fixtures/golden-v1.json test/fixtures/golden-ncube-v1.json test/fixtures/ncube-v1-identities.json` exits 0; `node --test test/golden-orbit.test.js test/golden-ncube.test.js test/golden-v1.test.js` exits 0; `npm run check:variants` exits 0
+- [x] 1.5 Generate the orbit golden and add `test/golden-orbit.test.js` (mirror of `test/golden-ncube.test.js` filtered on `fixtureFor(id) === 'golden-orbit-v1.json'`) — verify: `node scripts/generate-golden.mjs` exits 0; `git status --porcelain test/fixtures` lists only `golden-orbit-v1.json` as new; `git diff --quiet -- test/fixtures/golden-v1.json test/fixtures/golden-ncube-v1.json test/fixtures/ncube-v1-identities.json` exits 0; `node --test test/golden-orbit.test.js test/golden-ncube.test.js test/golden-v1.test.js` exits 0; `npm run check:variants` exits 0
 
 ## Phase 2: Motion traits and lifecycle states
 
