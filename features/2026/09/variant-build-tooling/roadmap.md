@@ -1,8 +1,8 @@
 ```yaml
-status: in-review
+status: complete
 branch: feature/variant-build-tooling
-last-updated: 2026-09-12
-next-step: "Reviewer: /review-feature variant-build-tooling (PR #13)"
+last-updated: 2026-09-13
+next-step: ""
 initiative: "scalable-icon-variants"
 ```
 
@@ -40,3 +40,12 @@ initiative: "scalable-icon-variants"
 
 - [x] 6.1 Run the complete gate (policy §5, no lint configured) and record results in plan.md `## Research` — verify: `npm ci && npm test` prints `# fail 0` and `# tests` ≥ 127; `npm run check:variants` exits 0; `npm run lint` still prints `Missing script` (record otherwise); `git diff --quiet origin/main -- src index.d.ts test/fixtures/golden-v1.json test/fixtures/ncube-v1-identities.json scripts/measure-ncube.mjs` exits 0; `npm pack --dry-run` lists no `test/`, `scripts/`, `demo/`, `.github/` entries.
 - [x] 6.2 Integrate `origin/main`, set `status: in-review`, push — verify: `git status --porcelain` empty; `git log origin/main..HEAD --oneline` shows only this feature's commits; `gh pr view <n> --json isDraft -q .isDraft` prints `true`.
+
+## Follow-ups (accepted at ship)
+
+Delegated to `issue/variant-tooling-review-fixes` on 2026-09-13:
+
+- Correct the README built-in registration recipe so it does not require re-exporting descriptors from `src/index.js`.
+- Correct plan.md's root-export count from 19 to 18.
+- Remove temporary fixture directories created by `test/check-variants.test.js`.
+- Make the maintainer script's npm invocation portable to Windows.
