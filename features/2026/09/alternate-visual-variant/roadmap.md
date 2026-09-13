@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/alternate-visual-variant
 last-updated: 2026-09-13
-next-step: "step 3.1 — measure-orbit benchmark script"
+next-step: "step 3.2 — commit benchmark evidence"
 initiative: "scalable-icon-variants"
 ```
 
@@ -25,7 +25,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 3: Benchmark and evidence
 
-- [ ] 3.1 Create `scripts/measure-orbit.mjs` (unpublished, modeled on `scripts/measure-ncube.mjs`): static table (five golden seeds at size 64: SVG bytes, ring/node counts, median `paint()` over 200 calls) and frame table (60 working frames at `dt = 1/30`, 12 `sending` frames, settling until `ctx.rest`; median and p95 `animate + paint` ms, settling frame count), printing `static gate: pass|fail` (≤ 32768 bytes, median ≤ 5 ms) and `frame gate: pass|fail` (median ≤ 2 ms, p95 ≤ 4 ms, settling ≤ 60 frames) and exiting nonzero on failure — verify: `node scripts/measure-orbit.mjs` exits 0 and prints `static gate: pass` and `frame gate: pass`
+- [x] 3.1 Create `scripts/measure-orbit.mjs` (unpublished, modeled on `scripts/measure-ncube.mjs`): static table (five golden seeds at size 64: SVG bytes, ring/node counts, median `paint()` over 200 calls) and frame table (60 working frames at `dt = 1/30`, 12 `sending` frames, settling until `ctx.rest`; median and p95 `animate + paint` ms, settling frame count), printing `static gate: pass|fail` (≤ 32768 bytes, median ≤ 5 ms) and `frame gate: pass|fail` (median ≤ 2 ms, p95 ≤ 4 ms, settling ≤ 60 frames) and exiting nonzero on failure — verify: `node scripts/measure-orbit.mjs` exits 0 and prints `static gate: pass` and `frame gate: pass`
 - [ ] 3.2 Commit the benchmark output — verify: `node scripts/measure-orbit.mjs > features/2026/09/alternate-visual-variant/evidence/orbit-benchmark.txt` exits 0 and `grep -c 'gate: pass' features/2026/09/alternate-visual-variant/evidence/orbit-benchmark.txt` prints `2`
 
 ## Phase 4: React regression
