@@ -2,7 +2,7 @@
 status: in-progress
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
-next-step: "1.2"
+next-step: "1.3"
 github-issue: "#14"
 ```
 
@@ -11,7 +11,7 @@ github-issue: "#14"
 - [x] 1.1 Confirm PR #13 (`feature/variant-build-tooling`) is merged to `main`
   (`gh pr view 13 --json state` → `MERGED`); if still open, stop here and leave this
   roadmap stalled — verify: `gh pr view 13 --json state --jq .state` prints `MERGED`
-- [ ] 1.2 Integrate the post-#13 default branch: `git fetch origin && git merge
+- [x] 1.2 Integrate the post-#13 default branch: `git fetch origin && git merge
   origin/main` (merge, never rebase) so `scripts/check-variants.mjs`,
   `test/check-variants.test.js`, the README recipe, and the variant-build-tooling
   plan exist on this branch — verify: `git log --oneline -1 origin/main` is an
