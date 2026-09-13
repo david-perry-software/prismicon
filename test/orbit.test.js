@@ -4,7 +4,7 @@ import { JSDOM } from 'jsdom';
 
 import { createRenderer, STATES } from '../src/core.js';
 import { BUILT_IN_VARIANTS, validateVariant } from '../src/variants/index.js';
-import { PALETTE } from '../src/variants/polyhedron.js';
+import { PALETTE, angDiff } from '../src/variants/polyhedron.js';
 import { cyrb53, mulberry32 } from '../src/variants/seed.js';
 import {
   ORBIT_SPEC_VERSION,
@@ -177,14 +177,17 @@ test('hooks: pose returns the same frozen rest pose for every state', () => {
   }
 });
 
-test('hooks: animate returns its input for idle/done/error and ctx.rest for settling', () => {
+test('hooks: animate returns its input for idle/done/error and ctx.rest for settling once settled', () => {
   const p = prepareOrbit(deriveOrbit('maya'), { size: 64 });
   const rest = poseOrbit(p, 'idle');
-  const pose = Object.freeze({ offsets: Object.freeze([0.5, -0.5, 0.25, 0.75]), coreScale: 1.4 });
+  const pose = Object.freeze({ offsets: Object.freeze(rest.offsets.map((o) => o + 0.5)), coreScale: 1.4 });
   for (const state of ['idle', 'done', 'error']) {
     assert.equal(animateOrbit(pose, { params: p, state, dt: 1 / 30, t: 1, transientT: 0.1, rest }), pose, state);
   }
-  assert.equal(animateOrbit(pose, { params: p, state: 'settling', dt: 1 / 30, t: 1, transientT: 0, rest }), rest);
+  assert.equal(animateOrbit(rest, { params: p, state: 'settling', dt: 1 / 30, t: 1, transientT: 0, rest }), rest);
+  const eased = animateOrbit(pose, { params: p, state: 'settling', dt: 1 / 30, t: 1, transientT: 0, rest });
+  assert.notEqual(eased, rest, 'a perturbed pose eases toward rest instead of snapping');
+  assert.notEqual(eased, pose, 'settling returns a new object while converging');
 });
 
 test('hooks: validateVariant passes for orbit', () => {
@@ -201,6 +204,145 @@ test('hooks: flash mirrors the shared lifecycle mapping', () => {
   for (const state of STATES) {
     if (['receiving', 'done', 'error'].includes(state)) continue;
     assert.equal(flashOrbit(p, state), null, state);
+  }
+});
+
+// ---------------------------------------------------------------- motion traits
+
+test('prepare: motion traits are deterministic, in range and leave identity fields unchanged', () => {
+  const dirs = new Set();
+  for (const seed of SEEDS) {
+    const p = deriveOrbit(seed);
+    const a = prepareOrbit(p, { size: 64 });
+    const b = prepareOrbit(p, { size: 140 });
+    for (const key of ['dir', 'ringSpeeds', 'phase']) {
+      assert.deepEqual(a[key], b[key], `${seed} ${key} deterministic across sizes`);
+    }
+    assert.ok(a.dir === 1 || a.dir === -1, `${seed} dir is ±1`);
+    assert.equal(a.ringSpeeds.length, p.ringCount);
+    for (let r = 0; r < p.ringCount; r += 1) {
+      const s = a.ringSpeeds[r];
+      assert.ok(Math.abs(s) >= 0.5 && Math.abs(s) <= 1.0, `${seed} ring ${r} speed ${s} in [0.5, 1.0]`);
+      assert.equal(Math.sign(s), a.dir * (r % 2 === 0 ? 1 : -1), `${seed} ring ${r} counter-rotates`);
+    }
+    assert.ok(a.phase >= 0 && a.phase <= TAU, `${seed} phase ${a.phase} within [0, TAU]`);
+    for (const key of Object.keys(p)) {
+      assert.deepEqual(a[key], p[key], `${seed} identity field ${key} unchanged`);
+    }
+    dirs.add(a.dir);
+  }
+  assert.ok(dirs.size > 1, 'golden seeds do not all share dir');
+});
+
+// ---------------------------------------------------------------- motion states
+
+test('motion: working advances each ring by ringSpeeds[r] * dt with adjacent rings counter-rotating', () => {
+  const dt = 1 / 30;
+  for (const seed of SEEDS) {
+    const p = prepareOrbit(deriveOrbit(seed), { size: 64 });
+    const rest = poseOrbit(p, 'working');
+    let pose = rest;
+    for (let f = 1; f <= 10; f += 1) {
+      const next = animateOrbit(pose, { params: p, state: 'working', dt, t: f * dt, transientT: 0, rest });
+      assert.notEqual(next, pose, `${seed} frame ${f} is a new object`);
+      assert.ok(Object.isFrozen(next) && Object.isFrozen(next.offsets), `${seed} frame ${f} frozen`);
+      for (let r = 0; r < p.ringCount; r += 1) {
+        const d = angDiff(next.offsets[r], pose.offsets[r]);
+        assert.ok(Math.abs(d - p.ringSpeeds[r] * dt) < 1e-9, `${seed} frame ${f} ring ${r} advances at ringSpeeds[${r}] * dt`);
+        const total = angDiff(next.offsets[r], rest.offsets[r]);
+        assert.ok(Math.abs(total - p.ringSpeeds[r] * dt * f) < 1e-9, `${seed} frame ${f} ring ${r} monotonic`);
+        if (r > 0) assert.equal(Math.sign(p.ringSpeeds[r]), -Math.sign(p.ringSpeeds[r - 1]), `${seed} rings ${r - 1}/${r} counter-rotate`);
+      }
+      assert.ok(Math.abs(next.coreScale - 1) <= 0.06 + 1e-9, `${seed} frame ${f} coreScale breathes around 1`);
+      pose = next;
+    }
+  }
+});
+
+test('motion: waiting, thinking and sleeping change the pose on the first frame', () => {
+  const dt = 1 / 30;
+  for (const seed of SEEDS) {
+    const p = prepareOrbit(deriveOrbit(seed), { size: 64 });
+    const rest = poseOrbit(p, 'idle');
+    for (const state of ['waiting', 'thinking', 'sleeping']) {
+      const next = animateOrbit(rest, { params: p, state, dt, t: 0, transientT: 0, rest });
+      assert.notEqual(next, rest, `${seed} ${state} returns a new object`);
+      const changed = next.offsets.some((o, r) => Math.abs(o - rest.offsets[r]) > 1e-12)
+        || Math.abs(next.coreScale - 1) > 1e-12;
+      assert.ok(changed, `${seed} ${state} first frame differs from rest`);
+    }
+  }
+});
+
+test('motion: sending and receiving burst the outermost ring in opposite directions and decay with transientT', () => {
+  const dt = 1 / 30;
+  for (const seed of SEEDS) {
+    const p = prepareOrbit(deriveOrbit(seed), { size: 64 });
+    const rest = poseOrbit(p, 'idle');
+    const top = rest.offsets.length - 1;
+    const sent = animateOrbit(rest, { params: p, state: 'sending', dt, t: 0, transientT: 0, rest });
+    const received = animateOrbit(rest, { params: p, state: 'receiving', dt, t: 0, transientT: 0, rest });
+    const ds = angDiff(sent.offsets[top], rest.offsets[top]);
+    const dr = angDiff(received.offsets[top], rest.offsets[top]);
+    assert.ok(ds > 0 && dr < 0 && Math.abs(ds + dr) < 1e-12, `${seed} burst directions opposite`);
+    for (let r = 0; r < top; r += 1) {
+      assert.equal(sent.offsets[r], rest.offsets[r], `${seed} sending touches only the outer ring`);
+      assert.equal(received.offsets[r], rest.offsets[r], `${seed} receiving touches only the outer ring`);
+    }
+    const late = animateOrbit(rest, { params: p, state: 'sending', dt, t: 0, transientT: 0.3, rest });
+    assert.ok(Math.abs(angDiff(late.offsets[top], rest.offsets[top])) < Math.abs(ds), `${seed} burst decays over transientT`);
+  }
+});
+
+test('motion: settling eases every offset to rest and returns ctx.rest by identity within 60 frames', () => {
+  for (const seed of SEEDS) {
+    const p = prepareOrbit(deriveOrbit(seed), { size: 64 });
+    const rest = poseOrbit(p, 'idle');
+    let pose = Object.freeze({ offsets: Object.freeze(rest.offsets.map((o) => o + 0.5)), coreScale: 1.4 });
+    let settledAt = -1;
+    for (let i = 1; i <= 60; i += 1) {
+      const next = animateOrbit(pose, { params: p, state: 'settling', dt: 1 / 30, t: i / 30, transientT: 0, rest });
+      if (next === rest) { settledAt = i; break; }
+      assert.notEqual(next, pose, `${seed} frame ${i} is a new object`);
+      for (let r = 0; r < rest.offsets.length; r += 1) {
+        assert.ok(
+          Math.abs(angDiff(next.offsets[r], rest.offsets[r])) < Math.abs(angDiff(pose.offsets[r], rest.offsets[r])),
+          `${seed} frame ${i} ring ${r} converges`);
+      }
+      assert.ok(Math.abs(next.coreScale - 1) < Math.abs(pose.coreScale - 1), `${seed} frame ${i} coreScale converges`);
+      pose = next;
+    }
+    assert.ok(settledAt > 0 && settledAt <= 60, `${seed} settled at frame ${settledAt}`);
+  }
+});
+
+test('motion: animate never mutates a frozen input pose', () => {
+  const p = prepareOrbit(deriveOrbit('maya'), { size: 64 });
+  const rest = poseOrbit(p, 'idle');
+  for (const state of ['working', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving', 'settling']) {
+    const pose = Object.freeze({ offsets: Object.freeze(rest.offsets.map((o) => o + 0.3)), coreScale: 1.2 });
+    const snapshot = JSON.stringify(pose);
+    const next = animateOrbit(pose, { params: p, state, dt: 1 / 30, t: 0.5, transientT: 0.1, rest });
+    assert.equal(JSON.stringify(pose), snapshot, `${state} input untouched`);
+    assert.notEqual(next, pose, `${state} returns a new object (or ctx.rest)`);
+    assert.ok(Object.isFrozen(next), `${state} output frozen`);
+  }
+});
+
+test('paint: 60 working frames keep every emitted coordinate inside the viewBox', () => {
+  const dt = 1 / 30;
+  for (const seed of SEEDS) {
+    const p = prepareOrbit(deriveOrbit(seed), { size: 64 });
+    const geo = buildOrbit(p);
+    const rest = poseOrbit(p, 'working');
+    let pose = rest;
+    for (let f = 0; f < 60; f += 1) {
+      pose = animateOrbit(pose, { params: p, state: 'working', dt, t: f * dt, transientT: 0, rest });
+      const svg = paintOrbit(p, geo, pose, { dark: false, sleeping: false, dx: 0, lighten: 0, flash: null });
+      const nums = geometryNumbers(svg);
+      assert.ok(nums.length > 0);
+      for (const n of nums) assert.ok(n >= 0 && n <= 100, `${seed} frame ${f}: ${n} outside viewBox`);
+    }
   }
 });
 
@@ -281,5 +423,47 @@ test('render: reduced motion mount queues no frames and equals the static markup
   }
   handle.setState('idle');
   assert.equal(inner(), staticInner);
+  handle.destroy();
+});
+
+test('render: working repaints across frames and returns to the exact rest markup after idle', async () => {
+  const dom = installDom();
+  const core = await import('../src/core.js?orbit-working-frames');
+  const { renderStaticSVG, mountGlyph } = localRenderer(core);
+  dom.scratch.innerHTML = renderStaticSVG('maya', { variant: 'orbit', dark: false });
+  const staticInner = dom.scratch.querySelector('svg > g').innerHTML;
+  const handle = mountGlyph(dom.container, 'maya', { variant: 'orbit', state: 'working', dark: false });
+  const inner = () => dom.container.querySelector('svg > g').innerHTML;
+  assert.equal(inner(), staticInner, 'first working frame equals the static portrait');
+  let now = 1000;
+  const seen = new Set([staticInner]);
+  for (let i = 0; i < 6; i += 1, now += 33) {
+    dom.advanceAnimationFrame(now);
+    seen.add(inner());
+  }
+  assert.ok(seen.size > 3, 'working repaints across frames');
+  handle.setState('idle');
+  for (let i = 0; i < 90; i += 1, now += 33) dom.advanceAnimationFrame(now);
+  assert.equal(inner(), staticInner, 'settling returns to the exact rest markup');
+  handle.destroy();
+});
+
+test('render: setState through every STATES entry never throws and settles back to rest', async () => {
+  const dom = installDom();
+  const core = await import('../src/core.js?orbit-states');
+  const { mountGlyph } = localRenderer(core);
+  const handle = mountGlyph(dom.container, 'build-bot-7', { variant: 'orbit', state: 'working' });
+  const inner = () => dom.container.querySelector('svg > g').innerHTML;
+  const rest = inner();
+  let now = 1000;
+  for (const state of STATES) {
+    assert.doesNotThrow(() => handle.setState(state), state);
+    assert.equal(handle.state, state);
+    for (let i = 0; i < 60; i += 1, now += 33) dom.advanceAnimationFrame(now);
+  }
+  assert.notEqual(inner(), rest, 'sleeping (the last STATES entry) breathes and paints the dimmer ramp');
+  handle.setState('idle');
+  for (let i = 0; i < 60; i += 1, now += 33) dom.advanceAnimationFrame(now);
+  assert.equal(inner(), rest, 'after every flash decays and settling completes the glyph is back at its rest markup');
   handle.destroy();
 });
