@@ -128,6 +128,26 @@ export function animateOrbit(pose, ctx) {
     const coreScale = pose.coreScale + (1 + Math.sin(t * 1.2 + p.phase) * 0.06 - pose.coreScale) * k;
     return Object.freeze({ offsets, coreScale });
   }
+  if (state === 'waiting') {
+    const k = Math.min(1, dt * 3.5);
+    const offsets = Object.freeze(pose.offsets.map((off, r) =>
+      off + angDiff(rest.offsets[r] + Math.sin(t * 0.8 + p.phase + r * 1.7) * 0.04, off) * k));
+    return Object.freeze({ offsets, coreScale: pose.coreScale + (1 - pose.coreScale) * k });
+  }
+  if (state === 'thinking') {
+    const k = Math.min(1, dt * 2.2);
+    const top = pose.offsets.length - 1;
+    const offsets = Object.freeze(pose.offsets.map((off, r) =>
+      off + angDiff(r === top ? Math.sin(t * 0.6 + p.phase) * 0.08 : rest.offsets[r], off) * k));
+    const pulse = 1 + Math.max(0, Math.sin(t * 0.5 + p.phase)) * 0.1;
+    return Object.freeze({ offsets, coreScale: pose.coreScale + (pulse - pose.coreScale) * k });
+  }
+  if (state === 'sleeping') {
+    const k = Math.min(1, dt * 1.2);
+    const offsets = Object.freeze(pose.offsets.map((off, r) => off + angDiff(rest.offsets[r], off) * k));
+    const breath = 0.85 + Math.sin(t * 0.25 + p.phase) * 0.03;
+    return Object.freeze({ offsets, coreScale: pose.coreScale + (breath - pose.coreScale) * k });
+  }
   if (state === 'settling') return rest;
   return pose;
 }
