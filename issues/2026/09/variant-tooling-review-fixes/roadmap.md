@@ -2,7 +2,7 @@
 status: in-progress
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
-next-step: "2.3"
+next-step: "2.4"
 github-issue: "#14"
 ```
 
@@ -45,7 +45,7 @@ github-issue: "#14"
   `checkPack()` spawn site; keep it module-local unless an export is needed for
   testing — verify: `grep -n "spawnSync('npm'" scripts/check-variants.mjs` finds no
   bare `'npm'` spawn and `npm run check:variants` still exits 0 on Linux
-- [ ] 2.3 Cover both npm-command branches in `test/check-variants.test.js` (call the
+- [x] 2.3 Cover both npm-command branches in `test/check-variants.test.js` (call the
   helper with `'win32'` and `'linux'`; if the helper stayed module-local, assert the
   ternary source text instead per plan decision 4) — verify: `node --test
   test/check-variants.test.js` exits 0 including the two new assertions

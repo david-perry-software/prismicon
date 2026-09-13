@@ -51,3 +51,13 @@ test('scratch fixture dirs are removed after the missing-golden flow runs', () =
   const leaked = readdirSync(tmpdir()).filter((name) => /^prismicon-check-/.test(name) && !scratchDirsAtLoad.has(name));
   assert.deepEqual(leaked, [], `leaked scratch dirs in tmpdir: ${leaked.join(', ')}`);
 });
+
+// Coverage for #14 (variant-tooling-review-fixes): the npm command helper selects
+// 'npm.cmd' on win32 and 'npm' elsewhere. The helper is module-local and the script
+// self-executes on import, so both branches are pinned via the ternary source text.
+test('check-variants spawns npm.cmd on win32 and npm elsewhere', () => {
+  const source = readFileSync(script, 'utf8');
+  assert.match(source, /platform === 'win32' \? 'npm\.cmd' : 'npm'/, 'npmCommand ternary must cover win32 and non-win32 branches');
+  assert.match(source, /spawnSync\(npmCommand\(\), \['pack'/, 'checkPack must spawn via npmCommand()');
+  assert.ok(!source.includes("spawnSync('npm'"), 'no bare spawnSync(\'npm\') may remain');
+});
