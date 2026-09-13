@@ -17,6 +17,11 @@
  *
  * Raising ORBIT_MAX_RINGS or ORBIT_MAX_NODES changes the draw count, so it
  * requires a new spec version.
+ *
+ * Motion traits (dir, ringSpeeds, phase) are NOT part of the spec: prepareOrbit
+ * derives them from disjoint bit ranges of params.hash with no new PRNG draws,
+ * so deriveOrbit output and the static portrait are unchanged. The ORBIT_MOTION_*
+ * constants below are tunable, non-identity values.
  */
 
 import { defineVariant } from './registry.js';
@@ -75,10 +80,31 @@ export function buildOrbit(params) {
   return Object.freeze({ radii, slots });
 }
 
+// ---------------------------------------------------------------- motion traits (tunable, non-identity)
+
+const ORBIT_MOTION_SPEED_BASE = 0.5;   // rad/s floor of a ring's working speed
+const ORBIT_MOTION_SPEED_SPREAD = 0.5; // per-seed spread added to the floor
+
+/**
+ * Traits from disjoint bit ranges of params.hash (bit 0: dir; bytes at bits
+ * 1+8r..8+8r: per-ring speed magnitude; bits 33-40: phase) — never new PRNG
+ * draws, so the orbit-v1 identities stay frozen.
+ */
+function motionTraits(params) {
+  const { hash } = params;
+  const dir = hash % 2 === 0 ? 1 : -1;
+  const ringSpeeds = Array.from({ length: params.ringCount }, (_, r) => {
+    const byte = Math.floor(hash / 2 ** (1 + 8 * r)) % 256;
+    return dir * (r % 2 === 0 ? 1 : -1) * (ORBIT_MOTION_SPEED_BASE + (byte / 255) * ORBIT_MOTION_SPEED_SPREAD);
+  });
+  const phase = ((Math.floor(hash / 2 ** 33) % 256) / 255) * TAU;
+  return { dir, ringSpeeds, phase };
+}
+
 // ---------------------------------------------------------------- variant hooks
 
 export function prepareOrbit(params, { size }) {
-  return { ...params, strokeWidth: 1.6 };
+  return { ...params, strokeWidth: 1.6, ...motionTraits(params) };
 }
 
 /**
