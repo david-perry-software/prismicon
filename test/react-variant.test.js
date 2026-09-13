@@ -104,6 +104,36 @@ test('hydration of an animated n-cube has no recoverable errors and rotates afte
   assert.equal(dom.container.querySelector('svg'), null);
 });
 
+test('hydration of an animated orbit has no recoverable errors and rotates after frames', async () => {
+  const dom = installDom();
+  const props = { variant: 'orbit', state: 'working' };
+  dom.scratch.innerHTML = renderStaticSVG('Ada Lovelace', props);
+  const staticInner = dom.scratch.querySelector('svg > g').innerHTML;
+  dom.container.innerHTML = renderToString(element(props));
+  const inner = () => dom.container.querySelector('svg > g').innerHTML;
+  assert.equal(inner(), staticInner, 'SSR markup equals the static portrait');
+  const errors = [];
+
+  const root = await act(() => hydrateRoot(dom.container, element(props), {
+    onRecoverableError: (error) => errors.push(error)
+  }));
+
+  assert.deepEqual(errors, []);
+  assert.match(dom.container.querySelector('svg').getAttribute('aria-label'), /\d-ring orbit, .+, working$/);
+  assert.equal(inner(), staticInner, 'the first mounted working frame equals the static portrait');
+  let now = 1000;
+  const seen = new Set([staticInner]);
+  for (let i = 0; i < 4; i += 1, now += 33) {
+    dom.advanceAnimationFrame(now);
+    seen.add(inner());
+  }
+  assert.ok(seen.size > 2, 'the orbit rings rotate across frames while working');
+
+  await act(() => root.unmount());
+  dom.advanceAnimationFrame(now);
+  assert.equal(dom.container.querySelector('svg'), null);
+});
+
 test('client mounts an explicit variant', async () => {
   const dom = installDom();
   const root = createRoot(dom.container);

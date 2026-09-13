@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/alternate-visual-variant
 last-updated: 2026-09-13
-next-step: "step 4.1 — React orbit hydration regression test"
+next-step: "step 5.1 — OrbitParams in index.d.ts"
 initiative: "scalable-icon-variants"
 ```
 
@@ -30,7 +30,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 4: React regression
 
-- [ ] 4.1 Add to `test/react-variant.test.js` the case "hydration of an animated orbit has no recoverable errors and rotates after frames" (SSR `variant: 'orbit', state: 'working'` equals `renderStaticSVG`; hydrate with a fake rAF queue; zero recoverable errors; `<g>` innerHTML differs after frames advance), mirroring the animated n-cube case — verify: `node --test test/react-variant.test.js` exits 0 and lists the new case as `ok`; `git diff --quiet origin/main -- src/react.js` exits 0
+- [x] 4.1 Add to `test/react-variant.test.js` the case "hydration of an animated orbit has no recoverable errors and rotates after frames" (SSR `variant: 'orbit', state: 'working'` equals `renderStaticSVG`; hydrate with a fake rAF queue; zero recoverable errors; `<g>` innerHTML differs after frames advance), mirroring the animated n-cube case — verify: `node --test test/react-variant.test.js` exits 0 and lists the new case as `ok`; `git diff --quiet origin/main -- src/react.js` exits 0
 
 ## Phase 5: Types, docs, demo
 
