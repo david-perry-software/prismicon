@@ -107,7 +107,7 @@ describeParams(p); // → 'pentagon bipyramid, two-tone, tall'
 
 ## Variants
 
-Variants are separate visual styles registered with the renderer. The built-in `polyhedron` variant is the default and remains unchanged, so existing code keeps working. The n-cube family (`ncube`, `ncube-3` … `ncube-6`) is the second built-in.
+Variants are separate visual styles registered with the renderer. The built-in `polyhedron` variant is the default and remains unchanged, so existing code keeps working. The n-cube family (`ncube`, `ncube-3` … `ncube-6`) is the second built-in and `orbit` is the third.
 
 ```js
 import { renderStaticSVG, mountGlyph, DEFAULT_VARIANT_ID, listVariants } from 'prismicon';
@@ -119,7 +119,8 @@ listVariants();
 //   { id: 'ncube-3',    label: '3-cube (cube)',        spec: 'ncube-v1' },
 //   { id: 'ncube-4',    label: '4-cube (tesseract)',   spec: 'ncube-v1' },
 //   { id: 'ncube-5',    label: '5-cube (penteract)',   spec: 'ncube-v1' },
-//   { id: 'ncube-6',    label: '6-cube (hexeract)',    spec: 'ncube-v1' }
+//   { id: 'ncube-6',    label: '6-cube (hexeract)',    spec: 'ncube-v1' },
+//   { id: 'orbit',      label: 'Orbit',                spec: 'orbit-v1' }
 // ]
 
 renderStaticSVG('maya', { variant: 'polyhedron' });
@@ -130,8 +131,9 @@ const handle = mountGlyph(el, 'maya', { variant: 'ncube-4', state: 'working' });
 - Omit `variant` to get `DEFAULT_VARIANT_ID` (`'polyhedron'`).
 - An unknown id throws `RangeError`; there is no silent fallback.
 - `handle.variant` reports the resolved variant id.
-- `handle.params` is typed `GlyphParams | NcubeParams`; narrow on `handle.variant`
-  (or `'dimension' in handle.params`) before reading variant-specific fields.
+- `handle.params` is typed `GlyphParams | NcubeParams | OrbitParams`; narrow on
+  `handle.variant` (or `'dimension' in handle.params` / `'ringCount' in
+  handle.params`) before reading variant-specific fields.
 
 React uses the same variant ids as the core API:
 
@@ -228,6 +230,62 @@ columns come from the single 2026-09-12 run recorded in
 
 Dimensions above 6 are not registered; requesting `ncube-7` throws `RangeError`
 like any unknown id.
+
+### Orbit
+
+A flat, 2D-forward contrast to the projected solids: `ringCount` (2–4,
+seed-derived) concentric rings carry seed-placed nodes (1–4 per ring) around a
+core mark (dot, plus or diamond), computed directly in the 100×100 viewBox with
+no 3D math or perspective. The aria label reads
+`"<seed>: <rings>-ring orbit, <nodes> nodes, <mark> core"`, e.g.
+`maya: 2-ring orbit, 3 nodes, plus core`.
+
+**Motion model.** Every state starts from the seed's rest pose (all ring offsets
+zero, `coreScale` 1), so the first mounted frame equals the static portrait.
+Per-frame motion rotates ring offsets and scales the core mark:
+
+| State | Orbit motion |
+|---|---|
+| `idle`, `done`, `error` | none — the engine drives the flash; the pose is returned unchanged |
+| `working` | each ring's offset advances at `ringSpeeds[r]` (0.5–1.0 rad/s), adjacent rings counter-rotating; the core breathes gently (±0.06) |
+| `waiting` | soft per-ring sway (±0.04 rad) around rest |
+| `thinking` | the outermost ring wobbles (±0.08 rad) while the core pulses (up to +0.10) |
+| `sending` / `receiving` | burst on the outermost ring (`(0.5 + \|ringSpeeds[top]\|) × 3.2`, decaying with `exp(−7·t)`), sending forward and receiving backward; then settles |
+| `sleeping` | offsets ease to rest; the core breathes slowly around 0.85, dimmed |
+| settling (after transient states) | every offset eases to rest and the pose snaps to the exact rest object once all are within 0.015 rad and `coreScale` within 0.01 |
+
+- **Traits without new draws.** `dir`, `ringSpeeds` and `phase` are derived by
+  `prepare` from disjoint bit ranges of `params.hash` — no extra PRNG draws, so
+  `deriveOrbit` output and the static portrait are unchanged and the spec stays
+  `orbit-v1`. These constants are tunable, non-identity values (`ORBIT_MOTION_*`
+  in `src/variants/orbit.js`). `GlyphHandle.params` exposes them; they are
+  optional on `OrbitParams`.
+- **Reduced motion.** Under `prefers-reduced-motion` the engine queues no
+  frames, so a mounted orbit equals its static markup in every state (only the
+  dimming changes).
+
+**Derivation spec `orbit-v1` (frozen).** `seed → normalizeSeed → cyrb53 →
+mulberry32`, then 22 draws in a fixed order that never depends on earlier
+values:
+
+1. `ringCount = 2 + floor(r() * 3)` (2–4).
+2. `nodeCounts[r]` for `r` in 0..3: `1 + floor(r() * 4)` — always 4 draws; only
+   the first `ringCount` are used.
+3. `nodeAngles[r * 4 + n]` for 16 draws: `r() * TAU` — the rest angle of node
+   `n` on ring `r`; only the first `nodeCounts[r]` per ring are used.
+4. `coreMark = floor(r() * 3)` (0 = dot, 1 = plus, 2 = diamond).
+5. `hue = PALETTE[hash % 12]`, `hue2 = PALETTE[(idx + 4) % 12]` (not PRNG draws).
+
+Raising `ORBIT_MAX_RINGS` or `ORBIT_MAX_NODES` changes the draw count and
+therefore requires `orbit-v2`.
+
+**Benchmark.** Measured with `scripts/measure-orbit.mjs` (static SVG at size 64,
+five seeds, 200 `paint()` calls; 60 working frames at 30 fps, a send burst,
+then settling; same gates as the n-cube family). The 2026-09-13 run recorded in
+`features/2026/09/alternate-visual-variant/evidence/orbit-benchmark.txt` shows
+static SVGs of 558–1171 bytes with a median `paint()` of 0.006–0.011 ms and a
+median `animate + paint` frame cost of 0.007–0.012 ms (p95 ≤ 0.030 ms,
+settling in 29–31 frames) — both gates pass by a wide margin.
 
 ## Custom variants
 
