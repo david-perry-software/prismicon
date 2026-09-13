@@ -212,18 +212,19 @@ is supported when, for every finish, the static SVG is ≤ 32768 bytes, the medi
 projected edge is ≥ 2.5 viewBox units and the median `paint()` takes ≤ 5 ms. The
 "median frame ms" column is the animated `animate + paint` cost per frame from the
 same script's frame benchmark (60 working frames at 30 fps, a send burst, then
-settling; gate median ≤ 2 ms, p95 ≤ 4 ms, settling ≤ 60 frames — recorded in
-`features/2026/09/ncube-motion-system/evidence/ncube-motion-frames.txt`):
+settling; gate median ≤ 2 ms, p95 ≤ 4 ms, settling ≤ 60 frames). Both timing
+columns come from the single 2026-09-12 run recorded in
+`features/2026/09/ncube-motion-system/evidence/ncube-motion-frames.txt`:
 
 | d | vertices | edges | faces | max bytes (shaded / wireframe) | median edge | median paint ms (shaded) | median frame ms (shaded) | supported |
 |---|----------|-------|-------|--------------------------------|-------------|--------------------------|--------------------------|-----------|
-| 3 | 8 | 12 | 6 | 845 / 517 | 25.39 | 0.041 | 0.014 | yes |
-| 4 | 16 | 32 | 24 | 2779 / 960 | 15.72 | 0.059 | 0.032 | yes |
-| 5 | 32 | 80 | 80 | 8771 / 2018 | 10.60 | 0.135 | 0.081 | yes |
-| 6 | 64 | 192 | 240 | 25890 / 4479 | 7.29 | 0.370 | 0.236 | yes |
-| 7 | 128 | 448 | 672 | 72115 / 10114 | 5.29 | 0.863 | — | no (bytes) |
-| 8 | 256 | 1024 | 1792 | 191954 / 22785 | 3.53 | 3.040 | — | no (bytes) |
-| 9 | 512 | 2304 | 4608 | 493266 / 50943 | 2.27 | 10.680 | — | no (all three) |
+| 3 | 8 | 12 | 6 | 845 / 517 | 25.39 | 0.020 | 0.014 | yes |
+| 4 | 16 | 32 | 24 | 2779 / 960 | 15.72 | 0.049 | 0.033 | yes |
+| 5 | 32 | 80 | 80 | 8771 / 2018 | 10.60 | 0.095 | 0.079 | yes |
+| 6 | 64 | 192 | 240 | 25890 / 4479 | 7.29 | 0.229 | 0.227 | yes |
+| 7 | 128 | 448 | 672 | 72115 / 10114 | 5.29 | 0.752 | — | no (bytes) |
+| 8 | 256 | 1024 | 1792 | 191954 / 22785 | 3.53 | 2.223 | — | no (bytes) |
+| 9 | 512 | 2304 | 4608 | 493266 / 50943 | 2.27 | 6.696 | — | no (all three) |
 
 Dimensions above 6 are not registered; requesting `ncube-7` throws `RangeError`
 like any unknown id.
@@ -258,7 +259,7 @@ Plus the eight hooks, all required, all pure functions of their arguments:
 | `pose` | `(params, state) → pose` | For the rest pose of a state: `'idle'` for static renders, and on every `setState`. `state` may also be the internal `'settling'`. |
 | `animate` | `(pose, ctx) → pose` | Once per animation frame while motion is enabled. `ctx` is `{ params, state, dt, t, transientT, rest }` (seconds). Return a **new** object; while `state === 'settling'`, return `ctx.rest` to signal motion has finished. |
 | `paint` | `(params, geometry, pose, effects) → string` | Every static render and every frame. Returns the inner SVG markup for a 100×100 viewBox. `effects` is `{ dark, sleeping, dx, lighten, flash }`; `effects.dark` is `undefined` when a `renderStaticSVG` caller omits `dark` (mounted glyphs always pass a boolean), so treat it as falsy rather than comparing it to `false`. |
-| `flash` | `(params, state) → { hue?, lighten?, shake? } \| null` | On each state transition. `lighten` is the peak lightness boost in percentage points; the engine scales it by the flash envelope and passes it to `paint` as `effects.lighten`. |
+| `flash` | `(params, state) → { hue?, lighten?, shake? } \| null` | On each state transition. `lighten` is the peak lightness boost in percentage points; the engine scales it by the flash envelope and passes it to `paint` as `effects.lighten`. `validateVariant` also calls it with the internal `'settling'` state, so return `null` (or a valid object) for unknown states. |
 
 **Reduced motion.** When `prefers-reduced-motion` is set, `animate` is never called and
 `pose(params, state)` is painted as-is, so your idle `paint` output *is* the variant's
@@ -413,6 +414,47 @@ export const square = defineVariant({
 
 `demo/index.html` registers it with `createPrismicon({ variants: [square] })` and shows
 it at `idle`, `working` and `done` under **Custom variant**.
+
+## Adding a variant (maintainers)
+
+Built-in variants ship inside the package and are frozen by golden fixtures, so adding
+one is a documented, machine-checked recipe rather than a one-off:
+
+1. Write `src/variants/<id>.js` with `defineVariant({ id, label, spec, … })` and export the
+   descriptor. Pick a fresh `spec` string (e.g. `'<family>-v1'`) — it names the frozen
+   derivation for this family.
+2. Register it in `src/variants/index.js` by adding it to the `BUILT_IN_VARIANTS`
+   registry and re-exporting it from `src/index.js`.
+3. If it starts a new family, map its ids to a fixture file in `fixtureFor` in
+   `test/helpers/golden.js` (`golden-<family>-v1.json`). Ids of an existing family
+   (e.g. a new `ncube-N`) need no mapping change.
+4. Run `node scripts/generate-golden.mjs`. It iterates every registered id, so the new
+   variant gets a golden entry in its family file; existing entries are re-captured and
+   must not change.
+5. Add the id to `BuiltInVariantId` in `index.d.ts` and document it under `## Variants`.
+6. Run `npm run check:variants` (or `npm run verify`, which also runs `npm test`).
+
+`npm run check:variants` runs `scripts/check-variants.mjs`, which stops at the first
+failing group and prints `✗ <check>: <reason>`; on success it prints one `✓` per check:
+
+| Check | Verifies | Typical failure |
+|-------|----------|-----------------|
+| `contract` | `validateVariant` accepts every registered descriptor; `listVariants()` matches `BUILT_IN_VARIANTS.ids`; the default id is registered. | `TypeError` naming the id and the hook or probe that broke. |
+| `exports` | `src/index.js` / `src/react.js` export exactly the pinned public names; `package.json` `exports`, `files`, `sideEffects: false`, no `bin`. | A public name was added or removed without updating the pinned list (or `index.d.ts`). |
+| `types` | `tsc --noEmit --strict` over `index.d.ts` exits 0. | A declaration drifted from the runtime. |
+| `pack` | `npm pack --dry-run` publishes only `src/**`, `index.d.ts`, `README.md`, `LICENSE`, `package.json` — nothing from `test/`, `scripts/`, `demo/`, `.github/`. | `files` in `package.json` was widened. |
+| `goldens` | For the default and every other registered id, `captureGolden({ variant })` deep-equals its fixture entry. | `variant '<id>' has no golden entry` or `golden … is stale`; both say `regenerate with: node scripts/generate-golden.mjs`. |
+
+**Spec-bump rule.** A golden may only change when its `spec` changes. If a variant's
+identities must move (a draw is inserted, removed or reordered; a geometry constant like
+`NCUBE_MAX_DIMENSION` is raised), bump the descriptor's `spec` (`ncube-v1` → `ncube-v2`),
+map the new spec to a **new** fixture file in `fixtureFor`, and regenerate — never
+overwrite an existing `*-v1.json`. A "stale" `goldens` failure without a spec bump is a
+regression, not a fixture to refresh.
+
+**CI.** `.github/workflows/ci.yml` runs `npm ci`, `npm test` and `npm run check:variants`
+on every pull request and on pushes to `main`, so a registered variant without a golden,
+a broken descriptor, a type drift or a leaking tarball fails the PR.
 
 ## Derivation spec v1 (frozen)
 
