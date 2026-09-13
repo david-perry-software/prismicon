@@ -2,7 +2,7 @@
 status: in-progress
 branch: feature/alternate-visual-variant
 last-updated: 2026-09-13
-next-step: "step 5.1 — OrbitParams in index.d.ts"
+next-step: "step 5.2 — README Orbit docs"
 initiative: "scalable-icon-variants"
 ```
 
@@ -34,7 +34,7 @@ initiative: "scalable-icon-variants"
 
 ## Phase 5: Types, docs, demo
 
-- [ ] 5.1 Extend `index.d.ts`: `BuiltInVariantId` gains `'orbit'`; new `OrbitParams` interface (identity fields `spec, seed, hash, ringCount, nodeCounts, nodeAngles, coreMark, hue, hue2` plus optional readonly prepared fields `strokeWidth, dir, ringSpeeds, phase` with the "prepared, not derived" JSDoc convention); `GlyphHandle.params` union gains `OrbitParams`; the narrowing JSDoc mentions `'ringCount' in params` — verify: `npm run check:variants` exits 0 (its `types` group runs `tsc --noEmit --strict` over `index.d.ts`)
+- [x] 5.1 Extend `index.d.ts`: `BuiltInVariantId` gains `'orbit'`; new `OrbitParams` interface (identity fields `spec, seed, hash, ringCount, nodeCounts, nodeAngles, coreMark, hue, hue2` plus optional readonly prepared fields `strokeWidth, dir, ringSpeeds, phase` with the "prepared, not derived" JSDoc convention); `GlyphHandle.params` union gains `OrbitParams`; the narrowing JSDoc mentions `'ringCount' in params` — verify: `npm run check:variants` exits 0 (its `types` group runs `tsc --noEmit --strict` over `index.d.ts`)
 - [ ] 5.2 Update README `## Variants`: intro names `orbit` as the third built-in, the `listVariants()` example gains `{ id: 'orbit', label: 'Orbit', spec: 'orbit-v1' }`, the narrowing bullet mentions `'ringCount' in handle.params`, and a new `### Orbit` subsection after `### N-cube family` documents the flat design, the frozen `orbit-v1` draw order, the per-state motion table, the traits-without-new-draws rule, reduced-motion behavior, and the median frame value from `evidence/orbit-benchmark.txt` — verify: `grep -c "### Orbit" README.md` prints `1`; `grep -n "^## " README.md` shows the existing section order unchanged; `grep -c "orbit" README.md` prints at least 8
 - [ ] 5.3 Add the "Orbit" section to `demo/index.html`: seed input plus a `STATES` button strip mounting `orbit` glyphs at size 72 (mirroring the "Lifecycle (n-cube family)" row, re-mounting on seed input) — verify: `ss -ltn | grep -c ':3179 '` prints `0`, then serve `python3 -m http.server 3179 --directory .`, open `http://localhost:3179/demo/index.html`, select the Orbit row's `working`, `thinking` and `sending` buttons, and confirm the glyph visibly animates and the page stays responsive — target `local:3179`
 - [ ] 5.4 Capture browser evidence — verify: screenshots `evidence/step-5-4-orbit-working.png` and `evidence/step-5-4-orbit-thinking.png` exist, are committed, and show the orbit glyph animating in the named state; kill the http server afterwards

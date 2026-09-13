@@ -29,10 +29,11 @@ declare module 'prismicon' {
 
   /**
    * Built-in variant ids: `polyhedron` (default), `ncube` (dimension derived from
-   * the seed) and `ncube-<d>` for each supported dimension, 3 up to the frozen
-   * NCUBE_MAX_DIMENSION. Custom ids remain accepted as plain strings.
+   * the seed), `ncube-<d>` for each supported dimension 3 up to the frozen
+   * NCUBE_MAX_DIMENSION, and `orbit` (ring/node counts derived from the seed).
+   * Custom ids remain accepted as plain strings.
    */
-  export type BuiltInVariantId = 'polyhedron' | 'ncube' | `ncube-${number}`;
+  export type BuiltInVariantId = 'polyhedron' | 'ncube' | 'orbit' | `ncube-${number}`;
 
   /** Params produced by the n-cube family (spec `ncube-v1`). */
   export interface NcubeParams {
@@ -68,6 +69,35 @@ declare module 'prismicon' {
     readonly phase2?: number;
   }
 
+  /** Params produced by the orbit variant (spec `orbit-v1`). */
+  export interface OrbitParams {
+    spec: string;
+    seed: string;
+    hash: number;
+    /** Concentric ring count in [2, ORBIT_MAX_RINGS]. */
+    ringCount: number;
+    /** Nodes per ring, always ORBIT_MAX_RINGS entries (only the first `ringCount` are used). */
+    nodeCounts: readonly number[];
+    /** Node rest angles, always ORBIT_MAX_RINGS * ORBIT_MAX_NODES entries. */
+    nodeAngles: readonly number[];
+    /** Core mark: 0 = dot, 1 = plus, 2 = diamond. */
+    coreMark: 0 | 1 | 2;
+    hue: number;
+    hue2: number;
+    /**
+     * Prepared, non-identity fields below are present on `GlyphHandle.params`
+     * (output of `prepare`), not in `deriveOrbit` output.
+     */
+    /** Ring/node stroke width in viewBox units. */
+    readonly strokeWidth?: number;
+    /** Base sense of rotation. */
+    readonly dir?: 1 | -1;
+    /** rad/s per ring while working; adjacent rings counter-rotate. */
+    readonly ringSpeeds?: readonly number[];
+    /** Sway/pulse phase offset. */
+    readonly phase?: number;
+  }
+
   export interface GlyphOptions {
     size?: number;
     kind?: GlyphKind;
@@ -82,10 +112,11 @@ declare module 'prismicon' {
   export interface GlyphHandle {
     /**
      * Derived params of the mounted variant. Narrow on `variant` (or on
-     * `'dimension' in params`) before reading variant-specific fields:
-     * `polyhedron` yields GlyphParams, the n-cube family yields NcubeParams.
+     * `'dimension' in params` / `'ringCount' in params`) before reading
+     * variant-specific fields: `polyhedron` yields GlyphParams, the n-cube
+     * family yields NcubeParams, `orbit` yields OrbitParams.
      */
-    readonly params: GlyphParams | NcubeParams;
+    readonly params: GlyphParams | NcubeParams | OrbitParams;
     readonly variant: string;
     readonly state: GlyphState;
     setState(state: GlyphState): void;
