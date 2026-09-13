@@ -2,13 +2,14 @@
 
 Verdict: approve
 
-Reviewed 2026-09-13 in worktree `/home/david/DP/prismicon-worktrees/plan-20260913-033207`,
-branch `feature/alternate-visual-variant` at `2aca4e6` (draft PR #16). Roadmap resolved
+Re-reviewed 2026-09-13 in worktree
+`/home/david/DP/prismicon-worktrees/feature-alternate-visual-variant`, branch
+`feature/alternate-visual-variant` at `ce58027` (draft PR #16). Roadmap resolved
 via `agento.mjs resolve feature alternate-visual-variant` → `status: ok`, source local,
 branch matches. `git fetch origin`; the worktree list confirms this worktree owns
 `feature/alternate-visual-variant`; `git merge-base --is-ancestor origin/main HEAD` →
 true (branch contains `origin/main` `f60a4c0`). Diff reviewed:
-`git diff origin/main...HEAD` (20 files, +2743/−17, including plan/roadmap/evidence).
+`git diff origin/main...HEAD`, plus the repair delta `git diff 4534b59..ce58027`.
 Skills consulted: modern-javascript-patterns (pure hooks, frozen pose/geometry objects,
 spread over mutation, no shared mutable state in `animate` — all observed in
 [src/variants/orbit.js](../../../../src/variants/orbit.js)); vercel-react-best-practices
@@ -28,9 +29,9 @@ component-level rules are implicated).
 | 7 | `settling` returns `ctx.rest` by identity ≤ 60 frames; mounted glyph through every state ends at rest markup; 60 working frames inside `[0, 100]` | **pass** | "settling eases every offset to rest and returns ctx.rest by identity within 60 frames" (perturbed +0.5 rad / coreScale 1.4, all seeds); "working repaints across frames and returns to the exact rest markup after idle"; "setState through every STATES entry never throws and settles back to rest"; "60 working frames keep every emitted coordinate inside the viewBox" |
 | 8 | `validateVariant(orbit)` passes | **pass** | "hooks: validateVariant passes for orbit" in `test/orbit.test.js`; `✓ contract` in `npm run check:variants` |
 | 9 | React hydration case passes; `src/react.js` untouched | **pass** | `node --test test/react-variant.test.js` lists "hydration of an animated orbit has no recoverable errors and rotates after frames" as `ok` (SSR == `renderStaticSVG`, zero recoverable errors, `<g>` changes over frames); `git diff --quiet origin/main -- src/react.js` exit 0 |
-| 10 | Benchmark evidence shows both gates passing; README cites the measured median frame value | **pass** | Reviewer reran `node scripts/measure-orbit.mjs` → exit 0, `static gate: pass`, `frame gate: pass` (median 0.007–0.012 ms, p95 ≤ 0.096 ms, settle 29–31 frames on this machine); committed [evidence/orbit-benchmark.txt](evidence/orbit-benchmark.txt) contains both `gate: pass` lines (`grep -c` → 2); README `### Orbit` cites median frame 0.007–0.012 ms, matching the evidence. (See finding 1 for the p95 clause.) |
+| 10 | Benchmark evidence shows both gates passing; README cites the measured median frame value | **pass** | Reviewer reran `node scripts/measure-orbit.mjs` → exit 0, `static gate: pass`, `frame gate: pass` (median 0.007–0.012 ms, p95 ≤ 0.096 ms, settle 29–31 frames on this machine); committed [evidence/orbit-benchmark.txt](evidence/orbit-benchmark.txt) contains both `gate: pass` lines (`grep -c` → 2); README `### Orbit` cites median frame 0.007–0.012 ms, matching the evidence. The corrected p95 clause matches the committed evidence. |
 | 11 | `index.d.ts`: `'orbit'` in `BuiltInVariantId`, `OrbitParams`, widened `GlyphHandle.params` union; `types` check passes | **pass** | Diff of [index.d.ts](../../../../index.d.ts) adds exactly those three plus the narrowing JSDoc; `✓ types` in `npm run check:variants` (`tsc --noEmit --strict` over `index.d.ts`) |
-| 12 | README lists `orbit` and documents the `### Orbit` subsection; section order unchanged | **pass** | `grep -c "### Orbit" README.md` → 1; `grep -c "orbit" README.md` → 11 (≥ 8); `## ` section names/order identical to `git show origin/main:README.md`; the subsection covers design, frozen `orbit-v1` draw order, per-state motion table, no-new-draws rule and reduced-motion behavior. (See findings 1–2 for two in-section numeric/example inaccuracies.) |
+| 12 | README lists `orbit` and documents the `### Orbit` subsection; section order unchanged | **pass** | `grep -c "### Orbit" README.md` → 1; `grep -c "orbit" README.md` → 11 (≥ 8); `## ` section names/order identical to `git show origin/main:README.md`; the subsection covers design, frozen `orbit-v1` draw order, per-state motion table, no-new-draws rule and reduced-motion behavior. Both previously noted inaccuracies are corrected. |
 | 13 | Demo at `local:3179` shows the Orbit row; `working`/`thinking`/`sending` visibly animate; page responsive; screenshots committed | **pass** | Reviewer re-drove it: `ss -ltn \| grep -c ':3179 '` → 0, served `python3 -m http.server 3179 --directory .`, opened the demo. Orbit row present with seed input and 9 state buttons. `working`: `<g>` innerHTML differed across samples 400 ms apart, aria `…, working`. `thinking`: animates, 7 `<circle>` nodes present. `sending`: 8 distinct `<g>` samples within ~500 ms of the click (burst), settling back to rest afterwards; page stayed responsive throughout. Reviewer screenshots: [evidence/review-orbit-working.png](evidence/review-orbit-working.png), [evidence/review-orbit-thinking.png](evidence/review-orbit-thinking.png); Builder's [evidence/step-5-4-orbit-working.png](evidence/step-5-4-orbit-working.png) and [evidence/step-5-4-orbit-thinking.png](evidence/step-5-4-orbit-thinking.png) are committed and contain the glyph (pixel analysis: 546/1144 non-background pixels, 376/747 colored). Server killed afterwards (`:3179` listener count 0) |
 | 14 | Untouched-file contract; `npm pack --dry-run` lists nothing under `test/`, `scripts/`, `demo/`, `features/` | **pass** | `git diff --quiet origin/main -- src/core.js src/react.js src/index.js src/variants/registry.js src/variants/validate.js src/variants/seed.js src/variants/polyhedron.js src/variants/ncube.js package.json test/fixtures/golden-v1.json test/fixtures/golden-ncube-v1.json test/fixtures/ncube-v1-identities.json` exit 0; `git diff origin/main -- src/variants/index.js` is exactly the orbit import/export/registration (3 hunks, 4 lines); pack exclusion grep count → 0 |
 
@@ -84,33 +85,15 @@ verified by pixel analysis), 6.1–6.3 (full gate, untouched-file contract,
 feature/alternate-visual-variant`). Steps 5.3/5.4 are the manual browser steps and
 have their linked committed evidence per §3; the Reviewer independently re-drove the
 target per §2. No falsely ticked boxes, no missing-work steps to add, no
-`(manual, post-ship)` steps. No repairs were needed; roadmap.md is unchanged by this
-review.
+`(manual, post-ship)` steps. Phase 7.1 was independently verified; no roadmap repairs were needed in this re-review.
 
 ## Findings
 
-1. **Minor** — README `### Orbit` benchmark paragraph claims "p95 ≤ 0.030 ms" for
-   "the 2026-09-13 run recorded in
-   [evidence/orbit-benchmark.txt](evidence/orbit-benchmark.txt)", but that file
-   records maya at p95 0.059 ms (Reviewer's fresh run: 0.096 ms). The cited median
-   ranges (paint 0.006–0.011 ms, frame 0.007–0.012 ms) and settle counts (29–31)
-   do match the evidence; only the p95 clause is off. Sync the number or drop the
-   clause in a follow-up.
-2. **Minor** — README `### Orbit` aria example reads `maya: 2-ring orbit, 3 nodes,
-   plus core`, but `describeOrbit(deriveOrbit('maya'))` returns `2-ring orbit, 3
-   nodes, dot core` (also what the demo renders and what
-   [test/fixtures/orbit-v1-identities.json](../../../../test/fixtures/orbit-v1-identities.json)
-   pins). The example's ring/node counts are right; only the core mark is wrong.
-3. **Info** — `paintOrbit`'s `point()` helper builds a `"x y"` string that the node
-   loop immediately `.split(' ')`s back apart. Harmless at ≤ 16 nodes (median paint
-   0.006–0.011 ms) and keeps the `toFixed(1)` formatting in one place; noted only
-   for completeness.
-4. Security: no concerns. The change is pure arithmetic over params/pose; the demo
-   row uses `createTextNode` for the label and the seed reaches the DOM only through
-   the existing renderer's `aria-label`.
+1. **Resolved** — README now cites the committed maximum p95 of `0.059 ms`.
+2. **Resolved** — The `maya` aria example now matches runtime output: `dot core`.
+3. **Info** — `paintOrbit` still formats a point string and splits it in the node loop. This is harmless at no more than 16 nodes and is not a shipping concern.
+4. Security: no concerns.
 
 ## Follow-ups
 
-- Fix the two README `### Orbit` inaccuracies (findings 1–2): p95 clause vs
-  `evidence/orbit-benchmark.txt`, and the `maya` aria example's `plus core` →
-  `dot core`.
+- None required before shipping.
