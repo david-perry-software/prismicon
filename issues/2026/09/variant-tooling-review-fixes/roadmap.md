@@ -2,7 +2,7 @@
 status: in-progress
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
-next-step: "1.4"
+next-step: "2.1"
 github-issue: "#14"
 ```
 
@@ -26,7 +26,7 @@ github-issue: "#14"
   scripts/check-variants.mjs` — verify: all four greps/counts still show the defect;
   if any finding no longer reproduces, mark the dependent fix steps obsolete with the
   reason and update plan.md
-- [ ] 1.4 Add the exposing regression test to `test/check-variants.test.js` — header
+- [x] 1.4 Add the exposing regression test to `test/check-variants.test.js` — header
   comment `// Regression test for #14 (variant-tooling-review-fixes): scratch fixture
   dirs must be removed`; snapshot `readdirSync(tmpdir())` names matching
   `/^prismicon-check-/` before and after running the existing scratch-dir flow and

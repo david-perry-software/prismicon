@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { copyFileSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -39,4 +39,18 @@ test('check-variants fails naming the registered id that has no golden entry', (
   assert.notEqual(status, 0, output);
   assert.match(output, /✗ goldens: .*ncube-5/);
   assert.match(output, /generate-golden\.mjs/);
+});
+
+// Regression test for #14 (variant-tooling-review-fixes): scratch fixture dirs must be removed.
+test('scratch fixture dirs are removed after the missing-golden flow runs', () => {
+  const scratchDirs = () => readdirSync(tmpdir()).filter((name) => /^prismicon-check-/.test(name));
+  const before = new Set(scratchDirs());
+
+  const scratch = mkdtempSync(join(tmpdir(), 'prismicon-check-'));
+  copyFileSync(join(fixturesDir, 'golden-v1.json'), join(scratch, 'golden-v1.json'));
+  copyFileSync(join(fixturesDir, 'golden-ncube-v1.json'), join(scratch, 'golden-ncube-v1.json'));
+  runCheck({ PRISMICON_CHECK_FIXTURES_DIR: scratch });
+
+  const leaked = scratchDirs().filter((name) => !before.has(name));
+  assert.deepEqual(leaked, [], `leaked scratch dirs in tmpdir: ${leaked.join(', ')}`);
 });
