@@ -2,7 +2,7 @@
 status: in-progress
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
-next-step: "2.1"
+next-step: "2.2"
 github-issue: "#14"
 ```
 
@@ -35,7 +35,7 @@ github-issue: "#14"
 
 ## Phase 2: Fix the defects
 
-- [ ] 2.1 Fix the temp-dir leak: pass the `node:test` context into the scratch-dir
+- [x] 2.1 Fix the temp-dir leak: pass the `node:test` context into the scratch-dir
   test and register `t.after(() => rmSync(scratch, { recursive: true, force: true
   }))` (or wrap in `try/finally`) — verify: the 1.4 regression test now passes and
   `node --test test/check-variants.test.js` exits 0
