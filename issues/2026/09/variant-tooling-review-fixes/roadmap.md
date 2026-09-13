@@ -1,8 +1,11 @@
 ```yaml
-status: planned
+status: paused
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
 next-step: "1.1"
+blocker: "PR #13 (feature/variant-build-tooling) is still OPEN (`gh pr view 13
+  --json state`); the user must merge it via /ship on that feature, then resume this
+  issue with /start-session issue/variant-tooling-review-fixes --resume"
 github-issue: "#14"
 ```
 
