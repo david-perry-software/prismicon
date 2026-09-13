@@ -1,17 +1,14 @@
 ```yaml
-status: paused
+status: in-progress
 branch: issue/variant-tooling-review-fixes
 last-updated: 2026-09-12
-next-step: "1.1"
-blocker: "PR #13 (feature/variant-build-tooling) is still OPEN (`gh pr view 13
-  --json state`); the user must merge it via /ship on that feature, then resume this
-  issue with /start-session issue/variant-tooling-review-fixes --resume"
+next-step: "1.2"
 github-issue: "#14"
 ```
 
 ## Phase 1: Unblock and expose
 
-- [ ] 1.1 Confirm PR #13 (`feature/variant-build-tooling`) is merged to `main`
+- [x] 1.1 Confirm PR #13 (`feature/variant-build-tooling`) is merged to `main`
   (`gh pr view 13 --json state` → `MERGED`); if still open, stop here and leave this
   roadmap stalled — verify: `gh pr view 13 --json state --jq .state` prints `MERGED`
 - [ ] 1.2 Integrate the post-#13 default branch: `git fetch origin && git merge
