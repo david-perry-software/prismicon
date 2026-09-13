@@ -602,7 +602,7 @@ test('registry: built-ins are polyhedron (default) followed by the n-cube family
   const { BUILT_IN_VARIANTS, DEFAULT_VARIANT_ID, listVariants, resolveVariant } = await import('../src/variants/index.js');
   assert.equal(DEFAULT_VARIANT_ID, 'polyhedron');
   assert.equal(BUILT_IN_VARIANTS.defaultId, 'polyhedron');
-  assert.deepEqual(BUILT_IN_VARIANTS.ids, ['polyhedron', 'ncube', ...dimensions().map((d) => `ncube-${d}`)]);
+  assert.deepEqual(BUILT_IN_VARIANTS.ids, ['polyhedron', 'ncube', ...dimensions().map((d) => `ncube-${d}`), 'orbit']);
   assert.deepEqual(resolveVariant('ncube'), ncube);
   assert.deepEqual(resolveVariant('ncube-4'), ncubeVariants[2]);
   assert.deepEqual(resolveVariant(), polyhedron);
