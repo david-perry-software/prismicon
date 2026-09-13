@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { copyFileSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -28,8 +28,9 @@ test('check-variants exits 0 and reports one ✓ per check on the committed fixt
   assert.ok(!output.includes('✗'), output);
 });
 
-test('check-variants fails naming the registered id that has no golden entry', () => {
+test('check-variants fails naming the registered id that has no golden entry', (t) => {
   const scratch = mkdtempSync(join(tmpdir(), 'prismicon-check-'));
+  t.after(() => rmSync(scratch, { recursive: true, force: true }));
   const ncube = JSON.parse(readFileSync(join(fixturesDir, 'golden-ncube-v1.json'), 'utf8'));
   delete ncube['ncube-5'];
   writeFileSync(join(scratch, 'golden-ncube-v1.json'), JSON.stringify(ncube));
@@ -39,4 +40,24 @@ test('check-variants fails naming the registered id that has no golden entry', (
   assert.notEqual(status, 0, output);
   assert.match(output, /✗ goldens: .*ncube-5/);
   assert.match(output, /generate-golden\.mjs/);
+});
+
+// Regression test for #14 (variant-tooling-review-fixes): scratch fixture dirs must be removed.
+// Snapshot taken before the suite's scratch-dir flow runs; top-level tests run sequentially,
+// so by the time the last test executes the flow above has completed (including t.after cleanup).
+const scratchDirsAtLoad = new Set(readdirSync(tmpdir()).filter((name) => /^prismicon-check-/.test(name)));
+
+test('scratch fixture dirs are removed after the missing-golden flow runs', () => {
+  const leaked = readdirSync(tmpdir()).filter((name) => /^prismicon-check-/.test(name) && !scratchDirsAtLoad.has(name));
+  assert.deepEqual(leaked, [], `leaked scratch dirs in tmpdir: ${leaked.join(', ')}`);
+});
+
+// Coverage for #14 (variant-tooling-review-fixes): the npm command helper selects
+// 'npm.cmd' on win32 and 'npm' elsewhere. The helper is module-local and the script
+// self-executes on import, so both branches are pinned via the ternary source text.
+test('check-variants spawns npm.cmd on win32 and npm elsewhere', () => {
+  const source = readFileSync(script, 'utf8');
+  assert.match(source, /platform === 'win32' \? 'npm\.cmd' : 'npm'/, 'npmCommand ternary must cover win32 and non-win32 branches');
+  assert.match(source, /spawnSync\(npmCommand\(\), \['pack'/, 'checkPack must spawn via npmCommand()');
+  assert.ok(!source.includes("spawnSync('npm'"), 'no bare spawnSync(\'npm\') may remain');
 });

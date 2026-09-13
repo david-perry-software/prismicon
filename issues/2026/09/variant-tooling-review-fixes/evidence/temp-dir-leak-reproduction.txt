@@ -1,0 +1,65 @@
+=== reproduction: check-variants temp-dir leak (PR #13 @ 74363c2)
+date: 2026-09-13T01:55:54Z
+environment: detached worktree of origin/feature/variant-build-tooling (PR #13),
+  npm ci, Node on Linux; files under test exist only on that branch
+
+$ ls -d /tmp/prismicon-check-* | wc -l   # before
+12
+
+$ node --test test/check-variants.test.js
+# tests 2
+# pass 2
+# fail 0
+
+$ ls -d /tmp/prismicon-check-* | wc -l   # after
+13
+
+$ ls /tmp/prismicon-check-*/ | head -6  # leaked contents
+/tmp/prismicon-check-2rbsO1/:
+golden-ncube-v1.json
+golden-v1.json
+
+/tmp/prismicon-check-DYD4xa/:
+golden-ncube-v1.json
+...
+
+Root cause: test/check-variants.test.js ("check-variants fails naming the
+registered id that has no golden entry") calls
+  mkdtempSync(join(tmpdir(), 'prismicon-check-'))
+and never removes the directory; each run of the suite leaves one
+/tmp/prismicon-check-* directory containing two copied fixture files behind.
+
+=== export-count verification (PR #13 @ 74363c2)
+
+$ node --input-type=module -e "const m = await import('./src/index.js'); console.log(Object.keys(m).sort().length)"
+count: 18
+
+Actual pinned list in scripts/check-variants.mjs EXPECTED_INDEX_EXPORTS has 18
+entries: 11 core (SPEC_VERSION, STATES, PALETTE, SIDE_NAMES, SOLID_NAMES,
+FINISH_NAMES, normalizeSeed, deriveV1, describeParams, renderStaticSVG,
+mountGlyph) + 6 variant (DEFAULT_VARIANT_ID, VARIANT_ID_PATTERN,
+createVariantRegistry, defineVariant, listVariants, validateVariant) +
+createPrismicon.
+
+features/2026/09/variant-build-tooling/plan.md line 85 says "12 core names + 6
+variant names + createPrismicon" (12+6+1 = 19) and line 186 says "(the current
+19 names)". Both are wrong: core is 11, total is 18.
+
+=== README registration recipe (PR #13 @ 74363c2)
+
+README.md "## Adding a variant (maintainers)" step 2 reads:
+  "Register it in src/variants/index.js by adding it to the BUILT_IN_VARIANTS
+   registry and re-exporting it from src/index.js."
+
+Re-exporting the descriptor from src/index.js is wrong: src/index.js re-exports
+only the variant machinery (defineVariant, listVariants, validateVariant, ...),
+never individual descriptors, and check-variants' exports gate pins the exact
+18-name export list — a maintainer following the recipe literally would fail
+`npm run check:variants` with "src/index.js export list drifted".
+
+=== Windows portability (PR #13 @ 74363c2)
+
+scripts/check-variants.mjs checkPack() calls
+  spawnSync('npm', ['pack', '--dry-run', '--json'], ...)
+On Windows there is no `npm` executable (only npm.cmd / npm.ps1), so spawnSync
+fails with ENOENT and the maintainer gate cannot run on Windows.

@@ -47,6 +47,9 @@ const EXPECTED_EXPORT_KEYS = ['.', './react'];
 const TSC_ARGS = ['--noEmit', '--strict', '--target', 'es2020', '--lib', 'es2020,dom', 'index.d.ts'];
 const FORBIDDEN_PACK_PREFIXES = ['test/', 'scripts/', 'demo/', '.github/'];
 
+// Windows has no bare `npm` executable (only `npm.cmd`); select per platform.
+const npmCommand = (platform = process.platform) => (platform === 'win32' ? 'npm.cmd' : 'npm');
+
 function listFilesUnder(dir) {
   return readdirSync(join(root, dir)).flatMap((name) => {
     const rel = join(dir, name);
@@ -100,7 +103,7 @@ async function checkTypes() {
 }
 
 async function checkPack() {
-  const result = spawnSync('npm', ['pack', '--dry-run', '--json'], { cwd: root, encoding: 'utf8' });
+  const result = spawnSync(npmCommand(), ['pack', '--dry-run', '--json'], { cwd: root, encoding: 'utf8' });
   assert.equal(result.status, 0, `npm pack --dry-run exited ${result.status}\n${result.stderr.trim()}`);
   const parsed = JSON.parse(result.stdout);
   // npm 10 emits [{ files: [{ path }] }]; tolerate a bare file array too.
