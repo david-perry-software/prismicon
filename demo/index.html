@@ -52,6 +52,14 @@
 <div class="buttons" id="lifecycle-buttons"></div>
 <div class="row" id="lifecycle"></div>
 
+<h2>Orbit</h2>
+<p>
+  <label for="orbit-seed">Seed:</label>
+  <input id="orbit-seed" type="text" value="maya" autocomplete="off" />
+</p>
+<div class="buttons" id="orbit-buttons"></div>
+<div class="row" id="orbit"></div>
+
 <h2>Custom variant</h2>
 <p>The <code>Square</code> entry above is not built in: <code>demo/square-variant.js</code> defines it
 with <code>defineVariant</code> and this page registers it through
@@ -176,6 +184,37 @@ STATES.forEach((s) => {
 
 lifecycleSeed.addEventListener('input', () => mountLifecycle(lifecycleSeed.value || 'maya'));
 mountLifecycle(lifecycleSeed.value);
+
+const orbitRow = document.getElementById('orbit');
+const orbitSeed = document.getElementById('orbit-seed');
+let orbitHandle = null;
+let orbitState = 'idle';
+
+function mountOrbit(seed) {
+  if (orbitHandle) orbitHandle.destroy();
+  orbitRow.replaceChildren();
+  const cell = document.createElement('div');
+  cell.className = 'cell';
+  const box = document.createElement('div');
+  orbitHandle = mountGlyph(box, seed, { kind: 'agent', size: 72, state: orbitState, dark, variant: 'orbit' });
+  cell.appendChild(box);
+  cell.appendChild(document.createTextNode('orbit'));
+  orbitRow.appendChild(cell);
+}
+
+const orbitButtons = document.getElementById('orbit-buttons');
+STATES.forEach((s) => {
+  const b = document.createElement('button');
+  b.textContent = s;
+  b.onclick = () => {
+    orbitState = s;
+    orbitHandle.setState(s);
+  };
+  orbitButtons.appendChild(b);
+});
+
+orbitSeed.addEventListener('input', () => mountOrbit(orbitSeed.value || 'maya'));
+mountOrbit(orbitSeed.value);
 
 const customRow = document.getElementById('custom');
 ['idle', 'working', 'done'].forEach((state) => {

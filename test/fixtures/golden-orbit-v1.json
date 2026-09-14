@@ -1,0 +1,924 @@
+{
+  "orbit": {
+    "static": {
+      "maya|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: 2-ring orbit, 3 nodes, dot core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"44.5\" cy=\"38.2\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"24.6\" cy=\"44.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"42.5\" cy=\"25.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g></g></svg>",
+      "maya|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"maya: 2-ring orbit, 3 nodes, dot core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"44.5\" cy=\"38.2\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"24.6\" cy=\"44.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"42.5\" cy=\"25.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g></g></svg>",
+      "maya|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: 2-ring orbit, 3 nodes, dot core\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"44.5\" cy=\"38.2\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"24.6\" cy=\"44.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"42.5\" cy=\"25.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g></g></svg>",
+      "maya|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: 2-ring orbit, 3 nodes, dot core, thinking\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"44.5\" cy=\"38.2\" r=\"2.4\" fill=\"hsl(8 52% 63%)\"/><circle cx=\"24.6\" cy=\"44.6\" r=\"2.4\" fill=\"hsl(145 52% 63%)\"/><circle cx=\"42.5\" cy=\"25.1\" r=\"2.4\" fill=\"hsl(145 52% 63%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 58%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "maya|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: 2-ring orbit, 3 nodes, dot core, waiting\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"44.5\" cy=\"38.2\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"24.6\" cy=\"44.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"42.5\" cy=\"25.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "maya|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"maya: 2-ring orbit, 3 nodes, dot core, error\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"44.5\" cy=\"38.2\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"24.6\" cy=\"44.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"42.5\" cy=\"25.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+      "build-bot-7|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: 3-ring orbit, 9 nodes, dot core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"52.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"56.6\" cy=\"55.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"60.6\" cy=\"63.7\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"34.8\" cy=\"41.6\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"67.3\" cy=\"48.5\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"74.4\" cy=\"59.0\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"29.7\" cy=\"33.8\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"72.2\" cy=\"63.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"36.3\" cy=\"72.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(275 52% 50%)\"/></g><g></g></svg>",
+      "build-bot-7|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"build-bot-7: 3-ring orbit, 9 nodes, dot core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"52.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"56.6\" cy=\"55.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"60.6\" cy=\"63.7\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"34.8\" cy=\"41.6\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"67.3\" cy=\"48.5\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"74.4\" cy=\"59.0\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"29.7\" cy=\"33.8\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"72.2\" cy=\"63.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"36.3\" cy=\"72.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(275 52% 50%)\"/></g><g></g></svg>",
+      "build-bot-7|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: 3-ring orbit, 9 nodes, dot core\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"52.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"56.6\" cy=\"55.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"60.6\" cy=\"63.7\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"34.8\" cy=\"41.6\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"67.3\" cy=\"48.5\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"74.4\" cy=\"59.0\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"29.7\" cy=\"33.8\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"72.2\" cy=\"63.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"36.3\" cy=\"72.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(275 52% 50%)\"/></g><g></g></svg>",
+      "build-bot-7|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: 3-ring orbit, 9 nodes, dot core, thinking\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(275 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(275 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"52.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(275 52% 63%)\"/><circle cx=\"56.6\" cy=\"55.6\" r=\"2.4\" fill=\"hsl(275 52% 63%)\"/><circle cx=\"60.6\" cy=\"63.7\" r=\"2.4\" fill=\"hsl(25 52% 63%)\"/><circle cx=\"34.8\" cy=\"41.6\" r=\"2.4\" fill=\"hsl(25 52% 63%)\"/><circle cx=\"67.3\" cy=\"48.5\" r=\"2.4\" fill=\"hsl(25 52% 63%)\"/><circle cx=\"74.4\" cy=\"59.0\" r=\"2.4\" fill=\"hsl(275 52% 63%)\"/><circle cx=\"29.7\" cy=\"33.8\" r=\"2.4\" fill=\"hsl(275 52% 63%)\"/><circle cx=\"72.2\" cy=\"63.6\" r=\"2.4\" fill=\"hsl(275 52% 63%)\"/><circle cx=\"36.3\" cy=\"72.1\" r=\"2.4\" fill=\"hsl(275 52% 63%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(275 52% 58%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "build-bot-7|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: 3-ring orbit, 9 nodes, dot core, waiting\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"52.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"56.6\" cy=\"55.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"60.6\" cy=\"63.7\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"34.8\" cy=\"41.6\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"67.3\" cy=\"48.5\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"74.4\" cy=\"59.0\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"29.7\" cy=\"33.8\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"72.2\" cy=\"63.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"36.3\" cy=\"72.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(275 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "build-bot-7|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"build-bot-7: 3-ring orbit, 9 nodes, dot core, error\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"52.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"56.6\" cy=\"55.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"60.6\" cy=\"63.7\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"34.8\" cy=\"41.6\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"67.3\" cy=\"48.5\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><circle cx=\"74.4\" cy=\"59.0\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"29.7\" cy=\"33.8\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"72.2\" cy=\"63.6\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"36.3\" cy=\"72.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(275 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+      "Alice@X.com|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: 2-ring orbit, 4 nodes, diamond core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"37.3\" cy=\"47.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"62.7\" cy=\"47.5\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"63.0\" cy=\"50.3\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"26.6\" cy=\"61.4\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><path d=\"M50.0 45.5 L54.5 50 L50.0 54.5 L45.5 50 Z\" fill=\"hsl(275 52% 50%)\"/></g><g></g></svg>",
+      "Alice@X.com|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"Alice@X.com: 2-ring orbit, 4 nodes, diamond core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"37.3\" cy=\"47.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"62.7\" cy=\"47.5\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"63.0\" cy=\"50.3\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"26.6\" cy=\"61.4\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><path d=\"M50.0 45.5 L54.5 50 L50.0 54.5 L45.5 50 Z\" fill=\"hsl(275 52% 50%)\"/></g><g></g></svg>",
+      "Alice@X.com|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: 2-ring orbit, 4 nodes, diamond core\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"37.3\" cy=\"47.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"62.7\" cy=\"47.5\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"63.0\" cy=\"50.3\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"26.6\" cy=\"61.4\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><path d=\"M50.0 45.5 L54.5 50 L50.0 54.5 L45.5 50 Z\" fill=\"hsl(275 52% 50%)\"/></g><g></g></svg>",
+      "Alice@X.com|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: 2-ring orbit, 4 nodes, diamond core, thinking\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(275 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"37.3\" cy=\"47.1\" r=\"2.4\" fill=\"hsl(275 52% 63%)\"/><circle cx=\"62.7\" cy=\"47.5\" r=\"2.4\" fill=\"hsl(275 52% 63%)\"/><circle cx=\"63.0\" cy=\"50.3\" r=\"2.4\" fill=\"hsl(275 52% 63%)\"/><circle cx=\"26.6\" cy=\"61.4\" r=\"2.4\" fill=\"hsl(25 52% 63%)\"/><path d=\"M50.0 45.5 L54.5 50 L50.0 54.5 L45.5 50 Z\" fill=\"hsl(275 52% 58%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "Alice@X.com|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: 2-ring orbit, 4 nodes, diamond core, waiting\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"37.3\" cy=\"47.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"62.7\" cy=\"47.5\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"63.0\" cy=\"50.3\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"26.6\" cy=\"61.4\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><path d=\"M50.0 45.5 L54.5 50 L50.0 54.5 L45.5 50 Z\" fill=\"hsl(275 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "Alice@X.com|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"Alice@X.com: 2-ring orbit, 4 nodes, diamond core, error\"><g><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(275 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"37.3\" cy=\"47.1\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"62.7\" cy=\"47.5\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"63.0\" cy=\"50.3\" r=\"2.4\" fill=\"hsl(275 52% 55%)\"/><circle cx=\"26.6\" cy=\"61.4\" r=\"2.4\" fill=\"hsl(25 52% 55%)\"/><path d=\"M50.0 45.5 L54.5 50 L50.0 54.5 L45.5 50 Z\" fill=\"hsl(275 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+      "Ada Lovelace|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: 4-ring orbit, 10 nodes, dot core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"6.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"19.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"46.8\" cy=\"44.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"56.1\" cy=\"52.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"46.2\" cy=\"37.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"62.6\" cy=\"53.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"39.0\" cy=\"43.0\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"45.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"34.8\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"45.6\" cy=\"24.4\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.7\" cy=\"63.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.4\" cy=\"37.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g></g></svg>",
+      "Ada Lovelace|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"Ada Lovelace: 4-ring orbit, 10 nodes, dot core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"6.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"19.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"46.8\" cy=\"44.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"56.1\" cy=\"52.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"46.2\" cy=\"37.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"62.6\" cy=\"53.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"39.0\" cy=\"43.0\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"45.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"34.8\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"45.6\" cy=\"24.4\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.7\" cy=\"63.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.4\" cy=\"37.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g></g></svg>",
+      "Ada Lovelace|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: 4-ring orbit, 10 nodes, dot core\"><g><circle cx=\"50.0\" cy=\"50\" r=\"6.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"19.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"46.8\" cy=\"44.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"56.1\" cy=\"52.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"46.2\" cy=\"37.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"62.6\" cy=\"53.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"39.0\" cy=\"43.0\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"45.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"34.8\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"45.6\" cy=\"24.4\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.7\" cy=\"63.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.4\" cy=\"37.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g></g></svg>",
+      "Ada Lovelace|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: 4-ring orbit, 10 nodes, dot core, thinking\"><g><circle cx=\"50.0\" cy=\"50\" r=\"6.5\" fill=\"none\" stroke=\"hsl(8 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"19.5\" fill=\"none\" stroke=\"hsl(8 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"46.8\" cy=\"44.3\" r=\"2.4\" fill=\"hsl(8 52% 63%)\"/><circle cx=\"56.1\" cy=\"52.3\" r=\"2.4\" fill=\"hsl(8 52% 63%)\"/><circle cx=\"46.2\" cy=\"37.6\" r=\"2.4\" fill=\"hsl(145 52% 63%)\"/><circle cx=\"62.6\" cy=\"53.3\" r=\"2.4\" fill=\"hsl(145 52% 63%)\"/><circle cx=\"39.0\" cy=\"43.0\" r=\"2.4\" fill=\"hsl(145 52% 63%)\"/><circle cx=\"37.8\" cy=\"45.6\" r=\"2.4\" fill=\"hsl(145 52% 63%)\"/><circle cx=\"37.8\" cy=\"34.8\" r=\"2.4\" fill=\"hsl(8 52% 63%)\"/><circle cx=\"45.6\" cy=\"24.4\" r=\"2.4\" fill=\"hsl(145 52% 63%)\"/><circle cx=\"27.7\" cy=\"63.3\" r=\"2.4\" fill=\"hsl(145 52% 63%)\"/><circle cx=\"27.4\" cy=\"37.1\" r=\"2.4\" fill=\"hsl(145 52% 63%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 58%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "Ada Lovelace|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: 4-ring orbit, 10 nodes, dot core, waiting\"><g><circle cx=\"50.0\" cy=\"50\" r=\"6.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"19.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"46.8\" cy=\"44.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"56.1\" cy=\"52.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"46.2\" cy=\"37.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"62.6\" cy=\"53.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"39.0\" cy=\"43.0\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"45.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"34.8\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"45.6\" cy=\"24.4\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.7\" cy=\"63.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.4\" cy=\"37.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "Ada Lovelace|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"Ada Lovelace: 4-ring orbit, 10 nodes, dot core, error\"><g><circle cx=\"50.0\" cy=\"50\" r=\"6.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"13.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"19.5\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(8 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"46.8\" cy=\"44.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"56.1\" cy=\"52.3\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"46.2\" cy=\"37.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"62.6\" cy=\"53.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"39.0\" cy=\"43.0\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"45.6\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"37.8\" cy=\"34.8\" r=\"2.4\" fill=\"hsl(8 52% 55%)\"/><circle cx=\"45.6\" cy=\"24.4\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.7\" cy=\"63.3\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"27.4\" cy=\"37.1\" r=\"2.4\" fill=\"hsl(145 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(8 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+      "demo-agent|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: 3-ring orbit, 5 nodes, dot core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"56.7\" cy=\"55.5\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"47.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.8\" cy=\"58.6\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"61.2\" cy=\"63.2\" r=\"2.4\" fill=\"hsl(330 52% 55%)\"/><circle cx=\"35.2\" cy=\"71.4\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(220 52% 50%)\"/></g><g></g></svg>",
+      "demo-agent|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"demo-agent: 3-ring orbit, 5 nodes, dot core, idle\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"56.7\" cy=\"55.5\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"47.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.8\" cy=\"58.6\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"61.2\" cy=\"63.2\" r=\"2.4\" fill=\"hsl(330 52% 55%)\"/><circle cx=\"35.2\" cy=\"71.4\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(220 52% 50%)\"/></g><g></g></svg>",
+      "demo-agent|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: 3-ring orbit, 5 nodes, dot core\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"56.7\" cy=\"55.5\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"47.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.8\" cy=\"58.6\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"61.2\" cy=\"63.2\" r=\"2.4\" fill=\"hsl(330 52% 55%)\"/><circle cx=\"35.2\" cy=\"71.4\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(220 52% 50%)\"/></g><g></g></svg>",
+      "demo-agent|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: 3-ring orbit, 5 nodes, dot core, thinking\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(220 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(220 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(220 52% 54%)\" stroke-width=\"1.6\"/><circle cx=\"56.7\" cy=\"55.5\" r=\"2.4\" fill=\"hsl(220 52% 63%)\"/><circle cx=\"47.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(220 52% 63%)\"/><circle cx=\"50.8\" cy=\"58.6\" r=\"2.4\" fill=\"hsl(220 52% 63%)\"/><circle cx=\"61.2\" cy=\"63.2\" r=\"2.4\" fill=\"hsl(330 52% 63%)\"/><circle cx=\"35.2\" cy=\"71.4\" r=\"2.4\" fill=\"hsl(220 52% 63%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(220 52% 58%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "demo-agent|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: 3-ring orbit, 5 nodes, dot core, waiting\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"56.7\" cy=\"55.5\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"47.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.8\" cy=\"58.6\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"61.2\" cy=\"63.2\" r=\"2.4\" fill=\"hsl(330 52% 55%)\"/><circle cx=\"35.2\" cy=\"71.4\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(220 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "demo-agent|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"demo-agent: 3-ring orbit, 5 nodes, dot core, error\"><g><circle cx=\"50.0\" cy=\"50\" r=\"8.7\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"17.3\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"50.0\" cy=\"50\" r=\"26.0\" fill=\"none\" stroke=\"hsl(220 52% 45%)\" stroke-width=\"1.6\"/><circle cx=\"56.7\" cy=\"55.5\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"47.4\" cy=\"41.7\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.8\" cy=\"58.6\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"61.2\" cy=\"63.2\" r=\"2.4\" fill=\"hsl(330 52% 55%)\"/><circle cx=\"35.2\" cy=\"71.4\" r=\"2.4\" fill=\"hsl(220 52% 55%)\"/><circle cx=\"50.0\" cy=\"50\" r=\"3.2\" fill=\"hsl(220 52% 50%)\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>"
+    },
+    "mounted": {
+      "maya|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "26ff5b6ad5a6dcffa528a0323563db46b08b2bb0201be9a7be1ddd8f5515efaa"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "e612bc484b336b52bd2986be4d049276efab91e20d3077cb48862d09f56da7ae"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "fda380d6c4b1672da390a38fb9fb1b5ba3233b1c001b8d74c27c6ca30816d550"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "f10f4a197a2053d3e8fa946e3bfdd8b7d64cf68ac2a092ebd1367e98490d40c4"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "6fd34fca9fa9624b16ecdbc583bc7d711a7a9b6677e057ba6629e6ca07fa1722"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "124d9728008d100b8643c7cd875d40e4b1d518f40ad77936ef6fd230e3f47691"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "c966396b658065f0f5c6db9be5009c25c45508423099ef78c12ebc6e76fd8fcd"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "ac61ba3f26bdcb588b8347e39ca685ea60f699f26b2a5694fee2b3a9efc46746"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "dd51a5f1adf28f7e4b87ef2d123c4bc269094ff34351034b979f4adc18751df6"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "63603417916c02d9b85660eb6577951e51ef6c85a8245045e817613923c7971b"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "e5d2a0fb320c2e06faf7a37eab2191a1eea6c35736d6e051c97cf1899d7f0b82"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "50dbc0cf8644df977e4adee127410018023473e352f375fc4707731a28546221"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "f9ccc2a4fe3fd0ec463d078a2fb4decafff387eb86917312c6f36e741d6be1fb"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "d97125a3d6a70b9595c4fed7e225d284860c44f213262213e9aae2148e2d6b79"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "798dcfbfe4c69ee735d5163e04989bf6777731b07266d6d46511b93bcf58b02a"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "d3c71936375b4141666ff8d28be1457c651b6d1b6858b7c062a265646915addf"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "706c6ddf5b05a95002246a1cc745c58f6ad8ba334c669dca3c1044152d769c2c"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "662e75c99cb2153b45bc364fecbc3b5500da4770fe0bffc5fc5e5a319c9e38bc"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "b79f03112f9fcb438bdbc8f8b34ee20c12e85697106756994cb8424eef35b7e4"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "57b5adf01233a6c6af866e03602ba20fd53f043b718a944ddb94107846035505"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "fdd4a0f4ed69dd45354a815bf87d5cad8d2ce48c2c157136f2d46c173b4c31ab"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "f88d66c2ecc98eebf1db937c1cb99f94822ef8358a2f4635e6ee3895f12b3ac5"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "aedab8beceaca7c128ec62bce7b83dffab6ec4d17dd107aeac66e8978c70e90d"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "abf38602cc8914a6ca19724665b78a2b84fcdd8aaf3380c16fca1d90a0f59198"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "5bb642df4195d989b0522e21c2fd597e2e49da347f3ea7aac48d3f327ed38dd1"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "558d0619122bdd89837cc5de93425772dc1cb5b0353bfd7e6616e745f5c03800"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "7320dd2939d69311482f3ba30386ee816952798c32a9eb67c2a1a6cecb6dc277"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "a352b4e2e710882e0daf3ba1b0246457d98eeb082a3b1d81c0e7c44cc94de55f"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "1628dd97e51ff4046038e94a6cdd9f3a0737058e54170b907a09c8cd6b940ba9"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "b9b7209ef4c3d1a33499ccf8a7bf86e66a0ad6d3d6be9b4f2bc575d8041823e0"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "ee8f9e9741e44c514f90492b073b7778a429b938f085fef7ea4fca4ebc601f64"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "eccc7efe2ba22d13c8be5c1e4e6ab70e0fe6aa519fead8b970226952a577f2c8"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "eb13b042b265e3237b3faa5b190c2cb08451ad100250ea6ac8f199c8ac7651ea"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "77366d227bfc8fc50e910d6d148342b958445800eeec39a5807de3846bbf8b92"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "47ad3b0f79defd8bc8716ee93625b56276fe334fd83dd3ab31dae51dda0be549"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "3bece25f47ceac79d4c4acabb51a02f5594e87c2b8f0c4d1af6265bb001229de"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "d7ad15df74c371b3a8f416890c26bdac26a5008ba09f2963357cfa0cd20e9ac5"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "0b9ab30a3f50e052448723a0c35095d6804dd01cb7d93bdb322ad3da683eb288"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "26bb9dae239f3816ed0ca5d73da612b03cf1ab6771d31285bc8fae517c3f5433"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "42a898bbcbc5920cd7243e264556601031950333ddb9b28dd4991478085d340a"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "beea87f7983e5a229b7e97213a916bb00e0ba04743e524ec21ac2395e9d637f3"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "197f0d55601418d1cd0354150fb2ed8a0bdaba058c5b0142010b2ef70bc57bd8"
+        }
+      ],
+      "build-bot-7|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "002b7e7aecacbda102ccdffafcaed03af43abe6cbedfb83e0dd7bdc17e253dbe"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "6cb7253b672af8de8a350fcc2f71cd83c387bb8cc3fe1fff531b3e3baf83f192"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "fb001e7c8533cd350f65615f7197d66dbe16f73ed675a20d1651dad5b6f02783"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "4765f33e8de1e7e564e396a14b53d3142b6807c17e2711ea0419385f0fdd089d"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "9c373f3e5fff823e9ce85903c2078227496c78c8cf87a8b1bfbdc4060b9f8cf3"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "b7c500ad945d5482692ff2f31c5930d3399517f54a9860f918a7c9622e7a711d"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "dc3fbb91c419db33fc80d12c934a253fd7433c3c12ac058f2b5ee69e3b369a8b"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "d916d2847473f88d15593af84428c75eaaaec4c49712f234ee771ae6088aaaae"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "60164e11511b95fbcecb9bbb2b21d0a540dcc873e63028fdd9b8a23d73c19510"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "9f6a105018c1755ed86aa4a53f0a72c2a7f174ca61b85a0e5439798e26bcec0c"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "4cbfa7bbf7dcc2b8b608d6f1c0dd618578ced505ae3e0e043af6423fc57c1d01"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "e2cc3e88d9a723e49f97cfbb4a55a76b01564b43e06b31981f7b55aa21c762e0"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "e701d1a9713ef501190f78fc2ffb0c7f5d0aeb4aaf45b9a8bb88db414ed9142a"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "03989a662a775392714b44ed760198cf876b8360cae2cd5e8ad085bc5a5976db"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "749c3d0bb3286833092f067513daaf4dc920818b444cf03de20639ebe7bc3cd3"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "c367daf57a0c826fdca8371944db1188e71391b3375bba5502c2f5853d664843"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "e9d54559f76ab35f11e8da3961533af42f0a196d6dc0505a2f59d0336852795d"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "bdcf39237d0a2d0f285337696c2353517cf879353234a12bfad8ef905d79c958"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "1f46001463ebe8e1c3cda9b0ec399170e7e8d9ea2dccf1c46b1fe1cfea39ad24"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "dda40c4a4c2cc0001c698d8112cab1ee6a70f51497a6b12370c745a3eacb190d"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "73ed44a10ab8d30f2b23570d7f249b619fb9c985b704a72355e9eeefdf927806"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "89ef7b44d68e8be68c055c9a367cbcf700c218fa8bb2720ac5b54049f438b1b7"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "e9f9f7dc222f5bc3dd793aa4227898ea6526ff8fab711c10096f5ab958d7a5bc"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "c610738a91d05bb068614a0821ca94426d63d87a766461f786517943dacbe9b0"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "ba4c5d05f698eb2151449f53a00f95142f7836fe501359eb7cc827a9d192aaab"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "e1a6f458fc93e4f9608ba4a9b9ffb065f3973b75bff3d01641ae8bb683bb9da1"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "bd4b8babfd2215dae75d85b38f476243b792304cb5b532d4d485ce9681f6a333"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "46eac36684cb93e194fcc1cf1f04f64f0b71554f05250ad1c1685dfff620e1bc"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "82eb67c9eb6e7a7cdf6ba2effcc83eacecbd2de25ab73d7ef9d2114c1ecd77cb"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "a8a9c6693fa91ee59a3bd792d2fcd874d2b4411b96fedfd7cff7b624175f9694"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "986a8fc74ef2bc6d1acf729871cea1c7dcbf7cdaf9738c6369f35b5180bcd353"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "475e331e9065a897a1d27d91abe530ab3c37a95386f951a0a8366e73c29b36da"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "4a14b3e28db6e1a52b273fdcedb68a165161a6a41eae9caf044e722600c82901"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "212e7e7b555fa33be99eab86b15f3617d6eef78e704dd97a466cd8a256986fa2"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "fbb08b6e8fca404216d21d65c1aac204d407a50671729857d040d8402cebf6bf"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "4507c773a7a12c2d7c6b299d6304c780c10875ea21a5a7533e84a04a50d3a803"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "b980d4ce661a69afc7451699badf8d6b0245777a0aa933fcb71c31db9f5d2161"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "1236b6fba8d95148a788fb45c20dbb0d384cf2b1b817e87ae816ba940185188f"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "5ba3c0957774b580db92c5e31811c44f2c073ccf778471883f61551a4ecfd0ab"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "710d13db0e108225bc288af0021a404e7c5163e44db4db85e94558beae5e8bd3"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "acbf694bb5d76a22b70f14616288648886185700b3f3627ce375ab3074251bfb"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "f9101d0b6d44ed6fd4802ba6ce5c64f407eda11e1edb38e5c1d7063e1c0a911c"
+        }
+      ],
+      "maya|{\"size\":24}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "48924492edef6353cb23cfd3ef16e42c0b83f63af4df632b3458dbc51a80e11d"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "b6692266a5f6527203268b162ee31300e2a439237980abde6354a295fb305b77"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "83d3b2f8e1e7dabfaea3f2d6767f8ce6d999cc3979cf7b0ef7adc92c06e4ca1b"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "19ae33c9784f8902edc8d91a5deff13b29324a0b12e6618c3c66ea3b9087f38d"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "94ef72501b37162aa19bece5ba946b33349696c8a7ec21cba7f519bb17cbbcc1"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "d01a8b93e69e01e5717648f93404b75a0a4bad2c5ee6653f7b0b949ca269f246"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "163949fb3a37f80cd883a85d732953530e2beb2c015bb84c924eecd60585ea38"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "dd4e8d2cf03acae7ae5c6f6f5d8eac18a0674c719b8d7f7ec5d221ec505bf06d"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "7594d15f81633e5d4931aa002d64adf7957306e37fc03f7b1ff2a443dc132934"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "6f1b7d03a5d0d4b2a478851ad166cbd00eeacb14a00b9781dc03dd094397ed6f"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "41f7c2a8ffc95f98c3da912f53f9755f98106f0a041fff869de92013f91653d1"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "ba38285d5bcea5da29bc75eee659078e2aba68816e1de778994c0fe3f6bd623d"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "cc9ccf89fd7087b6ea352ca40804b69dfc2f2ebdf2ff1c90e71fa5a05fa814c2"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "6634fce92ebc31fa579b40cc5acb57e901f1fc3ecb0331da183fef9f753e20c4"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "70e6b8767f74bc729ae9185420df9a0a48b4442b69be589725b7fcb2202e9cb4"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "369d5b6a06079696637b21eeea8b7195957edcbc6aafd191346c037ee8835274"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "e1299c4053de7a670fa86a888c9fe79b81b90407bbe359e19e7b8eca55db77df"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "ef81bb1997e8d6dbeb409cf67e3616983df3fae5fa15486a074b32eab640f97f"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "538d55b39c0cc98d429b022ada85768b911807d86c98917b651e584723d3b52e"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "a4cb8c41a13dec61ddc1253602005e858b5afcfebeb2c38a8f92a6ccc5ae4fd8"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "f9fc573d99fdccc1455cde129d9d988eb47ca7ec97346e5e7bd5445bf7efab61"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "b667e2169c3683957a8c2e783432c90f229137a7f88e2b61a75fee2891bdda65"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "287a82996365a149bbbb3ad12b7d8b687025edc4ff342828953051baac1b777c"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "b8e2c31e90a6c17792913583bf3d7eb3b2038b401c68b04bbeb915749bda4eb8"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "1c3b43ea5d647e0a46ef741171bb2e02f6a7bcfaf5a04f59450ef0fe5aadfee2"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "e4de52f2901305b04f657faacc0c36c00ca26fc3c2942e9ffc630f698dcae566"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "b989ab2fb87f5f74294e4254889e04ce0323ba2452c56208dcc7129b166c9b1c"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "089b22ac083d8fb85446e1a1d1c21c46ced0701476e4e2ffb71547da41b5e2f6"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "7c1123d6dfc9d3e418b3dd6da7cb435a0a96efec0c34e1100070647fa8a49374"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "18879da448736699c5663952805be72f364f76a93359ea8c0b23c540e9b0c4e7"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "9e1944928349ccb93cc1272bfca5d2725263014adf14b707151fd03743494ff7"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "57d711973cc90f3b446013b611da2bb14dde4eb98c6a15f4610816a1408960b1"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "b1233537384fe234fc84c1bf767f53703ee3f719f5fd9076058420eba4c8c853"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "50b21740fabfcd7b66b424e5d9a3eedee0ebd66db3c6a8558729f0790d10df1f"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "1e9e66b57ae5c041f4533a86e4175e7b86a175ec78ee038f394986bc16a52cbf"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "492f0f43bc755c16f7e479910b71061ad943942bef8d7be9192f4b415db3cd14"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "499b088840e19a3096dd367b483980e352c95db83a7a019aedb51664787a4885"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "2aef038203eccf73cec5e62c9e1afcd28954107ea9f4e41a40a48055153195da"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "d48bbebe3a6d152cb83bd19d182b3eccd60bf616cc2848cde5554b1d124e9c69"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "ebb89609ae486ce7a5a9de105fdaa05b52d80008b495635c8f156f12ac9a45da"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "57cd774e7c46375d6225255c32f2e5179bc5583aeabacac8fb4df9a52fd8902e"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "dddbde097897a1883a323c81cdd469ec4139b59fcdf0f7b386885253db9e5a6c"
+        }
+      ],
+      "build-bot-7|{\"dark\":true}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "b2de4bc4a7b27908ced75b8eaff0257c8167c4d72cb3a889a8a50289f8a9dc8a"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "b5861312d965ba134f049efb0a69dea3fd422b5a6c8a3d475e1d70ad3e224b11"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "84069f63152ac93835a56ee9b2ef8dcf2a7dc7d36297d2a967e1b5cf3fbedc1a"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "c95226f3e168000f2e8fa47af7b92bd46b069216791af43c9b5c463ca47a12f7"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "60c097a69509ab9eefd15b08ed85ed63b1f46ab1d0f7e950717730d639385469"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "b5ec77b9f075f84f5517efd652689482cb23f86402eca6f5b4be8d313dc47bd8"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "8037a0c3c938bee3893c3ad74e7c596621e91b0f5456069fb6c7ebaff670b2a8"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "547883eb81a91d440a2bdf951f9688f827c171a863542d53d342eebddb544a33"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "316f1cba1441d9aec5101ffe1111140cafea95b47815906652be36eb7a5eb17c"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "ffc734d4ec144648d663446b4c35508191f843a8609ba53dd4ecdc453fbbfabc"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "19d07c0c1c803ffb1c2bd7dc830ddf54839d7bbf15e4475adca5088a0e95b710"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "bfc24af29f53536fb055c39739a4249dffec037efd6f8bf7f10671e8474b87e5"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "8a07a91e6c6fcf27f91c243bf9d91f9f2c5f7388f98bce50271680c0e1e7f740"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "98212702670a106bfc8583efe4c76e7b980136dfb0c017d7713ac163b7a0fdc7"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "34efb34a1ebda3aa9f9a6090cd7896d40941c22e39b613df1c7255283df77c9a"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "d1f55211c269a82c33a0c2ebcbf3e2a3550ee878d78017ec6fe4575e4022da1b"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "6858ca10b344575b14b9ec00270a864fadc79dafc5f96488351f2565e8fa4474"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "70286bfeda1829c145c408c05762791a2699c2af9c9ad98e189ffba415453c26"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "d07f07ee559da6dcfa87b39bb8a4be2ed255df2f2aed332c78026ec08caaa802"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "516be1bc82f9a4fac92120f0b14c42f53eedfc7201e41c05c3f8d164795f97cb"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "49c7dfd0e56baa3abee1384cbe1a8cd79d287d3bbc25a44da0a4783825e9dcfc"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "4683f5f808682d514bdea1ef362ff1731c73aebddb266d630bd610ec72652e70"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "f8651751844df81f7d11694e645d7bd7e51a2cbd6885fc37729289f10ac77230"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "f80e9eced0c65eceb81285353d506399fe4f40281529f8e9f9340cbc852f0db1"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "0fb81768e6d96374b3eff91237645524965b9421e2a7f45f04cb20116bedbc12"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "2277397cdb99ba2db37374bb3f9725d7b6762e327b799841f62c243cc29e3182"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "0694506008b547150df2615e47f90e787cb6612980963d305d25163e026cf725"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "7834a554914bcef0169e3e622009d4428b4fdc5964b8e0126f3cdb4413a946ba"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "cc1bad29ca2e7195c88fa6ff8285780dd800db68818ddee45c4d1e0acfae8466"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "c95d695d06921536fff9faa9c4c6f6105751b00c72cbcd5cdf04cc0c6625c2d4"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "83b2c28f695281209e7da774251b1c4094d646e9a46fe7946fc92684c65e17fa"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "726af67f1d11c7e2f1ce507d204fb33f4f63614b2f74ed7847c53730a85ce231"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "532863a636668a10e040cb3b2d06d76e1277e544cec1c303d051aa2ed2b6e999"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "c4d8e7f75d43b4556e069a7abe14a396e2a3f5d40f606aaea21b2170e3419ef4"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "00caa45161f5e421914e0d0dff01627275e976a30c866831fb51481688333b2a"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "61d30efd2e8a9ef37ba2886db0cd777ecb61509bcfc507c3e29d74764ae7543e"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "5b63172596ff5a1a9f022665da6d0e2ecc104072d8ad2e5df3ad02d1e48f012f"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "284fb927fb99ee54a22abaa6c01da7662ea46ac0dccc738f2c6a0e0703ce4fc7"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "67dcf32c58e445c3b2f2cb38c95cf75a8ab835ab615ce2513abcd4045de9d7f9"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "22f6642871f616d5c3633ee1d3f158af4e8c253e275a385325f998cfd18d5a62"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "b0ec64bfc1f9d621daf72c4bd41c31f4013feeed4e125165f387d8fefb49e4d1"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "6339e97f41e2ea1d20e732c79bb65165a9792df1ed04ed7d815bdd40a63a716c"
+        }
+      ],
+      "Ada Lovelace|reduced": [
+        {
+          "state": "working",
+          "hash": "30211ffeca8155ee84abcf8b4223c6e7a99f328d3cf410f1a2c9e6aa163d4d9a"
+        },
+        {
+          "state": "waiting",
+          "hash": "28844a610d9a5b9f88e98bf516a3ef5936358690ad240e805528d62cd0285b4e"
+        },
+        {
+          "state": "thinking",
+          "hash": "c19b5c0ba17aa2f25dbc9a8c7a039608baa25f5b7a0d830b25eb536dc91586a6"
+        },
+        {
+          "state": "sleeping",
+          "hash": "4f54a8d1e29daa38aacb9c4017c0d2e83d1b31a2ae6502bae33e5d11d02efd3e"
+        },
+        {
+          "state": "sending",
+          "hash": "e47deb5bfa862fe25369410d1740c23e565bf16aeeb177f3f1409217fa33dad7"
+        },
+        {
+          "state": "receiving",
+          "hash": "ba77a2fd242c02010251defbb6abd4614f5da20e3af980b8beaaae64d928b033"
+        },
+        {
+          "state": "done",
+          "hash": "3f4784db24d3c362c01cee14abefddb621760899cad5ac16a4c0f7ba566b1e4a"
+        },
+        {
+          "state": "error",
+          "hash": "301d528b1e7cabaa7e03bf83713c72d3b6902125a435d70c12f8c0030ee02ce3"
+        },
+        {
+          "state": "idle",
+          "hash": "edfc270210b42c9c4e6a8928cce6eedd284006103fa8545769a82c3a1a696252"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+orbit static benchmark — spec orbit-v1, size 64, seeds: maya, build-bot-7, Alice@X.com, Ada Lovelace, demo-agent
+node v22.22.3, linux x64, 2026-09-13
+criteria: static SVG <= 32768 bytes, median paint() <= 5 ms over 200 calls
+
+| seed        | rings | nodes | bytes | median paint ms | pass |
+|-------------|-------|-------|-------|-----------------|------|
+| maya        |     2 |     3 |   558 |           0.007 | yes  |
+| build-bot-7 |     3 |     9 |  1028 |           0.011 | yes  |
+| Alice@X.com |     2 |     4 |   655 |           0.006 | yes  |
+| Ada Lovelace |     4 |    10 |  1171 |           0.010 | yes  |
+| demo-agent  |     3 |     5 |   786 |           0.006 | yes  |
+
+static gate: pass
+
+orbit animated-frame benchmark — size 64, dt 0.0333 s
+per seed: 60 working frames, 12 sending frames, then settling until animate returns ctx.rest
+criteria: median animate+paint <= 2 ms, p95 <= 4 ms, settling <= 60 frames
+
+| seed        | median frame ms | p95 frame ms | settle frames | pass |
+|-------------|-----------------|--------------|---------------|------|
+| maya        |           0.007 |        0.059 |            30 | yes  |
+| build-bot-7 |           0.011 |        0.013 |            30 | yes  |
+| Alice@X.com |           0.007 |        0.019 |            31 | yes  |
+| Ada Lovelace |           0.012 |        0.018 |            29 | yes  |
+| demo-agent  |           0.008 |        0.015 |            29 | yes  |
+
+frame gate: pass
