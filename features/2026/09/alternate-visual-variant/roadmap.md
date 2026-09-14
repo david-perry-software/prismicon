@@ -1,8 +1,8 @@
 ```yaml
-status: in-review
+status: complete
 branch: feature/alternate-visual-variant
 last-updated: 2026-09-13
-next-step: "close-session — approved re-review at ce58027"
+next-step: ""
 initiative: "scalable-icon-variants"
 ```
 
