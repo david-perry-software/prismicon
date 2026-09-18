@@ -1,6 +1,15 @@
 {
-  "artifacts": { "features": "features", "issues": "issues", "initiatives": "initiatives" },
-  "worktrees": { "dir": null },
+  "artifacts": {
+    "features": "features",
+    "issues": "issues",
+    "initiatives": "initiatives",
+    "repo": {
+      "name": "prismicon-docs"
+    }
+  },
+  "worktrees": {
+    "dir": null
+  },
   "branches": {
     "default": "main",
     "feature": "feature/",
@@ -8,5 +17,7 @@
     "freehand": "changes/",
     "postShip": "post-ship/"
   },
-  "checks": { "releaseWorkflow": null }
+  "checks": {
+    "releaseWorkflow": null
+  }
 }

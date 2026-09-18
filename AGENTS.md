@@ -3,11 +3,17 @@
 ## Agento
 
 Delivery work in this repository is driven by the Agento plugin (slash commands
-/start-session, /new-initiative, /next-feature, /new-feature, /new-issue,
-/build-feature, /build-issue, /review-feature, /review-issue, /ap, /ship,
-/close-session, /start-freehand, /finish-freehand). Artifacts live in
+/agento start-session, /agento new-initiative, /agento next-feature, /agento new-feature, /agento new-issue,
+/agento build-feature, /agento build-issue, /agento review-feature, /agento review-issue, /agento ap, /agento ship,
+/agento continue, /agento close-session, /agento start-freehand, /agento finish-freehand, /agento doctor; /agento ship audits
+a finished build in place and tears its worktree down, /agento close-session is for
+plan and freehand sessions and abandoned builds). Artifacts live in the companion
+repository `david-perry-software/prismicon-docs` cloned at `../prismicon-docs` —
 `features/YYYY/MM/<slug>/`, `issues/YYYY/MM/<slug>/`, and
-`initiatives/YYYY/MM/<slug>/`; configuration is `.github/agento.json`.
+`initiatives/YYYY/MM/<slug>/` there; configuration is this repository's
+`.github/agento.json`.
+Commands are always written `/agento <name>`; a bare `/<name>` or a `.prompt`/`.md`
+suffix is read as the canonical command and proceeds without confirmation.
 
 ### Commands
 
