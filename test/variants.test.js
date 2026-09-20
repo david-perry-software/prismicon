@@ -38,6 +38,7 @@ const FROZEN = JSON.parse(`{
 }`);
 
 const HOOK_NAMES = ['derive', 'describe', 'prepare', 'geometry', 'pose', 'animate', 'paint', 'flash'];
+const EXPECTED_PUBLIC_EXPORT_COUNT = 18;
 
 const noop = () => {};
 
@@ -278,6 +279,7 @@ describe('public surface', () => {
   test('src/index.js exports exactly the eighteen names including variant and authoring helpers', async () => {
     const publicApi = await import('../src/index.js');
     const keys = Object.keys(publicApi).sort();
+    assert.equal(keys.length, EXPECTED_PUBLIC_EXPORT_COUNT);
     assert.deepEqual(keys, [
       'DEFAULT_VARIANT_ID',
       'FINISH_NAMES',
