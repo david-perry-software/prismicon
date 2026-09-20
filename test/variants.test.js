@@ -270,7 +270,9 @@ describe('public renderer error contract', () => {
     assert.deepEqual(info[0], POLYHEDRON_INFO);
     assert.deepEqual(info.map((v) => v.id), ['polyhedron', ...NCUBE_IDS, 'orbit', 'wright']);
     for (const entry of info) assert.deepEqual(Object.keys(entry).sort(), ['id', 'label', 'spec']);
-    for (const entry of info.slice(1, -1)) assert.equal(entry.spec, NCUBE_SPEC_VERSION);
+    for (const entry of info.filter((entry) => entry.id === 'ncube' || entry.id.startsWith('ncube-'))) {
+      assert.equal(entry.spec, NCUBE_SPEC_VERSION);
+    }
     assert.deepEqual(info[info.length - 2], ORBIT_INFO);
     assert.deepEqual(info[info.length - 1], WRIGHT_INFO);
     assert.ok(Object.isFrozen(info));

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { afterEach, describe, test } from 'node:test';
 import { JSDOM } from 'jsdom';
 import { createRenderer } from '../src/core.js';
+import { BUILT_IN_VARIANTS } from '../src/variants/index.js';
 import { createVariantRegistry } from '../src/variants/registry.js';
 import { polyhedron } from '../src/variants/polyhedron.js';
 import { square } from './fixtures/square-variant.js';
@@ -46,6 +47,10 @@ function installDom({ reducedMotion = false } = {}) {
 
 function createTestRenderer() {
   return createRenderer(createVariantRegistry([polyhedron, square], { defaultId: 'polyhedron' }));
+}
+
+function createBuiltInRenderer() {
+  return createRenderer(BUILT_IN_VARIANTS);
 }
 
 describe('renderer dispatch', () => {
@@ -157,6 +162,17 @@ describe('renderer dispatch', () => {
   test('default renderer rejects square because it is not in BUILT_IN_VARIANTS', () => {
     const { renderStaticSVG } = createRenderer(createVariantRegistry([polyhedron], { defaultId: 'polyhedron' }));
     assert.throws(() => renderStaticSVG('x', { variant: 'square' }), RangeError);
+  });
+
+  test('built-in Wright variant renders from static and mounted entries', () => {
+    const dom = installDom();
+    const { renderStaticSVG, mountGlyph } = createBuiltInRenderer();
+    const svg = renderStaticSVG('Ada Lovelace', { variant: 'wright', state: 'working' });
+    assert.match(svg, /aria-label="Ada Lovelace: .*Wright scaffold.*, working"/i);
+    const handle = mountGlyph(dom.container, 'Ada Lovelace', { variant: 'wright', state: 'working' });
+    assert.equal(handle.variant, 'wright');
+    assert.match(dom.container.querySelector('svg').getAttribute('aria-label'), /Wright scaffold/i);
+    handle.destroy();
   });
 
   test('polyhedron handle reports variant polyhedron and square handle reports variant square', () => {
