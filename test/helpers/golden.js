@@ -9,7 +9,8 @@ import { DEFAULT_VARIANT_ID } from '../../src/variants/index.js';
 const FAMILY_FIXTURES = [
   { test: (id) => id === DEFAULT_VARIANT_ID, file: 'golden-v1.json' },
   { test: (id) => id === 'ncube' || id.startsWith('ncube-'), file: 'golden-ncube-v1.json' },
-  { test: (id) => id === 'orbit', file: 'golden-orbit-v1.json' }
+  { test: (id) => id === 'orbit', file: 'golden-orbit-v1.json' },
+  { test: (id) => id === 'wright', file: 'golden-wright-v1.json' }
 ];
 
 export function fixtureFor(id = DEFAULT_VARIANT_ID) {

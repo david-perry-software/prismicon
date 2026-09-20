@@ -29,6 +29,7 @@ const NCUBE_IDS = ['ncube', ...Array.from(
 )];
 const POLYHEDRON_INFO = { id: 'polyhedron', label: 'Polyhedron', spec: 'v1' };
 const ORBIT_INFO = { id: 'orbit', label: 'Orbit', spec: 'orbit-v1' };
+const WRIGHT_INFO = { id: 'wright', label: 'Wright Scaffold', spec: 'wright-scaffold-v1' };
 
 // Copied verbatim from test/derivation-freeze.test.js (frozen v1 engine, commit 9204c26).
 const FROZEN = JSON.parse(`{
@@ -38,6 +39,7 @@ const FROZEN = JSON.parse(`{
 }`);
 
 const HOOK_NAMES = ['derive', 'describe', 'prepare', 'geometry', 'pose', 'animate', 'paint', 'flash'];
+const EXPECTED_PUBLIC_EXPORT_COUNT = 18;
 
 const noop = () => {};
 
@@ -198,7 +200,7 @@ describe('createVariantRegistry', () => {
 describe('polyhedron built-in variant', () => {
   test('is the registered default resolved by resolveVariant', () => {
     assert.equal(DEFAULT_VARIANT_ID, 'polyhedron');
-    assert.deepEqual(BUILT_IN_VARIANTS.ids, ['polyhedron', ...NCUBE_IDS, 'orbit']);
+    assert.deepEqual(BUILT_IN_VARIANTS.ids, ['polyhedron', ...NCUBE_IDS, 'orbit', 'wright']);
     assert.equal(BUILT_IN_VARIANTS.defaultId, 'polyhedron');
     const registered = BUILT_IN_VARIANTS.get('polyhedron');
     assert.deepEqual(registered, polyhedron);
@@ -213,6 +215,7 @@ describe('polyhedron built-in variant', () => {
     assert.equal(resolveVariant(), registered);
     assert.equal(resolveVariant(null), registered);
     assert.equal(resolveVariant('polyhedron'), registered);
+    assert.equal(resolveVariant('wright').id, 'wright');
     assert.equal(polyhedron.spec, 'v1');
     assert.throws(() => resolveVariant('cube'), RangeError);
   });
@@ -265,10 +268,13 @@ describe('public renderer error contract', () => {
   test('listVariants exposes only id, label and spec, frozen', () => {
     const info = listVariants();
     assert.deepEqual(info[0], POLYHEDRON_INFO);
-    assert.deepEqual(info.map((v) => v.id), ['polyhedron', ...NCUBE_IDS, 'orbit']);
+    assert.deepEqual(info.map((v) => v.id), ['polyhedron', ...NCUBE_IDS, 'orbit', 'wright']);
     for (const entry of info) assert.deepEqual(Object.keys(entry).sort(), ['id', 'label', 'spec']);
-    for (const entry of info.slice(1, -1)) assert.equal(entry.spec, NCUBE_SPEC_VERSION);
-    assert.deepEqual(info[info.length - 1], ORBIT_INFO);
+    for (const entry of info.filter((entry) => entry.id === 'ncube' || entry.id.startsWith('ncube-'))) {
+      assert.equal(entry.spec, NCUBE_SPEC_VERSION);
+    }
+    assert.deepEqual(info[info.length - 2], ORBIT_INFO);
+    assert.deepEqual(info[info.length - 1], WRIGHT_INFO);
     assert.ok(Object.isFrozen(info));
     assert.ok(info.every(Object.isFrozen));
   });
@@ -278,6 +284,7 @@ describe('public surface', () => {
   test('src/index.js exports exactly the eighteen names including variant and authoring helpers', async () => {
     const publicApi = await import('../src/index.js');
     const keys = Object.keys(publicApi).sort();
+    assert.equal(keys.length, EXPECTED_PUBLIC_EXPORT_COUNT);
     assert.deepEqual(keys, [
       'DEFAULT_VARIANT_ID',
       'FINISH_NAMES',
@@ -300,7 +307,7 @@ describe('public surface', () => {
     ]);
     assert.deepEqual(publicApi.DEFAULT_VARIANT_ID, 'polyhedron');
     assert.deepEqual(publicApi.listVariants()[0], POLYHEDRON_INFO);
-    assert.deepEqual(publicApi.listVariants().map((v) => v.id), ['polyhedron', ...NCUBE_IDS, 'orbit']);
+    assert.deepEqual(publicApi.listVariants().map((v) => v.id), ['polyhedron', ...NCUBE_IDS, 'orbit', 'wright']);
     assert.ok(Object.isFrozen(publicApi.listVariants()));
   });
 });
