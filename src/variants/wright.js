@@ -29,6 +29,13 @@ export const WRIGHT_HYBRID_COMPATIBILITY = Object.freeze({
   'textile-block': Object.freeze(['art-glass', 'usonian']),
   usonian: Object.freeze(['prairie', 'textile-block'])
 });
+export const WRIGHT_LAYER_LIMITS = Object.freeze({
+  primaryMasses: 2,
+  horizontalPlanes: 5,
+  gridModules: 25,
+  decorations: 8,
+  accents: 2
+});
 const TAU = Math.PI * 2;
 
 function hueMix(a, b, t) {
@@ -98,16 +105,73 @@ export function prepareWright(params, { size }) {
 }
 
 export function buildWright(params) {
-  const frame = Object.freeze({ left: params.inset, right: 100 - params.inset, top: 18, bottom: 82 });
-  const bands = Object.freeze(Array.from({ length: params.lineCount }, (_, i) => {
-    const y = frame.top + ((i + 1) * (frame.bottom - frame.top)) / (params.lineCount + 1);
-    return Object.freeze({
-      y,
-      x1: frame.left,
-      x2: frame.right - (i % 2 === 0 ? params.cantilever : 0)
-    });
+  const profiles = {
+    prairie: { width: Math.max(64, params.massWidth), height: Math.min(36, params.massHeight), columns: 3, rows: 2 },
+    'art-glass': { width: Math.min(52, params.massWidth), height: Math.max(54, params.massHeight), columns: params.gridColumns, rows: params.gridRows },
+    'textile-block': { width: 54, height: 54, columns: params.gridColumns, rows: params.gridRows },
+    usonian: { width: Math.max(60, params.massWidth), height: Math.min(44, params.massHeight), columns: 3, rows: 2 }
+  };
+  const profile = profiles[params.dominantFamily];
+  const centerX = Math.max(42, Math.min(58, 50 + params.massOffset));
+  const left = Math.max(8, Math.min(92 - profile.width, centerX - profile.width / 2));
+  const top = 50 - profile.height / 2;
+  const primaryMasses = [{ x: left, y: top, width: profile.width, height: profile.height }];
+  if (params.dominantFamily === 'usonian') {
+    primaryMasses.push({ x: left + profile.width * 0.58, y: top + profile.height * 0.2, width: profile.width * 0.32, height: profile.height * 0.6 });
+  }
+
+  const horizontalPlanes = Array.from({ length: params.planeCount }, (_, index) => {
+    const y = top + ((index + 1) * profile.height) / (params.planeCount + 1);
+    const cantilever = index % 2 === 0 ? params.planeSpread : params.planeSpread * 0.45;
+    const x = Math.max(5, left - cantilever);
+    const right = Math.min(95, left + profile.width + (index % 2 === 0 ? cantilever : 0));
+    return { x, y: y - 0.8, width: right - x, height: 1.6 };
+  });
+
+  const gridInset = 5;
+  const gridLeft = left + gridInset;
+  const gridTop = top + gridInset;
+  const gridWidth = profile.width - gridInset * 2;
+  const gridHeight = profile.height - gridInset * 2;
+  const cellWidth = gridWidth / profile.columns;
+  const cellHeight = gridHeight / profile.rows;
+  const gridModules = Array.from({ length: profile.columns * profile.rows }, (_, index) => ({
+    x: gridLeft + (index % profile.columns) * cellWidth + 1,
+    y: gridTop + Math.floor(index / profile.columns) * cellHeight + 1,
+    width: Math.max(1, cellWidth - 2),
+    height: Math.max(1, cellHeight - 2)
   }));
-  return Object.freeze({ frame, bands });
+
+  const decorationCount = Math.min(WRIGHT_LAYER_LIMITS.decorations, 2 + params.decoration * 2 + (params.secondaryFamily ? 2 : 0));
+  const decorations = Array.from({ length: decorationCount }, (_, index) => {
+    const module = gridModules[index % gridModules.length];
+    const reverse = (index + params.accent) % 2 === 1;
+    return {
+      x1: reverse ? module.x + module.width : module.x,
+      y1: module.y,
+      x2: reverse ? module.x : module.x + module.width,
+      y2: module.y + module.height
+    };
+  });
+  const accentX = params.accent % 2 === 0 ? left + profile.width * 0.28 : left + profile.width * 0.72;
+  const accents = [{ x1: accentX, y1: top, x2: accentX, y2: top + profile.height, width: 2.2 }];
+
+  const freezeItems = (items) => Object.freeze(items.map((item) => Object.freeze(item)));
+  const frame = Object.freeze({ left, right: left + profile.width, top, bottom: top + profile.height });
+  const bands = freezeItems(horizontalPlanes.map((plane) => ({
+    y: plane.y + plane.height / 2,
+    x1: plane.x,
+    x2: plane.x + plane.width
+  })));
+  return Object.freeze({
+    primaryMasses: freezeItems(primaryMasses),
+    horizontalPlanes: freezeItems(horizontalPlanes),
+    gridModules: freezeItems(gridModules),
+    decorations: freezeItems(decorations),
+    accents: freezeItems(accents),
+    frame,
+    bands
+  });
 }
 
 export function poseWright(params, state) {

@@ -7,6 +7,7 @@ import {
   WRIGHT_FAMILIES,
   WRIGHT_DRAW_ORDER,
   WRIGHT_HYBRID_COMPATIBILITY,
+  WRIGHT_LAYER_LIMITS,
   deriveWright,
   describeWright,
   prepareWright,
@@ -84,9 +85,25 @@ test('wright scaffold describe/prepare/geometry produce contract-valid shape', (
   assert.match(text, /Wright composition/);
   const geometry = buildWright(params);
   assert.ok(Object.isFrozen(geometry));
-  assert.ok(Object.isFrozen(geometry.frame));
-  assert.ok(Object.isFrozen(geometry.bands));
-  assert.equal(geometry.bands.length, params.lineCount);
+  assert.equal(geometry.horizontalPlanes.length, params.planeCount);
+});
+
+test('wright geometry has a deeply frozen, finite, positive semantic hierarchy', () => {
+  const seeds = ['wright-family-1', 'wright-family-5', 'wright-family-3', 'wright-family-0'];
+  for (const seed of seeds) {
+    const geometry = buildWright(prepareWright(deriveWright(seed), { size: 64 }));
+    assert.ok(Object.isFrozen(geometry));
+    for (const [layer, limit] of Object.entries(WRIGHT_LAYER_LIMITS)) {
+      assert.ok(Object.isFrozen(geometry[layer]));
+      assert.ok(geometry[layer].length >= 1 && geometry[layer].length <= limit, `${seed} ${layer} quota`);
+      for (const item of geometry[layer]) {
+        assert.ok(Object.isFrozen(item));
+        assert.ok(Object.values(item).every(Number.isFinite), `${seed} ${layer} finite`);
+        if ('width' in item) assert.ok(item.width > 0, `${seed} ${layer} positive width`);
+        if ('height' in item) assert.ok(item.height > 0, `${seed} ${layer} positive height`);
+      }
+    }
+  }
 });
 
 test('wright scaffold hooks animate deterministically and settle by identity', () => {
