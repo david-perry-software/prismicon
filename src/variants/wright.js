@@ -4,10 +4,39 @@
  */
 
 import { defineVariant } from './registry.js';
-import { cyrb53 } from './seed.js';
+import { cyrb53, mulberry32 } from './seed.js';
 import { PALETTE, normalizeSeed } from './polyhedron.js';
 
-export const WRIGHT_SPEC_VERSION = 'wright-scaffold-v1';
+export const WRIGHT_SPEC_VERSION = 'wright-geometry-v1';
+export const WRIGHT_FAMILIES = Object.freeze(['prairie', 'art-glass', 'textile-block', 'usonian']);
+export const WRIGHT_DRAW_ORDER = Object.freeze([
+  'dominantFamily',
+  'hybrid',
+  'secondaryFamily',
+  'massWidth',
+  'massHeight',
+  'massOffset',
+  'planeCount',
+  'planeSpread',
+  'gridColumns',
+  'gridRows',
+  'decoration',
+  'accent'
+]);
+export const WRIGHT_HYBRID_COMPATIBILITY = Object.freeze({
+  prairie: Object.freeze(['art-glass', 'usonian']),
+  'art-glass': Object.freeze(['prairie', 'textile-block']),
+  'textile-block': Object.freeze(['art-glass', 'usonian']),
+  usonian: Object.freeze(['prairie', 'textile-block'])
+});
+export const WRIGHT_LAYER_LIMITS = Object.freeze({
+  primaryMasses: 2,
+  horizontalPlanes: 5,
+  gridModules: 25,
+  decorations: 8,
+  accents: 2
+});
+export const WRIGHT_VIEWBOX_BOUNDS = Object.freeze({ min: 5, max: 95 });
 const TAU = Math.PI * 2;
 
 function hueMix(a, b, t) {
@@ -18,22 +47,45 @@ function hueMix(a, b, t) {
 export function deriveWright(seed) {
   const norm = normalizeSeed(seed);
   const hash = cyrb53(norm);
-  const lineCount = 3 + (hash % 3);
-  const inset = 10 + (Math.floor(hash / 2 ** 8) % 12);
-  const horizon = 42 + (Math.floor(hash / 2 ** 16) % 17) - 8;
-  const cantilever = 12 + (Math.floor(hash / 2 ** 24) % 15);
-  const emphasis = hash % 2 === 0 ? 'horizontal' : 'vertical';
+  const random = mulberry32(hash);
+  const draws = Array.from({ length: WRIGHT_DRAW_ORDER.length }, () => random());
+  const dominantFamily = WRIGHT_FAMILIES[Math.floor(draws[0] * WRIGHT_FAMILIES.length)];
+  const hybrid = draws[1] < 0.5;
+  const compatibleFamilies = WRIGHT_HYBRID_COMPATIBILITY[dominantFamily];
+  const secondaryFamily = hybrid
+    ? compatibleFamilies[Math.floor(draws[2] * compatibleFamilies.length)]
+    : null;
+  const massWidth = 52 + Math.floor(draws[3] * 17);
+  const massHeight = 38 + Math.floor(draws[4] * 17);
+  const massOffset = -8 + Math.floor(draws[5] * 17);
+  const planeCount = 3 + Math.floor(draws[6] * 3);
+  const planeSpread = 6 + Math.floor(draws[7] * 5);
+  const gridColumns = 2 + Math.floor(draws[8] * 4);
+  const gridRows = 2 + Math.floor(draws[9] * 4);
+  const decoration = Math.floor(draws[10] * 3);
+  const accent = Math.floor(draws[11] * 4);
   const phase = ((Math.floor(hash / 2 ** 32) % 256) / 255) * TAU;
   const hueIdx = hash % PALETTE.length;
   return Object.freeze({
     spec: WRIGHT_SPEC_VERSION,
     seed: norm,
     hash,
-    lineCount,
-    inset,
-    horizon,
-    cantilever,
-    emphasis,
+    dominantFamily,
+    secondaryFamily,
+    massWidth,
+    massHeight,
+    massOffset,
+    planeCount,
+    planeSpread,
+    gridColumns,
+    gridRows,
+    decoration,
+    accent,
+    lineCount: planeCount,
+    inset: Math.round((100 - massWidth) / 2),
+    horizon: 50 + massOffset,
+    cantilever: 8 + planeSpread,
+    emphasis: dominantFamily === 'art-glass' || dominantFamily === 'textile-block' ? 'vertical' : 'horizontal',
     phase,
     hue: PALETTE[hueIdx],
     hue2: PALETTE[(hueIdx + 5) % PALETTE.length]
@@ -41,7 +93,8 @@ export function deriveWright(seed) {
 }
 
 export function describeWright(params) {
-  return `${params.lineCount}-band Wright scaffold, ${params.emphasis} emphasis`;
+  const hybrid = params.secondaryFamily ? ` with ${params.secondaryFamily} detail` : '';
+  return `${params.dominantFamily} Wright composition${hybrid}, ${params.planeCount} planes`;
 }
 
 export function prepareWright(params, { size }) {
@@ -53,16 +106,65 @@ export function prepareWright(params, { size }) {
 }
 
 export function buildWright(params) {
-  const frame = Object.freeze({ left: params.inset, right: 100 - params.inset, top: 18, bottom: 82 });
-  const bands = Object.freeze(Array.from({ length: params.lineCount }, (_, i) => {
-    const y = frame.top + ((i + 1) * (frame.bottom - frame.top)) / (params.lineCount + 1);
-    return Object.freeze({
-      y,
-      x1: frame.left,
-      x2: frame.right - (i % 2 === 0 ? params.cantilever : 0)
-    });
+  const profiles = {
+    prairie: { width: Math.max(64, params.massWidth), height: Math.min(36, params.massHeight), columns: 3, rows: 2 },
+    'art-glass': { width: Math.min(52, params.massWidth), height: Math.max(54, params.massHeight), columns: params.gridColumns, rows: params.gridRows },
+    'textile-block': { width: 54, height: 54, columns: params.gridColumns, rows: params.gridRows },
+    usonian: { width: Math.max(60, params.massWidth), height: Math.min(44, params.massHeight), columns: 3, rows: 2 }
+  };
+  const profile = profiles[params.dominantFamily];
+  const centerX = Math.max(42, Math.min(58, 50 + params.massOffset));
+  const left = Math.max(8, Math.min(92 - profile.width, centerX - profile.width / 2));
+  const top = 50 - profile.height / 2;
+  const primaryMasses = [{ x: left, y: top, width: profile.width, height: profile.height }];
+  if (params.dominantFamily === 'usonian') {
+    primaryMasses.push({ x: left + profile.width * 0.58, y: top + profile.height * 0.2, width: profile.width * 0.32, height: profile.height * 0.6 });
+  }
+
+  const horizontalPlanes = Array.from({ length: params.planeCount }, (_, index) => {
+    const y = top + ((index + 1) * profile.height) / (params.planeCount + 1);
+    const cantilever = index % 2 === 0 ? params.planeSpread : params.planeSpread * 0.45;
+    const x = Math.max(WRIGHT_VIEWBOX_BOUNDS.min, left - cantilever);
+    const right = Math.min(WRIGHT_VIEWBOX_BOUNDS.max, left + profile.width + (index % 2 === 0 ? cantilever : 0));
+    return { x, y: y - 0.8, width: right - x, height: 1.6 };
+  });
+
+  const gridInset = 5;
+  const gridLeft = left + gridInset;
+  const gridTop = top + gridInset;
+  const gridWidth = profile.width - gridInset * 2;
+  const gridHeight = profile.height - gridInset * 2;
+  const cellWidth = gridWidth / profile.columns;
+  const cellHeight = gridHeight / profile.rows;
+  const gridModules = Array.from({ length: profile.columns * profile.rows }, (_, index) => ({
+    x: gridLeft + (index % profile.columns) * cellWidth + 1,
+    y: gridTop + Math.floor(index / profile.columns) * cellHeight + 1,
+    width: Math.max(1, cellWidth - 2),
+    height: Math.max(1, cellHeight - 2)
   }));
-  return Object.freeze({ frame, bands });
+
+  const decorationCount = Math.min(WRIGHT_LAYER_LIMITS.decorations, 2 + params.decoration * 2 + (params.secondaryFamily ? 2 : 0));
+  const decorations = Array.from({ length: decorationCount }, (_, index) => {
+    const module = gridModules[index % gridModules.length];
+    const reverse = (index + params.accent) % 2 === 1;
+    return {
+      x1: reverse ? module.x + module.width : module.x,
+      y1: module.y,
+      x2: reverse ? module.x : module.x + module.width,
+      y2: module.y + module.height
+    };
+  });
+  const accentX = params.accent % 2 === 0 ? left + profile.width * 0.28 : left + profile.width * 0.72;
+  const accents = [{ x1: accentX, y1: top, x2: accentX, y2: top + profile.height, width: 2.2 }];
+
+  const freezeItems = (items) => Object.freeze(items.map((item) => Object.freeze(item)));
+  return Object.freeze({
+    primaryMasses: freezeItems(primaryMasses),
+    horizontalPlanes: freezeItems(horizontalPlanes),
+    gridModules: freezeItems(gridModules),
+    decorations: freezeItems(decorations),
+    accents: freezeItems(accents)
+  });
 }
 
 export function poseWright(params, state) {
@@ -132,34 +234,37 @@ export function paintWright(params, geometry, pose, effects) {
   const flashHue = effects.flash ? hueMix(params.hue, effects.flash.hue ?? params.hue, effects.flash.strength) : params.hue;
   const hueSecondary = effects.flash ? hueMix(params.hue2, flashHue, 0.5) : params.hue2;
   const lineLight = Math.min(90, 42 + lighten);
-  const frameLight = Math.min(90, 30 + lighten);
-  const frameYShift = pose.lift;
-  const left = (geometry.frame.left + off).toFixed(1);
-  const right = (geometry.frame.right + off).toFixed(1);
-  const top = (geometry.frame.top + frameYShift).toFixed(1);
-  const bottom = (geometry.frame.bottom + frameYShift).toFixed(1);
+  const massLight = Math.min(90, 30 + lighten);
+  const yShift = pose.lift;
+  const skew = pose.shear * (params.emphasis === 'horizontal' ? 1 : 0.4);
+  const ink = (hue, saturation, value) => `hsl(${Math.round(hue)} ${saturation}% ${Math.round(value)}%)`;
+  const rect = (layer, item, attributes) => '<rect data-wright-layer="' + layer + '" x="' + (item.x + off).toFixed(1) +
+    '" y="' + (item.y + yShift).toFixed(1) + '" width="' + item.width.toFixed(1) + '" height="' + item.height.toFixed(1) + '" ' + attributes + '/>';
+  const line = (layer, item, attributes) => '<line data-wright-layer="' + layer + '" x1="' + (item.x1 + off).toFixed(1) +
+    '" y1="' + (item.y1 + yShift).toFixed(1) + '" x2="' + (item.x2 + off).toFixed(1) + '" y2="' +
+    (item.y2 + yShift).toFixed(1) + '" ' + attributes + '/>';
   const parts = [];
 
-  parts.push('<rect x="' + left + '" y="' + top + '" width="' + (geometry.frame.right - geometry.frame.left).toFixed(1) +
-    '" height="' + (geometry.frame.bottom - geometry.frame.top).toFixed(1) + '" fill="none" stroke="hsl(' + Math.round(flashHue) +
-    ' 48% ' + Math.round(frameLight) + '%)" stroke-width="' + stroke + '"/>');
-
-  for (const band of geometry.bands) {
-    const y = band.y + frameYShift;
-    const skew = pose.shear * (params.emphasis === 'horizontal' ? 1 : 0.4);
-    const x1 = band.x1 + off;
-    const x2 = band.x2 + off + skew;
-    parts.push('<line x1="' + x1.toFixed(1) + '" y1="' + y.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y.toFixed(1) +
-      '" stroke="hsl(' + Math.round(hueSecondary) + ' 56% ' + Math.round(lineLight) +
-      '%)" stroke-width="' + light + '" stroke-linecap="round"/>');
+  for (const mass of geometry.primaryMasses) {
+    parts.push(rect('primary-mass', mass, 'fill="none" stroke="' + ink(flashHue, 48, massLight) + '" stroke-width="' + stroke + '"'));
   }
-
-  const accentX = (params.emphasis === 'vertical' ? geometry.frame.right - params.cantilever * 0.5 : geometry.frame.left + params.cantilever * 0.5) + off;
-  const accentTop = geometry.frame.top + frameYShift;
-  const accentBottom = geometry.frame.bottom + frameYShift;
-  parts.push('<line x1="' + accentX.toFixed(1) + '" y1="' + accentTop.toFixed(1) + '" x2="' + accentX.toFixed(1) + '" y2="' + accentBottom.toFixed(1) +
-    '" stroke="hsl(' + Math.round(flashHue) + ' 62% ' + Math.round(Math.min(92, lineLight + 10)) +
-    '%)" stroke-width="' + (stroke * pulse).toFixed(2) + '" stroke-linecap="round"/>');
+  for (const plane of geometry.horizontalPlanes) {
+    parts.push(rect('horizontal-plane', { ...plane, width: plane.width + skew },
+      'fill="' + ink(hueSecondary, 56, lineLight) + '"'));
+  }
+  for (const module of geometry.gridModules) {
+    parts.push(rect('grid-module', module,
+      'fill="none" stroke="' + ink(hueSecondary, 44, lineLight + 4) + '" stroke-width="' + light + '"'));
+  }
+  for (const decoration of geometry.decorations) {
+    parts.push(line('decoration', decoration,
+      'stroke="' + ink(hueSecondary, 52, lineLight + 8) + '" stroke-width="' + light + '" stroke-linecap="round"'));
+  }
+  for (const accent of geometry.accents) {
+    parts.push(line('accent', accent,
+      'stroke="' + ink(flashHue, 62, Math.min(92, lineLight + 10)) + '" stroke-width="' +
+      (accent.width * pulse).toFixed(2) + '" stroke-linecap="round"'));
+  }
 
   return parts.join('');
 }

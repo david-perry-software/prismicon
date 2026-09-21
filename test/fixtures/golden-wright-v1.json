@@ -1,922 +1,922 @@
 {
   "wright": {
     "static": {
-      "maya|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: 3-band Wright scaffold, horizontal emphasis, idle\"><g><rect x=\"13.0\" y=\"18.0\" width=\"74.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"13.0\" y1=\"34.0\" x2=\"61.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"50.0\" x2=\"87.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"66.0\" x2=\"61.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"18.0\" x2=\"26.0\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "maya|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"maya: 3-band Wright scaffold, horizontal emphasis, idle\"><g><rect x=\"13.0\" y=\"18.0\" width=\"74.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"3\"/><line x1=\"13.0\" y1=\"34.0\" x2=\"61.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"50.0\" x2=\"87.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"66.0\" x2=\"61.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"18.0\" x2=\"26.0\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"3.00\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "maya|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: 3-band Wright scaffold, horizontal emphasis\"><g><rect x=\"13.0\" y=\"18.0\" width=\"74.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"13.0\" y1=\"34.0\" x2=\"61.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"50.0\" x2=\"87.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"66.0\" x2=\"61.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"18.0\" x2=\"26.0\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "maya|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: 3-band Wright scaffold, horizontal emphasis, thinking\"><g><rect x=\"13.0\" y=\"18.0\" width=\"74.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"13.0\" y1=\"34.0\" x2=\"61.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"50.0\" x2=\"87.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"66.0\" x2=\"61.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"18.0\" x2=\"26.0\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
-      "maya|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: 3-band Wright scaffold, horizontal emphasis, waiting\"><g><rect x=\"13.0\" y=\"18.0\" width=\"74.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"13.0\" y1=\"34.0\" x2=\"61.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"50.0\" x2=\"87.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"66.0\" x2=\"61.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"18.0\" x2=\"26.0\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
-      "maya|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"maya: 3-band Wright scaffold, horizontal emphasis, error\"><g><rect x=\"13.0\" y=\"18.0\" width=\"74.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"13.0\" y1=\"34.0\" x2=\"61.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"50.0\" x2=\"87.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"13.0\" y1=\"66.0\" x2=\"61.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"18.0\" x2=\"26.0\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
-      "build-bot-7|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: 3-band Wright scaffold, vertical emphasis, idle\"><g><rect x=\"15.0\" y=\"18.0\" width=\"70.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"15.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"50.0\" x2=\"85.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"73.5\" y1=\"18.0\" x2=\"73.5\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "build-bot-7|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"build-bot-7: 3-band Wright scaffold, vertical emphasis, idle\"><g><rect x=\"15.0\" y=\"18.0\" width=\"70.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"3\"/><line x1=\"15.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"50.0\" x2=\"85.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"73.5\" y1=\"18.0\" x2=\"73.5\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"3.00\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "build-bot-7|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: 3-band Wright scaffold, vertical emphasis\"><g><rect x=\"15.0\" y=\"18.0\" width=\"70.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"15.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"50.0\" x2=\"85.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"73.5\" y1=\"18.0\" x2=\"73.5\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "build-bot-7|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: 3-band Wright scaffold, vertical emphasis, thinking\"><g><rect x=\"15.0\" y=\"18.0\" width=\"70.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"15.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"50.0\" x2=\"85.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"73.5\" y1=\"18.0\" x2=\"73.5\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
-      "build-bot-7|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: 3-band Wright scaffold, vertical emphasis, waiting\"><g><rect x=\"15.0\" y=\"18.0\" width=\"70.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"15.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"50.0\" x2=\"85.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"73.5\" y1=\"18.0\" x2=\"73.5\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
-      "build-bot-7|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"build-bot-7: 3-band Wright scaffold, vertical emphasis, error\"><g><rect x=\"15.0\" y=\"18.0\" width=\"70.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"15.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"50.0\" x2=\"85.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"15.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"73.5\" y1=\"18.0\" x2=\"73.5\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
-      "Alice@X.com|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: 3-band Wright scaffold, vertical emphasis, idle\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"75.0\" y1=\"18.0\" x2=\"75.0\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "Alice@X.com|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"Alice@X.com: 3-band Wright scaffold, vertical emphasis, idle\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"3\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"75.0\" y1=\"18.0\" x2=\"75.0\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"3.00\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "Alice@X.com|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: 3-band Wright scaffold, vertical emphasis\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"75.0\" y1=\"18.0\" x2=\"75.0\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "Alice@X.com|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: 3-band Wright scaffold, vertical emphasis, thinking\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"75.0\" y1=\"18.0\" x2=\"75.0\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
-      "Alice@X.com|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: 3-band Wright scaffold, vertical emphasis, waiting\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"75.0\" y1=\"18.0\" x2=\"75.0\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
-      "Alice@X.com|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"Alice@X.com: 3-band Wright scaffold, vertical emphasis, error\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"62.0\" y2=\"34.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"62.0\" y2=\"66.0\" stroke=\"hsl(45 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"75.0\" y1=\"18.0\" x2=\"75.0\" y2=\"82.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
-      "Ada Lovelace|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: 3-band Wright scaffold, horizontal emphasis, idle\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"71.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"71.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"20.5\" y1=\"18.0\" x2=\"20.5\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "Ada Lovelace|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"Ada Lovelace: 3-band Wright scaffold, horizontal emphasis, idle\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"3\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"71.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"71.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"20.5\" y1=\"18.0\" x2=\"20.5\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"3.00\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "Ada Lovelace|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: 3-band Wright scaffold, horizontal emphasis\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"71.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"71.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"20.5\" y1=\"18.0\" x2=\"20.5\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "Ada Lovelace|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: 3-band Wright scaffold, horizontal emphasis, thinking\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"71.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"71.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"20.5\" y1=\"18.0\" x2=\"20.5\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
-      "Ada Lovelace|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: 3-band Wright scaffold, horizontal emphasis, waiting\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"71.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"71.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"20.5\" y1=\"18.0\" x2=\"20.5\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
-      "Ada Lovelace|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"Ada Lovelace: 3-band Wright scaffold, horizontal emphasis, error\"><g><rect x=\"12.0\" y=\"18.0\" width=\"76.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"12.0\" y1=\"34.0\" x2=\"71.0\" y2=\"34.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"50.0\" x2=\"88.0\" y2=\"50.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"12.0\" y1=\"66.0\" x2=\"71.0\" y2=\"66.0\" stroke=\"hsl(170 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"20.5\" y1=\"18.0\" x2=\"20.5\" y2=\"82.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
-      "demo-agent|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: 4-band Wright scaffold, vertical emphasis, idle\"><g><rect x=\"14.0\" y=\"18.0\" width=\"72.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"14.0\" y1=\"30.8\" x2=\"74.0\" y2=\"30.8\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"43.6\" x2=\"86.0\" y2=\"43.6\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"56.4\" x2=\"74.0\" y2=\"56.4\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"69.2\" x2=\"86.0\" y2=\"69.2\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"80.0\" y1=\"18.0\" x2=\"80.0\" y2=\"82.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "demo-agent|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"demo-agent: 4-band Wright scaffold, vertical emphasis, idle\"><g><rect x=\"14.0\" y=\"18.0\" width=\"72.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"3\"/><line x1=\"14.0\" y1=\"30.8\" x2=\"74.0\" y2=\"30.8\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"43.6\" x2=\"86.0\" y2=\"43.6\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"56.4\" x2=\"74.0\" y2=\"56.4\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"69.2\" x2=\"86.0\" y2=\"69.2\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"80.0\" y1=\"18.0\" x2=\"80.0\" y2=\"82.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"3.00\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "demo-agent|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: 4-band Wright scaffold, vertical emphasis\"><g><rect x=\"14.0\" y=\"18.0\" width=\"72.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"14.0\" y1=\"30.8\" x2=\"74.0\" y2=\"30.8\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"43.6\" x2=\"86.0\" y2=\"43.6\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"56.4\" x2=\"74.0\" y2=\"56.4\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"69.2\" x2=\"86.0\" y2=\"69.2\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"80.0\" y1=\"18.0\" x2=\"80.0\" y2=\"82.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
-      "demo-agent|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: 4-band Wright scaffold, vertical emphasis, thinking\"><g><rect x=\"14.0\" y=\"18.0\" width=\"72.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"14.0\" y1=\"30.8\" x2=\"74.0\" y2=\"30.8\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"43.6\" x2=\"86.0\" y2=\"43.6\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"56.4\" x2=\"74.0\" y2=\"56.4\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"69.2\" x2=\"86.0\" y2=\"69.2\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"80.0\" y1=\"18.0\" x2=\"80.0\" y2=\"82.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
-      "demo-agent|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: 4-band Wright scaffold, vertical emphasis, waiting\"><g><rect x=\"14.0\" y=\"18.0\" width=\"72.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"14.0\" y1=\"30.8\" x2=\"74.0\" y2=\"30.8\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"43.6\" x2=\"86.0\" y2=\"43.6\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"56.4\" x2=\"74.0\" y2=\"56.4\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"69.2\" x2=\"86.0\" y2=\"69.2\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"80.0\" y1=\"18.0\" x2=\"80.0\" y2=\"82.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
-      "demo-agent|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"demo-agent: 4-band Wright scaffold, vertical emphasis, error\"><g><rect x=\"14.0\" y=\"18.0\" width=\"72.0\" height=\"64.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><line x1=\"14.0\" y1=\"30.8\" x2=\"74.0\" y2=\"30.8\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"43.6\" x2=\"86.0\" y2=\"43.6\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"56.4\" x2=\"74.0\" y2=\"56.4\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"14.0\" y1=\"69.2\" x2=\"86.0\" y2=\"69.2\" stroke=\"hsl(8 56% 42%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line x1=\"80.0\" y1=\"18.0\" x2=\"80.0\" y2=\"82.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>"
+      "maya|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: prairie Wright composition with art-glass detail, 5 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"21.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"37.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"43.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"49.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"55.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"61.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"79.0\" y1=\"38.0\" x2=\"63.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"27.0\" y1=\"51.0\" x2=\"43.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"51.0\" x2=\"45.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"63.0\" y1=\"51.0\" x2=\"79.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"67.1\" y1=\"32.0\" x2=\"67.1\" y2=\"68.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "maya|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"maya: prairie Wright composition with art-glass detail, 5 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"21.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"3\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"37.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"43.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"49.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"55.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"61.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"79.0\" y1=\"38.0\" x2=\"63.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"27.0\" y1=\"51.0\" x2=\"43.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"51.0\" x2=\"45.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"63.0\" y1=\"51.0\" x2=\"79.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"67.1\" y1=\"32.0\" x2=\"67.1\" y2=\"68.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "maya|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: prairie Wright composition with art-glass detail, 5 planes\"><g><rect data-wright-layer=\"primary-mass\" x=\"21.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"37.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"43.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"49.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"55.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"61.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"79.0\" y1=\"38.0\" x2=\"63.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"27.0\" y1=\"51.0\" x2=\"43.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"51.0\" x2=\"45.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"63.0\" y1=\"51.0\" x2=\"79.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"67.1\" y1=\"32.0\" x2=\"67.1\" y2=\"68.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "maya|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: prairie Wright composition with art-glass detail, 5 planes, thinking\"><g><rect data-wright-layer=\"primary-mass\" x=\"21.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"37.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"43.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"49.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"55.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"61.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"79.0\" y1=\"38.0\" x2=\"63.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"27.0\" y1=\"51.0\" x2=\"43.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"51.0\" x2=\"45.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"63.0\" y1=\"51.0\" x2=\"79.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"67.1\" y1=\"32.0\" x2=\"67.1\" y2=\"68.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "maya|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"maya: prairie Wright composition with art-glass detail, 5 planes, waiting\"><g><rect data-wright-layer=\"primary-mass\" x=\"21.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"37.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"43.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"49.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"55.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"61.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"79.0\" y1=\"38.0\" x2=\"63.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"27.0\" y1=\"51.0\" x2=\"43.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"51.0\" x2=\"45.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"63.0\" y1=\"51.0\" x2=\"79.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"67.1\" y1=\"32.0\" x2=\"67.1\" y2=\"68.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "maya|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"maya: prairie Wright composition with art-glass detail, 5 planes, error\"><g><rect data-wright-layer=\"primary-mass\" x=\"21.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"37.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"43.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"49.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.9\" y=\"55.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.0\" y=\"61.2\" width=\"82.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"63.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"79.0\" y1=\"38.0\" x2=\"63.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"27.0\" y1=\"51.0\" x2=\"43.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"51.0\" x2=\"45.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"63.0\" y1=\"51.0\" x2=\"79.0\" y2=\"62.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"38.0\" x2=\"27.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"38.0\" x2=\"61.0\" y2=\"49.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"67.1\" y1=\"32.0\" x2=\"67.1\" y2=\"68.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+      "build-bot-7|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: art-glass Wright composition with textile-block detail, 3 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"29.0\" y=\"23.0\" width=\"52.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"24.9\" y=\"49.2\" width=\"56.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"29.0\" x2=\"35.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"29.0\" x2=\"54.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"64.5\" y1=\"29.0\" x2=\"56.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"66.5\" y1=\"29.0\" x2=\"75.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"51.0\" x2=\"35.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"51.0\" x2=\"54.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"66.4\" y1=\"23.0\" x2=\"66.4\" y2=\"77.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "build-bot-7|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"build-bot-7: art-glass Wright composition with textile-block detail, 3 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"29.0\" y=\"23.0\" width=\"52.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"3\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"24.9\" y=\"49.2\" width=\"56.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"29.0\" x2=\"35.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"29.0\" x2=\"54.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"64.5\" y1=\"29.0\" x2=\"56.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"66.5\" y1=\"29.0\" x2=\"75.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"51.0\" x2=\"35.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"51.0\" x2=\"54.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"66.4\" y1=\"23.0\" x2=\"66.4\" y2=\"77.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "build-bot-7|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: art-glass Wright composition with textile-block detail, 3 planes\"><g><rect data-wright-layer=\"primary-mass\" x=\"29.0\" y=\"23.0\" width=\"52.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"24.9\" y=\"49.2\" width=\"56.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"29.0\" x2=\"35.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"29.0\" x2=\"54.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"64.5\" y1=\"29.0\" x2=\"56.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"66.5\" y1=\"29.0\" x2=\"75.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"51.0\" x2=\"35.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"51.0\" x2=\"54.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"66.4\" y1=\"23.0\" x2=\"66.4\" y2=\"77.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "build-bot-7|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: art-glass Wright composition with textile-block detail, 3 planes, thinking\"><g><rect data-wright-layer=\"primary-mass\" x=\"29.0\" y=\"23.0\" width=\"52.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"24.9\" y=\"49.2\" width=\"56.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"29.0\" x2=\"35.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"29.0\" x2=\"54.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"64.5\" y1=\"29.0\" x2=\"56.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"66.5\" y1=\"29.0\" x2=\"75.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"51.0\" x2=\"35.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"51.0\" x2=\"54.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"66.4\" y1=\"23.0\" x2=\"66.4\" y2=\"77.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "build-bot-7|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"build-bot-7: art-glass Wright composition with textile-block detail, 3 planes, waiting\"><g><rect data-wright-layer=\"primary-mass\" x=\"29.0\" y=\"23.0\" width=\"52.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"24.9\" y=\"49.2\" width=\"56.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"29.0\" x2=\"35.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"29.0\" x2=\"54.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"64.5\" y1=\"29.0\" x2=\"56.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"66.5\" y1=\"29.0\" x2=\"75.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"51.0\" x2=\"35.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"51.0\" x2=\"54.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"66.4\" y1=\"23.0\" x2=\"66.4\" y2=\"77.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "build-bot-7|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"build-bot-7: art-glass Wright composition with textile-block detail, 3 planes, error\"><g><rect data-wright-layer=\"primary-mass\" x=\"29.0\" y=\"23.0\" width=\"52.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"24.9\" y=\"49.2\" width=\"56.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"20.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"35.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"66.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"29.0\" x2=\"35.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"29.0\" x2=\"54.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"64.5\" y1=\"29.0\" x2=\"56.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"66.5\" y1=\"29.0\" x2=\"75.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.5\" y1=\"51.0\" x2=\"35.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.5\" y1=\"51.0\" x2=\"54.0\" y2=\"71.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"66.4\" y1=\"23.0\" x2=\"66.4\" y2=\"77.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+      "Alice@X.com|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: prairie Wright composition, 5 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"19.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"37.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"43.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"49.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"55.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"61.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"25.0\" y1=\"38.0\" x2=\"41.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"59.0\" y1=\"38.0\" x2=\"43.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"38.0\" x2=\"77.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"41.0\" y1=\"51.0\" x2=\"25.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"51.0\" x2=\"59.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"77.0\" y1=\"51.0\" x2=\"61.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"36.9\" y1=\"32.0\" x2=\"36.9\" y2=\"68.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "Alice@X.com|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"Alice@X.com: prairie Wright composition, 5 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"19.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"3\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"37.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"43.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"49.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"55.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"61.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.8\"/><line data-wright-layer=\"decoration\" x1=\"25.0\" y1=\"38.0\" x2=\"41.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"59.0\" y1=\"38.0\" x2=\"43.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"38.0\" x2=\"77.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"41.0\" y1=\"51.0\" x2=\"25.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"51.0\" x2=\"59.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"77.0\" y1=\"51.0\" x2=\"61.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"36.9\" y1=\"32.0\" x2=\"36.9\" y2=\"68.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "Alice@X.com|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: prairie Wright composition, 5 planes\"><g><rect data-wright-layer=\"primary-mass\" x=\"19.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"37.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"43.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"49.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"55.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"61.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"25.0\" y1=\"38.0\" x2=\"41.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"59.0\" y1=\"38.0\" x2=\"43.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"38.0\" x2=\"77.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"41.0\" y1=\"51.0\" x2=\"25.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"51.0\" x2=\"59.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"77.0\" y1=\"51.0\" x2=\"61.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"36.9\" y1=\"32.0\" x2=\"36.9\" y2=\"68.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "Alice@X.com|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: prairie Wright composition, 5 planes, thinking\"><g><rect data-wright-layer=\"primary-mass\" x=\"19.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"37.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"43.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"49.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"55.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"61.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"25.0\" y1=\"38.0\" x2=\"41.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"59.0\" y1=\"38.0\" x2=\"43.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"38.0\" x2=\"77.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"41.0\" y1=\"51.0\" x2=\"25.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"51.0\" x2=\"59.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"77.0\" y1=\"51.0\" x2=\"61.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"36.9\" y1=\"32.0\" x2=\"36.9\" y2=\"68.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "Alice@X.com|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Alice@X.com: prairie Wright composition, 5 planes, waiting\"><g><rect data-wright-layer=\"primary-mass\" x=\"19.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"37.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"43.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"49.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"55.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"61.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"25.0\" y1=\"38.0\" x2=\"41.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"59.0\" y1=\"38.0\" x2=\"43.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"38.0\" x2=\"77.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"41.0\" y1=\"51.0\" x2=\"25.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"51.0\" x2=\"59.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"77.0\" y1=\"51.0\" x2=\"61.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"36.9\" y1=\"32.0\" x2=\"36.9\" y2=\"68.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "Alice@X.com|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"Alice@X.com: prairie Wright composition, 5 planes, error\"><g><rect data-wright-layer=\"primary-mass\" x=\"19.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"hsl(275 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"37.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"43.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"49.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.3\" y=\"55.2\" width=\"66.7\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"61.2\" width=\"76.0\" height=\"1.6\" fill=\"hsl(45 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"25.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"43.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"hsl(45 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"25.0\" y1=\"38.0\" x2=\"41.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"59.0\" y1=\"38.0\" x2=\"43.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"61.0\" y1=\"38.0\" x2=\"77.0\" y2=\"49.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"41.0\" y1=\"51.0\" x2=\"25.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"51.0\" x2=\"59.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"77.0\" y1=\"51.0\" x2=\"61.0\" y2=\"62.0\" stroke=\"hsl(45 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"36.9\" y1=\"32.0\" x2=\"36.9\" y2=\"68.0\" stroke=\"hsl(275 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+      "Ada Lovelace|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: textile-block Wright composition with usonian detail, 3 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"26.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"22.4\" y=\"49.2\" width=\"57.6\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"32.0\" y1=\"29.0\" x2=\"38.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"47.6\" y1=\"29.0\" x2=\"40.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"49.6\" y1=\"29.0\" x2=\"56.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"65.2\" y1=\"29.0\" x2=\"58.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"41.1\" y1=\"23.0\" x2=\"41.1\" y2=\"77.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "Ada Lovelace|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"Ada Lovelace: textile-block Wright composition with usonian detail, 3 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"26.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"3\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"22.4\" y=\"49.2\" width=\"57.6\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.8\"/><line data-wright-layer=\"decoration\" x1=\"32.0\" y1=\"29.0\" x2=\"38.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"47.6\" y1=\"29.0\" x2=\"40.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"49.6\" y1=\"29.0\" x2=\"56.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"65.2\" y1=\"29.0\" x2=\"58.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"41.1\" y1=\"23.0\" x2=\"41.1\" y2=\"77.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "Ada Lovelace|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: textile-block Wright composition with usonian detail, 3 planes\"><g><rect data-wright-layer=\"primary-mass\" x=\"26.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"22.4\" y=\"49.2\" width=\"57.6\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"32.0\" y1=\"29.0\" x2=\"38.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"47.6\" y1=\"29.0\" x2=\"40.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"49.6\" y1=\"29.0\" x2=\"56.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"65.2\" y1=\"29.0\" x2=\"58.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"41.1\" y1=\"23.0\" x2=\"41.1\" y2=\"77.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "Ada Lovelace|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: textile-block Wright composition with usonian detail, 3 planes, thinking\"><g><rect data-wright-layer=\"primary-mass\" x=\"26.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"22.4\" y=\"49.2\" width=\"57.6\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"32.0\" y1=\"29.0\" x2=\"38.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"47.6\" y1=\"29.0\" x2=\"40.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"49.6\" y1=\"29.0\" x2=\"56.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"65.2\" y1=\"29.0\" x2=\"58.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"41.1\" y1=\"23.0\" x2=\"41.1\" y2=\"77.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "Ada Lovelace|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"Ada Lovelace: textile-block Wright composition with usonian detail, 3 planes, waiting\"><g><rect data-wright-layer=\"primary-mass\" x=\"26.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"22.4\" y=\"49.2\" width=\"57.6\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"32.0\" y1=\"29.0\" x2=\"38.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"47.6\" y1=\"29.0\" x2=\"40.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"49.6\" y1=\"29.0\" x2=\"56.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"65.2\" y1=\"29.0\" x2=\"58.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"41.1\" y1=\"23.0\" x2=\"41.1\" y2=\"77.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "Ada Lovelace|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"Ada Lovelace: textile-block Wright composition with usonian detail, 3 planes, error\"><g><rect data-wright-layer=\"primary-mass\" x=\"26.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(8 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"35.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"22.4\" y=\"49.2\" width=\"57.6\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"18.0\" y=\"62.7\" width=\"70.0\" height=\"1.6\" fill=\"hsl(170 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"29.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"40.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"51.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"32.0\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"40.8\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"49.6\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.4\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"67.2\" y=\"62.0\" width=\"6.8\" height=\"9.0\" fill=\"none\" stroke=\"hsl(170 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"32.0\" y1=\"29.0\" x2=\"38.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"47.6\" y1=\"29.0\" x2=\"40.8\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"49.6\" y1=\"29.0\" x2=\"56.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"65.2\" y1=\"29.0\" x2=\"58.4\" y2=\"38.0\" stroke=\"hsl(170 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"41.1\" y1=\"23.0\" x2=\"41.1\" y2=\"77.0\" stroke=\"hsl(8 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+      "demo-agent|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "demo-agent|{\"size\":24}": "<svg viewBox=\"0 0 100 100\" width=\"24\" height=\"24\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"3\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.8\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "demo-agent|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "demo-agent|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes, thinking\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
+      "demo-agent|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes, waiting\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
+      "demo-agent|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes, error\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"hsl(220 48% 30%)\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"hsl(8 56% 42%)\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"hsl(8 44% 46%)\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"hsl(8 52% 50%)\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"hsl(220 62% 52%)\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>"
     },
     "mounted": {
       "maya|{}": [
         {
           "state": "working",
           "t": 1000,
-          "hash": "56ffd440aa496820306d552f1c6de7d3ed0090ca930c148fb045089e5ab11154"
+          "hash": "a9cbe1fcbc65221b7bd3428bf2deb61472b1fa54c8a67b535ebfea1fd3789b29"
         },
         {
           "state": "working",
           "t": 1033,
-          "hash": "56ffd440aa496820306d552f1c6de7d3ed0090ca930c148fb045089e5ab11154"
+          "hash": "16dbe6567d9e425e2aa6667c969e701095fc9da969aff48b96148ee1c62e85fb"
         },
         {
           "state": "working",
           "t": 1066,
-          "hash": "0b4c66621e5f0fcb559f6279f2d9f672d28fa77b3c2b4e1488767a54f6d8e258"
+          "hash": "d90fc5a9a14cff9982bdb72f70f1a69db230956f1c7e4e54c6c9705231ec3088"
         },
         {
           "state": "working",
           "t": 1099,
-          "hash": "0b4c66621e5f0fcb559f6279f2d9f672d28fa77b3c2b4e1488767a54f6d8e258"
+          "hash": "7757679540244a5f6362b3f3be8a00fe53ff7b101e27ae2f0d1163c7572fd422"
         },
         {
           "state": "working",
           "t": 1132,
-          "hash": "292ab50064728c74c412350a0342d65400a51e3e2463ac76186aa1ffe46f8050"
+          "hash": "e5ace8a34a58c603993a92070481741a8c1bbec1b47e838a39ca4ce35f2f84b9"
         },
         {
           "state": "working",
           "t": 1165,
-          "hash": "292ab50064728c74c412350a0342d65400a51e3e2463ac76186aa1ffe46f8050"
+          "hash": "e5ace8a34a58c603993a92070481741a8c1bbec1b47e838a39ca4ce35f2f84b9"
         },
         {
           "state": "working",
           "t": 1198,
-          "hash": "292ab50064728c74c412350a0342d65400a51e3e2463ac76186aa1ffe46f8050"
+          "hash": "9a09b3832771304b2bbc53c0b98ffdc5de095e379c12b3bd4e92e47152778fc4"
         },
         {
           "state": "working",
           "t": 1231,
-          "hash": "6af2ec58ed4b90701ae724511a21ae11965a8ee705fe4793ce699eab93389dde"
+          "hash": "b1dd98463990c4a25645c6d81af929b001743c896dd5b0e9f25b4f649a77a3ce"
         },
         {
           "state": "working",
           "t": 1264,
-          "hash": "6af2ec58ed4b90701ae724511a21ae11965a8ee705fe4793ce699eab93389dde"
+          "hash": "20e702371ea0759e973057495958d36f33476d69fd803c5ba3308a1223955c2b"
         },
         {
           "state": "working",
           "t": 1297,
-          "hash": "7725c3e9810b7673d9a7bd605b912e72829a72e8c8e7b5673e5a9217927a5571"
+          "hash": "b38473eef14e9037504deec320eff62295a83d2597cf3c00b17ee4d0187353bb"
         },
         {
           "state": "waiting",
           "t": 1330,
-          "hash": "59a5fec45e731d65e814c588458bd821f1f06efaca3dc5102073321ade448327"
+          "hash": "f2fa5a436b352ad2d2628c61f3b961adf24841c809313391d39bb33937f364cd"
         },
         {
           "state": "waiting",
           "t": 1363,
-          "hash": "42cb4152554cc33d18daa91b640144e15aa0a3e50d23e8b0f4bbc8fa7e0f5d90"
+          "hash": "e8283f747e4906fe8e79d8614ba4ab6419a8a40b55d487fd8bfba1573b2a92e6"
         },
         {
           "state": "waiting",
           "t": 1396,
-          "hash": "42cb4152554cc33d18daa91b640144e15aa0a3e50d23e8b0f4bbc8fa7e0f5d90"
+          "hash": "e8283f747e4906fe8e79d8614ba4ab6419a8a40b55d487fd8bfba1573b2a92e6"
         },
         {
           "state": "waiting",
           "t": 1429,
-          "hash": "039e49be6378da3cdbce4e94c90915ee2095a3e7348e63adab8e9d0360c3c567"
+          "hash": "ae08e03a3ffcce20880a6cd31091a99ad4de97c03e0625bc317777e63ba2af6f"
         },
         {
           "state": "thinking",
           "t": 1462,
-          "hash": "0d3b0f3ae240481427c93aeab65f8873eac52c03c55b4ca38c28a8bf58442eaa"
+          "hash": "322d9a4a2ad1519d316b18aee92748fd04ba09063cf7f6b546c70bcf4fd9e21a"
         },
         {
           "state": "thinking",
           "t": 1495,
-          "hash": "b42379336f6413502b5d334a98efb85dd34708292dd532220e27a97fc7f2261a"
+          "hash": "aed5fc6d3ebe78c4d54fd9534cfbe09300a20492e56a63dfc9272aa8ba723c84"
         },
         {
           "state": "thinking",
           "t": 1528,
-          "hash": "b42379336f6413502b5d334a98efb85dd34708292dd532220e27a97fc7f2261a"
+          "hash": "aed5fc6d3ebe78c4d54fd9534cfbe09300a20492e56a63dfc9272aa8ba723c84"
         },
         {
           "state": "thinking",
           "t": 1561,
-          "hash": "52d42e5ce5d56c2291ef55c1633341fb0b0369fa1384cea7cf7aba77fb8fd7b9"
+          "hash": "b2e32f7ea866c04ae3b1d94e7b34c3fb7ce6cc9108e9d6d462e95592ec0daf3a"
         },
         {
           "state": "sleeping",
           "t": 1594,
-          "hash": "fd58fecfc324571ae93fc3a90af8070e6d837f45984ebe3478cf0d71378c39de"
+          "hash": "5b92c29980724b0eac1e7cef544292e548b9ef9b563b229200280c5248e7ed6d"
         },
         {
           "state": "sleeping",
           "t": 1627,
-          "hash": "fd58fecfc324571ae93fc3a90af8070e6d837f45984ebe3478cf0d71378c39de"
+          "hash": "ae1cea16f750203e459d06b8b6c1b1e0942d7ecbe7dee607d9f897a86c9adce3"
         },
         {
           "state": "sleeping",
           "t": 1660,
-          "hash": "b6ff2c7a7fa947fa25c088d4bce3d0ded7eeb1b507161fb4da175982f1432ba1"
+          "hash": "6fe5ec774a01fd3aa2b64bbe7acd87196fe14167dffe8636659687d2fa2cd289"
         },
         {
           "state": "sleeping",
           "t": 1693,
-          "hash": "5490f01bb75c51e7105cf0c85c17c0db08c37ce5513b2d46f2816fd4d5511fbc"
+          "hash": "d79daeef186d0cf8941f608c515edf91d194c30d06189ce20712557bd93bf16a"
         },
         {
           "state": "sending",
           "t": 1726,
-          "hash": "48973c3ab21e55f056d4a140e5e4843258825bb55a324b9913abee0f1722a6e2"
+          "hash": "82c1f1c29b90346b9c255b94f0fd3237022d06c02872db9aea03fc3dffa47997"
         },
         {
           "state": "sending",
           "t": 1759,
-          "hash": "d904a0c7d01863222b632d001428379a2faaa3d9c224c28d2fa3059ef2d070dc"
+          "hash": "489cc79191770251bbe62b6406c3bd7152ea84955cf93e4691cfe01e59dacd4f"
         },
         {
           "state": "sending",
           "t": 1792,
-          "hash": "bd509caed78e03cc1d00f585db8e44f30ad37570056dcfd6d41e77d95220414b"
+          "hash": "76867b77fb7eced913d6872dc6ad36cf859a6a843f7cd27e0a29b7502e2bc921"
         },
         {
           "state": "sending",
           "t": 1825,
-          "hash": "bcb6889da9f4cfa50294936c7b742df574462fc2093a4d5a39db3a0e5319c7d4"
+          "hash": "b48b4fe7796635e40d677eb4ceafe0de486964a547f8865c1cff492bca175330"
         },
         {
           "state": "receiving",
           "t": 1858,
-          "hash": "2d88aef18002a1aae0f15e019a5fe9e1e7e2214dc88a74da6f04cc7e74f11326"
+          "hash": "9e40bacc1de4dd87c6eeb82753c6bbb01dcbcfbc78eefc9af650fdaf1f8d4c8e"
         },
         {
           "state": "receiving",
           "t": 1891,
-          "hash": "1460f3fd0a623fb92f9980144a8d355eeb2ed38b6ed6765c932a66d7dd49b360"
+          "hash": "532162b4c980a389fa0e54bd9696532c79dbef4e3f59921927287bdb517873c8"
         },
         {
           "state": "receiving",
           "t": 1924,
-          "hash": "be74a01d1896ae0794fd7757853cef7fc2e36812a8adfff34f893b9129f315e6"
+          "hash": "3c93c963ed5f579e1132f326e0f75a98b6dd341de82ee4af8ec992ff416226cb"
         },
         {
           "state": "receiving",
           "t": 1957,
-          "hash": "66ef936cc32e6c2e3ee555f63e3caa3427c8d3e8603470996a57ba3bbcc82a96"
+          "hash": "3f546ea6afa8b45ae6576c3a696ebf1af8ba8793ac2b27212f08eb1594adf1d6"
         },
         {
           "state": "done",
           "t": 1990,
-          "hash": "f2b632ab020b921e638351948a364afabeb6685e940ee33652e77564bf221b42"
+          "hash": "f6f9d3190e24886710a10984b0103d10ac89cd28f7fac60470d490644ad7001b"
         },
         {
           "state": "done",
           "t": 2023,
-          "hash": "68add805c0abbb63706740e07c11ac5e4a2c2f9910b05e06e3b64b03f98abb02"
+          "hash": "0f96e03786cb420ccfc9ae315bcfe0f08da64c8ac233b37f6f85aaeae16c3803"
         },
         {
           "state": "done",
           "t": 2056,
-          "hash": "62560774009f8fe89e09b05b223f8b1f34da73c1c44fefd7096e49d6ba65eb36"
+          "hash": "c38699c2ad7e0b3c0e024d5adcaa88e6c86373958d3c225c72122cb11a9094ca"
         },
         {
           "state": "done",
           "t": 2089,
-          "hash": "ba947be4f29714ace80b7ff939f001400fa333ccdcc04c8789305b974e83a299"
+          "hash": "0ee3a9cd0cd30098c8146e8d3756f3a57cb7d1cd4f48f7b594bf1cfa1ba0c02c"
         },
         {
           "state": "error",
           "t": 2122,
-          "hash": "c3277ee8f9e0041d0fda78a41a3c5d86e287a8e073a589ab8a1ca98b64916f47"
+          "hash": "c109639db0f2693539bf76a14fb4eef95633d21481353a2a12ad846bb10e0c22"
         },
         {
           "state": "error",
           "t": 2155,
-          "hash": "92e92ba6ec38036a94a342ff62f6a8051c24ddd0b2541ee0fce60b92eb4ab43e"
+          "hash": "1887264be3b0fc48a79839889e544146711f6bb4ecbc4b37581c5c78a4540164"
         },
         {
           "state": "error",
           "t": 2188,
-          "hash": "f3b5eb8e169aa7115413334a0e0a50792e3b41e9f51a1df510e59028a60a3fe5"
+          "hash": "8b542f68d0d51c7be486fe4365f1ac2fe34d279743ca9a51821feb3ff7decc52"
         },
         {
           "state": "error",
           "t": 2221,
-          "hash": "970993c7001dfe031a71704d6f2139c20350a512a067d9dd157179cb7c73f0d0"
+          "hash": "30a6b4b5e911d9b2b85b600ad8b7e8db9fe22b072f95c62d7a71ab8182f7b9d8"
         },
         {
           "state": "idle",
           "t": 2254,
-          "hash": "342a02259a02df2690667a05623faa7f28644a9715b84f002a7fd0a86026870e"
+          "hash": "1037680d2da6d732d6013efe122312358855e6db8b07c1ed4854d08d1bfa9418"
         },
         {
           "state": "idle",
           "t": 2287,
-          "hash": "e0954ebc0cbea6d3e6a55ca2608c135b11a276068bdbff27d37d88b423355b3f"
+          "hash": "5be89c30659559c254dcba153e2fb48a9b920de0a55f910f5d4a2a9c22691cfc"
         },
         {
           "state": "idle",
           "t": 2320,
-          "hash": "d8258bf6b660b13672800c8d9c6a20aa0238330a4d8cdba850799f34fa605cb9"
+          "hash": "fd9fa1bf65dd02ebefc9d329cdfe395b0cb845274800e86e2b40ee83050591b2"
         },
         {
           "state": "idle",
           "t": 2353,
-          "hash": "4f634cb78e400ef445eac50ddc0d6491346e2404d86e5e9b55bfb8783837cbde"
+          "hash": "28b6ff45c1e3fc6a8b8465e27176133ab4acac7c2aaa18fdc1c80f0487ddecb2"
         }
       ],
       "build-bot-7|{}": [
         {
           "state": "working",
           "t": 1000,
-          "hash": "6bc06f2eb022ab0e7de49142bdaf2c0ea505e1ccf8cfd4dc9354795e71e146f8"
+          "hash": "4243436a0b399f4c892e526c145eb124b5238933f0660a08b3aea9e6a012629b"
         },
         {
           "state": "working",
           "t": 1033,
-          "hash": "6bc06f2eb022ab0e7de49142bdaf2c0ea505e1ccf8cfd4dc9354795e71e146f8"
+          "hash": "4243436a0b399f4c892e526c145eb124b5238933f0660a08b3aea9e6a012629b"
         },
         {
           "state": "working",
           "t": 1066,
-          "hash": "c720b9929bde85da0444929ecf68049e72b42b633e2d972c030107c21231dec3"
+          "hash": "15a16773456e365e008669270423040bd7144154a009d691c10aa3e61510c15e"
         },
         {
           "state": "working",
           "t": 1099,
-          "hash": "c720b9929bde85da0444929ecf68049e72b42b633e2d972c030107c21231dec3"
+          "hash": "15a16773456e365e008669270423040bd7144154a009d691c10aa3e61510c15e"
         },
         {
           "state": "working",
           "t": 1132,
-          "hash": "c720b9929bde85da0444929ecf68049e72b42b633e2d972c030107c21231dec3"
+          "hash": "1663f12181bb6fc3629335ed0e97945b3472b4c6605968bbbff39ca7e8121825"
         },
         {
           "state": "working",
           "t": 1165,
-          "hash": "82f921e1aafdfd4f40b975868d8005a42f08fceb0e9ca8d2ef4b60d98cfb8a1e"
+          "hash": "f6a8c44fc45b943bb31eb49aa97279094187f02dd15a539128d90948a6538370"
         },
         {
           "state": "working",
           "t": 1198,
-          "hash": "ae1b7f0069a8788956f029da87ddc4c2b80e9f369957236f26513e8f05b98728"
+          "hash": "2a447e99b5784cb071d031ecf57bf9aadf9c95160151f45ca158e71ef9715bb7"
         },
         {
           "state": "working",
           "t": 1231,
-          "hash": "ae1b7f0069a8788956f029da87ddc4c2b80e9f369957236f26513e8f05b98728"
+          "hash": "2a447e99b5784cb071d031ecf57bf9aadf9c95160151f45ca158e71ef9715bb7"
         },
         {
           "state": "working",
           "t": 1264,
-          "hash": "ae1b7f0069a8788956f029da87ddc4c2b80e9f369957236f26513e8f05b98728"
+          "hash": "2a447e99b5784cb071d031ecf57bf9aadf9c95160151f45ca158e71ef9715bb7"
         },
         {
           "state": "working",
           "t": 1297,
-          "hash": "ae1b7f0069a8788956f029da87ddc4c2b80e9f369957236f26513e8f05b98728"
+          "hash": "6961ca2ea153ec5267ffdfe368f4716d97dd14de9f3a999be24d70503856f924"
         },
         {
           "state": "waiting",
           "t": 1330,
-          "hash": "4809615753b4c5abba00f723c67e463a52200291a2ecb334c77728517627955c"
+          "hash": "2b9ac7e8f197f71190744c007949d06246f747cb8ad29b8b6889e6c72121f148"
         },
         {
           "state": "waiting",
           "t": 1363,
-          "hash": "a2983b51475bc4d862f16d846894ebc94ede6cd6ac6832cdbbdaa28fe404c964"
+          "hash": "c952371b2ceeebafd4f0db4c29450863aeea9e98c3230aff7c7f3d574f88f839"
         },
         {
           "state": "waiting",
           "t": 1396,
-          "hash": "a2983b51475bc4d862f16d846894ebc94ede6cd6ac6832cdbbdaa28fe404c964"
+          "hash": "db32dd19c1222f15548802cc15eeaba58e3b3be793dfd3267b6dd5e4706707dc"
         },
         {
           "state": "waiting",
           "t": 1429,
-          "hash": "949a9b55d96a45afa09977f238b5ad6e28aaa4678d603f180dd5ef7b52c1c16e"
+          "hash": "fcc4128c777d6b02029a8696fec786265609c57d8d7b13464f72e1c73f04c17b"
         },
         {
           "state": "thinking",
           "t": 1462,
-          "hash": "a81ad97223d3b340fe2461bbb73d6fce651f7f4e8ae5fabdb5fe72c3e2d22ec4"
+          "hash": "f3788c3d2b75803aae3ef56d62b69e179d93b0867b2c4626c1fa221336ecd320"
         },
         {
           "state": "thinking",
           "t": 1495,
-          "hash": "a81ad97223d3b340fe2461bbb73d6fce651f7f4e8ae5fabdb5fe72c3e2d22ec4"
+          "hash": "f3788c3d2b75803aae3ef56d62b69e179d93b0867b2c4626c1fa221336ecd320"
         },
         {
           "state": "thinking",
           "t": 1528,
-          "hash": "a81ad97223d3b340fe2461bbb73d6fce651f7f4e8ae5fabdb5fe72c3e2d22ec4"
+          "hash": "f3788c3d2b75803aae3ef56d62b69e179d93b0867b2c4626c1fa221336ecd320"
         },
         {
           "state": "thinking",
           "t": 1561,
-          "hash": "a81ad97223d3b340fe2461bbb73d6fce651f7f4e8ae5fabdb5fe72c3e2d22ec4"
+          "hash": "f3788c3d2b75803aae3ef56d62b69e179d93b0867b2c4626c1fa221336ecd320"
         },
         {
           "state": "sleeping",
           "t": 1594,
-          "hash": "5203fa737b169f725ef3867186779bb7ecbc975b0670eef32df84099d410de59"
+          "hash": "8944ef7c6cd5b2d7addfcd3ed9416c3f1927116ed11fb446209b8c690501990d"
         },
         {
           "state": "sleeping",
           "t": 1627,
-          "hash": "8b5802664bb85dae9baaf86242074e1a965a8855f63f462cda869878d22f867e"
+          "hash": "d2f429607aaf8eb1dfc92c73445fd7825a8a52a766292f3d030ec8a91e93a654"
         },
         {
           "state": "sleeping",
           "t": 1660,
-          "hash": "8b5802664bb85dae9baaf86242074e1a965a8855f63f462cda869878d22f867e"
+          "hash": "d2f429607aaf8eb1dfc92c73445fd7825a8a52a766292f3d030ec8a91e93a654"
         },
         {
           "state": "sleeping",
           "t": 1693,
-          "hash": "8b5802664bb85dae9baaf86242074e1a965a8855f63f462cda869878d22f867e"
+          "hash": "697a814aed3693bf3ba44e910210de5a56ede3926a64ff6af417b28634cb2767"
         },
         {
           "state": "sending",
           "t": 1726,
-          "hash": "76bf9f3b67c9f81617ce861363a4afdb4473b6a811f6733635a132218c8d1d6a"
+          "hash": "8f506f6c16f15f94a15fb44de33036062b84f3fe23d51d5dde34c2cb3c9c6209"
         },
         {
           "state": "sending",
           "t": 1759,
-          "hash": "072a79c76c3b51f300e1168ba3149c96c3de6eb9de025a897d83230f45655c0d"
+          "hash": "99972f8b10596c5c1898214e835dd3d8944ab65cce4ea9db04b029099bb8558e"
         },
         {
           "state": "sending",
           "t": 1792,
-          "hash": "fcb90e462232e2ac5204aeb36b34e8d7a1552400244380f58258bef109ec798d"
+          "hash": "b3e0df527ceecbb6fec1eb4f08b5a1a1facfa5c7440d14ede56fb89c79d53264"
         },
         {
           "state": "sending",
           "t": 1825,
-          "hash": "283215346df14b9c962d11bf880038b4c5c89d0e853615b326f8403e1733c4e7"
+          "hash": "16d9705ca612dcc497d11b7174038ab89c9db86fcaf8d1786d8099eb4f901849"
         },
         {
           "state": "receiving",
           "t": 1858,
-          "hash": "8a4d30b6caee0338279e2fd013a46189a4e469cf134839c95f909a6c9759c6ea"
+          "hash": "8b2772374c4eff113de05edfabf252fdfb3cbf92245f0556c399eb02a4dd0bb8"
         },
         {
           "state": "receiving",
           "t": 1891,
-          "hash": "c77276e663b4e595bb219244ddb4957b07bb528cf83575e3c4ef0564d6ab7cdf"
+          "hash": "a521f4366121a0922709f1d49c617b92ead2db7a83640e8a577baa9fb68c28a7"
         },
         {
           "state": "receiving",
           "t": 1924,
-          "hash": "78afa0b2a127d26a9ab02e17153f8a4fb970688bea40ce65484d7ba5e6710ba7"
+          "hash": "ea0020669390499bc0eea0a39ad6aebdba7f6d3b57728c78ecaaede64faa9d84"
         },
         {
           "state": "receiving",
           "t": 1957,
-          "hash": "a334c6e1fb22178d4a07000808d58b53b68d92698678f4ca3feeb01c413737da"
+          "hash": "e13bef6aa4e1e45f38c176935750b7da84a01712b6e85d6fa2044093d54dc2b1"
         },
         {
           "state": "done",
           "t": 1990,
-          "hash": "b44af1e2b158f1d6c24b4d6d5abe68cf5001db17d658a9ac8a66dd60123df812"
+          "hash": "139df036ead772cec2a48058fdde56f15038284b594d0de4caedb04dd96bb6cb"
         },
         {
           "state": "done",
           "t": 2023,
-          "hash": "4f3380e7781a329f5dabaeaf6deff47b28066b65bd9c939a5eec4415827a3ba9"
+          "hash": "180daf6b34a27b04b0fcf3f32e182e33c4a2c1401314727a7126a83ed53b61fa"
         },
         {
           "state": "done",
           "t": 2056,
-          "hash": "d1c7c4cd0bb4cc33a06e93b9f8f429ecb31d8025e3e26a40f3635fe925c32ded"
+          "hash": "282ad8dc5bec4897d558e01ffb5182e4a3d030590dbd8ce20a813ac464d8fff7"
         },
         {
           "state": "done",
           "t": 2089,
-          "hash": "58e3de52b2436911dca11ec7c44206fa09ee5840b79fda20d86a54523e21cbda"
+          "hash": "2f5b3077091bc2e89593a67fbb0ba5cc2f69c9aa9613c01b451cd73b99d370fe"
         },
         {
           "state": "error",
           "t": 2122,
-          "hash": "d7195972785bfaccb70646b1bf31ea904ec9cda4b5450fbdda32fdbf164c4905"
+          "hash": "f21ca95026a162a3e4d5549639ce9943ab8d6ced9e22022fcd087a9ba2eec1d0"
         },
         {
           "state": "error",
           "t": 2155,
-          "hash": "f246c979e1661387213e30a26cf55a41b8e48f3e1b959e9ab7c627b695874990"
+          "hash": "f893c013544dc29ee54c2692dc160a732357969c36929662956f80a94c217e0b"
         },
         {
           "state": "error",
           "t": 2188,
-          "hash": "1ce5d43483eabf7b5a096059aff9d76028e296ad3a5842d7e0654807c8fe814a"
+          "hash": "fd4c4677180ca79090e765aa21e0e518a2eeb9b50347de4c1a1f5cfef7e75ee5"
         },
         {
           "state": "error",
           "t": 2221,
-          "hash": "7084b4d8cb6ac28ce11d3ce315f00e8dc6f8754c01df6e40c510169714e6459b"
+          "hash": "e48a907134be86f257aef15645b43f5655a677c20cc7010d3049b2fe2e0c040d"
         },
         {
           "state": "idle",
           "t": 2254,
-          "hash": "058e8cfe0daf61d0137c74f9d869bbd302889a0aaf5f462c5884a66cc2fb8fb7"
+          "hash": "2d355fe95505ba0d8c0c8e6c9b1fe53e2abf6fb19d10e7fe4efdba0a5aca034d"
         },
         {
           "state": "idle",
           "t": 2287,
-          "hash": "058e8cfe0daf61d0137c74f9d869bbd302889a0aaf5f462c5884a66cc2fb8fb7"
+          "hash": "0e2504ca7bc750674b108c54f705397ea2ae5c6f12c9113838762dcc51e7bd54"
         },
         {
           "state": "idle",
           "t": 2320,
-          "hash": "74d7f59abbe547f1ddf1cce0b31e1600c88d49897923447dfbd99a01563a57d0"
+          "hash": "09d91990d2325bec1c992461f520f5c3e82fb30bd7d975269bf74be08230af72"
         },
         {
           "state": "idle",
           "t": 2353,
-          "hash": "8ede31923cbacedc0ef5777a7696e105b259a1a435cd58be6e6e9b6c253ffd46"
+          "hash": "2b3dda9c58644226906cad184a7253124f3ae05c6454a590d42bb014c5041441"
         }
       ],
       "maya|{\"size\":24}": [
         {
           "state": "working",
           "t": 1000,
-          "hash": "022b8b05ddd716ad1e7c48cdae04259c4f5cba8baf003ffeb7cd75c58ec88522"
+          "hash": "65df50e9aff116757f1fac85c6bad99c89d47b903928248e3fada4048509d325"
         },
         {
           "state": "working",
           "t": 1033,
-          "hash": "022b8b05ddd716ad1e7c48cdae04259c4f5cba8baf003ffeb7cd75c58ec88522"
+          "hash": "19c1e018d8062ad9bdb643f7ee3bf971a827eaee376914816907299ec101cd7b"
         },
         {
           "state": "working",
           "t": 1066,
-          "hash": "53e2340ae484903341079deed18760c29e2376e64e22dc3e1c304c5843d3461e"
+          "hash": "2a49862eacaec882e776b016b3731f167de75dc14233123604a42c26ba43ebc8"
         },
         {
           "state": "working",
           "t": 1099,
-          "hash": "53e2340ae484903341079deed18760c29e2376e64e22dc3e1c304c5843d3461e"
+          "hash": "33953a9b774ef556864ef18a7c27f620d9775611531152c061e2642f7775aa85"
         },
         {
           "state": "working",
           "t": 1132,
-          "hash": "303c70d9f96ee5cd54ba7c34150c8679b78ee9e90a70093023b3a771c69c24f7"
+          "hash": "d38aa499db30cf1dbc2f4383822ff551eba3633e2a457b4c44e710fda454abed"
         },
         {
           "state": "working",
           "t": 1165,
-          "hash": "303c70d9f96ee5cd54ba7c34150c8679b78ee9e90a70093023b3a771c69c24f7"
+          "hash": "d38aa499db30cf1dbc2f4383822ff551eba3633e2a457b4c44e710fda454abed"
         },
         {
           "state": "working",
           "t": 1198,
-          "hash": "303c70d9f96ee5cd54ba7c34150c8679b78ee9e90a70093023b3a771c69c24f7"
+          "hash": "9d37ab7ccac0dcd14156bd60fb0e7143ed8d360e1ff04bf58592f2d1f2a5ad6a"
         },
         {
           "state": "working",
           "t": 1231,
-          "hash": "e18c640b4c67a825bc28abf0a2d9ba105d902d19c47c3d161dca46840d79dc5d"
+          "hash": "96806ef703241a00b662dc2b685a9a495325edb6a46ae02577057f78c0e30a42"
         },
         {
           "state": "working",
           "t": 1264,
-          "hash": "e18c640b4c67a825bc28abf0a2d9ba105d902d19c47c3d161dca46840d79dc5d"
+          "hash": "678a382a0463d83a7e9fcac7f8ecd23931217596d227618f13506f05abf566c0"
         },
         {
           "state": "working",
           "t": 1297,
-          "hash": "bd8d8d4f65977f729f02e2f556f586bf0ccf3b457ebce72e5a58e4f158095b23"
+          "hash": "6ecdced5838bca94fd30fd10ca60c547f0825137a185e9e5353aa3c241bff6ff"
         },
         {
           "state": "waiting",
           "t": 1330,
-          "hash": "aab2d74937d7900174e34c6131a72781033434d6b0010925ae2f1791d92ecc73"
+          "hash": "1c0839421247081b22a7fca0a500dd36c9ef30f9ce23afc2e81817ca82b67cae"
         },
         {
           "state": "waiting",
           "t": 1363,
-          "hash": "ba75781a4f89b6c738b03cdb1472eade6c2697b39530401a3fca5e7714083a13"
+          "hash": "e9e454e202146ee88f204723d74035b2a6e6c83084b7ad76db184f85d4d8f6db"
         },
         {
           "state": "waiting",
           "t": 1396,
-          "hash": "ba75781a4f89b6c738b03cdb1472eade6c2697b39530401a3fca5e7714083a13"
+          "hash": "e9e454e202146ee88f204723d74035b2a6e6c83084b7ad76db184f85d4d8f6db"
         },
         {
           "state": "waiting",
           "t": 1429,
-          "hash": "e92cf51c350fc1ace0382ec17d68ed7d506c52b827ee2282888d5481f8937bae"
+          "hash": "6fca8457088f6d26e1c387497bcc1985f3e1b366e7461388d90c2c0273f9ae79"
         },
         {
           "state": "thinking",
           "t": 1462,
-          "hash": "ffd6d06e83f5fa48b8489d425d46b328c212686f778bbdb9e44fb7d68c670138"
+          "hash": "f9126964d5a688747934c59913f2a3c8ba4a125261b569c336fca16de312fe8c"
         },
         {
           "state": "thinking",
           "t": 1495,
-          "hash": "6c0bdd9a6ba67ccafbd1fe7fa3493106811476ab23247ec1b89c42442448ff19"
+          "hash": "6987e51f33314fa14181fa84ecde89cad8541d179f626e536b8769317c75bbe5"
         },
         {
           "state": "thinking",
           "t": 1528,
-          "hash": "319191213bd54d03777e293ff40343f6e0d185a2f4334d8d2c2e53eb9e254d4e"
+          "hash": "6987e51f33314fa14181fa84ecde89cad8541d179f626e536b8769317c75bbe5"
         },
         {
           "state": "thinking",
           "t": 1561,
-          "hash": "36684f9e4a04c11f2685f45a21b90104aefabb14f18ed691e886d58e38335d94"
+          "hash": "25520eaa4b83be8c1641cc429d49af2dd68374c8226f4b55ee46fc8536647f77"
         },
         {
           "state": "sleeping",
           "t": 1594,
-          "hash": "434a54c119d52ca4812c222310feac46994852096be91e9ed962ae240e000153"
+          "hash": "06fba322a7ca9b4f3b4213ff430250a0ac73c6c7f8b549f7c9ccaedbbf970d73"
         },
         {
           "state": "sleeping",
           "t": 1627,
-          "hash": "434a54c119d52ca4812c222310feac46994852096be91e9ed962ae240e000153"
+          "hash": "0de66b097ce5892bb2e13777f1bf43059812d70ac4c572e48aa4e78dc52576f5"
         },
         {
           "state": "sleeping",
           "t": 1660,
-          "hash": "a385aa46b7f5b7d3ef84858e4a0c4933204488c00fe1d0048eaccf2bafa4dd63"
+          "hash": "8e28f78fc160240641fd8e743cdc6d70dbbf356f264c6293b51233f5beac6219"
         },
         {
           "state": "sleeping",
           "t": 1693,
-          "hash": "d8b9d31174c68541f1d9fc0116b001e5c13f23492fdb24522d38ecb050f4aab8"
+          "hash": "0bd672b2b6eb6ac0df3fcf42025de2d421a11fbd6306e118c10ba51a6e5c4994"
         },
         {
           "state": "sending",
           "t": 1726,
-          "hash": "6b9be77de17ef657e0b22e80364fb29164251cab640a2f779bf5b1dc5d3a98ea"
+          "hash": "a91e25fdf7a2b48ddc0c4e08078de71640bdd1639b7b7bde5194f38cab637e09"
         },
         {
           "state": "sending",
           "t": 1759,
-          "hash": "1bc73996578c45d9ae35d338730a207263b22b4122eae835a1b0831d7f681563"
+          "hash": "0cf2aaffbc32de3eac11a46c3e176bd32cbae0ec8b8249af195bc8f76939f19e"
         },
         {
           "state": "sending",
           "t": 1792,
-          "hash": "ad4fd38756b9a2f0ed01a5cb3af9e3578d3ca74922ba8addc1c26b8764f68b58"
+          "hash": "18121cb056c46baf4843225c0f3f429ff493c35bd8c8a2a2734c105a1ad700ba"
         },
         {
           "state": "sending",
           "t": 1825,
-          "hash": "c77f8f73b773a4101744352caabbd1cab9f458d7507ae38089bddd69aafe55ee"
+          "hash": "0c03c48750cc84f51d1a5728425b8d5c92cfe5d996262c50fd7aaadfe9f21ef7"
         },
         {
           "state": "receiving",
           "t": 1858,
-          "hash": "ebc0db1ea5fbd781c074ac57c90478590e929057ab0de1ef00520f299e916f57"
+          "hash": "ffc6934a85f8c65bdfe0e1fcc0893efda9c30ff91c4e559c5dd11b171c0104b3"
         },
         {
           "state": "receiving",
           "t": 1891,
-          "hash": "ffe8c7672bd8c7fc76dc2bf2c126f194cbaa90fa691d783f4fe2d67ae4780851"
+          "hash": "3727d03917a0cf6c32e6aa332d2929372b6ce7c2cd3ce2be4c860398e7b9293e"
         },
         {
           "state": "receiving",
           "t": 1924,
-          "hash": "91583e753e5b88a786c6765c83b6196f5ad14df7da6f651e1aaeaca56e2b84e4"
+          "hash": "89698272cdda1afc7d345c02d08fb9f3836b3a03699bb2df5f58ffce0c2cebdb"
         },
         {
           "state": "receiving",
           "t": 1957,
-          "hash": "1652a0ca2877a7c8a6efabd8ec1923b293f8c0ebcae65a9ae51825103eac7c12"
+          "hash": "d41ac9130d5542f9518e2090e9a20e3c3a84047ab516012574ae5227821a8a88"
         },
         {
           "state": "done",
           "t": 1990,
-          "hash": "149df94702190221567a8aa9dd75c8fa84d74ebe79bc247e11ba357346173480"
+          "hash": "d4643ae9bfb650d04ddf9dc62c81d97e4eb6b22012ea0b83f0d39b8a08eca380"
         },
         {
           "state": "done",
           "t": 2023,
-          "hash": "7fdbd7971e7abb1cfcb47feaf54f095ee8fa1efdea52898e105971cc609e7ddc"
+          "hash": "2484bae30202ed75b31edbaecfb70bf19a44e0d821f2024411ad04c1646dd5e9"
         },
         {
           "state": "done",
           "t": 2056,
-          "hash": "132cca4354a7f126724a4f621cfcea1cf1c260df1dea6b5194c365725e8e05eb"
+          "hash": "0bc49175060bbe7fa4b6e0e43c89bacb70fd637396cb6755b6ded7bf6b3b80c8"
         },
         {
           "state": "done",
           "t": 2089,
-          "hash": "898c12f7e0e9c3921dc171c811b1d93f36b7c58599a46ef23bcb729f08540180"
+          "hash": "434d811e64f8d1bbcd04d14b8e51210283b22f06a5312182d79e5d62df6a9e7c"
         },
         {
           "state": "error",
           "t": 2122,
-          "hash": "d67711e5933316bbb0489e9d6fb020ccb6eed00e951644e9467735d9bd996759"
+          "hash": "3e2b0ad2b59a22347fbd784b425d2a0fecf6c5caa502f10aaeffb61e59dfcc3e"
         },
         {
           "state": "error",
           "t": 2155,
-          "hash": "405c1bdaede90c01d8b505a67716861d26d783593a5b1d5eb04c19a056745931"
+          "hash": "aa77cb215a2b624a9f4ca310e5c767c4051b70e762432a7312d474660843979b"
         },
         {
           "state": "error",
           "t": 2188,
-          "hash": "b3efabbbbe1184de824f22e64a481a40008d51ad2c51c8f86797f6dee26fa456"
+          "hash": "35a72be9b7f6d19147a889150ee0616dbf7f7d5aeda1f576559f8122d54c5632"
         },
         {
           "state": "error",
           "t": 2221,
-          "hash": "5689e59f05f9ae283071528afb38b198678a3b0c720b2c8ccab7e7110bf54291"
+          "hash": "35fc747fb8fce3aa8b35204b1364ec0263b1c28b2ee7df81496e862926105b1d"
         },
         {
           "state": "idle",
           "t": 2254,
-          "hash": "dad1cf8c9bcd1cc6d8a18e88ef6f4e8a12aabbd11ac5e7f81961ad33afb5f4e3"
+          "hash": "27066972f367edd26e71def7fddc07dc57e6126290ddb7fa7b1c4bb2d5067922"
         },
         {
           "state": "idle",
           "t": 2287,
-          "hash": "9bb3280d98b3468d297ea2f972f7b4be840b066fa63509f54cdbf60e4f5d08fd"
+          "hash": "4a09e36c187de0f48fb6ee3e9b97f5bfa7d467a0975bc1e0e94430fe28ec0506"
         },
         {
           "state": "idle",
           "t": 2320,
-          "hash": "4d7fa669a768843d0414b36253f79f6cf58f9d52b87f32a105a4b783b06a4bcf"
+          "hash": "393de375d671d84066d6278267eb434bad5a441e0921ad0722c0e951b5bb4a21"
         },
         {
           "state": "idle",
           "t": 2353,
-          "hash": "ad945dc1f80000d2357ec7853a62ad8d89c95c832a187e70771824e4331ca314"
+          "hash": "c4a817c402d47a944592eae342d87c6e66767a99919e705f236c54a399af8720"
         }
       ],
       "build-bot-7|{\"dark\":true}": [
         {
           "state": "working",
           "t": 1000,
-          "hash": "6bc06f2eb022ab0e7de49142bdaf2c0ea505e1ccf8cfd4dc9354795e71e146f8"
+          "hash": "4243436a0b399f4c892e526c145eb124b5238933f0660a08b3aea9e6a012629b"
         },
         {
           "state": "working",
           "t": 1033,
-          "hash": "6bc06f2eb022ab0e7de49142bdaf2c0ea505e1ccf8cfd4dc9354795e71e146f8"
+          "hash": "4243436a0b399f4c892e526c145eb124b5238933f0660a08b3aea9e6a012629b"
         },
         {
           "state": "working",
           "t": 1066,
-          "hash": "c720b9929bde85da0444929ecf68049e72b42b633e2d972c030107c21231dec3"
+          "hash": "15a16773456e365e008669270423040bd7144154a009d691c10aa3e61510c15e"
         },
         {
           "state": "working",
           "t": 1099,
-          "hash": "c720b9929bde85da0444929ecf68049e72b42b633e2d972c030107c21231dec3"
+          "hash": "15a16773456e365e008669270423040bd7144154a009d691c10aa3e61510c15e"
         },
         {
           "state": "working",
           "t": 1132,
-          "hash": "c720b9929bde85da0444929ecf68049e72b42b633e2d972c030107c21231dec3"
+          "hash": "1663f12181bb6fc3629335ed0e97945b3472b4c6605968bbbff39ca7e8121825"
         },
         {
           "state": "working",
           "t": 1165,
-          "hash": "82f921e1aafdfd4f40b975868d8005a42f08fceb0e9ca8d2ef4b60d98cfb8a1e"
+          "hash": "f6a8c44fc45b943bb31eb49aa97279094187f02dd15a539128d90948a6538370"
         },
         {
           "state": "working",
           "t": 1198,
-          "hash": "ae1b7f0069a8788956f029da87ddc4c2b80e9f369957236f26513e8f05b98728"
+          "hash": "2a447e99b5784cb071d031ecf57bf9aadf9c95160151f45ca158e71ef9715bb7"
         },
         {
           "state": "working",
           "t": 1231,
-          "hash": "ae1b7f0069a8788956f029da87ddc4c2b80e9f369957236f26513e8f05b98728"
+          "hash": "2a447e99b5784cb071d031ecf57bf9aadf9c95160151f45ca158e71ef9715bb7"
         },
         {
           "state": "working",
           "t": 1264,
-          "hash": "ae1b7f0069a8788956f029da87ddc4c2b80e9f369957236f26513e8f05b98728"
+          "hash": "2a447e99b5784cb071d031ecf57bf9aadf9c95160151f45ca158e71ef9715bb7"
         },
         {
           "state": "working",
           "t": 1297,
-          "hash": "ae1b7f0069a8788956f029da87ddc4c2b80e9f369957236f26513e8f05b98728"
+          "hash": "6961ca2ea153ec5267ffdfe368f4716d97dd14de9f3a999be24d70503856f924"
         },
         {
           "state": "waiting",
           "t": 1330,
-          "hash": "4809615753b4c5abba00f723c67e463a52200291a2ecb334c77728517627955c"
+          "hash": "2b9ac7e8f197f71190744c007949d06246f747cb8ad29b8b6889e6c72121f148"
         },
         {
           "state": "waiting",
           "t": 1363,
-          "hash": "a2983b51475bc4d862f16d846894ebc94ede6cd6ac6832cdbbdaa28fe404c964"
+          "hash": "c952371b2ceeebafd4f0db4c29450863aeea9e98c3230aff7c7f3d574f88f839"
         },
         {
           "state": "waiting",
           "t": 1396,
-          "hash": "a2983b51475bc4d862f16d846894ebc94ede6cd6ac6832cdbbdaa28fe404c964"
+          "hash": "db32dd19c1222f15548802cc15eeaba58e3b3be793dfd3267b6dd5e4706707dc"
         },
         {
           "state": "waiting",
           "t": 1429,
-          "hash": "949a9b55d96a45afa09977f238b5ad6e28aaa4678d603f180dd5ef7b52c1c16e"
+          "hash": "fcc4128c777d6b02029a8696fec786265609c57d8d7b13464f72e1c73f04c17b"
         },
         {
           "state": "thinking",
           "t": 1462,
-          "hash": "a81ad97223d3b340fe2461bbb73d6fce651f7f4e8ae5fabdb5fe72c3e2d22ec4"
+          "hash": "f3788c3d2b75803aae3ef56d62b69e179d93b0867b2c4626c1fa221336ecd320"
         },
         {
           "state": "thinking",
           "t": 1495,
-          "hash": "a81ad97223d3b340fe2461bbb73d6fce651f7f4e8ae5fabdb5fe72c3e2d22ec4"
+          "hash": "f3788c3d2b75803aae3ef56d62b69e179d93b0867b2c4626c1fa221336ecd320"
         },
         {
           "state": "thinking",
           "t": 1528,
-          "hash": "a81ad97223d3b340fe2461bbb73d6fce651f7f4e8ae5fabdb5fe72c3e2d22ec4"
+          "hash": "f3788c3d2b75803aae3ef56d62b69e179d93b0867b2c4626c1fa221336ecd320"
         },
         {
           "state": "thinking",
           "t": 1561,
-          "hash": "a81ad97223d3b340fe2461bbb73d6fce651f7f4e8ae5fabdb5fe72c3e2d22ec4"
+          "hash": "f3788c3d2b75803aae3ef56d62b69e179d93b0867b2c4626c1fa221336ecd320"
         },
         {
           "state": "sleeping",
           "t": 1594,
-          "hash": "5203fa737b169f725ef3867186779bb7ecbc975b0670eef32df84099d410de59"
+          "hash": "8944ef7c6cd5b2d7addfcd3ed9416c3f1927116ed11fb446209b8c690501990d"
         },
         {
           "state": "sleeping",
           "t": 1627,
-          "hash": "8b5802664bb85dae9baaf86242074e1a965a8855f63f462cda869878d22f867e"
+          "hash": "d2f429607aaf8eb1dfc92c73445fd7825a8a52a766292f3d030ec8a91e93a654"
         },
         {
           "state": "sleeping",
           "t": 1660,
-          "hash": "8b5802664bb85dae9baaf86242074e1a965a8855f63f462cda869878d22f867e"
+          "hash": "d2f429607aaf8eb1dfc92c73445fd7825a8a52a766292f3d030ec8a91e93a654"
         },
         {
           "state": "sleeping",
           "t": 1693,
-          "hash": "8b5802664bb85dae9baaf86242074e1a965a8855f63f462cda869878d22f867e"
+          "hash": "697a814aed3693bf3ba44e910210de5a56ede3926a64ff6af417b28634cb2767"
         },
         {
           "state": "sending",
           "t": 1726,
-          "hash": "76bf9f3b67c9f81617ce861363a4afdb4473b6a811f6733635a132218c8d1d6a"
+          "hash": "8f506f6c16f15f94a15fb44de33036062b84f3fe23d51d5dde34c2cb3c9c6209"
         },
         {
           "state": "sending",
           "t": 1759,
-          "hash": "072a79c76c3b51f300e1168ba3149c96c3de6eb9de025a897d83230f45655c0d"
+          "hash": "99972f8b10596c5c1898214e835dd3d8944ab65cce4ea9db04b029099bb8558e"
         },
         {
           "state": "sending",
           "t": 1792,
-          "hash": "fcb90e462232e2ac5204aeb36b34e8d7a1552400244380f58258bef109ec798d"
+          "hash": "b3e0df527ceecbb6fec1eb4f08b5a1a1facfa5c7440d14ede56fb89c79d53264"
         },
         {
           "state": "sending",
           "t": 1825,
-          "hash": "283215346df14b9c962d11bf880038b4c5c89d0e853615b326f8403e1733c4e7"
+          "hash": "16d9705ca612dcc497d11b7174038ab89c9db86fcaf8d1786d8099eb4f901849"
         },
         {
           "state": "receiving",
           "t": 1858,
-          "hash": "8a4d30b6caee0338279e2fd013a46189a4e469cf134839c95f909a6c9759c6ea"
+          "hash": "8b2772374c4eff113de05edfabf252fdfb3cbf92245f0556c399eb02a4dd0bb8"
         },
         {
           "state": "receiving",
           "t": 1891,
-          "hash": "c77276e663b4e595bb219244ddb4957b07bb528cf83575e3c4ef0564d6ab7cdf"
+          "hash": "a521f4366121a0922709f1d49c617b92ead2db7a83640e8a577baa9fb68c28a7"
         },
         {
           "state": "receiving",
           "t": 1924,
-          "hash": "78afa0b2a127d26a9ab02e17153f8a4fb970688bea40ce65484d7ba5e6710ba7"
+          "hash": "ea0020669390499bc0eea0a39ad6aebdba7f6d3b57728c78ecaaede64faa9d84"
         },
         {
           "state": "receiving",
           "t": 1957,
-          "hash": "a334c6e1fb22178d4a07000808d58b53b68d92698678f4ca3feeb01c413737da"
+          "hash": "e13bef6aa4e1e45f38c176935750b7da84a01712b6e85d6fa2044093d54dc2b1"
         },
         {
           "state": "done",
           "t": 1990,
-          "hash": "b44af1e2b158f1d6c24b4d6d5abe68cf5001db17d658a9ac8a66dd60123df812"
+          "hash": "139df036ead772cec2a48058fdde56f15038284b594d0de4caedb04dd96bb6cb"
         },
         {
           "state": "done",
           "t": 2023,
-          "hash": "4f3380e7781a329f5dabaeaf6deff47b28066b65bd9c939a5eec4415827a3ba9"
+          "hash": "180daf6b34a27b04b0fcf3f32e182e33c4a2c1401314727a7126a83ed53b61fa"
         },
         {
           "state": "done",
           "t": 2056,
-          "hash": "d1c7c4cd0bb4cc33a06e93b9f8f429ecb31d8025e3e26a40f3635fe925c32ded"
+          "hash": "282ad8dc5bec4897d558e01ffb5182e4a3d030590dbd8ce20a813ac464d8fff7"
         },
         {
           "state": "done",
           "t": 2089,
-          "hash": "58e3de52b2436911dca11ec7c44206fa09ee5840b79fda20d86a54523e21cbda"
+          "hash": "2f5b3077091bc2e89593a67fbb0ba5cc2f69c9aa9613c01b451cd73b99d370fe"
         },
         {
           "state": "error",
           "t": 2122,
-          "hash": "d7195972785bfaccb70646b1bf31ea904ec9cda4b5450fbdda32fdbf164c4905"
+          "hash": "f21ca95026a162a3e4d5549639ce9943ab8d6ced9e22022fcd087a9ba2eec1d0"
         },
         {
           "state": "error",
           "t": 2155,
-          "hash": "f246c979e1661387213e30a26cf55a41b8e48f3e1b959e9ab7c627b695874990"
+          "hash": "f893c013544dc29ee54c2692dc160a732357969c36929662956f80a94c217e0b"
         },
         {
           "state": "error",
           "t": 2188,
-          "hash": "1ce5d43483eabf7b5a096059aff9d76028e296ad3a5842d7e0654807c8fe814a"
+          "hash": "fd4c4677180ca79090e765aa21e0e518a2eeb9b50347de4c1a1f5cfef7e75ee5"
         },
         {
           "state": "error",
           "t": 2221,
-          "hash": "7084b4d8cb6ac28ce11d3ce315f00e8dc6f8754c01df6e40c510169714e6459b"
+          "hash": "e48a907134be86f257aef15645b43f5655a677c20cc7010d3049b2fe2e0c040d"
         },
         {
           "state": "idle",
           "t": 2254,
-          "hash": "058e8cfe0daf61d0137c74f9d869bbd302889a0aaf5f462c5884a66cc2fb8fb7"
+          "hash": "2d355fe95505ba0d8c0c8e6c9b1fe53e2abf6fb19d10e7fe4efdba0a5aca034d"
         },
         {
           "state": "idle",
           "t": 2287,
-          "hash": "058e8cfe0daf61d0137c74f9d869bbd302889a0aaf5f462c5884a66cc2fb8fb7"
+          "hash": "0e2504ca7bc750674b108c54f705397ea2ae5c6f12c9113838762dcc51e7bd54"
         },
         {
           "state": "idle",
           "t": 2320,
-          "hash": "74d7f59abbe547f1ddf1cce0b31e1600c88d49897923447dfbd99a01563a57d0"
+          "hash": "09d91990d2325bec1c992461f520f5c3e82fb30bd7d975269bf74be08230af72"
         },
         {
           "state": "idle",
           "t": 2353,
-          "hash": "8ede31923cbacedc0ef5777a7696e105b259a1a435cd58be6e6e9b6c253ffd46"
+          "hash": "2b3dda9c58644226906cad184a7253124f3ae05c6454a590d42bb014c5041441"
         }
       ],
       "Ada Lovelace|reduced": [
         {
           "state": "working",
-          "hash": "b612e14316339467115702a69a0c1ace98d522cc8d30a7c3863a4485cbd97122"
+          "hash": "668c1bc902462e56681f6c6eaccfae9214e56f7b36746575be8b11433e92e4ce"
         },
         {
           "state": "waiting",
-          "hash": "fec0e677c05fb60d4477925c182c6d3e726dbf55f5b9032b16e283d635dbbc09"
+          "hash": "b584503829678dae5b08d16de8f9e6db0b5e7af4cb0c20e8fd1106a8e47afe2c"
         },
         {
           "state": "thinking",
-          "hash": "6b6d04db19cf7b385e769fc318d25f35423233ffa707a52ace0da1c523e59413"
+          "hash": "7414041bb7f686ecc6f8b1ff2b5c1e708055a08c75166281265ab45c4ee6a541"
         },
         {
           "state": "sleeping",
-          "hash": "1b8bf4bbb3aa11a9b8197451670919330faaf714dcf7abfa6f2d0cd4746584fa"
+          "hash": "9184136d4de6169ea74795fc5242db7610840773d02c6ea94aa3fb6021bc0015"
         },
         {
           "state": "sending",
-          "hash": "9277e2a7d4e3f1e7d315a08e7dfe5a7f74cdc4694604d7ce1626844dc199de6b"
+          "hash": "cda30c751ec812b7fd7f6de6773b02e3f3374bed31c016ebe4a7b1ef4f2970cd"
         },
         {
           "state": "receiving",
-          "hash": "65f874a34a43ade572198b840d9b32ee3fb9949ca2fbac2b178ff6e3610990b5"
+          "hash": "fcfe15c270a66372ef9eccf5904c6dcae3e164010abde10e6217d8093310c8dc"
         },
         {
           "state": "done",
-          "hash": "efd1cee566e96d151920ff01cb6fcd8b86fa3094d1744cecfb1984a1e36b287a"
+          "hash": "1c66b9540866ff26ad29af7cc65999f0eb3d9977d51803443d1fcdd65860e8cf"
         },
         {
           "state": "error",
-          "hash": "b3d6f43c02665f8f904d2c0ed2c95046b3e9772522afde149f536ce2d3facd6a"
+          "hash": "6866c7fac3e4970694e72c9a565481556de3dfcf83d13270d685df01ff209880"
         },
         {
           "state": "idle",
-          "hash": "b1b21c98f948d676e26e88ebce56178166ce1d0655de0a0a298293569ca9b1fa"
+          "hash": "acf5867698f37c4d99c39cda2f138d96924cd1ae5a731b60818428c3c9913739"
         }
       ]
     }

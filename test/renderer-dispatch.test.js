@@ -168,10 +168,10 @@ describe('renderer dispatch', () => {
     const dom = installDom();
     const { renderStaticSVG, mountGlyph } = createBuiltInRenderer();
     const svg = renderStaticSVG('Ada Lovelace', { variant: 'wright', state: 'working' });
-    assert.match(svg, /aria-label="Ada Lovelace: .*Wright scaffold.*, working"/i);
+    assert.match(svg, /aria-label="Ada Lovelace: .*Wright composition.*, working"/i);
     const handle = mountGlyph(dom.container, 'Ada Lovelace', { variant: 'wright', state: 'working' });
     assert.equal(handle.variant, 'wright');
-    assert.match(dom.container.querySelector('svg').getAttribute('aria-label'), /Wright scaffold/i);
+    assert.match(dom.container.querySelector('svg').getAttribute('aria-label'), /Wright composition/i);
     handle.destroy();
   });
 
