@@ -4,6 +4,9 @@ import { test } from 'node:test';
 import { validateVariant } from '../src/variants/validate.js';
 import {
   WRIGHT_SPEC_VERSION,
+  WRIGHT_FAMILIES,
+  WRIGHT_DRAW_ORDER,
+  WRIGHT_HYBRID_COMPATIBILITY,
   deriveWright,
   describeWright,
   prepareWright,
@@ -14,6 +17,35 @@ import {
   flashWright,
   wright
 } from '../src/variants/wright.js';
+
+test('wright grammar contract names Prairie, art-glass, textile-block, and Usonian families', async (t) => {
+  assert.deepEqual(WRIGHT_FAMILIES, ['prairie', 'art-glass', 'textile-block', 'usonian']);
+  assert.ok(Object.isFrozen(WRIGHT_FAMILIES));
+
+  for (const family of WRIGHT_FAMILIES) {
+    await t.test(family, () => {
+      assert.ok(WRIGHT_HYBRID_COMPATIBILITY[family]);
+    });
+  }
+});
+
+test('wright grammar contract fixes draw order and bounds controlled hybrids', () => {
+  assert.deepEqual(WRIGHT_DRAW_ORDER, [
+    'dominantFamily', 'hybrid', 'secondaryFamily', 'massWidth',
+    'massHeight', 'massOffset', 'planeCount', 'planeSpread',
+    'gridColumns', 'gridRows', 'decoration', 'accent'
+  ]);
+  assert.ok(Object.isFrozen(WRIGHT_DRAW_ORDER));
+  assert.ok(Object.isFrozen(WRIGHT_HYBRID_COMPATIBILITY));
+
+  for (const family of WRIGHT_FAMILIES) {
+    const compatible = WRIGHT_HYBRID_COMPATIBILITY[family];
+    assert.ok(Object.isFrozen(compatible));
+    assert.equal(compatible.length, 2);
+    assert.equal(new Set(compatible).size, compatible.length);
+    assert.ok(compatible.every((secondary) => WRIGHT_FAMILIES.includes(secondary) && secondary !== family));
+  }
+});
 
 test('wright scaffold derive is deterministic and normalized', () => {
   const a = deriveWright('Ada Lovelace');

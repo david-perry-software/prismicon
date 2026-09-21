@@ -8,6 +8,27 @@ import { cyrb53 } from './seed.js';
 import { PALETTE, normalizeSeed } from './polyhedron.js';
 
 export const WRIGHT_SPEC_VERSION = 'wright-scaffold-v1';
+export const WRIGHT_FAMILIES = Object.freeze(['prairie', 'art-glass', 'textile-block', 'usonian']);
+export const WRIGHT_DRAW_ORDER = Object.freeze([
+  'dominantFamily',
+  'hybrid',
+  'secondaryFamily',
+  'massWidth',
+  'massHeight',
+  'massOffset',
+  'planeCount',
+  'planeSpread',
+  'gridColumns',
+  'gridRows',
+  'decoration',
+  'accent'
+]);
+export const WRIGHT_HYBRID_COMPATIBILITY = Object.freeze({
+  prairie: Object.freeze(['art-glass', 'usonian']),
+  'art-glass': Object.freeze(['prairie', 'textile-block']),
+  'textile-block': Object.freeze(['art-glass', 'usonian']),
+  usonian: Object.freeze(['prairie', 'textile-block'])
+});
 const TAU = Math.PI * 2;
 
 function hueMix(a, b, t) {
