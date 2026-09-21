@@ -4,10 +4,10 @@
  */
 
 import { defineVariant } from './registry.js';
-import { cyrb53 } from './seed.js';
+import { cyrb53, mulberry32 } from './seed.js';
 import { PALETTE, normalizeSeed } from './polyhedron.js';
 
-export const WRIGHT_SPEC_VERSION = 'wright-scaffold-v1';
+export const WRIGHT_SPEC_VERSION = 'wright-geometry-v1';
 export const WRIGHT_FAMILIES = Object.freeze(['prairie', 'art-glass', 'textile-block', 'usonian']);
 export const WRIGHT_DRAW_ORDER = Object.freeze([
   'dominantFamily',
@@ -39,22 +39,45 @@ function hueMix(a, b, t) {
 export function deriveWright(seed) {
   const norm = normalizeSeed(seed);
   const hash = cyrb53(norm);
-  const lineCount = 3 + (hash % 3);
-  const inset = 10 + (Math.floor(hash / 2 ** 8) % 12);
-  const horizon = 42 + (Math.floor(hash / 2 ** 16) % 17) - 8;
-  const cantilever = 12 + (Math.floor(hash / 2 ** 24) % 15);
-  const emphasis = hash % 2 === 0 ? 'horizontal' : 'vertical';
+  const random = mulberry32(hash);
+  const draws = Array.from({ length: WRIGHT_DRAW_ORDER.length }, () => random());
+  const dominantFamily = WRIGHT_FAMILIES[Math.floor(draws[0] * WRIGHT_FAMILIES.length)];
+  const hybrid = draws[1] < 0.5;
+  const compatibleFamilies = WRIGHT_HYBRID_COMPATIBILITY[dominantFamily];
+  const secondaryFamily = hybrid
+    ? compatibleFamilies[Math.floor(draws[2] * compatibleFamilies.length)]
+    : null;
+  const massWidth = 52 + Math.floor(draws[3] * 17);
+  const massHeight = 38 + Math.floor(draws[4] * 17);
+  const massOffset = -8 + Math.floor(draws[5] * 17);
+  const planeCount = 3 + Math.floor(draws[6] * 3);
+  const planeSpread = 6 + Math.floor(draws[7] * 5);
+  const gridColumns = 2 + Math.floor(draws[8] * 4);
+  const gridRows = 2 + Math.floor(draws[9] * 4);
+  const decoration = Math.floor(draws[10] * 3);
+  const accent = Math.floor(draws[11] * 4);
   const phase = ((Math.floor(hash / 2 ** 32) % 256) / 255) * TAU;
   const hueIdx = hash % PALETTE.length;
   return Object.freeze({
     spec: WRIGHT_SPEC_VERSION,
     seed: norm,
     hash,
-    lineCount,
-    inset,
-    horizon,
-    cantilever,
-    emphasis,
+    dominantFamily,
+    secondaryFamily,
+    massWidth,
+    massHeight,
+    massOffset,
+    planeCount,
+    planeSpread,
+    gridColumns,
+    gridRows,
+    decoration,
+    accent,
+    lineCount: planeCount,
+    inset: Math.round((100 - massWidth) / 2),
+    horizon: 50 + massOffset,
+    cantilever: 8 + planeSpread,
+    emphasis: dominantFamily === 'art-glass' || dominantFamily === 'textile-block' ? 'vertical' : 'horizontal',
     phase,
     hue: PALETTE[hueIdx],
     hue2: PALETTE[(hueIdx + 5) % PALETTE.length]
@@ -62,7 +85,8 @@ export function deriveWright(seed) {
 }
 
 export function describeWright(params) {
-  return `${params.lineCount}-band Wright scaffold, ${params.emphasis} emphasis`;
+  const hybrid = params.secondaryFamily ? ` with ${params.secondaryFamily} detail` : '';
+  return `${params.dominantFamily} Wright composition${hybrid}, ${params.planeCount} planes`;
 }
 
 export function prepareWright(params, { size }) {

@@ -53,15 +53,35 @@ test('wright scaffold derive is deterministic and normalized', () => {
   assert.deepEqual(a, b);
   assert.equal(a.spec, WRIGHT_SPEC_VERSION);
   assert.ok(Object.isFrozen(a));
-  assert.ok(a.lineCount >= 3 && a.lineCount <= 5);
-  assert.ok(a.inset >= 10 && a.inset <= 21);
+  assert.ok(WRIGHT_FAMILIES.includes(a.dominantFamily));
+  assert.ok(a.secondaryFamily === null || WRIGHT_HYBRID_COMPATIBILITY[a.dominantFamily].includes(a.secondaryFamily));
+  assert.ok(a.planeCount >= 3 && a.planeCount <= 5);
   assert.ok(a.emphasis === 'horizontal' || a.emphasis === 'vertical');
+});
+
+test('wright geometry derivation reaches every dominant family and controlled hybrids', () => {
+  const cases = [
+    ['wright-family-1', 'prairie'],
+    ['wright-family-5', 'art-glass'],
+    ['wright-family-3', 'textile-block'],
+    ['wright-family-0', 'usonian']
+  ];
+  for (const [seed, family] of cases) {
+    assert.equal(deriveWright(seed).dominantFamily, family);
+  }
+
+  const hybrids = Array.from({ length: 32 }, (_, index) => deriveWright(`wright-hybrid-${index}`))
+    .filter((params) => params.secondaryFamily !== null);
+  assert.ok(hybrids.length > 0);
+  for (const params of hybrids) {
+    assert.ok(WRIGHT_HYBRID_COMPATIBILITY[params.dominantFamily].includes(params.secondaryFamily));
+  }
 });
 
 test('wright scaffold describe/prepare/geometry produce contract-valid shape', () => {
   const params = prepareWright(deriveWright('maya'), { size: 64 });
   const text = describeWright(params);
-  assert.match(text, /Wright scaffold/);
+  assert.match(text, /Wright composition/);
   const geometry = buildWright(params);
   assert.ok(Object.isFrozen(geometry));
   assert.ok(Object.isFrozen(geometry.frame));
