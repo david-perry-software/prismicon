@@ -126,8 +126,12 @@ test('wright scaffold paint and flash expose bounded, deterministic outputs', ()
   const geometry = buildWright(params);
   const pose = poseWright(params, 'idle');
   const svg = paintWright(params, geometry, pose, { dark: false, sleeping: false, dx: 0, lighten: 0, flash: null });
-  assert.match(svg, /<rect/);
-  assert.match(svg, /<line/);
+  assert.equal(svg, paintWright(params, geometry, pose, { dark: false, sleeping: false, dx: 0, lighten: 0, flash: null }));
+  const layers = ['primary-mass', 'horizontal-plane', 'grid-module', 'decoration', 'accent'];
+  for (const layer of layers) assert.match(svg, new RegExp(`data-wright-layer="${layer}"`));
+  for (let index = 1; index < layers.length; index += 1) {
+    assert.ok(svg.indexOf(`data-wright-layer="${layers[index - 1]}"`) < svg.indexOf(`data-wright-layer="${layers[index]}"`));
+  }
   assert.equal(flashWright(params, 'idle'), null);
   assert.deepEqual(flashWright(params, 'done'), { hue: params.hue2, lighten: 16, shake: false });
 });
