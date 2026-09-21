@@ -36,6 +36,7 @@ export const WRIGHT_LAYER_LIMITS = Object.freeze({
   decorations: 8,
   accents: 2
 });
+export const WRIGHT_VIEWBOX_BOUNDS = Object.freeze({ min: 5, max: 95 });
 const TAU = Math.PI * 2;
 
 function hueMix(a, b, t) {
@@ -123,8 +124,8 @@ export function buildWright(params) {
   const horizontalPlanes = Array.from({ length: params.planeCount }, (_, index) => {
     const y = top + ((index + 1) * profile.height) / (params.planeCount + 1);
     const cantilever = index % 2 === 0 ? params.planeSpread : params.planeSpread * 0.45;
-    const x = Math.max(5, left - cantilever);
-    const right = Math.min(95, left + profile.width + (index % 2 === 0 ? cantilever : 0));
+    const x = Math.max(WRIGHT_VIEWBOX_BOUNDS.min, left - cantilever);
+    const right = Math.min(WRIGHT_VIEWBOX_BOUNDS.max, left + profile.width + (index % 2 === 0 ? cantilever : 0));
     return { x, y: y - 0.8, width: right - x, height: 1.6 };
   });
 

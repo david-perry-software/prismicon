@@ -8,6 +8,7 @@ import {
   WRIGHT_DRAW_ORDER,
   WRIGHT_HYBRID_COMPATIBILITY,
   WRIGHT_LAYER_LIMITS,
+  WRIGHT_VIEWBOX_BOUNDS,
   deriveWright,
   describeWright,
   prepareWright,
@@ -134,6 +135,42 @@ test('wright scaffold paint and flash expose bounded, deterministic outputs', ()
   }
   assert.equal(flashWright(params, 'idle'), null);
   assert.deepEqual(flashWright(params, 'done'), { hue: params.hue2, lighten: 16, shake: false });
+});
+
+test('wright geometry and SVG stay stroke-aware and finite at sizes 24, 64, and 72', () => {
+  const seeds = ['wright-family-1', 'wright-family-5', 'wright-family-3', 'wright-family-0'];
+  for (const seed of seeds) {
+    let expectedElementCount = null;
+    for (const size of [24, 64, 72]) {
+      const params = prepareWright(deriveWright(seed), { size });
+      const geometry = buildWright(params);
+      const layerStrokes = {
+        primaryMasses: params.strokeWidth,
+        horizontalPlanes: 0,
+        gridModules: params.lightStroke,
+        decorations: params.lightStroke,
+        accents: geometry.accents[0].width
+      };
+      for (const [layer, items] of Object.entries(geometry)) {
+        const halfStroke = layerStrokes[layer] / 2;
+        for (const item of items) {
+          const xs = 'x' in item ? [item.x, item.x + item.width] : [item.x1, item.x2];
+          const ys = 'y' in item ? [item.y, item.y + item.height] : [item.y1, item.y2];
+          assert.ok(Math.min(...xs) - halfStroke >= WRIGHT_VIEWBOX_BOUNDS.min, `${seed} ${size} ${layer} left`);
+          assert.ok(Math.max(...xs) + halfStroke <= WRIGHT_VIEWBOX_BOUNDS.max, `${seed} ${size} ${layer} right`);
+          assert.ok(Math.min(...ys) - halfStroke >= WRIGHT_VIEWBOX_BOUNDS.min, `${seed} ${size} ${layer} top`);
+          assert.ok(Math.max(...ys) + halfStroke <= WRIGHT_VIEWBOX_BOUNDS.max, `${seed} ${size} ${layer} bottom`);
+        }
+      }
+      const svg = paintWright(params, geometry, poseWright(params, 'idle'), {
+        dark: false, sleeping: false, dx: 0, lighten: 0, flash: null
+      });
+      assert.doesNotMatch(svg, /NaN|Infinity/);
+      const elementCount = (svg.match(/<(?:rect|line)\b/g) || []).length;
+      expectedElementCount ??= elementCount;
+      assert.equal(elementCount, expectedElementCount, `${seed} retains detail at size ${size}`);
+    }
+  }
 });
 
 test('wright descriptor passes validateVariant', () => {
