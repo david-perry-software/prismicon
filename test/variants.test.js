@@ -29,7 +29,7 @@ const NCUBE_IDS = ['ncube', ...Array.from(
 )];
 const POLYHEDRON_INFO = { id: 'polyhedron', label: 'Polyhedron', spec: 'v1' };
 const ORBIT_INFO = { id: 'orbit', label: 'Orbit', spec: 'orbit-v1' };
-const WRIGHT_INFO = { id: 'wright', label: 'Wright Scaffold', spec: 'wright-scaffold-v1' };
+const WRIGHT_INFO = { id: 'wright', label: 'Wright Scaffold', spec: 'wright-geometry-v1' };
 
 // Copied verbatim from test/derivation-freeze.test.js (frozen v1 engine, commit 9204c26).
 const FROZEN = JSON.parse(`{
