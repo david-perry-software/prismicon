@@ -409,12 +409,13 @@ export function animateWright(pose, ctx) {
   }
   if (state === 'sending' || state === 'receiving') {
     // Transient outward (sending) / inward (receiving) illumination burst that
-    // decays over transientT; the structure itself stays settled.
+    // decays over transientT; the structure settles back without an abrupt drop.
+    const k = dt * 8;
     const sweep = state === 'sending' ? transientT / 0.4 : 1 - transientT / 0.4;
     return Object.freeze({
       illuminate: Math.max(0, Math.min(1, sweep)),
       panelPulse: 0.9 * Math.exp(-transientT * 7),
-      settle: 0
+      settle: ease(pose.settle, 0, k)
     });
   }
   if (state === 'settling') {
