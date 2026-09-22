@@ -251,13 +251,31 @@ export function describeWright(params) {
   return `${params.dominantFamily} Wright composition${hybrid}, ${params.planeCount} planes`;
 }
 
+// ---------------------------------------------------------------- motion traits (tunable, non-identity)
+
+/**
+ * Motion traits are derived from disjoint bit-ranges of the seed hash (bits
+ * 42-52, above the bits `deriveWright` already consumes for `phase` and
+ * `paletteFamily`) — never new PRNG draws — so `deriveWright` output, the
+ * static portrait, and `WRIGHT_SPEC_VERSION` stay frozen.
+ */
+function wrightMotionTraits(params) {
+  const { hash } = params;
+  return {
+    sweepDir: Math.floor(hash / 2 ** 42) % 2 === 0 ? 1 : -1,
+    panelPhase: ((Math.floor(hash / 2 ** 43) % 64) / 63) * TAU,
+    illumSpeed: 0.7 + ((Math.floor(hash / 2 ** 49) % 16) / 15) * 0.6
+  };
+}
+
 export function prepareWright(params, { size }) {
   const small = size < WRIGHT_SMALL_SIZE;
   return {
     ...params,
     strokeWidth: small ? 3 : 2.2,
     lightStroke: small ? 1.8 : 1.3,
-    small
+    small,
+    ...wrightMotionTraits(params)
   };
 }
 
@@ -351,56 +369,87 @@ export function paintedAreaMetrics(geometry, params, pulse = 1) {
 }
 
 export function poseWright(params, state) {
-  if (state === 'working') return Object.freeze({ lift: 0.9, shear: 1.2, pulse: 1 });
-  return Object.freeze({ lift: 0, shear: 0, pulse: 0 });
+  if (state === 'working') {
+    // Match the first `animateWright` working frame (t = 0) so mounting in the
+    // working state starts exactly on the motion trajectory with no jump.
+    return Object.freeze({
+      illuminate: 0.5 + 0.5 * Math.sin(params.phase),
+      panelPulse: 0.5 + 0.35 * Math.sin(params.phase * 1.7),
+      settle: 0.4 * Math.sin(params.phase)
+    });
+  }
+  return Object.freeze({ illuminate: -1, panelPulse: 0, settle: 0 });
 }
 
 export function animateWright(pose, ctx) {
-  const { state, dt, t, params, rest, transientT } = ctx;
+  const { params, state, dt, t, rest, transientT } = ctx;
   if (state === 'idle' || state === 'done' || state === 'error') return pose;
+  const ease = (cur, target, k) => cur + (target - cur) * Math.min(1, k);
+
   if (state === 'working') {
+    // Steady illumination sweep down the planes plus a gentle panel pulse and a
+    // slow structural rise/fall — the active "working" state reads as a lit,
+    // breathing architectural composition.
     return Object.freeze({
-      lift: Math.sin(t * 1.1 + params.phase) * 1.4,
-      shear: Math.cos(t * 0.9 + params.phase) * 1.8,
-      pulse: 0.5 + (Math.sin(t * 1.6 + params.phase) + 1) * 0.25
+      illuminate: 0.5 + 0.5 * Math.sin(t * 0.8 * params.illumSpeed * params.sweepDir + params.phase),
+      panelPulse: 0.5 + 0.35 * Math.sin(t * 1.3 + params.phase * 1.7),
+      settle: 0.4 * Math.sin(t * 0.7 + params.phase)
     });
   }
-  if (state === 'waiting' || state === 'thinking') {
-    const k = Math.min(1, dt * 2.5);
-    const targetLift = Math.sin(t * 0.55 + params.phase) * (state === 'thinking' ? 1.1 : 0.6);
-    const targetShear = Math.cos(t * 0.45 + params.phase) * 0.6;
+  if (state === 'waiting') {
+    // A single slow illumination drift with the panels nearly at rest.
+    const k = dt * 2.5;
+    const sweep = 0.5 + 0.45 * Math.sin(t * 0.35 * params.illumSpeed * params.sweepDir + params.phase);
     return Object.freeze({
-      lift: pose.lift + (targetLift - pose.lift) * k,
-      shear: pose.shear + (targetShear - pose.shear) * k,
-      pulse: pose.pulse + (0.3 - pose.pulse) * k
+      illuminate: ease(pose.illuminate, sweep, k),
+      panelPulse: ease(pose.panelPulse, 0.18, k),
+      settle: ease(pose.settle, 0, k)
+    });
+  }
+  if (state === 'thinking') {
+    // A faster sequential scan with a sharper panel-pulse beat — panels "step"
+    // as the illumination path sweeps.
+    const k = dt * 3;
+    const sweep = 0.5 + 0.5 * Math.sin(t * 1.4 * params.illumSpeed * params.sweepDir + params.phase * 0.9);
+    const beat = 0.5 + 0.5 * Math.sin(t * 2.1 + params.phase);
+    return Object.freeze({
+      illuminate: ease(pose.illuminate, sweep, k),
+      panelPulse: ease(pose.panelPulse, 0.3 + 0.5 * beat, k),
+      settle: ease(pose.settle, 0.25 * Math.sin(t * 1.0 + params.phase), k)
     });
   }
   if (state === 'sleeping') {
-    const k = Math.min(1, dt * 1.2);
-    const targetLift = Math.sin(t * 0.2 + params.phase) * 0.35;
+    // Very slow, dim breath — illumination fades out and panels barely stir.
+    const k = dt * 1.2;
     return Object.freeze({
-      lift: pose.lift + (targetLift - pose.lift) * k,
-      shear: pose.shear + (0 - pose.shear) * k,
-      pulse: pose.pulse + (0.15 - pose.pulse) * k
+      illuminate: ease(pose.illuminate, -1, k),
+      panelPulse: ease(pose.panelPulse, 0.08 + 0.04 * Math.sin(t * 0.3 + params.phase), k),
+      settle: ease(pose.settle, 0, k)
     });
   }
   if (state === 'sending' || state === 'receiving') {
-    const direction = state === 'sending' ? 1 : -1;
-    const burst = direction * Math.exp(-transientT * 7) * 3;
+    // Transient outward (sending) / inward (receiving) illumination burst that
+    // decays over transientT; the structure settles back without an abrupt drop.
+    const k = dt * 8;
+    const sweep = state === 'sending' ? transientT / 0.4 : 1 - transientT / 0.4;
     return Object.freeze({
-      lift: pose.lift,
-      shear: burst,
-      pulse: 1
+      illuminate: Math.max(0, Math.min(1, sweep)),
+      panelPulse: 0.9 * Math.exp(-transientT * 7),
+      settle: ease(pose.settle, 0, k)
     });
   }
   if (state === 'settling') {
-    const k = Math.min(1, dt * 4.5);
+    // Structural settle/reconstruct: every field eases back to the rest pose,
+    // and once close enough the engine resumes `idle` by identity.
+    const k = dt * 4.5;
     const next = {
-      lift: pose.lift + (rest.lift - pose.lift) * k,
-      shear: pose.shear + (rest.shear - pose.shear) * k,
-      pulse: pose.pulse + (rest.pulse - pose.pulse) * k
+      illuminate: ease(pose.illuminate, rest.illuminate, k),
+      panelPulse: ease(pose.panelPulse, rest.panelPulse, k),
+      settle: ease(pose.settle, rest.settle, k)
     };
-    if (Math.abs(next.lift - rest.lift) < 0.01 && Math.abs(next.shear - rest.shear) < 0.01 && Math.abs(next.pulse - rest.pulse) < 0.01) {
+    if (Math.abs(next.illuminate - rest.illuminate) < 0.01 &&
+        Math.abs(next.panelPulse - rest.panelPulse) < 0.01 &&
+        Math.abs(next.settle - rest.settle) < 0.01) {
       return rest;
     }
     return Object.freeze(next);
@@ -412,36 +461,54 @@ export function paintWright(params, geometry, pose, effects) {
   const stroke = params.strokeWidth;
   const light = params.lightStroke;
   const off = effects.dx || 0;
-  const pulse = 1 + pose.pulse * 0.08;
-  const yShift = pose.lift;
-  const skew = pose.shear * (params.emphasis === 'horizontal' ? 1 : 0.4);
+  const settle = (pose.settle || 0) * 2.4;
+  const sweep = pose.illuminate;
+  const panelAmp = pose.panelPulse || 0;
   const roles = resolveWrightRoles(params, effects);
-  const rect = (layer, item, attributes) => '<rect data-wright-layer="' + layer + '" x="' + (item.x + off).toFixed(1) +
-    '" y="' + (item.y + yShift).toFixed(1) + '" width="' + item.width.toFixed(1) + '" height="' + item.height.toFixed(1) + '" ' + attributes + '/>';
-  const line = (layer, item, attributes) => '<line data-wright-layer="' + layer + '" x1="' + (item.x1 + off).toFixed(1) +
-    '" y1="' + (item.y1 + yShift).toFixed(1) + '" x2="' + (item.x2 + off).toFixed(1) + '" y2="' +
-    (item.y2 + yShift).toFixed(1) + '" ' + attributes + '/>';
+
+  // Illumination path: lighten the horizontal plane nearest the sweep position,
+  // falling off with distance. The lightened fill is re-checked against the
+  // canvas so the 3:1 contrast invariant survives illumination. `sweep < 0`
+  // (the rest pose) disables the path and keeps the frozen role color exact.
+  const planeCount = geometry.horizontalPlanes.length;
+  const planeFill = (index) => {
+    if (sweep == null || sweep < 0) return roles.secondary;
+    const center = sweep * Math.max(0, planeCount - 1);
+    const intensity = Math.max(0, 1 - Math.abs(index - center) * 1.6) * 0.16;
+    if (intensity <= 0) return roles.secondary;
+    return ensureContrast(lightenHex(roles.secondary, intensity), roles.canvas, WRIGHT_CONTRAST_MIN);
+  };
+
+  const rect = (layer, item, attributes, dy = 0) => '<rect data-wright-layer="' + layer + '" x="' + (item.x + off).toFixed(1) +
+    '" y="' + (item.y + dy).toFixed(1) + '" width="' + item.width.toFixed(1) + '" height="' + item.height.toFixed(1) + '" ' + attributes + '/>';
+  const line = (layer, item, attributes, dy = 0) => '<line data-wright-layer="' + layer + '" x1="' + (item.x1 + off).toFixed(1) +
+    '" y1="' + (item.y1 + dy).toFixed(1) + '" x2="' + (item.x2 + off).toFixed(1) + '" y2="' +
+    (item.y2 + dy).toFixed(1) + '" ' + attributes + '/>';
   const parts = [];
 
   for (const mass of geometry.primaryMasses) {
     parts.push(rect('primary-mass', mass, 'fill="none" stroke="' + roles.primary + '" stroke-width="' + stroke + '"'));
   }
-  for (const plane of geometry.horizontalPlanes) {
-    parts.push(rect('horizontal-plane', { ...plane, width: plane.width + skew },
-      'fill="' + roles.secondary + '"'));
-  }
-  for (const module of geometry.gridModules) {
+  geometry.horizontalPlanes.forEach((plane, index) => {
+    parts.push(rect('horizontal-plane', plane,
+      'fill="' + planeFill(index) + '"', settle));
+  });
+  geometry.gridModules.forEach((module, index) => {
+    // Panel pulse: a bounded, spatially varying stroke-width swell. At rest
+    // (panelAmp 0) the stroke is emitted exactly as before for byte-identical
+    // static output.
+    const pulseScale = panelAmp > 0 ? 1 + panelAmp * 0.55 * Math.sin(index * 2.39996 + params.phase + params.panelPhase) : 1;
+    const moduleStroke = panelAmp > 0 ? (light * pulseScale).toFixed(2) : light;
     parts.push(rect('grid-module', module,
-      'fill="none" stroke="' + roles.line + '" stroke-width="' + light + '"'));
-  }
+      'fill="none" stroke="' + roles.line + '" stroke-width="' + moduleStroke + '"'));
+  });
   for (const decoration of geometry.decorations) {
     parts.push(line('decoration', decoration,
       'stroke="' + roles.line + '" stroke-width="' + light + '" stroke-linecap="round"'));
   }
   for (const accent of geometry.accents) {
     parts.push(line('accent', accent,
-      'stroke="' + roles.accent + '" stroke-width="' +
-      (accent.width * pulse).toFixed(2) + '" stroke-linecap="round"'));
+      'stroke="' + roles.accent + '" stroke-width="' + accent.width.toFixed(2) + '" stroke-linecap="round"'));
   }
 
   return parts.join('');
