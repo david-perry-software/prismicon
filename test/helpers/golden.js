@@ -41,6 +41,26 @@ const WORKING_FRAMES = 10;
 const PER_STATE_FRAMES = 4;
 const FRAME_STEP = 33;
 
+// Variant-specific representative seeds captured in addition to the shared
+// STATIC_SEEDS/MOUNTED_SCENARIOS. Only `wright` extends its fixture; every
+// other family returns no extras, so its golden stays byte-identical.
+const VARIANT_SEEDS = Object.freeze({
+  wright: Object.freeze([
+    'wright-family-1',   // prairie
+    'wright-family-5',   // art-glass
+    'wright-family-3',   // textile-block
+    'wright-family-0',   // usonian
+    'wright-palette-1',  // textile
+    'wright-palette-11', // stained-glass
+    'wright-palette-0',  // concrete-wood
+    'wright-hybrid-2'    // art-glass + textile-block (verified hybrid)
+  ])
+});
+
+function extraSeeds(variant) {
+  return VARIANT_SEEDS[variant] ?? [];
+}
+
 function installDom({ reducedMotion = false } = {}) {
   const dom = new JSDOM('<!doctype html><html><head></head><body><div id="glyph"></div></body></html>');
   const frameCallbacks = [];
@@ -90,6 +110,9 @@ function captureStatic(variant) {
     for (const opts of STATIC_OPTS) {
       out[keyFor(seed, opts)] = renderStaticSVG(seed, withVariant(opts, variant));
     }
+  }
+  for (const seed of extraSeeds(variant)) {
+    out[keyFor(seed, {})] = renderStaticSVG(seed, withVariant({}, variant));
   }
   return out;
 }
@@ -144,6 +167,9 @@ export async function captureGolden({ variant } = {}) {
   const mountedFixtures = {};
   for (const { seed, opts } of MOUNTED_SCENARIOS) {
     mountedFixtures[keyFor(seed, opts)] = await captureMountedScenario(seed, opts, variant);
+  }
+  for (const seed of extraSeeds(variant)) {
+    mountedFixtures[keyFor(seed, {})] = await captureMountedScenario(seed, {}, variant);
   }
   mountedFixtures[`Ada Lovelace|reduced`] = await captureReducedMotion('Ada Lovelace', variant);
   return { static: staticFixtures, mounted: mountedFixtures };
