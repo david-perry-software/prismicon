@@ -107,7 +107,7 @@ describeParams(p); // → 'pentagon bipyramid, two-tone, tall'
 
 ## Variants
 
-Variants are separate visual styles registered with the renderer. The built-in `polyhedron` variant is the default and remains unchanged, so existing code keeps working. The n-cube family (`ncube`, `ncube-3` … `ncube-6`) is the second built-in and `orbit` is the third.
+Variants are separate visual styles registered with the renderer. The built-in `polyhedron` variant is the default and remains unchanged, so existing code keeps working. The n-cube family (`ncube`, `ncube-3` … `ncube-6`) is the second built-in, `orbit` is the third, and `wright` is the fourth.
 
 ```js
 import { renderStaticSVG, mountGlyph, DEFAULT_VARIANT_ID, listVariants } from 'prismicon';
@@ -120,7 +120,8 @@ listVariants();
 //   { id: 'ncube-4',    label: '4-cube (tesseract)',   spec: 'ncube-v1' },
 //   { id: 'ncube-5',    label: '5-cube (penteract)',   spec: 'ncube-v1' },
 //   { id: 'ncube-6',    label: '6-cube (hexeract)',    spec: 'ncube-v1' },
-//   { id: 'orbit',      label: 'Orbit',                spec: 'orbit-v1' }
+//   { id: 'orbit',      label: 'Orbit',                spec: 'orbit-v1' },
+//   { id: 'wright',     label: 'Wright Scaffold',      spec: 'wright-geometry-v1' }
 // ]
 
 renderStaticSVG('maya', { variant: 'polyhedron' });
@@ -131,9 +132,10 @@ const handle = mountGlyph(el, 'maya', { variant: 'ncube-4', state: 'working' });
 - Omit `variant` to get `DEFAULT_VARIANT_ID` (`'polyhedron'`).
 - An unknown id throws `RangeError`; there is no silent fallback.
 - `handle.variant` reports the resolved variant id.
-- `handle.params` is typed `GlyphParams | NcubeParams | OrbitParams`; narrow on
+- `handle.params` is typed `GlyphParams | NcubeParams | OrbitParams | WrightParams`; narrow on
   `handle.variant` (or `'dimension' in handle.params` / `'ringCount' in
-  handle.params`) before reading variant-specific fields.
+  handle.params` / `'dominantFamily' in handle.params`) before reading
+  variant-specific fields.
 
 React uses the same variant ids as the core API:
 
@@ -286,6 +288,87 @@ then settling; same gates as the n-cube family). The 2026-09-13 run recorded in
 static SVGs of 558–1171 bytes with a median `paint()` of 0.006–0.011 ms and a
 median `animate + paint` frame cost of 0.007–0.012 ms (p95 ≤ 0.059 ms,
 settling in 29–31 frames) — both gates pass by a wide margin.
+
+### Wright
+
+A Frank Lloyd Wright architectural composition: primary masses, horizontal
+planes and a window grid drawn from a seed-derived dominant family, with an
+optional hybrid detail family and a palette from three Wright-inspired families.
+The aria label reads `"<seed>: <dominantFamily> Wright composition[ with
+<secondaryFamily> detail], <n> planes"`, e.g.
+`maya: prairie Wright composition with art-glass detail, 5 planes`.
+
+- `id`: `wright`, `label`: `Wright Scaffold`, `spec`: `wright-geometry-v1`.
+- **Composition families.** `WRIGHT_FAMILIES` = `prairie | art-glass |
+  textile-block | usonian`. A seed is hybrid when its second draw is < 0.5; the
+  hybrid detail family is then drawn from `WRIGHT_HYBRID_COMPATIBILITY`
+  (prairie ↔ art-glass/usonian, art-glass ↔ prairie/textile-block,
+  textile-block ↔ art-glass/usonian, usonian ↔ prairie/textile-block), so a
+  hybrid never combines incompatible mass and glass grammar.
+- **Palette families.** `WRIGHT_PALETTE_FAMILIES` = `textile | stained-glass |
+  concrete-wood`, each with light and dark role sets (canvas, primary,
+  secondary, line, accent). Every role is contrast-checked against the single
+  adjacent surface it is painted on at `WRIGHT_CONTRAST_MIN = 3` (a 3:1 floor),
+  and the red accent's painted area — measured as stroke footprint against the
+  total painted area by `paintedAreaMetrics`, never element count — is held at
+  or below `WRIGHT_RED_AREA_CEILING = 0.10` (a 10% ceiling).
+- **Small-size legibility.** Below `WRIGHT_SMALL_SIZE = 28` px the geometry is
+  reduced — the grid is capped at 2×2 modules and decorations at 2 — and the
+  stroke widths are sized up, so icons stay recognizable at avatar sizes.
+
+**Motion model.** Every state except `working` starts from the seed's rest
+pose (`illuminate: -1`, `panelPulse: 0`, `settle: 0`), so the first mounted
+frame equals the static portrait; a glyph mounted in `working` starts on the
+first working frame (`poseWright(params, 'working')`) so it lands on the motion
+trajectory without a jump:
+
+| State | Wright motion |
+|---|---|
+| `idle`, `done`, `error` | none — the engine drives the flash; the pose is returned unchanged |
+| `working` | illumination sweep down the horizontal planes (`0.5 + 0.5·sin(t·0.8·illumSpeed·sweepDir + phase)`) with a gentle panel pulse and a slow structural rise/fall |
+| `waiting` | a single slow illumination drift with the panels nearly at rest |
+| `thinking` | a faster sequential scan with a sharper panel-pulse beat |
+| `sending` / `receiving` | transient outward (sending) / inward (receiving) illumination burst over `transientT`, panels pulse with `exp(−7·t)`; then settles |
+| `sleeping` | very slow, dim breath — illumination fades out and panels barely stir |
+| settling (after transient states) | every field eases to rest and the pose snaps to the exact rest object once all are within 0.01 |
+
+- **Traits without new draws.** `sweepDir`, `panelPhase` and `illumSpeed` are
+  derived by `prepare` from disjoint bit ranges of `params.hash` (bits 42–52,
+  above the bits `deriveWright` already consumes for `phase` and
+  `paletteFamily`) — never new PRNG draws, so `deriveWright` output, the static
+  portrait and the spec stay frozen. They are tunable, non-identity values and
+  are exposed on `WrightParams` as optional prepared fields.
+- **Reduced motion.** Under `prefers-reduced-motion` the engine queues no
+  frames, so a mounted Wright composition equals its static markup in every
+  state (only the ring and the dimming change).
+
+**Derivation spec `wright-geometry-v1` (frozen).** `seed → normalizeSeed →
+cyrb53 → mulberry32`, then 12 draws in the fixed `WRIGHT_DRAW_ORDER` that never
+depends on earlier values:
+
+1. `dominantFamily = WRIGHT_FAMILIES[floor(r() * 4)]`.
+2. `hybrid = r() < 0.5`.
+3. `secondaryFamily` — drawn only when hybrid: the compatible family at
+   `floor(r() * 2)`; otherwise `null`.
+4. `massWidth = 52 + floor(r() * 17)`.
+5. `massHeight = 38 + floor(r() * 17)`.
+6. `massOffset = -8 + floor(r() * 17)`.
+7. `planeCount = 3 + floor(r() * 3)`.
+8. `planeSpread = 6 + floor(r() * 5)`.
+9. `gridColumns = 2 + floor(r() * 4)`.
+10. `gridRows = 2 + floor(r() * 4)`.
+11. `decoration = floor(r() * 3)`.
+12. `accent = floor(r() * 4)`.
+
+Then, from the hash (not PRNG draws): `phase =
+((floor(hash / 2^32) % 256) / 255) · TAU`, `paletteFamily` from
+`floor(hash / 2^40) % 3`, and `hue = PALETTE[hash % 12]`,
+`hue2 = PALETTE[(idx + 5) % 12]`. The remaining derived fields follow directly:
+`lineCount = planeCount`, `inset`, `horizon`, `cantilever`, and `emphasis`
+(`vertical` for art-glass/textile-block, `horizontal` otherwise).
+
+`WRIGHT_SPEC_VERSION` is frozen with the draw order; any change to the
+derivation requires `wright-geometry-v2`.
 
 ## Custom variants
 

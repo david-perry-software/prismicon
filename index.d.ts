@@ -30,10 +30,11 @@ declare module 'prismicon' {
   /**
    * Built-in variant ids: `polyhedron` (default), `ncube` (dimension derived from
    * the seed), `ncube-<d>` for each supported dimension 3 up to the frozen
-   * NCUBE_MAX_DIMENSION, and `orbit` (ring/node counts derived from the seed).
-   * Custom ids remain accepted as plain strings.
+   * NCUBE_MAX_DIMENSION, `orbit` (ring/node counts derived from the seed), and
+   * `wright` (Frank Lloyd Wright composition and palette families derived from
+   * the seed). Custom ids remain accepted as plain strings.
    */
-  export type BuiltInVariantId = 'polyhedron' | 'ncube' | 'orbit' | `ncube-${number}`;
+  export type BuiltInVariantId = 'polyhedron' | 'ncube' | 'orbit' | 'wright' | `ncube-${number}`;
 
   /** Params produced by the n-cube family (spec `ncube-v1`). */
   export interface NcubeParams {
@@ -98,6 +99,67 @@ declare module 'prismicon' {
     readonly phase?: number;
   }
 
+  /** Composition family names derived by the Wright variant. */
+  export type WrightFamily = 'prairie' | 'art-glass' | 'textile-block' | 'usonian';
+
+  /** Palette family names derived by the Wright variant. */
+  export type WrightPaletteFamily = 'textile' | 'stained-glass' | 'concrete-wood';
+
+  /** Params produced by the Wright variant (spec `wright-geometry-v1`). */
+  export interface WrightParams {
+    spec: string;
+    seed: string;
+    hash: number;
+    /** Palette family: `textile`, `stained-glass`, or `concrete-wood`. */
+    paletteFamily: WrightPaletteFamily;
+    /** Dominant composition family. */
+    dominantFamily: WrightFamily;
+    /** Hybrid detail family, or `null` when the composition is single-family. */
+    secondaryFamily: WrightFamily | null;
+    /** Primary mass width in viewBox units. */
+    massWidth: number;
+    /** Primary mass height in viewBox units. */
+    massHeight: number;
+    /** Primary mass horizontal offset in viewBox units. */
+    massOffset: number;
+    /** Horizontal plane count in [3, 5]. */
+    planeCount: number;
+    /** Cantilever spread of the horizontal planes in viewBox units. */
+    planeSpread: number;
+    /** Grid column count in [2, 5]. */
+    gridColumns: number;
+    /** Grid row count in [2, 5]. */
+    gridRows: number;
+    /** Decoration density tier in [0, 2]. */
+    decoration: number;
+    /** Accent placement tier in [0, 3]. */
+    accent: number;
+    lineCount: number;
+    inset: number;
+    horizon: number;
+    cantilever: number;
+    emphasis: 'vertical' | 'horizontal';
+    phase: number;
+    hue: number;
+    hue2: number;
+    /**
+     * Prepared, non-identity fields below are present on `GlyphHandle.params`
+     * (output of `prepare`), not in `deriveWright` output.
+     */
+    /** Primary-mass stroke width in viewBox units, sized up below WRIGHT_SMALL_SIZE. */
+    readonly strokeWidth?: number;
+    /** Grid/decorative stroke width in viewBox units, sized up below WRIGHT_SMALL_SIZE. */
+    readonly lightStroke?: number;
+    /** True when the requested pixel size is below WRIGHT_SMALL_SIZE. */
+    readonly small?: boolean;
+    /** Sense of the illumination sweep. */
+    readonly sweepDir?: 1 | -1;
+    /** Panel pulse phase offset. */
+    readonly panelPhase?: number;
+    /** Illumination speed multiplier (rad/s). */
+    readonly illumSpeed?: number;
+  }
+
   export interface GlyphOptions {
     size?: number;
     kind?: GlyphKind;
@@ -112,11 +174,12 @@ declare module 'prismicon' {
   export interface GlyphHandle {
     /**
      * Derived params of the mounted variant. Narrow on `variant` (or on
-     * `'dimension' in params` / `'ringCount' in params`) before reading
-     * variant-specific fields: `polyhedron` yields GlyphParams, the n-cube
-     * family yields NcubeParams, `orbit` yields OrbitParams.
+     * `'dimension' in params` / `'ringCount' in params` /
+     * `'dominantFamily' in params`) before reading variant-specific fields:
+     * `polyhedron` yields GlyphParams, the n-cube family yields NcubeParams,
+     * `orbit` yields OrbitParams, `wright` yields WrightParams.
      */
-    readonly params: GlyphParams | NcubeParams | OrbitParams;
+    readonly params: GlyphParams | NcubeParams | OrbitParams | WrightParams;
     readonly variant: string;
     readonly state: GlyphState;
     setState(state: GlyphState): void;
