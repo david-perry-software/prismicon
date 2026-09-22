@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { validateVariant } from '../src/variants/validate.js';
+import { PROBE_STATES, validateVariant } from '../src/variants/validate.js';
 import {
   WRIGHT_SPEC_VERSION,
   WRIGHT_FAMILIES,
@@ -116,7 +116,7 @@ test('wright geometry has a deeply frozen, finite, positive semantic hierarchy',
   }
 });
 
-test('wright scaffold hooks animate deterministically and settle by identity', () => {
+test('wright motion animates deterministically and settles back to rest by identity', () => {
   const params = prepareWright(deriveWright('build-bot-7'), { size: 64 });
   const rest = poseWright(params, 'idle');
   const start = poseWright(params, 'working');
@@ -238,6 +238,25 @@ test('wright derive selects a palette family deterministically without reorderin
   assert.deepEqual([...seen].sort(), [...WRIGHT_PALETTE_FAMILIES].sort());
 });
 
+test('wright motion traits derive deterministically from disjoint hash bits without new draws', () => {
+  const a = prepareWright(deriveWright('maya'), { size: 64 });
+  const b = prepareWright(deriveWright('  maya  '), { size: 64 });
+  assert.deepEqual(a, b);
+
+  assert.ok([-1, 1].includes(a.sweepDir), 'sweepDir is a sign');
+  assert.ok(a.panelPhase >= 0 && a.panelPhase <= Math.PI * 2, 'panelPhase bounded');
+  assert.ok(a.illumSpeed >= 0.7 && a.illumSpeed <= 1.3, 'illumSpeed bounded');
+
+  // Motion traits must not perturb the frozen geometry/palette parameters or spec.
+  const maya = deriveWright('maya');
+  assert.equal(maya.spec, WRIGHT_SPEC_VERSION);
+  assert.deepEqual(
+    [maya.dominantFamily, maya.secondaryFamily, maya.massWidth, maya.massHeight, maya.massOffset,
+      maya.planeCount, maya.planeSpread, maya.gridColumns, maya.gridRows, maya.decoration, maya.accent],
+    ['prairie', 'art-glass', 59, 38, 3, 5, 9, 5, 4, 2, 1]
+  );
+});
+
 test('wright paint uses semantic palette roles in light and dark contexts', () => {
   const seeds = ['wright-palette-1', 'wright-palette-11', 'wright-palette-0'];
   for (const seed of seeds) {
@@ -260,6 +279,46 @@ test('wright paint uses semantic palette roles in light and dark contexts', () =
       assert.ok(light.includes(palette.light[role]), `${seed} light ${role} from palette`);
       assert.ok(dark.includes(palette.dark[role]), `${seed} dark ${role} from palette`);
     }
+  }
+});
+
+test('wright paint interprets the motion pose with bounded illumination, panel pulse, and settle', () => {
+  const params = prepareWright(deriveWright('maya'), { size: 64 });
+  const geometry = buildWright(params);
+  const rest = poseWright(params, 'idle');
+  const effects = { dark: false, sleeping: false, dx: 0, lighten: 0, flash: null };
+  const restSvg = paintWright(params, geometry, rest, effects);
+
+  // Rest rendering is deterministic and emits the frozen secondary role un-lit.
+  assert.equal(restSvg, paintWright(params, geometry, rest, effects));
+  const palette = WRIGHT_PALETTES[params.paletteFamily].light;
+
+  const planeFills = (svg) => [...svg.matchAll(/data-wright-layer="horizontal-plane"[^>]*?fill="(#[0-9a-f]{6})"/g)].map((m) => m[1]);
+  const planeYs = (svg) => [...svg.matchAll(/data-wright-layer="horizontal-plane"[^>]*?y="([-0-9.]+)"/g)].map((m) => m[1]);
+  const moduleStrokes = (svg) => [...svg.matchAll(/data-wright-layer="grid-module"[^>]*?stroke-width="([0-9.]+)"/g)].map((m) => m[1]);
+
+  const restFills = planeFills(restSvg);
+  assert.ok(restFills.length > 0);
+  assert.ok(restFills.every((fill) => fill === palette.secondary), 'rest planes keep the frozen secondary role');
+
+  const moved = Object.freeze({ illuminate: 0.5, panelPulse: 0.8, settle: 0.5 });
+  const movedSvg = paintWright(params, geometry, moved, effects);
+  assert.notEqual(movedSvg, restSvg);
+  assert.doesNotMatch(movedSvg, /NaN|Infinity/);
+
+  // Illumination lights at least one plane; settle shifts every plane; the panel
+  // pulse changes the grid-module stroke. All structural layers keep their order
+  // and data-wright-layer attributes.
+  const movedFills = planeFills(movedSvg);
+  assert.equal(movedFills.length, restFills.length, 'plane count unchanged');
+  assert.ok(movedFills.some((fill) => fill !== palette.secondary), 'illumination changes a plane fill');
+  assert.notDeepEqual(planeYs(movedSvg), planeYs(restSvg), 'settle shifts the planes');
+  assert.ok(moduleStrokes(movedSvg).some((w) => w !== String(params.lightStroke)), 'panel pulse changes module stroke');
+
+  const layers = ['primary-mass', 'horizontal-plane', 'grid-module', 'decoration', 'accent'];
+  for (const layer of layers) assert.match(movedSvg, new RegExp(`data-wright-layer="${layer}"`));
+  for (let i = 1; i < layers.length; i += 1) {
+    assert.ok(movedSvg.indexOf(`data-wright-layer="${layers[i - 1]}"`) < movedSvg.indexOf(`data-wright-layer="${layers[i]}"`));
   }
 });
 
@@ -350,6 +409,128 @@ test('wright red painted area stays within the 10 percent ceiling across seeds, 
       }
     }
   }
+});
+
+test('wright rest pose is neutral so reduced-motion and static rendering are a single frozen frame', () => {
+  const params = prepareWright(deriveWright('maya'), { size: 64 });
+  const neutral = { illuminate: -1, panelPulse: 0, settle: 0 };
+  for (const state of ['idle', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving', 'done', 'error']) {
+    assert.deepEqual(poseWright(params, state), neutral);
+  }
+  // The working mount pose starts on the first animate frame (t = 0) and stays bounded.
+  const working = poseWright(params, 'working');
+  assert.ok(working.illuminate >= 0 && working.illuminate <= 1, 'working illuminate bounded');
+  assert.ok(working.panelPulse >= 0 && working.panelPulse <= 1, 'working panelPulse bounded');
+  assert.ok(Math.abs(working.settle) <= 0.5, 'working settle bounded');
+});
+
+test('wright motion keeps every animated frame inside the viewBox and preserves the red ceiling', () => {
+  const numericAttrs = (svg) => [...svg.matchAll(/(?:x|y|x1|y1|x2|y2|width|height)="(-?\d+(?:\.\d+)?)"/g)].map((m) => Number(m[1]));
+  const seeds = ['maya', 'build-bot-7', 'Alice@X.com', 'wright-family-5'];
+  const states = ['working', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving', 'settling'];
+  for (const seed of seeds) {
+    for (const size of [24, 64, 140]) {
+      const params = prepareWright(deriveWright(seed), { size });
+      const geometry = buildWright(params);
+      const rest = poseWright(params, 'idle');
+      for (const state of states) {
+        let pose = state === 'working' ? poseWright(params, 'working') : rest;
+        for (let frame = 0; frame < 8; frame += 1) {
+          pose = animateWright(pose, { params, state, dt: 0.033, t: frame * 0.033, transientT: frame * 0.033, rest });
+          const svg = paintWright(params, geometry, pose, {
+            dark: false, sleeping: state === 'sleeping', dx: 0, lighten: 0, flash: null
+          });
+          assert.doesNotMatch(svg, /NaN|Infinity/, `${seed} ${size} ${state} f${frame} finite`);
+          for (const value of numericAttrs(svg)) {
+            assert.ok(value >= 0 && value <= 100, `${seed} ${size} ${state} f${frame} value ${value} inside viewBox`);
+          }
+        }
+      }
+      const metrics = paintedAreaMetrics(geometry, params);
+      assert.ok(metrics.ratio <= WRIGHT_RED_AREA_CEILING, `${seed} ${size} red ratio ${metrics.ratio.toFixed(4)} > 10%`);
+    }
+  }
+});
+
+test('wright illumination keeps structural contrast >= 3:1 across animated frames', () => {
+  const seeds = ['wright-palette-1', 'wright-palette-11', 'wright-palette-0', 'maya'];
+  for (const seed of seeds) {
+    const params = prepareWright(deriveWright(seed), { size: 64 });
+    const geometry = buildWright(params);
+    const rest = poseWright(params, 'idle');
+    const modes = WRIGHT_PALETTES[params.paletteFamily];
+    for (const dark of [false, true]) {
+      const canvas = modes[dark ? 'dark' : 'light'].canvas;
+      for (const state of ['working', 'thinking', 'sending', 'receiving']) {
+        let pose = rest;
+        for (let frame = 0; frame < 6; frame += 1) {
+          pose = animateWright(pose, { params, state, dt: 0.033, t: frame * 0.033, transientT: frame * 0.033, rest });
+          const svg = paintWright(params, geometry, pose, {
+            dark, sleeping: false, dx: 0, lighten: 0, flash: null
+          });
+          for (const match of svg.matchAll(/data-wright-layer="horizontal-plane"[^>]*?fill="(#[0-9a-f]{6})"/g)) {
+            assert.ok(
+              contrastRatio(match[1], canvas) >= WRIGHT_CONTRAST_MIN,
+              `${seed} dark=${dark} ${state} f${frame} plane vs canvas`
+            );
+          }
+        }
+      }
+    }
+  }
+});
+
+test('wright motion event frames are deterministic across every probed state', () => {
+  const params = prepareWright(deriveWright('Alice@X.com'), { size: 64 });
+  const rest = poseWright(params, 'idle');
+  const run = (state) => {
+    let pose = state === 'working' ? poseWright(params, 'working') : rest;
+    const frames = [];
+    for (let i = 0; i < 8; i += 1) {
+      pose = animateWright(pose, { params, state, dt: 0.033, t: 0.1 + i * 0.033, transientT: i * 0.033, rest });
+      frames.push(pose);
+    }
+    return frames;
+  };
+  for (const state of PROBE_STATES) {
+    assert.deepEqual(run(state), run(state), `${state} deterministic`);
+  }
+});
+
+test('wright motion settles back to rest by identity for every animated state', () => {
+  const params = prepareWright(deriveWright('maya'), { size: 64 });
+  const rest = poseWright(params, 'idle');
+  for (const state of ['working', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving']) {
+    let pose = state === 'working' ? poseWright(params, 'working') : rest;
+    for (let i = 0; i < 5; i += 1) {
+      pose = animateWright(pose, { params, state, dt: 0.033, t: 0.1 + i * 0.033, transientT: i * 0.033, rest });
+    }
+    for (let i = 0; i < 120; i += 1) {
+      pose = animateWright(pose, { params, state: 'settling', dt: 0.033, t: 0.1 + i * 0.033, transientT: 0, rest });
+      if (pose === rest) break;
+    }
+    assert.equal(pose, rest, `${state} settles to rest`);
+  }
+});
+
+test('wright motion paints a distinct frame sequence per state', () => {
+  const params = prepareWright(deriveWright('build-bot-7'), { size: 64 });
+  const geometry = buildWright(params);
+  const rest = poseWright(params, 'idle');
+  const paintSequence = (state) => {
+    let pose = state === 'working' ? poseWright(params, 'working') : rest;
+    const frames = [];
+    for (let i = 0; i < 16; i += 1) {
+      pose = animateWright(pose, { params, state, dt: 0.033, t: 0.1 + i * 0.033, transientT: i * 0.033, rest });
+      frames.push(paintWright(params, geometry, pose, {
+        dark: false, sleeping: state === 'sleeping', dx: 0, lighten: 0, flash: null
+      }));
+    }
+    return frames.join('\u0000');
+  };
+  const states = ['working', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving'];
+  const signatures = new Set(states.map(paintSequence));
+  assert.equal(signatures.size, states.length, 'each animated state paints a distinct frame sequence');
 });
 
 test('wright descriptor passes validateVariant', () => {
