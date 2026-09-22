@@ -357,7 +357,15 @@ export function paintedAreaMetrics(geometry, params, pulse = 1) {
 }
 
 export function poseWright(params, state) {
-  if (state === 'working') return Object.freeze({ illuminate: 0, panelPulse: 0.5, settle: 0 });
+  if (state === 'working') {
+    // Match the first `animateWright` working frame (t = 0) so mounting in the
+    // working state starts exactly on the motion trajectory with no jump.
+    return Object.freeze({
+      illuminate: 0.5 + 0.5 * Math.sin(params.phase),
+      panelPulse: 0.5 + 0.35 * Math.sin(params.phase * 1.7),
+      settle: 0.4 * Math.sin(params.phase)
+    });
+  }
   return Object.freeze({ illuminate: -1, panelPulse: 0, settle: 0 });
 }
 

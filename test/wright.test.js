@@ -413,10 +413,15 @@ test('wright red painted area stays within the 10 percent ceiling across seeds, 
 
 test('wright rest pose is neutral so reduced-motion and static rendering are a single frozen frame', () => {
   const params = prepareWright(deriveWright('maya'), { size: 64 });
+  const neutral = { illuminate: -1, panelPulse: 0, settle: 0 };
   for (const state of ['idle', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving', 'done', 'error']) {
-    assert.deepEqual(poseWright(params, state), { illuminate: -1, panelPulse: 0, settle: 0 });
+    assert.deepEqual(poseWright(params, state), neutral);
   }
-  assert.deepEqual(poseWright(params, 'working'), { illuminate: 0, panelPulse: 0.5, settle: 0 });
+  // The working mount pose starts on the first animate frame (t = 0) and stays bounded.
+  const working = poseWright(params, 'working');
+  assert.ok(working.illuminate >= 0 && working.illuminate <= 1, 'working illuminate bounded');
+  assert.ok(working.panelPulse >= 0 && working.panelPulse <= 1, 'working panelPulse bounded');
+  assert.ok(Math.abs(working.settle) <= 0.5, 'working settle bounded');
 });
 
 test('wright motion keeps every animated frame inside the viewBox and preserves the red ceiling', () => {
