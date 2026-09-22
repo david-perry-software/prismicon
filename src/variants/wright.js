@@ -37,6 +37,13 @@ export const WRIGHT_LAYER_LIMITS = Object.freeze({
   accents: 2
 });
 export const WRIGHT_VIEWBOX_BOUNDS = Object.freeze({ min: 5, max: 95 });
+// Size-aware legibility tuning: below WRIGHT_SMALL_SIZE the geometry is reduced
+// (grid modules and decorations capped) so icons stay recognizable at small
+// avatar sizes. These constants are prepare-derived only — the derivation spec
+// (WRIGHT_DRAW_ORDER / WRIGHT_SPEC_VERSION) is never touched.
+export const WRIGHT_SMALL_SIZE = 28;
+export const WRIGHT_SMALL_GRID = Object.freeze({ columns: 2, rows: 2 });
+export const WRIGHT_SMALL_DECORATIONS = 2;
 const TAU = Math.PI * 2;
 
 // ---------------------------------------------------------------- palette system
@@ -262,10 +269,12 @@ function wrightMotionTraits(params) {
 }
 
 export function prepareWright(params, { size }) {
+  const small = size < WRIGHT_SMALL_SIZE;
   return {
     ...params,
-    strokeWidth: size < 28 ? 3 : 2.2,
-    lightStroke: size < 28 ? 1.8 : 1.3,
+    strokeWidth: small ? 3 : 2.2,
+    lightStroke: small ? 1.8 : 1.3,
+    small,
     ...wrightMotionTraits(params)
   };
 }
@@ -299,16 +308,19 @@ export function buildWright(params) {
   const gridTop = top + gridInset;
   const gridWidth = profile.width - gridInset * 2;
   const gridHeight = profile.height - gridInset * 2;
-  const cellWidth = gridWidth / profile.columns;
-  const cellHeight = gridHeight / profile.rows;
-  const gridModules = Array.from({ length: profile.columns * profile.rows }, (_, index) => ({
-    x: gridLeft + (index % profile.columns) * cellWidth + 1,
-    y: gridTop + Math.floor(index / profile.columns) * cellHeight + 1,
+  const columns = params.small ? Math.min(profile.columns, WRIGHT_SMALL_GRID.columns) : profile.columns;
+  const rows = params.small ? Math.min(profile.rows, WRIGHT_SMALL_GRID.rows) : profile.rows;
+  const cellWidth = gridWidth / columns;
+  const cellHeight = gridHeight / rows;
+  const gridModules = Array.from({ length: columns * rows }, (_, index) => ({
+    x: gridLeft + (index % columns) * cellWidth + 1,
+    y: gridTop + Math.floor(index / columns) * cellHeight + 1,
     width: Math.max(1, cellWidth - 2),
     height: Math.max(1, cellHeight - 2)
   }));
 
-  const decorationCount = Math.min(WRIGHT_LAYER_LIMITS.decorations, 2 + params.decoration * 2 + (params.secondaryFamily ? 2 : 0));
+  const fullDecorationCount = Math.min(WRIGHT_LAYER_LIMITS.decorations, 2 + params.decoration * 2 + (params.secondaryFamily ? 2 : 0));
+  const decorationCount = params.small ? Math.min(fullDecorationCount, WRIGHT_SMALL_DECORATIONS) : fullDecorationCount;
   const decorations = Array.from({ length: decorationCount }, (_, index) => {
     const module = gridModules[index % gridModules.length];
     const reverse = (index + params.accent) % 2 === 1;

@@ -9,6 +9,9 @@ import {
   WRIGHT_HYBRID_COMPATIBILITY,
   WRIGHT_LAYER_LIMITS,
   WRIGHT_VIEWBOX_BOUNDS,
+  WRIGHT_SMALL_SIZE,
+  WRIGHT_SMALL_GRID,
+  WRIGHT_SMALL_DECORATIONS,
   WRIGHT_PALETTE_FAMILIES,
   WRIGHT_PALETTES,
   WRIGHT_CONTRAST_PAIRS,
@@ -146,11 +149,13 @@ test('wright scaffold paint and flash expose bounded, deterministic outputs', ()
   assert.deepEqual(flashWright(params, 'done'), { hue: params.hue2, lighten: 16, shake: false });
 });
 
-test('wright geometry and SVG stay stroke-aware and finite at sizes 24, 64, and 72', () => {
+test('wright legibility reduces detail at size 24 and keeps full detail and invariants at 64, 72, and 140', () => {
   const seeds = ['wright-family-1', 'wright-family-5', 'wright-family-3', 'wright-family-0'];
+  const minStroke = 1.3;
   for (const seed of seeds) {
-    let expectedElementCount = null;
-    for (const size of [24, 64, 72]) {
+    let fullGridCount = null;
+    let fullDecorationCount = null;
+    for (const size of [24, 64, 72, 140]) {
       const params = prepareWright(deriveWright(seed), { size });
       const geometry = buildWright(params);
       const layerStrokes = {
@@ -160,6 +165,12 @@ test('wright geometry and SVG stay stroke-aware and finite at sizes 24, 64, and 
         decorations: params.lightStroke,
         accents: geometry.accents[0].width
       };
+      assert.ok(params.strokeWidth >= minStroke, `${seed} ${size} primary stroke >= ${minStroke}`);
+      assert.ok(params.lightStroke >= minStroke, `${seed} ${size} light stroke >= ${minStroke}`);
+      assert.ok(geometry.accents[0].width >= minStroke, `${seed} ${size} accent stroke >= ${minStroke}`);
+      for (const module of geometry.gridModules) {
+        assert.ok(module.width >= 2 && module.height >= 2, `${seed} ${size} grid pane keeps a minimum footprint`);
+      }
       for (const [layer, items] of Object.entries(geometry)) {
         const halfStroke = layerStrokes[layer] / 2;
         for (const item of items) {
@@ -175,9 +186,19 @@ test('wright geometry and SVG stay stroke-aware and finite at sizes 24, 64, and 
         dark: false, sleeping: false, dx: 0, lighten: 0, flash: null
       });
       assert.doesNotMatch(svg, /NaN|Infinity/);
-      const elementCount = (svg.match(/<(?:rect|line)\b/g) || []).length;
-      expectedElementCount ??= elementCount;
-      assert.equal(elementCount, expectedElementCount, `${seed} retains detail at size ${size}`);
+
+      if (size < WRIGHT_SMALL_SIZE) {
+        const gridCap = WRIGHT_SMALL_GRID.columns * WRIGHT_SMALL_GRID.rows;
+        assert.ok(geometry.gridModules.length <= gridCap,
+          `${seed} size ${size} grid modules reduced to <= ${gridCap}, got ${geometry.gridModules.length}`);
+        assert.ok(geometry.decorations.length <= WRIGHT_SMALL_DECORATIONS,
+          `${seed} size ${size} decorations reduced to <= ${WRIGHT_SMALL_DECORATIONS}, got ${geometry.decorations.length}`);
+      } else {
+        fullGridCount ??= geometry.gridModules.length;
+        fullDecorationCount ??= geometry.decorations.length;
+        assert.equal(geometry.gridModules.length, fullGridCount, `${seed} size ${size} keeps full grid modules`);
+        assert.equal(geometry.decorations.length, fullDecorationCount, `${seed} size ${size} keeps full decorations`);
+      }
     }
   }
 });
