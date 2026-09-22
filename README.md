@@ -296,7 +296,7 @@ planes and a window grid drawn from a seed-derived dominant family, with an
 optional hybrid detail family and a palette from three Wright-inspired families.
 The aria label reads `"<seed>: <dominantFamily> Wright composition[ with
 <secondaryFamily> detail], <n> planes"`, e.g.
-`maya: prairie Wright composition with art-glass detail, 3 planes`.
+`maya: prairie Wright composition with art-glass detail, 5 planes`.
 
 - `id`: `wright`, `label`: `Wright Scaffold`, `spec`: `wright-geometry-v1`.
 - **Composition families.** `WRIGHT_FAMILIES` = `prairie | art-glass |
@@ -316,9 +316,11 @@ The aria label reads `"<seed>: <dominantFamily> Wright composition[ with
   reduced — the grid is capped at 2×2 modules and decorations at 2 — and the
   stroke widths are sized up, so icons stay recognizable at avatar sizes.
 
-**Motion model.** Every state starts from the seed's rest pose
-(`illuminate: -1`, `panelPulse: 0`, `settle: 0`), so the first mounted frame
-equals the static portrait:
+**Motion model.** Every state except `working` starts from the seed's rest
+pose (`illuminate: -1`, `panelPulse: 0`, `settle: 0`), so the first mounted
+frame equals the static portrait; a glyph mounted in `working` starts on the
+first working frame (`poseWright(params, 'working')`) so it lands on the motion
+trajectory without a jump:
 
 | State | Wright motion |
 |---|---|
