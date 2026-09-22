@@ -244,11 +244,29 @@ export function describeWright(params) {
   return `${params.dominantFamily} Wright composition${hybrid}, ${params.planeCount} planes`;
 }
 
+// ---------------------------------------------------------------- motion traits (tunable, non-identity)
+
+/**
+ * Motion traits are derived from disjoint bit-ranges of the seed hash (bits
+ * 42-52, above the bits `deriveWright` already consumes for `phase` and
+ * `paletteFamily`) — never new PRNG draws — so `deriveWright` output, the
+ * static portrait, and `WRIGHT_SPEC_VERSION` stay frozen.
+ */
+function wrightMotionTraits(params) {
+  const { hash } = params;
+  return {
+    sweepDir: Math.floor(hash / 2 ** 42) % 2 === 0 ? 1 : -1,
+    panelPhase: ((Math.floor(hash / 2 ** 43) % 64) / 63) * TAU,
+    illumSpeed: 0.7 + ((Math.floor(hash / 2 ** 49) % 16) / 15) * 0.6
+  };
+}
+
 export function prepareWright(params, { size }) {
   return {
     ...params,
     strokeWidth: size < 28 ? 3 : 2.2,
-    lightStroke: size < 28 ? 1.8 : 1.3
+    lightStroke: size < 28 ? 1.8 : 1.3,
+    ...wrightMotionTraits(params)
   };
 }
 
@@ -353,7 +371,7 @@ export function animateWright(pose, ctx) {
     // slow structural rise/fall — the active "working" state reads as a lit,
     // breathing architectural composition.
     return Object.freeze({
-      illuminate: 0.5 + 0.5 * Math.sin(t * 0.8 + params.phase),
+      illuminate: 0.5 + 0.5 * Math.sin(t * 0.8 * params.illumSpeed * params.sweepDir + params.phase),
       panelPulse: 0.5 + 0.35 * Math.sin(t * 1.3 + params.phase * 1.7),
       settle: 0.4 * Math.sin(t * 0.7 + params.phase)
     });
@@ -361,7 +379,7 @@ export function animateWright(pose, ctx) {
   if (state === 'waiting') {
     // A single slow illumination drift with the panels nearly at rest.
     const k = dt * 2.5;
-    const sweep = 0.5 + 0.45 * Math.sin(t * 0.35 + params.phase);
+    const sweep = 0.5 + 0.45 * Math.sin(t * 0.35 * params.illumSpeed * params.sweepDir + params.phase);
     return Object.freeze({
       illuminate: ease(pose.illuminate, sweep, k),
       panelPulse: ease(pose.panelPulse, 0.18, k),
@@ -372,7 +390,7 @@ export function animateWright(pose, ctx) {
     // A faster sequential scan with a sharper panel-pulse beat — panels "step"
     // as the illumination path sweeps.
     const k = dt * 3;
-    const sweep = 0.5 + 0.5 * Math.sin(t * 1.4 + params.phase * 0.9);
+    const sweep = 0.5 + 0.5 * Math.sin(t * 1.4 * params.illumSpeed * params.sweepDir + params.phase * 0.9);
     const beat = 0.5 + 0.5 * Math.sin(t * 2.1 + params.phase);
     return Object.freeze({
       illuminate: ease(pose.illuminate, sweep, k),
@@ -458,7 +476,7 @@ export function paintWright(params, geometry, pose, effects) {
     // Panel pulse: a bounded, spatially varying stroke-width swell. At rest
     // (panelAmp 0) the stroke is emitted exactly as before for byte-identical
     // static output.
-    const pulseScale = panelAmp > 0 ? 1 + panelAmp * 0.55 * Math.sin(index * 2.39996 + params.phase) : 1;
+    const pulseScale = panelAmp > 0 ? 1 + panelAmp * 0.55 * Math.sin(index * 2.39996 + params.phase + params.panelPhase) : 1;
     const moduleStroke = panelAmp > 0 ? (light * pulseScale).toFixed(2) : light;
     parts.push(rect('grid-module', module,
       'fill="none" stroke="' + roles.line + '" stroke-width="' + moduleStroke + '"'));

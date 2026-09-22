@@ -238,6 +238,25 @@ test('wright derive selects a palette family deterministically without reorderin
   assert.deepEqual([...seen].sort(), [...WRIGHT_PALETTE_FAMILIES].sort());
 });
 
+test('wright motion traits derive deterministically from disjoint hash bits without new draws', () => {
+  const a = prepareWright(deriveWright('maya'), { size: 64 });
+  const b = prepareWright(deriveWright('  maya  '), { size: 64 });
+  assert.deepEqual(a, b);
+
+  assert.ok([-1, 1].includes(a.sweepDir), 'sweepDir is a sign');
+  assert.ok(a.panelPhase >= 0 && a.panelPhase <= Math.PI * 2, 'panelPhase bounded');
+  assert.ok(a.illumSpeed >= 0.7 && a.illumSpeed <= 1.3, 'illumSpeed bounded');
+
+  // Motion traits must not perturb the frozen geometry/palette parameters or spec.
+  const maya = deriveWright('maya');
+  assert.equal(maya.spec, WRIGHT_SPEC_VERSION);
+  assert.deepEqual(
+    [maya.dominantFamily, maya.secondaryFamily, maya.massWidth, maya.massHeight, maya.massOffset,
+      maya.planeCount, maya.planeSpread, maya.gridColumns, maya.gridRows, maya.decoration, maya.accent],
+    ['prairie', 'art-glass', 59, 38, 3, 5, 9, 5, 4, 2, 1]
+  );
+});
+
 test('wright paint uses semantic palette roles in light and dark contexts', () => {
   const seeds = ['wright-palette-1', 'wright-palette-11', 'wright-palette-0'];
   for (const seed of seeds) {
