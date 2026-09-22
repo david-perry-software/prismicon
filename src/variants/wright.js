@@ -37,6 +37,13 @@ export const WRIGHT_LAYER_LIMITS = Object.freeze({
   accents: 2
 });
 export const WRIGHT_VIEWBOX_BOUNDS = Object.freeze({ min: 5, max: 95 });
+// Size-aware legibility tuning: below WRIGHT_SMALL_SIZE the geometry is reduced
+// (grid modules and decorations capped) so icons stay recognizable at small
+// avatar sizes. These constants are prepare-derived only — the derivation spec
+// (WRIGHT_DRAW_ORDER / WRIGHT_SPEC_VERSION) is never touched.
+export const WRIGHT_SMALL_SIZE = 28;
+export const WRIGHT_SMALL_GRID = Object.freeze({ columns: 2, rows: 2 });
+export const WRIGHT_SMALL_DECORATIONS = 2;
 const TAU = Math.PI * 2;
 
 // ---------------------------------------------------------------- palette system
@@ -245,10 +252,12 @@ export function describeWright(params) {
 }
 
 export function prepareWright(params, { size }) {
+  const small = size < WRIGHT_SMALL_SIZE;
   return {
     ...params,
-    strokeWidth: size < 28 ? 3 : 2.2,
-    lightStroke: size < 28 ? 1.8 : 1.3
+    strokeWidth: small ? 3 : 2.2,
+    lightStroke: small ? 1.8 : 1.3,
+    small
   };
 }
 
