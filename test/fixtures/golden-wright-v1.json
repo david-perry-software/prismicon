@@ -30,7 +30,15 @@
       "demo-agent|{\"kind\":\"user\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"#2c5968\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"#8e2e39\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
       "demo-agent|{\"state\":\"thinking\",\"dark\":true}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes, thinking\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"#6ba4b8\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"#4a7383\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"#4a7383\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"#4a7383\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"#4a7383\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"#4a7383\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#c3d8df\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"#c3d8df\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"#c3d8df\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"#c3d8df\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"#c3d8df\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"#c9606e\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(217 70% 55%)\" stroke-width=\"4.5\" stroke-dasharray=\"12 7\" style=\"animation:prismicon-pulse 2.4s ease-in-out infinite\"/></g></svg>",
       "demo-agent|{\"state\":\"waiting\"}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes, waiting\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"#2c5968\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"#8e2e39\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(42 80% 44%)\" stroke-width=\"4.5\" stroke-dasharray=\"0.1 9\" stroke-linecap=\"round\"/></g></svg>",
-      "demo-agent|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes, error\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"#2c5968\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"#8e2e39\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>"
+      "demo-agent|{\"state\":\"error\",\"size\":140}": "<svg viewBox=\"0 0 100 100\" width=\"140\" height=\"140\" role=\"img\" aria-label=\"demo-agent: textile-block Wright composition, 5 planes, error\"><g><rect data-wright-layer=\"primary-mass\" x=\"16.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"#2c5968\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"40.2\" width=\"57.1\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"12.8\" y=\"58.2\" width=\"57.1\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"29.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"22.0\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"30.8\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"39.6\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"48.4\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"57.2\" y=\"51.0\" width=\"6.8\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"22.0\" y1=\"29.0\" x2=\"28.8\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"37.6\" y1=\"29.0\" x2=\"30.8\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.6\" y1=\"29.0\" x2=\"46.4\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.2\" y1=\"29.0\" x2=\"48.4\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.1\" y1=\"23.0\" x2=\"31.1\" y2=\"77.0\" stroke=\"#8e2e39\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"hsl(4 70% 50%)\" stroke-width=\"4.5\" stroke-dasharray=\"7 5\"/></g></svg>",
+      "wright-family-1|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"wright-family-1: prairie Wright composition with usonian detail, 3 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"23.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"#5c6164\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.0\" y=\"40.2\" width=\"78.0\" height=\"1.6\" fill=\"#8a7758\"/><rect data-wright-layer=\"horizontal-plane\" x=\"19.9\" y=\"49.2\" width=\"67.2\" height=\"1.6\" fill=\"#8a7758\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.0\" y=\"58.2\" width=\"78.0\" height=\"1.6\" fill=\"#8a7758\"/><rect data-wright-layer=\"grid-module\" x=\"29.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"47.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"65.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"29.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"47.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"65.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"29.0\" y1=\"38.0\" x2=\"45.0\" y2=\"49.0\" stroke=\"#262a2d\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"63.0\" y1=\"38.0\" x2=\"47.0\" y2=\"49.0\" stroke=\"#262a2d\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"65.0\" y1=\"38.0\" x2=\"81.0\" y2=\"49.0\" stroke=\"#262a2d\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"51.0\" x2=\"29.0\" y2=\"62.0\" stroke=\"#262a2d\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"40.9\" y1=\"32.0\" x2=\"40.9\" y2=\"68.0\" stroke=\"#9c3b2a\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "wright-family-5|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"wright-family-5: art-glass Wright composition, 5 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"31.0\" y=\"23.0\" width=\"52.0\" height=\"54.0\" fill=\"none\" stroke=\"#2c5968\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"23.0\" y=\"31.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"27.4\" y=\"40.2\" width=\"55.6\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"23.0\" y=\"49.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"27.4\" y=\"58.2\" width=\"55.6\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"23.0\" y=\"67.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"grid-module\" x=\"37.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"47.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.0\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"68.5\" y=\"29.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"37.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"47.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"58.0\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"68.5\" y=\"51.0\" width=\"8.5\" height=\"20.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"37.0\" y1=\"29.0\" x2=\"45.5\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"56.0\" y1=\"29.0\" x2=\"47.5\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"45.6\" y1=\"23.0\" x2=\"45.6\" y2=\"77.0\" stroke=\"#8e2e39\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "wright-family-3|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"wright-family-3: textile-block Wright composition, 4 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"17.0\" y=\"23.0\" width=\"54.0\" height=\"54.0\" fill=\"none\" stroke=\"#2c5968\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"33.0\" width=\"70.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.4\" y=\"43.8\" width=\"57.6\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"54.6\" width=\"70.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.4\" y=\"65.4\" width=\"57.6\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"grid-module\" x=\"23.0\" y=\"29.0\" width=\"20.0\" height=\"12.7\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"29.0\" width=\"20.0\" height=\"12.7\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"23.0\" y=\"43.7\" width=\"20.0\" height=\"12.7\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"43.7\" width=\"20.0\" height=\"12.7\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"23.0\" y=\"58.3\" width=\"20.0\" height=\"12.7\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"45.0\" y=\"58.3\" width=\"20.0\" height=\"12.7\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"43.0\" y1=\"29.0\" x2=\"23.0\" y2=\"41.7\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"45.0\" y1=\"29.0\" x2=\"65.0\" y2=\"41.7\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"55.9\" y1=\"23.0\" x2=\"55.9\" y2=\"77.0\" stroke=\"#8e2e39\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "wright-family-0|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"wright-family-0: usonian Wright composition, 3 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"13.5\" y=\"28.0\" width=\"61.0\" height=\"44.0\" fill=\"none\" stroke=\"#2c5968\" stroke-width=\"2.2\"/><rect data-wright-layer=\"primary-mass\" x=\"48.9\" y=\"36.8\" width=\"19.5\" height=\"26.4\" fill=\"none\" stroke=\"#2c5968\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"5.0\" y=\"38.2\" width=\"79.5\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.0\" y=\"49.2\" width=\"65.5\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"5.0\" y=\"60.2\" width=\"79.5\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"grid-module\" x=\"19.5\" y=\"34.0\" width=\"15.0\" height=\"15.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"36.5\" y=\"34.0\" width=\"15.0\" height=\"15.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"53.5\" y=\"34.0\" width=\"15.0\" height=\"15.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"19.5\" y=\"51.0\" width=\"15.0\" height=\"15.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"36.5\" y=\"51.0\" width=\"15.0\" height=\"15.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"53.5\" y=\"51.0\" width=\"15.0\" height=\"15.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"34.5\" y1=\"34.0\" x2=\"19.5\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"36.5\" y1=\"34.0\" x2=\"51.5\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"68.5\" y1=\"34.0\" x2=\"53.5\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"19.5\" y1=\"51.0\" x2=\"34.5\" y2=\"66.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"57.4\" y1=\"28.0\" x2=\"57.4\" y2=\"72.0\" stroke=\"#8e2e39\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "wright-palette-1|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"wright-palette-1: art-glass Wright composition with prairie detail, 3 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"21.0\" y=\"23.0\" width=\"52.0\" height=\"54.0\" fill=\"none\" stroke=\"#6f5a3e\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"11.0\" y=\"35.7\" width=\"72.0\" height=\"1.6\" fill=\"#8f7956\"/><rect data-wright-layer=\"horizontal-plane\" x=\"16.5\" y=\"49.2\" width=\"56.5\" height=\"1.6\" fill=\"#8f7956\"/><rect data-wright-layer=\"horizontal-plane\" x=\"11.0\" y=\"62.7\" width=\"72.0\" height=\"1.6\" fill=\"#8f7956\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"29.0\" width=\"12.0\" height=\"12.7\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"41.0\" y=\"29.0\" width=\"12.0\" height=\"12.7\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"55.0\" y=\"29.0\" width=\"12.0\" height=\"12.7\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"43.7\" width=\"12.0\" height=\"12.7\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"41.0\" y=\"43.7\" width=\"12.0\" height=\"12.7\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"55.0\" y=\"43.7\" width=\"12.0\" height=\"12.7\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"27.0\" y=\"58.3\" width=\"12.0\" height=\"12.7\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"41.0\" y=\"58.3\" width=\"12.0\" height=\"12.7\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"55.0\" y=\"58.3\" width=\"12.0\" height=\"12.7\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"27.0\" y1=\"29.0\" x2=\"39.0\" y2=\"41.7\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"53.0\" y1=\"29.0\" x2=\"41.0\" y2=\"41.7\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.0\" y1=\"29.0\" x2=\"67.0\" y2=\"41.7\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"39.0\" y1=\"43.7\" x2=\"27.0\" y2=\"56.3\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"35.6\" y1=\"23.0\" x2=\"35.6\" y2=\"77.0\" stroke=\"#9c3a2b\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "wright-palette-11|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"wright-palette-11: prairie Wright composition with art-glass detail, 5 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"14.0\" y=\"32.0\" width=\"64.0\" height=\"36.0\" fill=\"none\" stroke=\"#2c5968\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"5.0\" y=\"37.2\" width=\"82.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.9\" y=\"43.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"5.0\" y=\"49.2\" width=\"82.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"9.9\" y=\"55.2\" width=\"68.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"horizontal-plane\" x=\"5.0\" y=\"61.2\" width=\"82.0\" height=\"1.6\" fill=\"#668998\"/><rect data-wright-layer=\"grid-module\" x=\"20.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"38.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"38.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"20.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"38.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"56.0\" y=\"51.0\" width=\"16.0\" height=\"11.0\" fill=\"none\" stroke=\"#10242c\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"20.0\" y1=\"38.0\" x2=\"36.0\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"54.0\" y1=\"38.0\" x2=\"38.0\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"56.0\" y1=\"38.0\" x2=\"72.0\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"36.0\" y1=\"51.0\" x2=\"20.0\" y2=\"62.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"38.0\" y1=\"51.0\" x2=\"54.0\" y2=\"62.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"72.0\" y1=\"51.0\" x2=\"56.0\" y2=\"62.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"20.0\" y1=\"38.0\" x2=\"36.0\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"54.0\" y1=\"38.0\" x2=\"38.0\" y2=\"49.0\" stroke=\"#10242c\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"31.9\" y1=\"32.0\" x2=\"31.9\" y2=\"68.0\" stroke=\"#8e2e39\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "wright-palette-0|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"wright-palette-0: usonian Wright composition, 5 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"17.5\" y=\"28.0\" width=\"67.0\" height=\"44.0\" fill=\"none\" stroke=\"#5c6164\" stroke-width=\"2.2\"/><rect data-wright-layer=\"primary-mass\" x=\"56.4\" y=\"36.8\" width=\"21.4\" height=\"26.4\" fill=\"none\" stroke=\"#5c6164\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"7.5\" y=\"34.5\" width=\"87.0\" height=\"1.6\" fill=\"#8a7758\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"41.9\" width=\"71.5\" height=\"1.6\" fill=\"#8a7758\"/><rect data-wright-layer=\"horizontal-plane\" x=\"7.5\" y=\"49.2\" width=\"87.0\" height=\"1.6\" fill=\"#8a7758\"/><rect data-wright-layer=\"horizontal-plane\" x=\"13.0\" y=\"56.5\" width=\"71.5\" height=\"1.6\" fill=\"#8a7758\"/><rect data-wright-layer=\"horizontal-plane\" x=\"7.5\" y=\"63.9\" width=\"87.0\" height=\"1.6\" fill=\"#8a7758\"/><rect data-wright-layer=\"grid-module\" x=\"23.5\" y=\"34.0\" width=\"17.0\" height=\"15.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"42.5\" y=\"34.0\" width=\"17.0\" height=\"15.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.5\" y=\"34.0\" width=\"17.0\" height=\"15.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"23.5\" y=\"51.0\" width=\"17.0\" height=\"15.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"42.5\" y=\"51.0\" width=\"17.0\" height=\"15.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"61.5\" y=\"51.0\" width=\"17.0\" height=\"15.0\" fill=\"none\" stroke=\"#262a2d\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"40.5\" y1=\"34.0\" x2=\"23.5\" y2=\"49.0\" stroke=\"#262a2d\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"42.5\" y1=\"34.0\" x2=\"59.5\" y2=\"49.0\" stroke=\"#262a2d\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"78.5\" y1=\"34.0\" x2=\"61.5\" y2=\"49.0\" stroke=\"#262a2d\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"23.5\" y1=\"51.0\" x2=\"40.5\" y2=\"66.0\" stroke=\"#262a2d\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"65.7\" y1=\"28.0\" x2=\"65.7\" y2=\"72.0\" stroke=\"#9c3b2a\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>",
+      "wright-hybrid-2|{}": "<svg viewBox=\"0 0 100 100\" width=\"64\" height=\"64\" role=\"img\" aria-label=\"wright-hybrid-2: art-glass Wright composition with textile-block detail, 4 planes, idle\"><g><rect data-wright-layer=\"primary-mass\" x=\"28.0\" y=\"23.0\" width=\"52.0\" height=\"54.0\" fill=\"none\" stroke=\"#6f5a3e\" stroke-width=\"2.2\"/><rect data-wright-layer=\"horizontal-plane\" x=\"22.0\" y=\"33.0\" width=\"64.0\" height=\"1.6\" fill=\"#8f7956\"/><rect data-wright-layer=\"horizontal-plane\" x=\"25.3\" y=\"43.8\" width=\"54.7\" height=\"1.6\" fill=\"#8f7956\"/><rect data-wright-layer=\"horizontal-plane\" x=\"22.0\" y=\"54.6\" width=\"64.0\" height=\"1.6\" fill=\"#8f7956\"/><rect data-wright-layer=\"horizontal-plane\" x=\"25.3\" y=\"65.4\" width=\"54.7\" height=\"1.6\" fill=\"#8f7956\"/><rect data-wright-layer=\"grid-module\" x=\"34.0\" y=\"29.0\" width=\"19.0\" height=\"20.0\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"55.0\" y=\"29.0\" width=\"19.0\" height=\"20.0\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"34.0\" y=\"51.0\" width=\"19.0\" height=\"20.0\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><rect data-wright-layer=\"grid-module\" x=\"55.0\" y=\"51.0\" width=\"19.0\" height=\"20.0\" fill=\"none\" stroke=\"#2e2417\" stroke-width=\"1.3\"/><line data-wright-layer=\"decoration\" x1=\"53.0\" y1=\"29.0\" x2=\"34.0\" y2=\"49.0\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.0\" y1=\"29.0\" x2=\"74.0\" y2=\"49.0\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"53.0\" y1=\"51.0\" x2=\"34.0\" y2=\"71.0\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.0\" y1=\"51.0\" x2=\"74.0\" y2=\"71.0\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"53.0\" y1=\"29.0\" x2=\"34.0\" y2=\"49.0\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"decoration\" x1=\"55.0\" y1=\"29.0\" x2=\"74.0\" y2=\"49.0\" stroke=\"#2e2417\" stroke-width=\"1.3\" stroke-linecap=\"round\"/><line data-wright-layer=\"accent\" x1=\"65.4\" y1=\"23.0\" x2=\"65.4\" y2=\"77.0\" stroke=\"#9c3a2b\" stroke-width=\"2.20\" stroke-linecap=\"round\"/></g><g></g></svg>"
     },
     "mounted": {
       "maya|{}": [
@@ -879,6 +887,1702 @@
           "state": "idle",
           "t": 2353,
           "hash": "8b8d0f121452e39ee7a19428c292605c96b22f98b228d52b82fa7b3b17e01eb6"
+        }
+      ],
+      "wright-family-1|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "25a1e97c462d5a70cb321052b263a406b22753e4232351f72a44bd90efebaffe"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "5e56f8b26df16360ae11169d14163e9d0087a041c8fcf1001393d465eb8c32af"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "6bfb149dc0223d1d6459d074546ec7bd2164e42cc56881a5bd99602649a86e44"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "4d33f40cfeb6cb561ebd3e265bf89bdacf00079e40ea3ed56cc992c2a71cb108"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "c4602115e13a364f197aa2bdb035f715de7a56180c8db6242299035a4cf2372f"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "a1c37f43612e9049e22b3b0ee8fc3cc4c4bffb8054bdbacbf32319abbb4df86a"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "bff46bf19f693491790581ec36bfbea11d22e33c46a1408d79d751e3262b11ae"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "bd5c4c8896ca43f5980c43e7f45465ca958f728fe52c5c13b8af63d0604ab3f5"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "19fc3433408655f67c7d60d5940f8f88f261a98e691d3aff10d404385f690855"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "d276a96ac98fcb6ebaa268396a2228bfbf0f64968321085d1503904c59ac5e2f"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "ed2863583a453052a42b04e89c8564590ea9d33a8e7c171359109df663a747b9"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "3f211443e837a0e94ff49d17a4f0a8a8e633c2dfe2225d68f59ee0d0349444ff"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "6773fc3c3ba5c89d5761617b71492671fcb16428fca64179d1246cfbff395024"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "b2ca8d5b805dbd17d2d27e625c24541fbc1ad9d5160e2a2646ea12fed4d85993"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "c8c28a6a6a7d6669af19c5c8e2c64e8c4733ca804ebbc7f650dd05a15f752e8b"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "ff0bfe4e1e400689c3b9ae9414b0f7a46c217efbef05e386e7d1c7f106467552"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "ef19ee25be3db7dafd1d987bedd1686d30ebb615d782f587c3c42faa8cba6fe8"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "2f7b1a8c7bc3d9fde426b7817e1b6f47f2fe1d19a4425e7537bc8d845b1ad100"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "437e85f7575c6b7b34593cd7c35568d9c6768daa6c6e9e2e23a770b4d6632ec0"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "d489e644ba18ba3496d3b86f6b64418df033e7beb5ea4b23119c48246f2db114"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "aaa474a315f42826714028a687ca1b94bffd116cca1dcb4c9ea04659f8685be1"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "f39c8482deb2666004cedac5b91141e8cc9cc61292f222452e167b78fdac9589"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "3339b92b724988bf83605e2442e387dfdb6722e2874e471c0978e2296d28a69d"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "37dd7d575de326948b88eb4751d9ea2e08c670f9e9c5a881d84969294a43f001"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "c426c7448ed47029c46ce492c893aeb61229182af962aeb4a2b63a8b51923c4c"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "6ccd6c382153c004252db39fd3e49cbcd7ced5ec444830fda8750dd6ec20c0b8"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "2ed176fc3af345183e69c7401f342b6e9234067091bc567f32437a1515db45bd"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "a7ff4d94df76b1d1df330996c19a5b9a2631ad2d6b54b96041bee3adb5af78b8"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "d9a5db953e2c38abe412f9a05c83c6f3b2e84e5fe7fcc49491bf95b553611781"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "08fb9da9034ada6be02aceea127ab7b280b03cb026b92cc6a289630b28eedeac"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "7aa0083a4822ec07405fb00fdca1447861b7a4435f6fb3fbe79d5d3b9dc08137"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "b5c86c36865a8be3a40a276b516fe0021cdf08f986dd248ffae4454d9fc1b3cc"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "dd3e76e11b344c6e7d4d32283e6ae9e607cff19c27f317926982de61f012f6f5"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "7508723505a1fcc760a3b759122007a8cf38ddaec7e263377eb601689539b7cf"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "bf2ce324e9831d4cea9ec7efe794f672c765b1db8859a1824ef4f52b00428a11"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "87d8a8af0ddff45ab6accf02cdc63002175ed6ef3664a1b63aac518b9733cc8a"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "00ec89c4f6a51b59f7faca6812fa506b9fdd3d301990a218a7ea94a8adc48544"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "4bcf05984142b09802a4c3d44e73aecd70a85718048d39ba2b08b1f1994646a5"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "76e047b44fd5fd9d9972345a31794c3146d269970d7e3e9289244b4e90a5935b"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "77eb6a5568bb0315554ee53f79d4120e8b09d5e26ae82f45f0babe536aa385ca"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "a30833e88dba3cc1432c976cad14e8fdfd4232a5c8a226fa006d72c1bf8a8975"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "86696978e7bd9d1b8cb8f65fc7f4b23c2bc65c62e9f5b88ac86b9eeda156441b"
+        }
+      ],
+      "wright-family-5|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "fd0172b7843a8f00f304f3277f59f16d539ff040de1632c9a7b5e9dfef251ab2"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "f528684d4c2a787e32b07ca08a674b9baf75df04c29d940529aaff02fa6b57da"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "3666ba90a35f95bba632ff4db048c0749ec2a9be737403d726252a5639ee21be"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "7f27c02d37d93d22930c1c25e0ef0cfcf906d6fbe5bead7b045d91548bc42a88"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "1514ef0558ea38eea8dafa4d87e556220395b7f90fd641bad07d4bb6d77b9b0c"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "57c7675f77041f28e90cdb771666b7f78acb9f1808f6096789c535a3d925e91c"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "9210701fa00e4acc2e65e2ad8383cb910499eec00f4dd006aa61120c7519cff2"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "a61f3419162f0b163d181a83d3bf94dc773aa79283dc630b6c47830d197f3c3b"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "ad4b34229b8de0785339a7d20ff561cc6c08a08eb37dc2e14970a40bfd3ef612"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "0bec2f624aad294f80f37ac628dbe8f3aa2fc88b2f02640681bbbfafc141a10d"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "789d99e35a18e3c3292a478ffd5e512c7176416428318503985326fb9383ff4b"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "cb3e5690bd07c337775c81ffe56a5fb6a6cc23f1210c1419a739ad607ad8cc4f"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "a0e9a0fc5b8c12cc42059f224ea190293a4f9bc87b50e34b2da15a98f56e37b1"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "d0c969a099ce4d2a4cde1180e5220ead07d37795e785f1a1e5fca5a0db3cf0a2"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "8110ee8eb14cd7a1c3473be26ea664116c0940b79e443b3705f26d2443f6d4b2"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "6cf53d84ae52e28fc3009540452de9891b0db0bb5a9d55bf79d93109d7e204cf"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "44552e3c99af2091f44805ab506a67f4dea550478a9211ad64bed064ee5f8f28"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "7b540f5ff8111cdae7a33c46149a555f32b5e61a2d7f296d6fc64c59df129b08"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "0d135ec258c7ee4a24ff9b825c64ffaa7666f23f657b150be1d423b502b12529"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "ca0988011a676aeba387d271e2a76942188afb986e62f78fda21d9bcf4cb9187"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "a6b65714d439f3899399b78c0ca842f0476bb63446ec5c0815563b07527178d8"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "f439059296ff9128dbc9a3d3f4c30ec57ff1970c22f96d5902a6ac6d47a947fa"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "c3b5587a2a3f941ccc774923fc78f189c65ae8d9cd5243764c232fd62ba2d69c"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "be3d31a42ab3b88b1ec076278e906070ff4f84153051d2a5492c0e8758a6414a"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "84837d7c47ff05b8e4368d8cca03cf6f9a49f3a5c24926326c3c6109c18f261d"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "c893eb6a19687f7224e660c83b1b4d7586a1147bfae18041b7d8c47b5b5b0846"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "f90666c1225abdc7197b1f26d1d892b59ca5b2a2abbbaeba0a0788f5631e11d8"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "9b6251b8e7a1d1b75562dfffd957b65f9c00e4abd897d9ed00cfb80911b93365"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "dc0311b2640686c774c24a2a0571f5d89cd91c1066b444ea1ecc7e67e89bad0d"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "52aea23701af0568e1e8364c50c7c339a28572feab563ab5cbae908e361897a3"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "b2d9a00006816ccce7b3cbc6b529b1d54ad00e7f899c01a7a907f23fa23651bc"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "991b45450012c970b2578e5d9390d9c29318873f19bc9649286ceabb6122961b"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "97f1af5f339e6a832edb58f96dddbb5480285adebe077d4e60b33a8e822078a8"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "191485efcf706a3b73604799e88ce12574bf330ce3744d5c37c1d75d6d648fc6"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "3459c84a37c59d79d7bb729d4123ac66e75c9570c51dc02c72bd7ba4ff115b35"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "dfeaec68601ecdfc28362d92c4a177190579da8468556f95c0f5d5b5cd6968f2"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "e2900fe2e5b91c8dc83c216c22bc3ce5b5e44d24a47bcfd055360ba945d73628"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "73c55b26d056d230ab91a9b6ee90f8f63aa35ce2230ff9830da0578a44cf1923"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "0bdee87a516ef6561f064e6b7fae0032cf3ec6691bd2f8d9fd2584ff27ceac36"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "515fd5e41eb06196fafd4ad5e48c30d44eb4cd9ab9a427d8cd498e38201c5eec"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "8bcc81822df19ebadb607be90cf73a710be4901697c635595dc5e0fcddca9198"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "185cd269e3780bc70a4282f11fb111899d1bd2ac3abc4c2d50a0e3b5c5303589"
+        }
+      ],
+      "wright-family-3|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "16b2395182381f4f0fe9e576e97830112e16df79852570109b6d645e8b1e6a7b"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "3b9ec9add769f53c4c79705c2ec68f27b56b3c7a4de08c192c9671fec4aeccac"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "b466c4183b97ea2a6be10bf19e09664ec0a87b79906c07a886a4d357192ef8c3"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "4dff36e839c9f673e9c1a9fbc53dabc42d988368eba77f41c450cb74f8f1cf84"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "36b2cfa6fe755caa16264469de496081d47ab8454c74612527953c357b0e592c"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "ca704df5debc4150b98b4bc434577e82875dbf3a16667eb46344785637ad1c9d"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "a99bb106ca7d21b4c0bf43ad81f4749b3942c4b0bcc26185952fc802b61464c3"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "4ed9d664c60ee87e5ccaca7b70870361f8377b3388fc93c101ec8a7aba6b121b"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "b65aa3abceae52ae9d7a02832a195f1467f6113fea217e712fc2f8d7a78e1454"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "720826e612d824a4d8e383294522ed38c17d6e2e686afe944ec5801b6aaa6008"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "7ac1889eb5ac4f4a99f2ee3e51c0ada52f7fcf24169561e03a5ec98deb870388"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "14430ef037ba0aac40800db5e81ecf43c1b54fc8f286f6a87a43255ea4d29320"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "c437687a8d01c52aa6615424e7e610dfb8d6075cdeda9c5389c6e90181da21cb"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "1d22c0e3df5638586d2b15495e679fd6e0843e6240d7e5f1f6593a95c6ce38b4"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "974fbdfb2aac2397ed4c942a2ce9113de133460b5128e5d86fedd62a0b7e9be5"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "a8e9b5cff943c7875d8b199af7de1ca34260b7e5bf458718e51787092087e4a2"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "31ad7e3a803bd24b717edb3c7340839e61061e755be51bbd430b2ec148d0db6e"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "309af9203a007c506d94596c31e77c9e08ef2cb6569eda2fd90dd19f8979850f"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "9bcc765169d0c60fa49f2589e66a8101c10401dcc8ea846d90e6e4ecb25b426a"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "666aeffc7db8804773b621d1f23ad7478cae454287beb00b9ba2e774b136d0d2"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "f6b028d3596b5c73345f147cb7253bf64ff4127ab023e730521cb78e37a7bb35"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "96657040f02b8a68e1218d713e67bb019706cd2582b7fbbaebccffd7b3d9ee8e"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "4460c4be65a778134baeacd3d7c797420d1843c3a487dc3d3e290948bc9fe2f0"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "9242c97c7dc4bf8e580d114a9922cf7ecd870aa7b65907df5bed99fc43ff3988"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "e964617f91037ef5c98f06bc973743ee0d16d379a1b69a15cc16464056058dd2"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "8cdb6b67f0b86da5c37425e3f6729e233606af22fea4271a8c497efa8492ac06"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "1f2b2bb76ce2a7053830fe63f187368b9d58cc12dda72c6e3bf733869e4539be"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "1f9dcc2155104e9bfffe23de5c7e00f62f1ae53dc4db5fe92ca35bca7e3be9d0"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "e39de1a6fc27983a79847f49a65ccc8a7d49fc5a9323b3cf4050adaed3217e10"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "3829287604f8ab7b9b604d75013a1d05a882e657cd0990eb0e3310bf6d822276"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "239c5c2032f80e81ee895b8091f1a3c6348aac46502cda3913a612a838f1d536"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "b92a0a9e39a0fad1aa903999c41bd4e75f931b83de8d962e191a3aae409e9b8d"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "e62a945f329ce0cbb00ea280a81b7378b0de51776b0385ec170b66d0d8de129b"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "da6f63315dd901258062926b84e86478ebd862e5c86e180ce7cd953153a957b8"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "402f621a0ec922f8098ab2d7b38ca0b0e3bacb740d52f0f92cd115e00a87d32c"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "94415a60332f8964c7f6d8fb8d496da127e6e01085cebaa860304899ccfc05c0"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "965d80e496e74e7289ca118b506fdac2f19fe24c5b6880858899c6c44abe4947"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "3c855d074267cfe8a9436901237e0970adc150918b49baedb6dd97691c8412a4"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "698d33bb35090c0801497965c7815c7ed0c18fbbcbe20588f7137c235fb0e09f"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "79ec25a2d16e4a482ea966dc48d79cd6ef8aa7e3e3456edad372181c06ade191"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "03fe46d2d6bfebf97c417690f4c81b8393c0e3c1843f85d103b67e73eb26446d"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "8b1691cc7af27e258da0d8aa6e628796524fa3ed840799ab83b70be151f97050"
+        }
+      ],
+      "wright-family-0|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "3399eca91c2b0bc0746755557afbac5ecd29884f7edfae7af0943b7ab17134f9"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "7b199805d0bf144fc931ceba3d8c6c7a4b421a2ec59a3204ff0dd2ea59225b77"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "34e384d45f6d321523e2d12bdea6f551bf495b6be455a49d19bb884f8e4674b9"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "f6adb40238df0f910f665d56a92dd869be5b6f3c59c1c321f4cf018f582e6712"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "4852390b01bf6c98927ea343e1bf9b6fd502b22ce6e4c8ba32b19878c44fa5dc"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "53c9e572de3f65fe7864f3c60dcf7ed518b6975d255307cda1565d39f2da42b6"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "da11947ab41f200d25cc4eed8b37e367ec0a9bc7a2ba0f60320b06a7388c0e4c"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "ac3466056175f1ef8c6b31c982b9640848635eed8ca1faffec7967392ecd3d25"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "04c6330f219c0557bbf4859562353b674844874ad5020de6d5919e003560cdfd"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "af24f272635eab9356d1f6d8f51100b24fe60e8b484af883f4eafd34e1591a8b"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "f48acc85fff9ec566ab966b8caad0bb0a667c58e1bd7e23f2e659b1969c1730a"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "2e4a4d8e48d792e54b3c4c40663b848bb74ebcef40b25cc618b0e219afc56ba8"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "305056d797d3e1fcaef609fba39c86b31ebe504f9f45f9053dc5a79fc2053dc8"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "b8623c5ae0db4b51205c85f1524e763ef349324a2e0771157bfecb3a2071bf99"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "d74c5f5d1fbafed29a81759686addee5899dd53877fff7b811c08abf963e95ba"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "63c67a433a1c0fce6a284ae39d5de2228483cc31c02ac17336720fd2bd082398"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "6bcf77a47cff81b56cdabacc9d366f0691a13e3930fefbbd75e878dedda975d2"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "9015b94c0e804d8e2ead931e12ccf12c5648a00fd8a9be83771de055e7d0e2fd"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "fd7619928493864c260006fd782de6a6a1d6a1f4ddb5c3351f9469153f47d317"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "379d760959bd1dfcabd2e3f2487951133ed904aa58cad1ea726cae500e829423"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "6e665ff28756e8ec479888605cb16516406efce57b33c9dd0db491317b913620"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "d6570e4251ab99095ee2d23631682129d1afcaf87b8919c6eb2202bb51684440"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "02a2395c84b9312c702b5a44761081c15eac2642e4af6093787753e67ec5860b"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "80ad50e5969e30ee0e863d31967dbf277de5e652a26d3c0db8d8b0b5e392256d"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "a84156a083d564b5de01ce830d85a17303bc1926bb06bc5eda64d000f440fce1"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "2a2cb8fd2a7d0325f4466786819ebdeba68612f36adbeb911ebd7333e823e8ad"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "4ddfb55fcddd1b24eb9ca510e89a6d03d562c7641137efd3c06bbb2a069ca24c"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "4a7a9f6800ba6bcf06a95eb2776b72a89a06a7c1a940930151dbd6d3fb53df9b"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "2945a7958af2c468ce6fa8d8fe366f0bcb6dfc5f070dd0e5284e67817d60bd75"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "cfa31664722da1010e34806b9f40940262840c30b3b4c164b9a99f44e1c71c8d"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "53320d7da182dc66c52369c7895b75358bb64461816126584c2d722fba845184"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "2aafa5fabdc0600ea6e00c25f2d2eeef966025f763a200e6de8dc89dcb19d27a"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "637a39f37cc22c7d7bc75080d75ab608a157419df8034a7fe55e1b271b6fe24c"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "d887670802f69de525deaa709811e9b0005f45abeb7615d59ab43475fcac901b"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "1e900928477380cce8d734911802b1de6ba221534f2ea661cbb864a946a1ba98"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "590c85a5c59d65ac16c3e8891503010639aa244e2624462f9406ed98d78e8a34"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "6587856d9d5f66e5206ae4c81da8f2b270a324afb37de547dba5fd11505fb8a6"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "cd22999e45bc19b70ea4beaebec0e75d3b4ce0e73dc0b68abaf74c9003a4feb0"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "cbfd9c565e6faf5fd930b17f86a0bf0a1a271ee1c1c46151f135bb08ca85963a"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "61d41f42e7d632eb2c1e26e22f87343e5df77b4987ca3c1d5fee05cf39407f08"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "7cbe60b586c74187d40bea28d88266b9b8d4a844b317add1bbd7e3a377c05223"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "7d3c968c4aa17288e2dc4c0cff7567db2a2b0db4d7f52dc0a559569c8a656b6e"
+        }
+      ],
+      "wright-palette-1|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "8099b94371c88ea3950685bff580f88300add45bc1b2446a80f923b85c98049e"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "8099b94371c88ea3950685bff580f88300add45bc1b2446a80f923b85c98049e"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "cacf11e31b1b3015bc5db3963ad9e062271f420f2ba1719cff81ee30ee93efee"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "7ec4a566d19936fa3d22d095353a85a6ac8e7c57530cdb61c16021ff5cfe8e51"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "82d529a238717815a8c78edf10c27c375f8e6a98e5a68a796639c72ff843c462"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "94de5e0bf349e041be29e072f96b3fc109ad2943afcfb0f0d2234fdf2bd3f816"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "3d1d15191a12050f29539cae4a09094514697ace915d01b26271f190f2ed5233"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "533b3cd0c2d67820f42aa6a8fd933a814f3ac0172c27250eccd098d0ec06a1e6"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "3883a7510c7cdb3081115e2d93fa6fc74cb77fff499d70215e87960286f11824"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "937e1b773172a47e5667ee98e726899bbdd790d90de383e2c2e7bbe156f4a23b"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "4da0bbca84afff28e0c5bb73a088c90e45ddbbb593d9392241684d0f212258c8"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "4da0bbca84afff28e0c5bb73a088c90e45ddbbb593d9392241684d0f212258c8"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "1281a595c93592d4e59f68498ce7d48dca96157451863f71ef04afb4a81a7b67"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "1281a595c93592d4e59f68498ce7d48dca96157451863f71ef04afb4a81a7b67"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "e01d930bf0ad3c0185952c10a58029ecff078776196cc9bb8afb53ef1bbe3eea"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "19dba1f9604ff3892189fd13fcdd680f964faf386f59109eb3df28c81a05ac9c"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "e319af1c138f085e5aef034d5c161b9124185f47f4dce2e116e0cd2e313ad826"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "f5d7779c1723e8487ed19c64b01b3424c06da61fb0ac0b1715f663f7784debb0"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "eb874ac0c5e8e5911108b23f9c988ab2db42e2740df65509a6bfd1e293f6b99b"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "56f3e5e352ce41ae8ab97612776f5d6a016aa2fe91520b264b69c197deb9c031"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "b9bb31c77ba9be59b3133ce832470eaf37d90b3725faa969b2e95f748ba35dc8"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "7f234450aca334a38e80ac3b5784b0dd6e8364455516265ae740e976b3ab3974"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "daaa1f628670ec9b08d9af361e19a795f9c92583118eb513e568fb00963ba8d8"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "3f58ac13b6c3a8f53a5654b216aaf943891f968079725b6e2b5b3863a72fe4e1"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "643ce632b15039830c36b2bdf64a382f039a960731f8527d1606b36814004b77"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "b949affb99f01e9d42eb7847a33a562512cd13183da45296a373b6ee9083fa30"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "71e6011f6b81d6743419964e07f9d729665cb2c576997db6235979f8a7660707"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "50cad15472c5a85cfd49815863aa80f18ae99163e23688c9327a58b652326f72"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "95de857524d4ae2417db662d58977b17d7838707e16821ab711990a99a125ad9"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "24d7476d5549b82028bf3417fa338f624e9854da7ecdaf198c1cc8bdd87d28e8"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "47a202c4195b6cf0686a3486075bb02ab52015d7143a5a465c6995b0fe29d9a2"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "d676fab7fbbcc1a08c58c6c9bbcaee5743fdd9478afba9e19ea7451880bbab7e"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "ac4ffda12ad658d6465ec57d78ff2c8c9984b984c86aeeab28eed16fb3f113e2"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "0c013703af1cf62f58c030ec49630d252999ff9fbfdd380d7a51f17ecda720c1"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "8f5c555632193b51e00aabac0bc064195edbfc531b49059f0ff04aa47184b190"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "890b7641ecbb4301350a67dbf891371682af2842ce0e39a65fb19965279fdce7"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "8bba03a60cf7449e50cc5bc034d13b52b744a89030f7d67320d38691012d174f"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "4631edd82f40167ef686dacbedc93f13567f1c7e0a909007f2141ab6ba108c75"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "1f126f15fde3772e13d36e3db084ea4a76b7a46e60bac2e7f94099c2939ff1a2"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "bf5450fabea3213098566bc7fafa735932b0e2574864ff9f788747b81da0fe59"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "a3c82299ed2726d970d14a836ac8832351bd89115b6d37e6dc2bb0ee1c21546f"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "2d5badf3902f14e81cdfd81669799c0c5eff11e814484aa209ac115af1419da3"
+        }
+      ],
+      "wright-palette-11|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "480a21c7105ba3cd271c83e6cfda60e69e4d757bd82b1682576bc79ea4dab76b"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "62e72ae889eeeab1170bef409b15ac7b9dba73202ee7b06a641b55e771a449c5"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "4fa866153860d7e9ae8e337eca907e29aa58f728152f9efe1a05a68fd83ad9b2"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "f4d4db13a62abf60f06c0d8af1d01fd01ee29c3810e5bf6183c18c8b8ca82f7d"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "1ae38edf5861d4768fa165e9b6a778f7e749bb391f4afa26be48f7078ca46f62"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "a9d1ed02ff6bcd1ae4dc744afdd63ed99d0c793ef2573faf02965e1cd72d94ef"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "ed2233455d1b8790443d13e44b5601790dac38ad79e4a63d7482ed2fdbeffe77"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "2216fb0428d05dc2b2fdb02f2daa49d857fc4a49b44833a8825af523590e6c9d"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "d7651de0a12e431507c10ec3bb316646a4e79e0c964b5015e6790a766aa5f26f"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "72547779ca8b4957671b835e30d41a1d57a146de343b16bcdf405d50729e0001"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "ce96c467a9612bcd46867759f457713f126f559a270fee61640359935b55746f"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "f11ddd3d6f701e1f6851d17acbc36a69b5177b31b6d201e10df96b8e31876e2a"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "3ca4266baa8494a8d5939be88c3a02df293c32f4447d8da8fd25dba6ca401585"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "85b6f4d4edb7d23e631eb8c4708f68fa1161e88fdc0e76460363444451139a04"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "724853c2359d7d9f9b5d39eff818ced9d912ed1a0589118315dc52d954286c7b"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "f05d50c1ff6a2460df4c2b43a63c525020b58b76960af661bab839a417d40e18"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "dfa5600185842bfcce67275a9362161d9051b667fa43fe90c8d63a4cf982bed7"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "eeec44624ccd9314ef1efd041217e6bf3196cef2eee3f36dfeb39f92ccaa7e1f"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "26f0cce79780a4538b3bb8dc0e9eb2722f3b2a07445a53d4fd6a44fb52477895"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "a448b37dc7a64db719c9ef5fb859da89809256474ba4799f4b017b25df76a9b9"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "ef1102b495e0f41bbea33b9ce1e2eb4f098046caefbb41bfb4cfe3906a9a50a4"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "7ec14b1c18c03bc67c9995f8b08d85e4a68c2944ad6a7846a108cf5a19fe0a20"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "c491cc92526ce6ba9efc744d4a54abf97310a67535b05563e5c18eac6f4dd463"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "0be2cb97867f9c317eb1271683a60a04d4cfd404aad3061608cf8eab607534c7"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "597cb35b10933c6f02efd8c69b5d033871386026fb3a5540341cbff97b96a2cf"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "3225bbbf279acee2bbde8db7b5843a8843adf360cd0fb08e53322755efd19a8e"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "0d9b46b7ac2af00591e93f3ed57b58e01ae0e420360e9eccb2f9a5fe0cf46fb0"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "f16b2c26743577b6aaa6334e4298198795ec12b938c24bfbd55a912f933b2211"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "0b2b775e3dd56e71322502733f3c2127ac608e201c8456fd0dfecb81e6f9cae2"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "89be446704e3f7c891011dd23a8724d1999ace360af4f7c729ca329fb673ab4c"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "4c1382b52bcd2ed36cdc907b275384848a53e80751512bf7174dd328993630e5"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "d04d910dee0c7ea927bdd56d0a4d40c31661739cce094d07dfe26e5f25c2c4af"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "ec702b7e7f32582ce1a756a0b6f35b92754e0401f64c54ba38b4b5d2e785f5cd"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "b54e62e9d2a77940a28a50b20f4d5e25b66da4bb147aa873a6ed289b2acb26be"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "619be257be7ecbf067b24ebc7fb61e33447a4ad129ab317ffccf10bb0fd83079"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "001266b85ff5d314eca440b8c32c17f4f90ef4f602e10ade2661d91109ff8a36"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "f34e962b0354b2afa6597dbcf58fe8921392020dc557ae1bda8539c8910336cc"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "12ad26e461e27ff5ed63d8e14a3add12864c859e5274b2896fc3c54e38838997"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "3f52430cdeaf5a182e1086022626a7c519dd353cd73f472b032de15ffa41d272"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "71380bd1a6770ecc228d4c083f5a3ef6c34b107d1c6566722a604684212bd7ad"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "c7fea14e8c84a0fc14c3a1aaf6224d17552146205dbb906be2b788318246b069"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "0baf31a15a20da11b74f058f34c9ec92102499906d399ac328199bef76d89370"
+        }
+      ],
+      "wright-palette-0|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "a0a50238ebc9a7c9fd0fdf7178d21928295ac22f21f639b265822301f1b076e9"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "c69fd5e37fcd480bb1de0db8e31b6185f7c39e0e5c1e73809c6156ec83403948"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "648831c893fe6939a5ef9a30f7522ad4897cbd22905a271dd402ba926e85efad"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "03faaaeec24ff413802b8c0613be801a751bcbf4c6d92892a58e2c06b3827b39"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "7bef879b5afa2a15d28fb523d5a5cfa63cfdefa669552dbb57d010ea7b3d2e71"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "c0831e62704d86edc36a30712355dde80ccee1c8b43c00a34f3a8c67ba4543ac"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "42288c694b99031c6cd0d51521a8ee2f9376f0af5af37cbb5bfea9c954b48c7c"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "982f25f650d19f8099c29e313e08858926c74b7a8a187f3e47725dd3e0592daf"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "e2c3d341de98b25ab21275af52d5bd826ecf50022c4fc591cd3477dd2526c9ff"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "4989655f1a771241a8f2618ad38cd89511868a08e0a0ebcbdc1d11c6e52eb126"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "a3c8ff3257ab01321101807454b039f1e0895fe9a29eaf02ef9dd010e2ab98b3"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "4fd3dd2b63db59c16a9512eca50536e6447cf43a7309b3cc00d579216208d602"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "9bfe3ec4aaa2c26c4620ff4de920592c6c5beb2901dd6cab326a5174ede841d0"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "94f9aec784e9c993d04670c25adf043e90b5ea276ad94fb37719d1772b13be98"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "bdaa036bc22674047dd17c09699762e3fb037100cd0027e9cbaa68dbe7f0cb62"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "7d8577702ed5da20aebd00fd50c316112be346739e07a7ef8f6cc965c6cb2193"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "a8e147b2554c8e14babf1891debb2a24c32d0da27ad7f450bb4aa3c192d76318"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "d93acc5fa30a14a5ea42ccd0655a1af2ebb05a09b8e5716a0ed6feed32cf9f85"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "309108d6056eba6149a1b80440a6cf1dafd1a4bf567ede00cf2a770d52037253"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "06ebb33e190a21fbe3dc941999e3729bfb1bf0d766d380f09dc5a072c94c07e2"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "b9e12feb71ed1ca5cd32fa73cce62e7fdb5d62dad858d0807ce5b437c9370c1d"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "3263a18e7c88277de12dfc8dbfacbe15de1153fdfcc14ca298eeef95eec8d335"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "4df4967002cd3e7297b278eefc28dd626f2f32d5178492743bd1d445b25a422b"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "044bad4431b472e073152b4f0dd1a48e1f5e9399b398db2ccd69846ad5c714ad"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "68fb938a28c7a3b13f883ea36cb1efc9de0ed69e0e82a9589d945c7b7aa0517c"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "76f5110954560d4e8a77c70e66241a9a0f0feb24c8526746427ec22b172a0674"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "ce1155557b3a98c165bef381af846ccb7c486d79252034dec6a56ec0f47bcd45"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "fe1e1461f28403063fded3160b88f2d2d080b20e487a9a2f4cc95a2b911731f5"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "29dae29bf3674cf69ffc5d14b5941af85aac2ab26396f7e18cfb6412d6b3c2fc"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "eee603fafe66ca56600bce245bb643743b2e3259b8d1e9a1d7d7a8fae0623c34"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "4e067c5e711bd8711dbd398d4b9fe578dd616e21dc2a71c12acc86a0ba0c8901"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "c8c8a4d1fb097b16da4d3c3f47a28673719fd48a9b914c395f325410912f94cf"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "e2318663fc0a7954ae99deec2260f44cbc960a43ff42aaeae2395bea57e11a44"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "fc504020966058d5518f77f75355ac68919be5ac294a656127be6935560a8444"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "1fa0ffab2fc49579d3ebccb0478ab623b10be2bd51526be9f01bd4d3b3f6751a"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "8eda2fb9e9cf6ae5fc1d95570120de9ea3e4936120647bf29dfd571b9753ae42"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "807e613eac4bf086508692fbcd306f7a3891cb0dc08dfc043926613037b1ae23"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "e271bdcffb4b3edd52ddb537b4a7f1121ce33c0dadef37970d5ea79b33ac28ec"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "976403dd828d5908147c414984b3885e49ea3c3398c3c73dd5f06c9da2432298"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "eb83dfab84b66b4eacfb9143250bc62f33d6f5086ea3c4a9b1d2cd1d7e52b700"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "8dd72703cbfb92f2ce85e0005b8bbe70739a7df609a752a21a1cb513335bdb32"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "8445b7d254fcad3300c7fe666b2b25422582e372ab86a78e6f9b8515a428b596"
+        }
+      ],
+      "wright-hybrid-2|{}": [
+        {
+          "state": "working",
+          "t": 1000,
+          "hash": "aa7f503b0fdc16b25bf7689880d4c5412a495e7d35be16104222cede0c7eab1d"
+        },
+        {
+          "state": "working",
+          "t": 1033,
+          "hash": "95cefc4b8eb86db7fcd5adf7776436c96e517333f28d75a4818cc8e3a68b1a29"
+        },
+        {
+          "state": "working",
+          "t": 1066,
+          "hash": "8acf7ea4aa5d8fa09fbdab1aeb008a05099aa254cb6ae9b230becd0e281fa952"
+        },
+        {
+          "state": "working",
+          "t": 1099,
+          "hash": "879c354214533e67046cd15ecb8641c215c5281641669e0ba437ca88a52cd9ec"
+        },
+        {
+          "state": "working",
+          "t": 1132,
+          "hash": "f80be818ca6b202e5ddc9893bd1d80c25695a4ba2faf8bc3595bf6fcf8b8e597"
+        },
+        {
+          "state": "working",
+          "t": 1165,
+          "hash": "a1d29fc1ad036283191eefa024010659b7f5ed5c749cc3c59592ae0ba96ec725"
+        },
+        {
+          "state": "working",
+          "t": 1198,
+          "hash": "7bd3f23715a5eda61cf47090f8dee900bf1398d435335c84e62a95f63d2fe562"
+        },
+        {
+          "state": "working",
+          "t": 1231,
+          "hash": "fdd52a584ee0e4cc4a3409eada135d43312f8776135854cec2bdbc1e059de257"
+        },
+        {
+          "state": "working",
+          "t": 1264,
+          "hash": "95dc7587762cc74601593ebf8c32aa0d13741ba9c033f91f8886574b660e3d69"
+        },
+        {
+          "state": "working",
+          "t": 1297,
+          "hash": "a1137a4cecb2cee217442ef57e4001e3ba3381c2db7939afb1086f4357fb9b4b"
+        },
+        {
+          "state": "waiting",
+          "t": 1330,
+          "hash": "8e4a1d7a299887a6c1d315fc7132d59584b8458a13a66b835974439a1d3f766d"
+        },
+        {
+          "state": "waiting",
+          "t": 1363,
+          "hash": "64baf4a944482cb63a86d5950a2bd234f41f90dfd0ee91a151cf5ed8636e375a"
+        },
+        {
+          "state": "waiting",
+          "t": 1396,
+          "hash": "7d70349885080943fc3b391f950787893f923392d6057226876c9273c4808d3d"
+        },
+        {
+          "state": "waiting",
+          "t": 1429,
+          "hash": "edc68024506fba2cec9e346c43aa8e4340842afe21f48823a20141a84304d902"
+        },
+        {
+          "state": "thinking",
+          "t": 1462,
+          "hash": "b957c505a962d6992f42e3f0544d22d5404a2f991d0267e3e6f7be43827a462a"
+        },
+        {
+          "state": "thinking",
+          "t": 1495,
+          "hash": "77b7b0659c68d678e5a33028af71da534fe7b3da015369cf6d84cb05383a5beb"
+        },
+        {
+          "state": "thinking",
+          "t": 1528,
+          "hash": "8e5eb50a20ce233f69bd117508da72cd701aa79f9c3066de2343310330dfa007"
+        },
+        {
+          "state": "thinking",
+          "t": 1561,
+          "hash": "37957b1836a3f3d108b18b0a90361667d7297de59a71f9b0c38d4bb2a1b292d2"
+        },
+        {
+          "state": "sleeping",
+          "t": 1594,
+          "hash": "a8ce0b129ffa0c9459d0a22c876b7995aa9d750e2dbad5bdffabe9ca9b8537b7"
+        },
+        {
+          "state": "sleeping",
+          "t": 1627,
+          "hash": "7e7467859e7036655f9cd39c9afdaca2cf8827508a55f19ac7495ab6ac1ea1f5"
+        },
+        {
+          "state": "sleeping",
+          "t": 1660,
+          "hash": "34601686efcb851419b4e26b1434ddf5193eaad154a677b5217db2e2224a654e"
+        },
+        {
+          "state": "sleeping",
+          "t": 1693,
+          "hash": "78c1a2e9f1700124a107c3ccdf45149c270c1a474cb2e3f73baee947e3f87f7c"
+        },
+        {
+          "state": "sending",
+          "t": 1726,
+          "hash": "4bdfe81ee170a01f83f890812dedae7b47fa5e3f3fe8277dc28d8a097b1f20fd"
+        },
+        {
+          "state": "sending",
+          "t": 1759,
+          "hash": "40026f6cde6f27dae62fd54d4ec3c3e31c635cd8414887fd928c46b95f78bd1d"
+        },
+        {
+          "state": "sending",
+          "t": 1792,
+          "hash": "25f5aa77a4a6e4570ce87c74bac252cc6a868e2d3847fd01a2d8434d4565e30b"
+        },
+        {
+          "state": "sending",
+          "t": 1825,
+          "hash": "12484088ad8f91d1612f61c3e301297eb1b8d3f11677a9f91bc739c5e3f99e90"
+        },
+        {
+          "state": "receiving",
+          "t": 1858,
+          "hash": "4d61bcc344270fb87ca3641dac79ad1ea45ce3f39eed987ecb5be8a5715b5fab"
+        },
+        {
+          "state": "receiving",
+          "t": 1891,
+          "hash": "ea03630ee5ce3e659fb5c08a5f22774bb2677bc4cb15107f5592cb27da60aaa0"
+        },
+        {
+          "state": "receiving",
+          "t": 1924,
+          "hash": "31c43e5794197fd27a807bcacca2280a7b06974f0158b7124caf8494e824de87"
+        },
+        {
+          "state": "receiving",
+          "t": 1957,
+          "hash": "ea0a3ebf9423325e4dc094e3ccca6cb74aa2f8a781a86c6ab0489ce40815e819"
+        },
+        {
+          "state": "done",
+          "t": 1990,
+          "hash": "36820e5eba9e0eab069283cdcca2196e11c0c6f8ee7ad586c8b1eec287da9808"
+        },
+        {
+          "state": "done",
+          "t": 2023,
+          "hash": "2a76f5deaf857a0792f65d755862d1dcf47083f735a2933abb01ab443ef9ece3"
+        },
+        {
+          "state": "done",
+          "t": 2056,
+          "hash": "d8a0b31bd93a80407a83ec4fe11c6aad288a4a0ca9496ada06403c8d24c743ca"
+        },
+        {
+          "state": "done",
+          "t": 2089,
+          "hash": "e940a25792f7ec630552813fbb65250e57f9e2c02aff7624af97d8703e982c2b"
+        },
+        {
+          "state": "error",
+          "t": 2122,
+          "hash": "c5d34dad08f4aaf7659632861be2cf4b18fb762fa09ca7163446c4e3e51afe1d"
+        },
+        {
+          "state": "error",
+          "t": 2155,
+          "hash": "81eaf08a51ed2165f0831289e9e56f00bb008130da470def4abe936fdf25446e"
+        },
+        {
+          "state": "error",
+          "t": 2188,
+          "hash": "5bc8dccea031846d4554b5fa23349edd1587f7a4016ce9e3ce2a16f4eea612a9"
+        },
+        {
+          "state": "error",
+          "t": 2221,
+          "hash": "04c86c80c64c6b275753b95c041ebd814aa082a7419cff79efdf3e2be8bb43a1"
+        },
+        {
+          "state": "idle",
+          "t": 2254,
+          "hash": "94668867aa16adb7db766da14e4f3ae28e297f0f4fd257313bc17795a85105ac"
+        },
+        {
+          "state": "idle",
+          "t": 2287,
+          "hash": "fade4b5c0ce5285c592119165ec3dd3a12460603d34fed33faf6135cc243c7c0"
+        },
+        {
+          "state": "idle",
+          "t": 2320,
+          "hash": "5682e88f85718aa9026f379730943637f4c9c1607a561844c81e3195d5e23a9f"
+        },
+        {
+          "state": "idle",
+          "t": 2353,
+          "hash": "f88c4eff0458bad608116d9d3a1bd6a3aaf4c56686560f71281ccd58a81d8321"
         }
       ],
       "Ada Lovelace|reduced": [
