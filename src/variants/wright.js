@@ -290,16 +290,19 @@ export function buildWright(params) {
   const gridTop = top + gridInset;
   const gridWidth = profile.width - gridInset * 2;
   const gridHeight = profile.height - gridInset * 2;
-  const cellWidth = gridWidth / profile.columns;
-  const cellHeight = gridHeight / profile.rows;
-  const gridModules = Array.from({ length: profile.columns * profile.rows }, (_, index) => ({
-    x: gridLeft + (index % profile.columns) * cellWidth + 1,
-    y: gridTop + Math.floor(index / profile.columns) * cellHeight + 1,
+  const columns = params.small ? Math.min(profile.columns, WRIGHT_SMALL_GRID.columns) : profile.columns;
+  const rows = params.small ? Math.min(profile.rows, WRIGHT_SMALL_GRID.rows) : profile.rows;
+  const cellWidth = gridWidth / columns;
+  const cellHeight = gridHeight / rows;
+  const gridModules = Array.from({ length: columns * rows }, (_, index) => ({
+    x: gridLeft + (index % columns) * cellWidth + 1,
+    y: gridTop + Math.floor(index / columns) * cellHeight + 1,
     width: Math.max(1, cellWidth - 2),
     height: Math.max(1, cellHeight - 2)
   }));
 
-  const decorationCount = Math.min(WRIGHT_LAYER_LIMITS.decorations, 2 + params.decoration * 2 + (params.secondaryFamily ? 2 : 0));
+  const fullDecorationCount = Math.min(WRIGHT_LAYER_LIMITS.decorations, 2 + params.decoration * 2 + (params.secondaryFamily ? 2 : 0));
+  const decorationCount = params.small ? Math.min(fullDecorationCount, WRIGHT_SMALL_DECORATIONS) : fullDecorationCount;
   const decorations = Array.from({ length: decorationCount }, (_, index) => {
     const module = gridModules[index % gridModules.length];
     const reverse = (index + params.accent) % 2 === 1;

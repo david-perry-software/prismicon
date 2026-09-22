@@ -9,6 +9,9 @@ import {
   WRIGHT_HYBRID_COMPATIBILITY,
   WRIGHT_LAYER_LIMITS,
   WRIGHT_VIEWBOX_BOUNDS,
+  WRIGHT_SMALL_SIZE,
+  WRIGHT_SMALL_GRID,
+  WRIGHT_SMALL_DECORATIONS,
   WRIGHT_PALETTE_FAMILIES,
   WRIGHT_PALETTES,
   WRIGHT_CONTRAST_PAIRS,
@@ -146,10 +149,11 @@ test('wright scaffold paint and flash expose bounded, deterministic outputs', ()
   assert.deepEqual(flashWright(params, 'done'), { hue: params.hue2, lighten: 16, shake: false });
 });
 
-test('wright geometry and SVG stay stroke-aware and finite at sizes 24, 64, and 72', () => {
+test('wright legibility reduces grid modules and decorations at size 24 while 64 and 72 stay full', () => {
   const seeds = ['wright-family-1', 'wright-family-5', 'wright-family-3', 'wright-family-0'];
   for (const seed of seeds) {
-    let expectedElementCount = null;
+    let fullGridCount = null;
+    let fullDecorationCount = null;
     for (const size of [24, 64, 72]) {
       const params = prepareWright(deriveWright(seed), { size });
       const geometry = buildWright(params);
@@ -175,9 +179,19 @@ test('wright geometry and SVG stay stroke-aware and finite at sizes 24, 64, and 
         dark: false, sleeping: false, dx: 0, lighten: 0, flash: null
       });
       assert.doesNotMatch(svg, /NaN|Infinity/);
-      const elementCount = (svg.match(/<(?:rect|line)\b/g) || []).length;
-      expectedElementCount ??= elementCount;
-      assert.equal(elementCount, expectedElementCount, `${seed} retains detail at size ${size}`);
+
+      if (size === 24) {
+        const gridCap = WRIGHT_SMALL_GRID.columns * WRIGHT_SMALL_GRID.rows;
+        assert.ok(geometry.gridModules.length <= gridCap,
+          `${seed} size 24 grid modules reduced to <= ${gridCap}, got ${geometry.gridModules.length}`);
+        assert.ok(geometry.decorations.length <= WRIGHT_SMALL_DECORATIONS,
+          `${seed} size 24 decorations reduced to <= ${WRIGHT_SMALL_DECORATIONS}, got ${geometry.decorations.length}`);
+      } else {
+        fullGridCount ??= geometry.gridModules.length;
+        fullDecorationCount ??= geometry.decorations.length;
+        assert.equal(geometry.gridModules.length, fullGridCount, `${seed} size ${size} keeps full grid modules`);
+        assert.equal(geometry.decorations.length, fullDecorationCount, `${seed} size ${size} keeps full decorations`);
+      }
     }
   }
 });
