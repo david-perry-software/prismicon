@@ -557,3 +557,64 @@ test('wright motion paints a distinct frame sequence per state', () => {
 test('wright descriptor passes validateVariant', () => {
   validateVariant(wright);
 });
+
+test('wright event-frame stability holds for representative seeds across every probed state', () => {
+  const representativeSeeds = [
+    'wright-family-1',   // prairie
+    'wright-family-5',   // art-glass
+    'wright-family-3',   // textile-block
+    'wright-family-0',   // usonian
+    'wright-palette-1',  // textile
+    'wright-palette-11', // stained-glass
+    'wright-palette-0',  // concrete-wood
+    'wright-hybrid-2'    // art-glass + textile-block (verified hybrid)
+  ];
+  const positions = (svg) => [...svg.matchAll(/(?:x|y|x1|y1|x2|y2)="(-?\d+(?:\.\d+)?)"/g)].map((m) => Number(m[1]));
+
+  for (const seed of representativeSeeds) {
+    const params = prepareWright(deriveWright(seed), { size: 64 });
+    const geometry = buildWright(params);
+    const rest = poseWright(params, 'idle');
+
+    for (const state of PROBE_STATES) {
+      const runFrames = () => {
+        let pose = state === 'working' ? poseWright(params, 'working') : rest;
+        const frames = [];
+        for (let frame = 0; frame < 8; frame += 1) {
+          pose = animateWright(pose, { params, state, dt: 0.033, t: 0.1 + frame * 0.033, transientT: frame * 0.033, rest });
+          frames.push(paintWright(params, geometry, pose, {
+            dark: false, sleeping: state === 'sleeping', dx: 0, lighten: 0, flash: null
+          }));
+        }
+        return frames;
+      };
+
+      const first = runFrames();
+      assert.deepEqual(runFrames(), first, `${seed} ${state} deterministic frame sequence`);
+
+      for (let frame = 0; frame < first.length; frame += 1) {
+        const svg = first[frame];
+        assert.doesNotMatch(svg, /NaN|Infinity/, `${seed} ${state} f${frame} finite`);
+        for (const value of positions(svg)) {
+          assert.ok(
+            value >= WRIGHT_VIEWBOX_BOUNDS.min && value <= WRIGHT_VIEWBOX_BOUNDS.max,
+            `${seed} ${state} f${frame} position ${value} inside viewBox bounds`
+          );
+        }
+      }
+
+      // After the bounded frame run the pose settles back to the exact rest pose
+      // by identity, within a bounded frame count.
+      let pose = state === 'working' ? poseWright(params, 'working') : rest;
+      for (let frame = 0; frame < 8; frame += 1) {
+        pose = animateWright(pose, { params, state, dt: 0.033, t: 0.1 + frame * 0.033, transientT: frame * 0.033, rest });
+      }
+      let settled = pose === rest;
+      for (let frame = 0; frame < 120 && !settled; frame += 1) {
+        pose = animateWright(pose, { params, state: 'settling', dt: 0.033, t: 0.1 + frame * 0.033, transientT: 0, rest });
+        settled = pose === rest;
+      }
+      assert.ok(settled, `${seed} ${state} settles to rest by identity within 120 frames`);
+    }
+  }
+});
