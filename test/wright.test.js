@@ -187,12 +187,12 @@ test('wright legibility reduces detail at size 24 and keeps full detail and inva
       });
       assert.doesNotMatch(svg, /NaN|Infinity/);
 
-      if (size === 24) {
+      if (size < WRIGHT_SMALL_SIZE) {
         const gridCap = WRIGHT_SMALL_GRID.columns * WRIGHT_SMALL_GRID.rows;
         assert.ok(geometry.gridModules.length <= gridCap,
-          `${seed} size 24 grid modules reduced to <= ${gridCap}, got ${geometry.gridModules.length}`);
+          `${seed} size ${size} grid modules reduced to <= ${gridCap}, got ${geometry.gridModules.length}`);
         assert.ok(geometry.decorations.length <= WRIGHT_SMALL_DECORATIONS,
-          `${seed} size 24 decorations reduced to <= ${WRIGHT_SMALL_DECORATIONS}, got ${geometry.decorations.length}`);
+          `${seed} size ${size} decorations reduced to <= ${WRIGHT_SMALL_DECORATIONS}, got ${geometry.decorations.length}`);
       } else {
         fullGridCount ??= geometry.gridModules.length;
         fullDecorationCount ??= geometry.decorations.length;
