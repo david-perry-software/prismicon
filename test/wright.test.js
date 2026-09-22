@@ -9,6 +9,14 @@ import {
   WRIGHT_HYBRID_COMPATIBILITY,
   WRIGHT_LAYER_LIMITS,
   WRIGHT_VIEWBOX_BOUNDS,
+  WRIGHT_PALETTE_FAMILIES,
+  WRIGHT_PALETTES,
+  WRIGHT_CONTRAST_PAIRS,
+  WRIGHT_CONTRAST_MIN,
+  WRIGHT_RED_AREA_CEILING,
+  hexToRgb,
+  relativeLuminance,
+  contrastRatio,
   deriveWright,
   describeWright,
   prepareWright,
@@ -16,6 +24,7 @@ import {
   poseWright,
   animateWright,
   paintWright,
+  paintedAreaMetrics,
   flashWright,
   wright
 } from '../src/variants/wright.js';
@@ -169,6 +178,176 @@ test('wright geometry and SVG stay stroke-aware and finite at sizes 24, 64, and 
       const elementCount = (svg.match(/<(?:rect|line)\b/g) || []).length;
       expectedElementCount ??= elementCount;
       assert.equal(elementCount, expectedElementCount, `${seed} retains detail at size ${size}`);
+    }
+  }
+});
+
+test('wright palette families are deeply frozen with semantic light and dark roles', () => {
+  assert.deepEqual(WRIGHT_PALETTE_FAMILIES, ['textile', 'stained-glass', 'concrete-wood']);
+  assert.ok(Object.isFrozen(WRIGHT_PALETTE_FAMILIES));
+  assert.ok(Object.isFrozen(WRIGHT_PALETTES));
+  assert.ok(Object.isFrozen(WRIGHT_CONTRAST_PAIRS));
+  const roles = ['canvas', 'primary', 'secondary', 'line', 'accent'];
+  for (const family of WRIGHT_PALETTE_FAMILIES) {
+    const palette = WRIGHT_PALETTES[family];
+    assert.ok(Object.isFrozen(palette), `${family} frozen`);
+    for (const mode of ['light', 'dark']) {
+      const modeRoles = palette[mode];
+      assert.ok(Object.isFrozen(modeRoles), `${family} ${mode} frozen`);
+      for (const role of roles) {
+        assert.match(modeRoles[role], /^#[0-9a-f]{6}$/, `${family} ${mode} ${role} must be 6-digit sRGB hex`);
+      }
+    }
+  }
+  for (const pair of WRIGHT_CONTRAST_PAIRS) {
+    assert.ok(Object.isFrozen(pair));
+    assert.equal(pair.length, 2);
+  }
+});
+
+test('wright derive selects a palette family deterministically without reordering geometry draws', () => {
+  const a = deriveWright('Ada Lovelace');
+  const b = deriveWright('  ada lovelace  ');
+  assert.equal(a.paletteFamily, b.paletteFamily);
+  assert.ok(WRIGHT_PALETTE_FAMILIES.includes(a.paletteFamily));
+
+  // Named seeds reach every family.
+  assert.equal(deriveWright('wright-palette-1').paletteFamily, 'textile');
+  assert.equal(deriveWright('wright-palette-11').paletteFamily, 'stained-glass');
+  assert.equal(deriveWright('wright-palette-0').paletteFamily, 'concrete-wood');
+
+  // Geometry-derived values stay byte-identical to the geometry-feature locks,
+  // proving palette selection consumes no geometry draw and reorders nothing.
+  const maya = deriveWright('maya');
+  assert.deepEqual(
+    [maya.dominantFamily, maya.secondaryFamily, maya.massWidth, maya.massHeight, maya.massOffset,
+      maya.planeCount, maya.planeSpread, maya.gridColumns, maya.gridRows, maya.decoration, maya.accent],
+    ['prairie', 'art-glass', 59, 38, 3, 5, 9, 5, 4, 2, 1]
+  );
+  const artGlass = deriveWright('wright-family-5');
+  assert.deepEqual(
+    [artGlass.dominantFamily, artGlass.secondaryFamily, artGlass.massWidth, artGlass.massHeight,
+      artGlass.massOffset, artGlass.planeCount, artGlass.planeSpread, artGlass.gridColumns, artGlass.gridRows,
+      artGlass.decoration, artGlass.accent],
+    ['art-glass', null, 58, 51, 7, 5, 8, 4, 2, 0, 0]
+  );
+
+  // The corpus reaches all three families.
+  const seen = new Set();
+  for (let i = 0; i < 200; i += 1) seen.add(deriveWright(`wright-palette-${i}`).paletteFamily);
+  assert.deepEqual([...seen].sort(), [...WRIGHT_PALETTE_FAMILIES].sort());
+});
+
+test('wright paint uses semantic palette roles in light and dark contexts', () => {
+  const seeds = ['wright-palette-1', 'wright-palette-11', 'wright-palette-0'];
+  for (const seed of seeds) {
+    const params = prepareWright(deriveWright(seed), { size: 64 });
+    const geometry = buildWright(params);
+    const pose = poseWright(params, 'idle');
+    const family = params.paletteFamily;
+    const palette = WRIGHT_PALETTES[family];
+    const light = paintWright(params, geometry, pose, { dark: false, sleeping: false, dx: 0, lighten: 0, flash: null });
+    const dark = paintWright(params, geometry, pose, { dark: true, sleeping: false, dx: 0, lighten: 0, flash: null });
+
+    const layers = ['primary-mass', 'horizontal-plane', 'grid-module', 'decoration', 'accent'];
+    for (const layer of layers) assert.match(light, new RegExp(`data-wright-layer="${layer}"`));
+    assert.doesNotMatch(light, /NaN|Infinity/);
+    assert.doesNotMatch(dark, /NaN|Infinity/);
+    assert.notEqual(light, dark, `${seed} light and dark render distinct`);
+
+    // No-flash rendering emits the family's own frozen role colors.
+    for (const role of ['primary', 'secondary', 'line', 'accent']) {
+      assert.ok(light.includes(palette.light[role]), `${seed} light ${role} from palette`);
+      assert.ok(dark.includes(palette.dark[role]), `${seed} dark ${role} from palette`);
+    }
+  }
+});
+
+test('wright contrast enforces unrounded WCAG 3:1 for structural roles in light dark and flash states', () => {
+  // Standards-based sRGB helpers hold reference values.
+  assert.deepEqual([...hexToRgb('#ffffff')], [255, 255, 255]);
+  assert.ok(relativeLuminance(hexToRgb('#ffffff')) > 0.99);
+  assert.ok(relativeLuminance(hexToRgb('#000000')) < 0.01);
+  assert.ok(contrastRatio('#ffffff', '#000000') > 20);
+  assert.equal(WRIGHT_CONTRAST_MIN, 3);
+
+  // Every frozen role meets its adjacent-pair ratio, unrounded, in both modes.
+  for (const family of WRIGHT_PALETTE_FAMILIES) {
+    for (const mode of ['light', 'dark']) {
+      const roles = WRIGHT_PALETTES[family][mode];
+      for (const [against, role] of WRIGHT_CONTRAST_PAIRS) {
+        const ratio = contrastRatio(roles[against], roles[role]);
+        assert.ok(ratio >= WRIGHT_CONTRAST_MIN, `${family} ${mode} ${role} vs ${against} ratio ${ratio.toFixed(4)} < 3`);
+      }
+    }
+  }
+
+  const layerPairs = {
+    'primary-mass': ['canvas', 'primary'],
+    'horizontal-plane': ['canvas', 'secondary'],
+    'grid-module': ['secondary', 'line'],
+    decoration: ['secondary', 'line'],
+    accent: ['canvas', 'accent']
+  };
+  const emittedColor = (svg, layer) => {
+    const match = svg.match(new RegExp(`data-wright-layer="${layer}"[^>]*?(?:fill|stroke)="(#[0-9a-f]{6})"`));
+    return match ? match[1] : null;
+  };
+
+  // Final emitted colors (including flash/lighten states) stay >= 3:1 against
+  // their actual adjacent surface in light, dark, and transient-effect renders.
+  const seeds = ['wright-palette-1', 'wright-palette-11', 'wright-palette-0', 'maya', 'Ada Lovelace'];
+  for (const seed of seeds) {
+    const params = prepareWright(deriveWright(seed), { size: 64 });
+    const geometry = buildWright(params);
+    const pose = poseWright(params, 'idle');
+    const modes = WRIGHT_PALETTES[params.paletteFamily];
+    for (const dark of [false, true]) {
+      const canvas = modes[dark ? 'dark' : 'light'].canvas;
+      const effectsList = [
+        { dark, sleeping: false, dx: 0, lighten: 0, flash: null },
+        { dark, sleeping: false, dx: 0, lighten: 16, flash: { hue: 4, strength: 0.75 } },
+        { dark, sleeping: false, dx: 0, lighten: 10, flash: { hue: params.hue, strength: 0.5 } }
+      ];
+      for (const effects of effectsList) {
+        const svg = paintWright(params, geometry, pose, effects);
+        assert.doesNotMatch(svg, /NaN|Infinity/);
+        const secondary = emittedColor(svg, 'horizontal-plane');
+        assert.ok(secondary, `${seed} secondary color emitted`);
+        for (const [layer, [againstRole, role]] of Object.entries(layerPairs)) {
+          const color = emittedColor(svg, layer);
+          assert.ok(color, `${seed} ${layer} color emitted`);
+          const against = againstRole === 'canvas' ? canvas : secondary;
+          const ratio = contrastRatio(color, against);
+          assert.ok(ratio >= WRIGHT_CONTRAST_MIN, `${seed} ${layer} (${role}) dark=${dark} ratio ${ratio.toFixed(4)} < 3`);
+        }
+      }
+    }
+  }
+});
+
+test('wright red painted area stays within the 10 percent ceiling across seeds, sizes, and pulse states', () => {
+  assert.equal(WRIGHT_RED_AREA_CEILING, 0.10);
+  const seeds = ['wright-palette-1', 'wright-palette-11', 'wright-palette-0', 'maya', 'build-bot-7', 'Alice@X.com', 'wright-family-5', 'wright-family-0'];
+  for (const seed of seeds) {
+    for (const size of [24, 64, 72, 140]) {
+      const params = prepareWright(deriveWright(seed), { size });
+      const geometry = buildWright(params);
+      for (const pulse of [1, 1.04, 1.08]) {
+        const metrics = paintedAreaMetrics(geometry, params, pulse);
+        assert.ok(metrics.total > 0, `${seed} ${size} total painted area positive`);
+        // The red share is stroke footprint, not element count.
+        const accentFootprint = geometry.accents.reduce(
+          (sum, accent) => sum + Math.hypot(accent.x2 - accent.x1, accent.y2 - accent.y1) * (accent.width * pulse),
+          0
+        );
+        assert.equal(metrics.red, accentFootprint, `${seed} ${size} red measured as stroke footprint`);
+        assert.ok(metrics.red >= 0 && metrics.red <= metrics.total, `${seed} ${size} red bounded by total`);
+        assert.ok(
+          metrics.ratio <= WRIGHT_RED_AREA_CEILING,
+          `${seed} ${size} pulse ${pulse} red ratio ${metrics.ratio.toFixed(4)} exceeds 10%`
+        );
+      }
     }
   }
 });

@@ -39,9 +39,154 @@ export const WRIGHT_LAYER_LIMITS = Object.freeze({
 export const WRIGHT_VIEWBOX_BOUNDS = Object.freeze({ min: 5, max: 95 });
 const TAU = Math.PI * 2;
 
-function hueMix(a, b, t) {
-  const d = ((b - a + 540) % 360) - 180;
-  return (a + d * t + 360) % 360;
+// ---------------------------------------------------------------- palette system
+
+export const WRIGHT_PALETTE_FAMILIES = Object.freeze(['textile', 'stained-glass', 'concrete-wood']);
+export const WRIGHT_CONTRAST_MIN = 3;
+export const WRIGHT_RED_AREA_CEILING = 0.10;
+
+// Each structural role is checked against the single adjacent surface it is
+// actually painted on: the primary-mass outline and the horizontal-plane fill
+// both read against the canvas, grid/decoration lines read against the plane
+// fill, and the restrained red accent reads against the canvas.
+export const WRIGHT_CONTRAST_PAIRS = Object.freeze([
+  Object.freeze(['canvas', 'primary']),
+  Object.freeze(['canvas', 'secondary']),
+  Object.freeze(['secondary', 'line']),
+  Object.freeze(['canvas', 'accent'])
+]);
+
+export const WRIGHT_PALETTES = Object.freeze({
+  textile: Object.freeze({
+    light: Object.freeze({ canvas: '#f6f1e6', primary: '#6f5a3e', secondary: '#8f7956', line: '#2e2417', accent: '#9c3a2b' }),
+    dark: Object.freeze({ canvas: '#1a1712', primary: '#cbb086', secondary: '#7d6b4c', line: '#e6d9ba', accent: '#c96b4f' })
+  }),
+  'stained-glass': Object.freeze({
+    light: Object.freeze({ canvas: '#eef3f5', primary: '#2c5968', secondary: '#668998', line: '#10242c', accent: '#8e2e39' }),
+    dark: Object.freeze({ canvas: '#0f1519', primary: '#6ba4b8', secondary: '#4a7383', line: '#c3d8df', accent: '#c9606e' })
+  }),
+  'concrete-wood': Object.freeze({
+    light: Object.freeze({ canvas: '#eeebe5', primary: '#5c6164', secondary: '#8a7758', line: '#262a2d', accent: '#9c3b2a' }),
+    dark: Object.freeze({ canvas: '#17191b', primary: '#bcc0c3', secondary: '#7d7666', line: '#d9d5cb', accent: '#c2694f' })
+  })
+});
+
+export function hexToRgb(hex) {
+  const value = hex.replace('#', '');
+  const full = value.length === 3 ? value.split('').map((ch) => ch + ch).join('') : value;
+  const num = parseInt(full, 16);
+  return Object.freeze([(num >> 16) & 255, (num >> 8) & 255, num & 255]);
+}
+
+export function relativeLuminance(rgb) {
+  const linear = rgb.map((channel) => {
+    const c = channel / 255;
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+}
+
+export function contrastRatio(a, b) {
+  const la = relativeLuminance(hexToRgb(a));
+  const lb = relativeLuminance(hexToRgb(b));
+  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+}
+
+function rgbToHex(rgb) {
+  const clamp = (n) => Math.max(0, Math.min(255, Math.round(n)));
+  return '#' + rgb.map((n) => clamp(n).toString(16).padStart(2, '0')).join('');
+}
+
+function rgbToHsl(rgb) {
+  const r = rgb[0] / 255, g = rgb[1] / 255, b = rgb[2] / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  const l = (max + min) / 2;
+  if (max === min) return [0, 0, l];
+  const d = max - min;
+  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  let h;
+  if (max === r) h = ((g - b) / d + (g < b ? 6 : 0)) * 60;
+  else if (max === g) h = ((b - r) / d + 2) * 60;
+  else h = ((r - g) / d + 4) * 60;
+  return [h, s, l];
+}
+
+function hslToRgb(hsl) {
+  const [h, s, l] = hsl;
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const hp = (((h % 360) + 360) % 360) / 60;
+  const x = c * (1 - Math.abs((hp % 2) - 1));
+  let rgb;
+  if (hp < 1) rgb = [c, x, 0];
+  else if (hp < 2) rgb = [x, c, 0];
+  else if (hp < 3) rgb = [0, c, x];
+  else if (hp < 4) rgb = [0, x, c];
+  else if (hp < 5) rgb = [x, 0, c];
+  else rgb = [c, 0, x];
+  const m = l - c / 2;
+  return rgb.map((v) => Math.round((v + m) * 255));
+}
+
+function lightenHex(hex, amount) {
+  return rgbToHex(hexToRgb(hex).map((channel) => channel + (255 - channel) * amount));
+}
+
+function shiftHue(hex, hue, strength) {
+  const [h, s, l] = rgbToHsl(hexToRgb(hex));
+  const d = ((hue - h + 540) % 360) - 180;
+  return rgbToHex(hslToRgb([(h + d * strength + 360) % 360, s, l]));
+}
+
+function ensureContrast(role, against, min) {
+  let current = role;
+  for (let i = 0; i < 64; i += 1) {
+    if (contrastRatio(current, against) >= min) return current;
+    const [h, s, l] = rgbToHsl(hexToRgb(current));
+    // Move the role away from its adjacent surface in lightness: lighten a role
+    // that is lighter than the surface, darken a role that is darker than it.
+    const direction = relativeLuminance(hexToRgb(current)) >= relativeLuminance(hexToRgb(against)) ? 1 : -1;
+    current = rgbToHex(hslToRgb([h, s, Math.max(0, Math.min(1, l + direction * 0.02))]));
+  }
+  return current;
+}
+
+function enforcePaletteContrast(roles, pairs, min) {
+  const resolved = { ...roles };
+  for (let pass = 0; pass < 3; pass += 1) {
+    let changed = false;
+    for (const [against, role] of pairs) {
+      const adjusted = ensureContrast(resolved[role], resolved[against], min);
+      if (adjusted !== resolved[role]) {
+        resolved[role] = adjusted;
+        changed = true;
+      }
+    }
+    if (!changed) break;
+  }
+  return resolved;
+}
+
+function resolveWrightRoles(params, effects) {
+  const mode = WRIGHT_PALETTES[params.paletteFamily][effects.dark ? 'dark' : 'light'];
+  const roles = {
+    canvas: mode.canvas,
+    primary: mode.primary,
+    secondary: mode.secondary,
+    line: mode.line,
+    accent: mode.accent
+  };
+  const lightenAmount = Math.min(0.25, (effects.lighten || 0) / 100);
+  if (lightenAmount > 0) {
+    for (const role of ['primary', 'secondary', 'line', 'accent']) {
+      roles[role] = lightenHex(roles[role], lightenAmount);
+    }
+  }
+  if (effects.flash) {
+    const hue = effects.flash.hue ?? params.hue;
+    const strength = Math.min(1, Math.max(0, effects.flash.strength ?? 0));
+    roles.accent = shiftHue(roles.accent, hue, strength);
+  }
+  return enforcePaletteContrast(roles, WRIGHT_CONTRAST_PAIRS, WRIGHT_CONTRAST_MIN);
 }
 
 export function deriveWright(seed) {
@@ -66,10 +211,12 @@ export function deriveWright(seed) {
   const accent = Math.floor(draws[11] * 4);
   const phase = ((Math.floor(hash / 2 ** 32) % 256) / 255) * TAU;
   const hueIdx = hash % PALETTE.length;
+  const paletteFamily = WRIGHT_PALETTE_FAMILIES[Math.floor(hash / 2 ** 40) % WRIGHT_PALETTE_FAMILIES.length];
   return Object.freeze({
     spec: WRIGHT_SPEC_VERSION,
     seed: norm,
     hash,
+    paletteFamily,
     dominantFamily,
     secondaryFamily,
     massWidth,
@@ -167,6 +314,30 @@ export function buildWright(params) {
   });
 }
 
+/**
+ * Estimate the rendered painted area of every semantic layer — fill area for the
+ * horizontal planes and stroke footprint for outlined/stroked layers — and return
+ * the red accent's share of the total. The red contribution comes from stroke
+ * footprint only (never element count), and `pulse` mirrors the accent width
+ * scaling applied in `paintWright`.
+ */
+export function paintedAreaMetrics(geometry, params, pulse = 1) {
+  const rectFootprint = (item, width) => 2 * (item.width + item.height) * width;
+  const lineFootprint = (item, width) => Math.hypot(item.x2 - item.x1, item.y2 - item.y1) * width;
+  let red = 0;
+  let total = 0;
+  for (const mass of geometry.primaryMasses) total += rectFootprint(mass, params.strokeWidth);
+  for (const plane of geometry.horizontalPlanes) total += plane.width * plane.height;
+  for (const module of geometry.gridModules) total += rectFootprint(module, params.lightStroke);
+  for (const decoration of geometry.decorations) total += lineFootprint(decoration, params.lightStroke);
+  for (const accent of geometry.accents) {
+    const area = lineFootprint(accent, accent.width * pulse);
+    red += area;
+    total += area;
+  }
+  return Object.freeze({ red, total, ratio: total > 0 ? red / total : 0 });
+}
+
 export function poseWright(params, state) {
   if (state === 'working') return Object.freeze({ lift: 0.9, shear: 1.2, pulse: 1 });
   return Object.freeze({ lift: 0, shear: 0, pulse: 0 });
@@ -228,16 +399,11 @@ export function animateWright(pose, ctx) {
 export function paintWright(params, geometry, pose, effects) {
   const stroke = params.strokeWidth;
   const light = params.lightStroke;
-  const lighten = effects.lighten || 0;
   const off = effects.dx || 0;
   const pulse = 1 + pose.pulse * 0.08;
-  const flashHue = effects.flash ? hueMix(params.hue, effects.flash.hue ?? params.hue, effects.flash.strength) : params.hue;
-  const hueSecondary = effects.flash ? hueMix(params.hue2, flashHue, 0.5) : params.hue2;
-  const lineLight = Math.min(90, 42 + lighten);
-  const massLight = Math.min(90, 30 + lighten);
   const yShift = pose.lift;
   const skew = pose.shear * (params.emphasis === 'horizontal' ? 1 : 0.4);
-  const ink = (hue, saturation, value) => `hsl(${Math.round(hue)} ${saturation}% ${Math.round(value)}%)`;
+  const roles = resolveWrightRoles(params, effects);
   const rect = (layer, item, attributes) => '<rect data-wright-layer="' + layer + '" x="' + (item.x + off).toFixed(1) +
     '" y="' + (item.y + yShift).toFixed(1) + '" width="' + item.width.toFixed(1) + '" height="' + item.height.toFixed(1) + '" ' + attributes + '/>';
   const line = (layer, item, attributes) => '<line data-wright-layer="' + layer + '" x1="' + (item.x1 + off).toFixed(1) +
@@ -246,23 +412,23 @@ export function paintWright(params, geometry, pose, effects) {
   const parts = [];
 
   for (const mass of geometry.primaryMasses) {
-    parts.push(rect('primary-mass', mass, 'fill="none" stroke="' + ink(flashHue, 48, massLight) + '" stroke-width="' + stroke + '"'));
+    parts.push(rect('primary-mass', mass, 'fill="none" stroke="' + roles.primary + '" stroke-width="' + stroke + '"'));
   }
   for (const plane of geometry.horizontalPlanes) {
     parts.push(rect('horizontal-plane', { ...plane, width: plane.width + skew },
-      'fill="' + ink(hueSecondary, 56, lineLight) + '"'));
+      'fill="' + roles.secondary + '"'));
   }
   for (const module of geometry.gridModules) {
     parts.push(rect('grid-module', module,
-      'fill="none" stroke="' + ink(hueSecondary, 44, lineLight + 4) + '" stroke-width="' + light + '"'));
+      'fill="none" stroke="' + roles.line + '" stroke-width="' + light + '"'));
   }
   for (const decoration of geometry.decorations) {
     parts.push(line('decoration', decoration,
-      'stroke="' + ink(hueSecondary, 52, lineLight + 8) + '" stroke-width="' + light + '" stroke-linecap="round"'));
+      'stroke="' + roles.line + '" stroke-width="' + light + '" stroke-linecap="round"'));
   }
   for (const accent of geometry.accents) {
     parts.push(line('accent', accent,
-      'stroke="' + ink(flashHue, 62, Math.min(92, lineLight + 10)) + '" stroke-width="' +
+      'stroke="' + roles.accent + '" stroke-width="' +
       (accent.width * pulse).toFixed(2) + '" stroke-linecap="round"'));
   }
 
