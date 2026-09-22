@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { validateVariant } from '../src/variants/validate.js';
+import { PROBE_STATES, validateVariant } from '../src/variants/validate.js';
 import {
   WRIGHT_SPEC_VERSION,
   WRIGHT_FAMILIES,
@@ -116,7 +116,7 @@ test('wright geometry has a deeply frozen, finite, positive semantic hierarchy',
   }
 });
 
-test('wright scaffold hooks animate deterministically and settle by identity', () => {
+test('wright motion animates deterministically and settles back to rest by identity', () => {
   const params = prepareWright(deriveWright('build-bot-7'), { size: 64 });
   const rest = poseWright(params, 'idle');
   const start = poseWright(params, 'working');
@@ -473,6 +473,59 @@ test('wright illumination keeps structural contrast >= 3:1 across animated frame
       }
     }
   }
+});
+
+test('wright motion event frames are deterministic across every probed state', () => {
+  const params = prepareWright(deriveWright('Alice@X.com'), { size: 64 });
+  const rest = poseWright(params, 'idle');
+  const run = (state) => {
+    let pose = state === 'working' ? poseWright(params, 'working') : rest;
+    const frames = [];
+    for (let i = 0; i < 8; i += 1) {
+      pose = animateWright(pose, { params, state, dt: 0.033, t: 0.1 + i * 0.033, transientT: i * 0.033, rest });
+      frames.push(pose);
+    }
+    return frames;
+  };
+  for (const state of PROBE_STATES) {
+    assert.deepEqual(run(state), run(state), `${state} deterministic`);
+  }
+});
+
+test('wright motion settles back to rest by identity for every animated state', () => {
+  const params = prepareWright(deriveWright('maya'), { size: 64 });
+  const rest = poseWright(params, 'idle');
+  for (const state of ['working', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving']) {
+    let pose = state === 'working' ? poseWright(params, 'working') : rest;
+    for (let i = 0; i < 5; i += 1) {
+      pose = animateWright(pose, { params, state, dt: 0.033, t: 0.1 + i * 0.033, transientT: i * 0.033, rest });
+    }
+    for (let i = 0; i < 120; i += 1) {
+      pose = animateWright(pose, { params, state: 'settling', dt: 0.033, t: 0.1 + i * 0.033, transientT: 0, rest });
+      if (pose === rest) break;
+    }
+    assert.equal(pose, rest, `${state} settles to rest`);
+  }
+});
+
+test('wright motion paints a distinct frame sequence per state', () => {
+  const params = prepareWright(deriveWright('build-bot-7'), { size: 64 });
+  const geometry = buildWright(params);
+  const rest = poseWright(params, 'idle');
+  const paintSequence = (state) => {
+    let pose = state === 'working' ? poseWright(params, 'working') : rest;
+    const frames = [];
+    for (let i = 0; i < 16; i += 1) {
+      pose = animateWright(pose, { params, state, dt: 0.033, t: 0.1 + i * 0.033, transientT: i * 0.033, rest });
+      frames.push(paintWright(params, geometry, pose, {
+        dark: false, sleeping: state === 'sleeping', dx: 0, lighten: 0, flash: null
+      }));
+    }
+    return frames.join('\u0000');
+  };
+  const states = ['working', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving'];
+  const signatures = new Set(states.map(paintSequence));
+  assert.equal(signatures.size, states.length, 'each animated state paints a distinct frame sequence');
 });
 
 test('wright descriptor passes validateVariant', () => {
