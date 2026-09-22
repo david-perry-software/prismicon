@@ -411,6 +411,70 @@ test('wright red painted area stays within the 10 percent ceiling across seeds, 
   }
 });
 
+test('wright rest pose is neutral so reduced-motion and static rendering are a single frozen frame', () => {
+  const params = prepareWright(deriveWright('maya'), { size: 64 });
+  for (const state of ['idle', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving', 'done', 'error']) {
+    assert.deepEqual(poseWright(params, state), { illuminate: -1, panelPulse: 0, settle: 0 });
+  }
+  assert.deepEqual(poseWright(params, 'working'), { illuminate: 0, panelPulse: 0.5, settle: 0 });
+});
+
+test('wright motion keeps every animated frame inside the viewBox and preserves the red ceiling', () => {
+  const numericAttrs = (svg) => [...svg.matchAll(/(?:x|y|x1|y1|x2|y2|width|height)="(-?\d+(?:\.\d+)?)"/g)].map((m) => Number(m[1]));
+  const seeds = ['maya', 'build-bot-7', 'Alice@X.com', 'wright-family-5'];
+  const states = ['working', 'waiting', 'thinking', 'sleeping', 'sending', 'receiving', 'settling'];
+  for (const seed of seeds) {
+    for (const size of [24, 64, 140]) {
+      const params = prepareWright(deriveWright(seed), { size });
+      const geometry = buildWright(params);
+      const rest = poseWright(params, 'idle');
+      for (const state of states) {
+        let pose = state === 'working' ? poseWright(params, 'working') : rest;
+        for (let frame = 0; frame < 8; frame += 1) {
+          pose = animateWright(pose, { params, state, dt: 0.033, t: frame * 0.033, transientT: frame * 0.033, rest });
+          const svg = paintWright(params, geometry, pose, {
+            dark: false, sleeping: state === 'sleeping', dx: 0, lighten: 0, flash: null
+          });
+          assert.doesNotMatch(svg, /NaN|Infinity/, `${seed} ${size} ${state} f${frame} finite`);
+          for (const value of numericAttrs(svg)) {
+            assert.ok(value >= 0 && value <= 100, `${seed} ${size} ${state} f${frame} value ${value} inside viewBox`);
+          }
+        }
+      }
+      const metrics = paintedAreaMetrics(geometry, params);
+      assert.ok(metrics.ratio <= WRIGHT_RED_AREA_CEILING, `${seed} ${size} red ratio ${metrics.ratio.toFixed(4)} > 10%`);
+    }
+  }
+});
+
+test('wright illumination keeps structural contrast >= 3:1 across animated frames', () => {
+  const seeds = ['wright-palette-1', 'wright-palette-11', 'wright-palette-0', 'maya'];
+  for (const seed of seeds) {
+    const params = prepareWright(deriveWright(seed), { size: 64 });
+    const geometry = buildWright(params);
+    const rest = poseWright(params, 'idle');
+    const modes = WRIGHT_PALETTES[params.paletteFamily];
+    for (const dark of [false, true]) {
+      const canvas = modes[dark ? 'dark' : 'light'].canvas;
+      for (const state of ['working', 'thinking', 'sending', 'receiving']) {
+        let pose = rest;
+        for (let frame = 0; frame < 6; frame += 1) {
+          pose = animateWright(pose, { params, state, dt: 0.033, t: frame * 0.033, transientT: frame * 0.033, rest });
+          const svg = paintWright(params, geometry, pose, {
+            dark, sleeping: false, dx: 0, lighten: 0, flash: null
+          });
+          for (const match of svg.matchAll(/data-wright-layer="horizontal-plane"[^>]*?fill="(#[0-9a-f]{6})"/g)) {
+            assert.ok(
+              contrastRatio(match[1], canvas) >= WRIGHT_CONTRAST_MIN,
+              `${seed} dark=${dark} ${state} f${frame} plane vs canvas`
+            );
+          }
+        }
+      }
+    }
+  }
+});
+
 test('wright descriptor passes validateVariant', () => {
   validateVariant(wright);
 });
