@@ -282,6 +282,46 @@ test('wright paint uses semantic palette roles in light and dark contexts', () =
   }
 });
 
+test('wright paint interprets the motion pose with bounded illumination, panel pulse, and settle', () => {
+  const params = prepareWright(deriveWright('maya'), { size: 64 });
+  const geometry = buildWright(params);
+  const rest = poseWright(params, 'idle');
+  const effects = { dark: false, sleeping: false, dx: 0, lighten: 0, flash: null };
+  const restSvg = paintWright(params, geometry, rest, effects);
+
+  // Rest rendering is deterministic and emits the frozen secondary role un-lit.
+  assert.equal(restSvg, paintWright(params, geometry, rest, effects));
+  const palette = WRIGHT_PALETTES[params.paletteFamily].light;
+
+  const planeFills = (svg) => [...svg.matchAll(/data-wright-layer="horizontal-plane"[^>]*?fill="(#[0-9a-f]{6})"/g)].map((m) => m[1]);
+  const planeYs = (svg) => [...svg.matchAll(/data-wright-layer="horizontal-plane"[^>]*?y="([-0-9.]+)"/g)].map((m) => m[1]);
+  const moduleStrokes = (svg) => [...svg.matchAll(/data-wright-layer="grid-module"[^>]*?stroke-width="([0-9.]+)"/g)].map((m) => m[1]);
+
+  const restFills = planeFills(restSvg);
+  assert.ok(restFills.length > 0);
+  assert.ok(restFills.every((fill) => fill === palette.secondary), 'rest planes keep the frozen secondary role');
+
+  const moved = Object.freeze({ illuminate: 0.5, panelPulse: 0.8, settle: 0.5 });
+  const movedSvg = paintWright(params, geometry, moved, effects);
+  assert.notEqual(movedSvg, restSvg);
+  assert.doesNotMatch(movedSvg, /NaN|Infinity/);
+
+  // Illumination lights at least one plane; settle shifts every plane; the panel
+  // pulse changes the grid-module stroke. All structural layers keep their order
+  // and data-wright-layer attributes.
+  const movedFills = planeFills(movedSvg);
+  assert.equal(movedFills.length, restFills.length, 'plane count unchanged');
+  assert.ok(movedFills.some((fill) => fill !== palette.secondary), 'illumination changes a plane fill');
+  assert.notDeepEqual(planeYs(movedSvg), planeYs(restSvg), 'settle shifts the planes');
+  assert.ok(moduleStrokes(movedSvg).some((w) => w !== String(params.lightStroke)), 'panel pulse changes module stroke');
+
+  const layers = ['primary-mass', 'horizontal-plane', 'grid-module', 'decoration', 'accent'];
+  for (const layer of layers) assert.match(movedSvg, new RegExp(`data-wright-layer="${layer}"`));
+  for (let i = 1; i < layers.length; i += 1) {
+    assert.ok(movedSvg.indexOf(`data-wright-layer="${layers[i - 1]}"`) < movedSvg.indexOf(`data-wright-layer="${layers[i]}"`));
+  }
+});
+
 test('wright contrast enforces unrounded WCAG 3:1 for structural roles in light dark and flash states', () => {
   // Standards-based sRGB helpers hold reference values.
   assert.deepEqual([...hexToRgb('#ffffff')], [255, 255, 255]);
