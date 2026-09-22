@@ -107,7 +107,7 @@ describeParams(p); // → 'pentagon bipyramid, two-tone, tall'
 
 ## Variants
 
-Variants are separate visual styles registered with the renderer. The built-in `polyhedron` variant is the default and remains unchanged, so existing code keeps working. The n-cube family (`ncube`, `ncube-3` … `ncube-6`) is the second built-in and `orbit` is the third.
+Variants are separate visual styles registered with the renderer. The built-in `polyhedron` variant is the default and remains unchanged, so existing code keeps working. The n-cube family (`ncube`, `ncube-3` … `ncube-6`) is the second built-in, `orbit` is the third, and `wright` is the fourth.
 
 ```js
 import { renderStaticSVG, mountGlyph, DEFAULT_VARIANT_ID, listVariants } from 'prismicon';
@@ -120,7 +120,8 @@ listVariants();
 //   { id: 'ncube-4',    label: '4-cube (tesseract)',   spec: 'ncube-v1' },
 //   { id: 'ncube-5',    label: '5-cube (penteract)',   spec: 'ncube-v1' },
 //   { id: 'ncube-6',    label: '6-cube (hexeract)',    spec: 'ncube-v1' },
-//   { id: 'orbit',      label: 'Orbit',                spec: 'orbit-v1' }
+//   { id: 'orbit',      label: 'Orbit',                spec: 'orbit-v1' },
+//   { id: 'wright',     label: 'Wright Scaffold',      spec: 'wright-geometry-v1' }
 // ]
 
 renderStaticSVG('maya', { variant: 'polyhedron' });
@@ -131,9 +132,10 @@ const handle = mountGlyph(el, 'maya', { variant: 'ncube-4', state: 'working' });
 - Omit `variant` to get `DEFAULT_VARIANT_ID` (`'polyhedron'`).
 - An unknown id throws `RangeError`; there is no silent fallback.
 - `handle.variant` reports the resolved variant id.
-- `handle.params` is typed `GlyphParams | NcubeParams | OrbitParams`; narrow on
+- `handle.params` is typed `GlyphParams | NcubeParams | OrbitParams | WrightParams`; narrow on
   `handle.variant` (or `'dimension' in handle.params` / `'ringCount' in
-  handle.params`) before reading variant-specific fields.
+  handle.params` / `'dominantFamily' in handle.params`) before reading
+  variant-specific fields.
 
 React uses the same variant ids as the core API:
 
